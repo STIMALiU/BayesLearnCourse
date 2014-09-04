@@ -1,0 +1,463 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2.5cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\size footnotesize
+Mattias Villani
+\begin_inset space \hspace{}
+\length 11.5cm
+\end_inset
+
+2012-11-04
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Avdelning för statistik
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Institutionen för datavetenskap
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Linköpings universitet
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+mattias.villani@liu.se
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size large
+Bayesian Learning, 6 hp
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size large
+Computer lab 1
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You can use any programming language for the labs, but my hints, help and
+ solutions will be in R.
+ [Disclosure: I am actually a long time Matlab user, but I am moving more
+ toward Free software like R and Python]
+\family typewriter
+.
+
+\family default
+ 
+\begin_inset Newline newline
+\end_inset
+
+You are allowed to work and submit your labs in pairs, but do make sure
+ that both of you are contributing.
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+The 
+\series bold
+deadline
+\series default
+ for this lab is 
+\series bold
+November 13
+\series default
+.
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Bernoulli - again.
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Let 
+\begin_inset Formula $x_{1},...,x_{n}|\theta\overset{iid}{\sim}Bern(\theta)$
+\end_inset
+
+, and assume that you have obtained a sample with 
+\begin_inset Formula $s=14$
+\end_inset
+
+ successes in 
+\begin_inset Formula $n=20$
+\end_inset
+
+ trials.
+ Assume a 
+\begin_inset Formula $Beta(\alpha,\beta)$
+\end_inset
+
+ prior for 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and let 
+\begin_inset Formula $\alpha=\beta=2$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Draw random numbers from the posterior 
+\begin_inset Formula $\theta|\mathbf{x}\sim Beta(\alpha+s,\beta+f)$
+\end_inset
+
+ and verify that the posterior mean and standard deviation converges to
+ the true values as the number of random draws grows large.
+\end_layout
+
+\begin_layout Enumerate
+Use simulation to compute the posterior probability 
+\begin_inset Formula $Pr(\theta<0.01|\mathbf{x})$
+\end_inset
+
+ and compare with the exact value [Hint: 
+\family typewriter
+pbeta()
+\family default
+].
+\end_layout
+
+\begin_layout Enumerate
+Compute the posterior distribution of the log-odds 
+\begin_inset Formula $\phi=\ln\frac{\theta}{1-\theta}$
+\end_inset
+
+ using random draws from 
+\begin_inset Formula $\theta|\mathbf{x}\sim Beta(\alpha+s,\beta+f)$
+\end_inset
+
+.
+ [Hint: 
+\family typewriter
+hist()
+\family default
+ and 
+\family typewriter
+density()
+\family default
+ might come in handy]
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
+\lang swedish
+Log-normal distribution and the Gini coefficient.
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Assume that you have asked 10 randomly selected persons about their monthly
+ income (in thousands Swedish Krona) and obtained the following ten observations
+: 14, 25, 45, 25, 30, 33, 19, 50, 34 and 67.
+ A common model for non-negative continuous variables is the log-normal
+ distribution.
+ The log-normal distribution 
+\begin_inset Formula $LN(\mu,\sigma^{2})$
+\end_inset
+
+ has density function
+\begin_inset Formula 
+\[
+p(x|\mu,\sigma^{2})=\frac{1}{x\cdot\sqrt{2\pi\sigma^{2}}}\exp[-\frac{1}{2\sigma^{2}}(\ln x-\mu)^{2}],
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $x>0$
+\end_inset
+
+, 
+\begin_inset Formula $\mu>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}>0$
+\end_inset
+
+.
+ The log-normal distribution is related to the normal distribution as follows:
+ if 
+\begin_inset Formula $x\sim LN(\mu,\sigma^{2})$
+\end_inset
+
+, then 
+\begin_inset Formula $\ln x\sim N(\mu,\sigma^{2}).$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang swedish
+Let 
+\begin_inset Formula $x_{1},x_{2},...,x_{n}|\mu,\sigma^{2}\overset{iid}{\sim}LN(\mu,\sigma^{2})$
+\end_inset
+
+, where 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is assumed known and 
+\begin_inset Formula $\mu=3.5$
+\end_inset
+
+, but 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is unknown.
+ Assume the noninformative prior 
+\begin_inset Formula $p(\sigma^{2})\propto1/\sigma^{2}$
+\end_inset
+
+.
+ Show that the posterior for 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is the 
+\begin_inset Formula $Inv-\chi^{2}(\nu,\tau^{2})$
+\end_inset
+
+ distribution [in Wikipedia's parametrization], where 
+\begin_inset Formula $\nu=n$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\tau^{2}=\frac{\sum_{i=1}^{n}\left(\ln x_{i}-\mu\right)^{2}}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Simulate 
+\begin_inset Formula $10000$
+\end_inset
+
+ draws from the posterior of 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ (assuming 
+\begin_inset Formula $\mu=3.5$
+\end_inset
+
+) and compare with the results in a).
+\end_layout
+
+\begin_layout Enumerate
+
+\lang swedish
+The most common measure of income inequality is the Gini coefficient, 
+\begin_inset Formula $G$
+\end_inset
+
+, where 
+\begin_inset Formula $0\leq G\leq1$
+\end_inset
+
+.
+ 
+\begin_inset Formula $G=0$
+\end_inset
+
+ means a completely equal income distribution, whereas 
+\begin_inset Formula $G=1$
+\end_inset
+
+ means complete income inequality.
+ See Wikipedia for more information.
+ It can be shown that 
+\begin_inset Formula $G=2\Phi(\sigma/\sqrt{2})-1$
+\end_inset
+
+ for the special case of a 
+\begin_inset Formula $LN(\mu,\sigma)$
+\end_inset
+
+ distribution.
+ Use the posterior draws in b to compute the posterior distribution of the
+ Gini coefficient 
+\begin_inset Formula $G=2\Phi(\sigma/\sqrt{2})-1$
+\end_inset
+
+ for the current data set.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
+Bayesian inference for the concentration parameter in the von Mises distribution
+\emph default
+.
+\begin_inset Newline newline
+\end_inset
+
+This exercise is concerned with directional data.
+ The data points are observed wind directions at a given location on ten
+ different days.
+ The data are recorded in 
+\emph on
+degrees
+\emph default
+: 
+\family typewriter
+c(40,303,326,285,296,314,20,308,299,296)
+\family default
+, where North is located at zero degrees (see Figure 1 on the next page,
+ where the angles are measured clockwise).
+ To fit with Wikipedias description of probability distributions for circular
+ data we convert the data into 
+\emph on
+radians
+\emph default
+ 
+\begin_inset F

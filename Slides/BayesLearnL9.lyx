@@ -1,0 +1,752 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+\end_preamble
+\options xcolor=svgnames
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Bayesian Learning
+\end_layout
+
+\end_inset
+
+Bayesian Learning - Lecture 9
+\end_layout
+
+\begin_layout Author
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Mattias Villani
+\end_layout
+
+\end_inset
+
+Mattias Villani
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Statistics, LiU
+\end_layout
+
+\end_inset
+
+Division of Statistics
+\begin_inset Newline newline
+\end_inset
+
+Department of Computer and Information Science
+\begin_inset Newline newline
+\end_inset
+
+Linköping University 
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Lecture overview
+\end_layout
+
+\begin_layout Itemize
+Markov Chain Monte Carlo
+\end_layout
+
+\begin_layout Itemize
+Metropolis-Hastings
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Markov chains
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Markov chain
+\series default
+
+\begin_inset Formula 
+\[
+\mathrm{Pr}(X_{t+1}=x|X_{t}=x_{t},...,X_{1}=x_{1})=\mathrm{Pr}(X_{t+1}=x|X_{t}=x_{t})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Markov chain with two states: 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ 
+\series bold
+Transition probabilities
+\series default
+:
+\begin_inset Formula 
+\[
+p_{ij}=\mathrm{Pr}(X_{t+1}=j|X_{t}=i)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Example
+\begin_inset Formula 
+\[
+P=\left(\begin{array}{cc}
+p_{11} & p_{12}\\
+p_{21} & p_{22}
+\end{array}\right)=\left(\begin{array}{cc}
+0.3 & 0.7\\
+0.4 & 0.6
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename MarkovChain.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Stationary distribution
+\end_layout
+
+\begin_layout Itemize
+Initial probabilities: 
+\begin_inset Formula $\alpha_{0}=Pr(X_{0}=x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Marginal distribution of the chain at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\alpha_{0}P^{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stationary distribution
+\begin_inset Formula 
+\[
+\pi=\pi P
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P^{t}\rightarrow\left(\begin{array}{c}
+\pi\\
+\pi\\
+\vdots\\
+\pi
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+[
+\begin_inset Formula $\pi$
+\end_inset
+
+ is the normalized left eigenvector corresponding to the eigenvalue 1]
+\end_layout
+
+\begin_layout Itemize
+Example:
+\begin_inset Formula 
+\[
+P=\left(\begin{array}{ccc}
+0.8 & 0.1 & 0.1\\
+0.2 & 0.6 & 0.2\\
+0.3 & 0.3 & 0.4
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\pi=\left(0.545,0.272,0.181\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Simulating the stationary distribution
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figure/MarkovChainConverge.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Suppose we want to simulate from a discrete distribution 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ for 
+\begin_inset Formula $x\in\{s_{1},s_{2},...,s_{k}\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Basic idea of MCMC: simulate from a Markov chain with a stationary distribution
+ that is exactly 
+\begin_inset Formula $p(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+How to set up the transition matrix 
+\begin_inset Formula $P$
+\end_inset
+
+? Metropolis-Hastings.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Rejection sampling
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../BayesStat2011/Lectures/RejectionSamplingGamma.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+The Metropolis Algorithm 
+\end_layout
+
+\begin_layout Itemize
+Initialize with 
+\begin_inset Formula $\theta=\theta_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $t=1,2,...$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sample a proposal draw 
+\begin_inset Formula $\theta^{\ast}|\theta^{(t-1)}\sim J_{t}(\theta^{\ast},\theta^{(t-1)})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Accept 
+\begin_inset Formula $\theta^{\ast}$
+\end_inset
+
+ with probability
+\begin_inset Formula 
+\[
+r(\theta^{\ast},\theta^{(t-1)})=\min\left[\frac{p(\theta^{\ast}|y)}{p(\theta^{(t-1)}|y)},1\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If the proposal is accepted, set 
+\begin_inset Formula $\theta^{(t)}=\theta^{\ast}$
+\end_inset
+
+, otherwise set 
+\begin_inset Formula $\theta^{(t)}=\theta^{(t-1)}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Metropolis algorithm, cont.
+\end_layout
+
+\begin_layout Itemize
+We must be able to compute the posterior density 
+\begin_inset Formula $p(\theta|y)$
+\end_inset
+
+ for any 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The Metropolis algorithm works even if 
+\begin_inset Formula $p(\theta|y)$
+\end_inset
+
+ is only known up to a proportionality constant as it simply cancels in
+ 
+\begin_inset Formula $r(\theta^{\ast},\theta^{(t-1)})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The proposal, or jumping, distribution 
+\begin_inset Formula $J_{t}(\theta^{\ast}|\theta^{(t-1)})$
+\end_inset
+
+ may vary from iteration to iteration.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $J_{t}(\theta^{\ast},\theta^{(t-1)})$
+\end_inset
+
+ must be symmetric, i.e.
+\begin_inset Formula 
+\[
+J_{t}(\theta_{a}|\theta_{b})=J_{t}(\theta_{b}|\theta_{a})\text{ for all }\theta_{a},\theta_{b}\text{ and }t.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Every proposal that 
+\begin_inset Formula $\theta^{\ast}$
+\end_inset
+
+ that lies uphill (
+\begin_inset Formula $p(\theta^{\ast}|y)\geq p(\theta^{(t-1)}|y)$
+\end_inset
+
+) is accepted with certainty.
+ Downhill moves accepted with prob.
+ 
+\begin_inset Formula $r(\theta^{\ast},\theta^{(t-1)}).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Metropolis - Choosing the proposal distribution
+\end_layout
+
+\begin_layout Itemize
+Common choice of proposal distribution:
+\begin_inset Formula 
+\[
+J_{t}(\theta^{\ast}|\theta^{(t-1)})=N\left(\theta^{(t-1)},\Sigma\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\Sigma=c^{2}\cdot J_{\tilde{\theta},\mathbf{x}}^{-1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\cdot J_{\tilde{\theta},\mathbf{x}}$
+\end_inset
+
+ is the observed information matrix at the posterior mode (numerical optimizatio
+n).
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $c$
+\end_inset
+
+ is a tuning constant set so that average acceptance probability is something
+ like 
+\begin_inset Formula $0.3$
+\end_inset
+
+ (see Section 11.9).
+\end_layout
+
+\begin_layout Itemize
+A good proposal 
+\begin_inset Formula $J_{t}(\theta^{\ast}|\theta^{(t-1)})$
+\end_inset
+
+ should have the following properties
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Easy to sample
+\end_layout
+
+\begin_layout Itemize
+Easy to compute 
+\begin_inset Formula $r(\theta^{\ast},\theta^{(t-1)})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Takes reasonably large jumps in the parameter space
+\end_layout
+
+\begin_layout Itemize
+The jumps are not rejected too frequently.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Practical Implementation of MCMC Algorithms 
+\end_layout
+
+\begin_layout Itemize
+The autocorrelation in the simulated sequence 
+\begin_inset Formula $\theta^{(1)},\theta^{(2)},....,\theta^{(N)}$
+\end_inset
+
+ makes it somewhat problematic to define the effective number of simulation
+ draws.
+\end_layout
+
+\begin_layout Itemize
+Inefficiency factor: 
+\begin_inset Formula 
+\[
+\mathrm{IF}=1+2\sum_{i=1}^{\infty}\rho_{i},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\rho_{i}$
+\end_inset
+
+ is the autocorrelation at lag 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Effective sample size:
+\begin_inset Formula 
+\[
+\mathrm{ESS=N/IF}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+When do we stop sampling? 
+\end_layout
+
+\begin_layout Itemize
+How many 
+\shape italic
+burn-in
+\shape default
+ iterations to discard?
+\end_layout
+
+\begin_layout Itemize
+Several short sequences or a single long sequence? To thin out or not to
+ thin out?
+\end_layout
+
+\begin_layout Itemize
+Software issues.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Convergence diagnostics 
+\end_layout
+
+\begin_layout Itemize
+Raw plots of the simulated sequences (trajectories)
+\end_layout
+
+\begin_layout Itemize
+CUSUM plots (+ Local)
+\end_layout
+
+\begin_layout Itemize
+Anova-type tests.
+ After convergence, it should not matter if we compute the marginal posterior
+ variance of from:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+one big posterior sample which merges all the 
+\begin_inset Formula $m$
+\end_inset
+
+ parallel sequences together
+\end_layout
+
+\begin_layout Enumerate
+each of the parallel sequences separately and then average the 
+\begin_inset Formula $m$
+\end_inset
+
+ estimates.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Potential scale reduction factor: 
+\begin_inset Formula 
+\[
+R=\frac{\text{Variance under setting 1}}{\text{Variance under setting 2}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $R\downarrow1$
+\end_inset
+
+ as 
+\begin_inset Formula $N\rightarrow\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+The Metropolis-Hastings al

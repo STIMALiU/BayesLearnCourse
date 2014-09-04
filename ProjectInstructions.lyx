@@ -1,0 +1,218 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2.5cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\size footnotesize
+Mattias Villani
+\begin_inset space \hspace{}
+\length 11.5cm
+\end_inset
+
+2012-12-11
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Avdelning för statistik
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Institutionen för datavetenskap
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Linköpings universitet
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+mattias.villani@liu.se
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size large
+Instructions for Bayesian Learning project
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\size default
+The examination for the course Bayesian Learning, 6hp, consists of 
+\end_layout
+
+\begin_layout Itemize
+written reports on the four computer labs (2 hp)
+\end_layout
+
+\begin_layout Itemize
+individual written report on a project that applies Bayesian methods for
+ data analysis (4hp)
+\end_layout
+
+\begin_layout Standard
+The instructions for the individual project report are intentionally vague.
+ You are supposed to find an problem for analysis by yourself and then select
+ an existing dataset, or several datasets, that helps to shed light on your
+ problem.
+ The dataset(s) should be analyzed by Bayesian methods in such a way that
+ you show that you 
+\end_layout
+
+\begin_layout Itemize
+have understood the Bayesian concepts and methods introduced in the course
+\end_layout
+
+\begin_layout Itemize
+can perform a well executed Bayesian analysis
+\end_layout
+
+\begin_layout Itemize
+can correctly interpret the results and conclusions from the analysis.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you are unable to find a well specified problem area for analysis, you
+ can choose several unrelated datasets that illustrates your understanding
+ of the course contents.
+ 
+\begin_inset Newline newline
+\end_inset
+
+You are free to use any available software, but using pre-packaged software
+ rather than your own written program code increases the demands on the
+ statistical analysis and modelling, and makes it even more important that
+ you clearly interpret the results to show that you have understood the
+ theory and concepts underlying the analysis performed by the software package.
+\size footnotesize
+
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\series bold
+\size default
+
+\begin_inset Newline newline
+\end_inset
+
+Deadline
+\series default
+ for submissions: 
+\series bold
+January 1
+\series default
+4
+\series bold
+, 2013
+\series default
+.
+ Submit your report through Lore.com.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape smallcaps
+May Bayes be with you!
+\end_layout
+
+\end_body
+\end_document

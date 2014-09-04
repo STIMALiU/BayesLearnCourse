@@ -1,0 +1,366 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2.5cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+
+\size footnotesize
+Mattias Villani
+\begin_inset space \hspace{}
+\length 12cm
+\end_inset
+
+2013-11-20
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\size footnotesize
+Division of Statistics
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\size footnotesize
+Dept.
+ of Computer and Information Science
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\size footnotesize
+Linköping University
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\size footnotesize
+mattias.villani@liu.se
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size large
+Bayesian Learning, 6 hp
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size large
+Guidelines for the project
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+This is a document with some rough guidelines for the project in the Bayesian
+ learning course.
+ Note however that the project is very flexible and I don't want to give
+ too rigid guidelines for it.
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 0.2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Deadline
+\series default
+: December 22.
+ It is ok to submit earlier.
+ :-)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Individual
+\series default
+.
+ The project is to be done individually.
+ You can of course have the usual discussions with classmates about the
+ Bayesian learning in general (I assume this is constantly on your mind!),
+ but don't ask for specific solutions to problems that you encounter in
+ your project.
+ It is YOUR project, YOU get the grade, YOU do the work.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The product
+\series default
+: You are expected to send me a written report in 
+\series bold
+PDF
+\series default
+ format (Word or other word processing software are not acceptable).
+ There will be 
+\series bold
+no oral presentation
+\series default
+.
+ The report should be 
+\series bold
+clearly written
+\series default
+ and be concise.
+ 
+\series bold
+Explain
+\series default
+ all the things you do so that I can see that you actually understood what
+ you did in the report.
+ Pushing a button in some package and dumping a lot of output in the report
+ without proper explaination and interpretation is not good enough.
+ Make sure that you use the proper Bayesian terminology that we have used
+ during the course.
+ It is impossible to say anything sensible about the extent (
+\begin_inset Quotes eld
+\end_inset
+
+how many pages?
+\begin_inset Quotes erd
+\end_inset
+
+) of the report.
+ All I can say is that the project is 4 credit points and it is the only
+ examination for the course.
+ Attach computer code in an appendix of the project report.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Software
+\series default
+.
+ You are free to use any available software, but using pre-packaged software
+ rather than your own written program code increases the demands on the
+ statistical analysis and modelling, and makes it even more important that
+ you clearly interpret the results to show that you have understood the
+ theory and concepts underlying the analysis performed by the software package.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The content
+\series default
+ of the project.
+ You are free to work on any problem you like, but I do expect you to do
+ a Bayesian analysis of the problem.
+ The typical project involves the following steps:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A well-defined 
+\series bold
+problem definition
+\series default
+.
+ The problem definition can change when you start analyzing the data, but
+ having an idea to start with helps.
+ I would suggest that you pick a problem that YOU care about.
+ Make it fun for you.
+ There is no need to make any kind of novel scientific contribution in this
+ course (but I don't mind if you do!).
+\end_layout
+
+\begin_layout Itemize
+A 
+\series bold
+dataset
+\series default
+.
+ It is ok to look at a theoretical problem without any data, but most students
+ prefer to analyze some data.
+ It is certainly ok to use several data sets, and even to divide the project
+ report in more or less unrelated parts.
+ But I think that it is easier to do a good project if you focus on a single
+ dataset.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Models
+\series default
+.
+ When you choose a problem definition and a dataset, make sure that it gives
+ you the oppurtunity to analyze interesting models.
+ You can try several models of different parts of the data set (see for
+ example in my slides how I first analyzed the Spam data set using a simple
+ Bernoulli model with Beta prior, and later on introduced covariates and
+ used logistic regression).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Analysis
+\series default
+.
+ Once you have your dataset and some estimated models, move on to analyze
+ the results of your analysis.
+ Maybe you can illustrate how to do predictions with the model (perhaps
+ computing the predictive distribution by simulation)? How to evaluate the
+ model fit? Analyze which covariates to include in the model, if you are
+ in a regression-type of situation?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Project proposal
+\series default
+: Submit a project proposal to me no later than 
+\series bold
+November, 30
+\series default
+.
+ The project proposal is a very short written document (maximum a page or
+ so) where you explain what you intended to do in the project.
+ Use the four bullet points above (problem definition, dataset, models and
+ analysis) to structure your project proposal.
+ Keep it brief, just tell me enough so that I can judge if the project is
+ worth pursuing.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Oral examination
+\series default
+.
+ For master students (which are graded on the A-F scale) I may need to complemen
+t the project report with oral examinations for those students for which
+ I am uncertain about the grade.
+ Oral examinations will be planned bilaterally between me and the selected
+ students, but will take place sometimes in the latter part of January.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\shape smallcaps
+Good luck!
+\begin_inset Newline newline
+\end_inset
+
+be ambitious.
+\begin_inset Newline newline
+\end_inset
+
+You have plenty of time later in life to be a slacker.
+\end_layout
+
+\end_body
+\end_document

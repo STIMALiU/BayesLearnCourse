@@ -1,0 +1,979 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+\end_preamble
+\options xcolor=svgnames,handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Bayesian Learning
+\end_layout
+
+\end_inset
+
+Bayesian Learning - Lecture 7
+\end_layout
+
+\begin_layout Author
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Mattias Villani
+\end_layout
+
+\end_inset
+
+Mattias Villani
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Statistics, LiU
+\end_layout
+
+\end_inset
+
+Division of Statistics
+\begin_inset Newline newline
+\end_inset
+
+Department of Computer and Information Science
+\begin_inset Newline newline
+\end_inset
+
+Linköping University 
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Lecture overview
+\end_layout
+
+\begin_layout Itemize
+An introduction to Gaussian process regression
+\end_layout
+
+\begin_layout Itemize
+Hierarchical models
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Non-parametric regression
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Linear regression
+\series default
+
+\begin_inset Formula 
+\[
+y=\beta\cdot x+\varepsilon
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\varepsilon\sim N(0,\sigma^{2})$
+\end_inset
+
+ and iid over observations.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Nonlinear
+\series default
+ 
+\series bold
+regression
+\series default
+
+\begin_inset Formula 
+\[
+y=f(x)+\varepsilon
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $f(\cdot)$
+\end_inset
+
+ is some nonlinear function (ex 
+\begin_inset Formula $f(x)=\beta_{0}+\beta_{1}x+\beta_{2}x^{2}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Non-parametric regression
+\series default
+: avoiding a parametric form for 
+\begin_inset Formula $f(\cdot)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+How do we put a 
+\series bold
+prior over a set of functions
+\series default
+?
+\end_layout
+
+\begin_layout Itemize
+Restrict attention to a grid of (ordered) 
+\begin_inset Formula $x$
+\end_inset
+
+-values: 
+\begin_inset Formula $x_{1},x_{2},..,x_{k}$
+\end_inset
+
+.
+ [weight space view].
+\end_layout
+
+\begin_layout Itemize
+We can now put a joint prior on the 
+\begin_inset Formula $k$
+\end_inset
+
+ function values: 
+\begin_inset Formula $f(x_{1}),f(x_{2}),...,f(x_{k})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Gaussian process regression
+\end_layout
+
+\begin_layout Itemize
+Natural choice.
+ Multivariate normal (Gaussian):
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+f(x_{1})\\
+\vdots\\
+f(x_{k})
+\end{array}\right)\sim N\left(\mathbf{m},\mathbf{K}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+But how do we specify the 
+\begin_inset Formula $k\times k$
+\end_inset
+
+ 
+\series bold
+covariance matrix
+\series default
+ 
+\begin_inset Formula $\mathbf{K}$
+\end_inset
+
+?
+\begin_inset Formula 
+\[
+Cov\left(f(x_{p}),f(x_{q})\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Squared exponential covariance function
+\series default
+
+\begin_inset Formula 
+\[
+Cov\left(f(x_{p}),f(x_{q})\right)=K(x_{p},x_{q})=\sigma_{f}^{2}\exp\left(-\frac{1}{2}\left(x_{p}-x_{q}\right)^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The covariance between 
+\begin_inset Formula $f(x_{p})$
+\end_inset
+
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $f(x_{q})$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ is a function of 
+\begin_inset Formula $x_{p}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{q}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Nearby 
+\begin_inset Formula $x$
+\end_inset
+
+'s have highly correlated function ordinates 
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+.
+\end_layout
+
+\begin_layout Itemize
+We can compute 
+\begin_inset Formula $Cov\left(f(x_{p}),f(x_{q})\right)$
+\end_inset
+
+ for 
+\emph on
+any
+\emph default
+ 
+\begin_inset Formula $x_{p}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{q}$
+\end_inset
+
+ (no need for a pre-determined grid)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Gaussian process regression, cont.
+\end_layout
+
+\begin_layout Definition
+A 
+\series bold
+Gaussian process
+\series default
+ (
+\series bold
+GP
+\series default
+) is a collection of random variables, any finite number of which have a
+ multivariate Gaussian distribution.
+\end_layout
+
+\begin_layout Itemize
+A Gaussian process is really a 
+\series bold
+probability distribution over functions
+\series default
+ (curves).
+ This is exactly what we want! No need for a grid!
+\end_layout
+
+\begin_layout Itemize
+A GP is completely specified by a mean and a covariance function
+\begin_inset Formula 
+\[
+m(x)=\mathrm{E}\left[f(x)\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+K(x,x')=E\left[\left(f(x)-m(x)\right)\left(f(x')-m(x')\right)\right]
+\]
+
+\end_inset
+
+for any two inputs 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $x'$
+\end_inset
+
+ (note: this is 
+\emph on
+not
+\emph default
+ the transpose here).
+\end_layout
+
+\begin_layout Itemize
+A Gaussian process (prior) is denoted by
+\begin_inset Formula 
+\[
+f(x)\sim GP\left(m(x),K(x,x')\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Gaussian process regression, cont.
+\end_layout
+
+\begin_layout Itemize
+Example:
+\begin_inset Formula 
+\begin{align*}
+m(x) & =\sin(x)\\
+K(x,x') & =\sigma_{f}^{2}\exp\left(-\frac{1}{2}\left(\frac{x_{p}-x_{q}}{l}\right)^{2}\right)
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $l>0$
+\end_inset
+
+ is the length scale.
+ 
+\end_layout
+
+\begin_layout Itemize
+Larger 
+\begin_inset Formula $l$
+\end_inset
+
+ gives more smoothness in 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Simulate draw from 
+\begin_inset Formula $f(x)\sim GP\left(m(x),K(x,x')\right)$
+\end_inset
+
+ over a grid 
+\begin_inset Formula $x_{*}=(x_{1},...,x_{n})$
+\end_inset
+
+ by using that
+\begin_inset Formula 
+\[
+f(x_{*})\sim N\left(m(x_{*}),K(x_{*},x_{*})\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Gaussian process regression, cont.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Model
+\series default
+
+\begin_inset Formula 
+\[
+y_{i}=f(\mathbf{\textnormal{x}}_{i})+\varepsilon_{i},\quad\varepsilon\overset{iid}{\sim}N(0,\sigma^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Prior
+\series default
+
+\begin_inset Formula 
+\[
+f(x)\sim GP\left(0,K(x,x')\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+You have observed the data: 
+\begin_inset Formula $\mathbf{x}=(x_{1},...,x_{n})$
+\end_inset
+
+' and 
+\begin_inset Formula $\mathbf{y}=(y_{1},...,y_{n})'$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Goal: the posterior of 
+\begin_inset Formula $f(\cdot)$
+\end_inset
+
+ over a grid of 
+\begin_inset Formula $x$
+\end_inset
+
+-values: 
+\begin_inset Formula $\mathbf{f}_{*}=\mathbf{f}(\mathbf{x}_{*})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Intermediate step: joint distribution of 
+\begin_inset Formula $\mathbf{y}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{f}_{*}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\mathbf{y}\\
+\mathbf{f}_{*}
+\end{array}\right)\sim N\left\{ \left(\begin{array}{c}
+\mathbf{0}\\
+\mathbf{0}
+\end{array}\right),\left[\begin{array}{cc}
+K(\mathbf{x},\mathbf{x})+\sigma^{2}I & K(\mathbf{x},\mathbf{x}_{*})\\
+K(\mathbf{x}_{*},\mathbf{x}) & K(\mathbf{x}_{*},\mathbf{x}_{*})
+\end{array}\right]\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+posterior
+\series default
+ 
+\begin_inset Formula 
+\[
+\mathbf{f}_{*}|\mathbf{x},\mathbf{y},\mathbf{x}_{*}\sim N\left(\bar{\mathbf{f}}_{*},\mathrm{cov}(\mathbf{f}_{*})\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\bar{\mathbf{f}}_{*} & =K(\mathbf{x}_{*},\mathbf{x})\left[K(\mathbf{x},\mathbf{x})+\sigma^{2}I\right]^{-1}\mathbf{y}\\
+\mathrm{cov}(\mathbf{f}_{*}) & =K(\mathbf{x}_{*},\mathbf{x_{*}})-K(\mathbf{x}_{*},\mathbf{x})\left[K(\mathbf{x},\mathbf{x})+\sigma^{2}I\right]^{-1}K(\mathbf{x},\mathbf{x_{*}})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+An hierarchical binomial model 
+\end_layout
+
+\begin_layout Itemize
+Example: 
+\begin_inset Formula 
+\[
+y_{j}|\theta_{j}\sim Bin(n_{j},\theta_{j})\text{, }j=1,...,J\text{.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We could do inference on each 
+\begin_inset Formula $\theta_{j}$
+\end_inset
+
+ separately.
+ Problem: 
+\begin_inset Formula $n_{j}$
+\end_inset
+
+ may be small for some 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Not much info then about 
+\begin_inset Formula $\theta_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+If you knew 
+\begin_inset Formula $\theta_{j}$
+\end_inset
+
+, would that give information about 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+? If so, then inference about the parameters 
+\begin_inset Formula $\theta_{j}$
+\end_inset
+
+, 
+\begin_inset Formula $j=1,....,J$
+\end_inset
+
+, may 'borrow strength' from each other.
+\end_layout
+
+\begin_layout Itemize
+Extreme case: assume 
+\begin_inset Formula $\theta_{j}=\theta$
+\end_inset
+
+ for all 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula $y=\sum_{j=1}^{J}y_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $n=\sum_{j=1}^{J}n_{j}$
+\end_inset
+
+.
+ Straightforward to analyze 
+\begin_inset Formula $\theta$
+\end_inset
+
+ with the usual Beta-Binomial approach.
+\end_layout
+
+\begin_layout Itemize
+Intermediate case: tie the 
+\begin_inset Formula $\theta$
+\end_inset
+
+'s together by assuming a superpopulation/prior
+\begin_inset Formula 
+\[
+\theta_{j}\overset{iid}{\sim}Beta(\alpha,\beta).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+An hierarchical binomial model, cont.
+\end_layout
+
+\begin_layout Itemize
+Model summary
+\begin_inset Formula 
+\begin{align*}
+y_{j}|\theta_{j} & \sim Bin(n_{j},\theta_{j})\text{, }j=1,...,J\text{.}\\
+ & \theta_{j}\overset{iid}{\sim}Beta(\alpha,\beta).\\
+\alpha & \sim Gamma(a_{1},a_{2}).\\
+\beta & \sim Gamma(b_{1},b_{2}).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sample from the joint posterior of 
+\begin_inset Formula $p(\theta,\alpha,\beta|y)=p(\theta|\alpha,\beta,y)p(\alpha,\beta|y)$
+\end_inset
+
+ by sampling from:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\theta_{j}|\alpha,\beta,y$
+\end_inset
+
+, 
+\begin_inset Formula $j=1,...,J,$
+\end_inset
+
+ which are independent 
+\begin_inset Formula $Beta$
+\end_inset
+
+ distributions.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p(\alpha,\beta|y)$
+\end_inset
+
+ can be derived in closed form (similar to eq.
+ 5.8), but cannot be sampled directly.
+ Evaluate on grid and sample.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+The one-way normal random effects model 
+\end_layout
+
+\begin_layout Itemize
+Consider the data model:
+\begin_inset Formula 
+\[
+y_{j}|\theta_{j}\sim N(\theta_{j},\sigma_{j}^{2})\text{, \ }\sigma_{j}^{2}\text{ known}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+At one extreme we may: estimate each 
+\begin_inset Formula $\theta_{j}$
+\end_inset
+
+ using the mean 
+\begin_inset Formula $\bar{y}_{j}$
+\end_inset
+
+ of observations in the 
+\begin_inset Formula $j$
+\end_inset
+
+th group.
+\end_layout
+
+\begin_layout Itemize
+At the other extreme we may: assume 
+\begin_inset Formula $\theta_{j}=\theta$
+\end_inset
+
+, for all 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Estimate 
+\begin_inset Formula $\theta$
+\end_inset
+
+ with a pooling of group means 
+\begin_inset Formula $\bar{y}_{j}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+The one-way normal random effects model, cont.
+\end_layout
+
+\begin_layout Itemize
+Intermediate: a hierarchical model 
+\begin_inset Formula 
+\[
+y_{j}|\theta_{j}\sim N(\theta_{j},\sigma_{j}^{2})\text{, \ }\sigma_{j}^{2}\text{ known}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula 
+\[
+\theta_{j}|\mu,\tau\sim N(\mu,\tau^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula 
+\[
+p(\mu,\tau)=p(\mu|\tau)p(\tau)\propto p(\tau)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Here we do not assume equal group mean, yet the estimates of each 
+\begin_inset Formula $\theta_{j}$
+\end_inset
+
+ borrow strength from each other.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document

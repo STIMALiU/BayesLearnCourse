@@ -1,0 +1,1308 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Bayesian Learning
+\end_layout
+
+\end_inset
+
+Bayesian Learning - Lecture 1
+\end_layout
+
+\begin_layout Author
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Mattias Villani
+\end_layout
+
+\end_inset
+
+Mattias Villani
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Statistics, LiU
+\end_layout
+
+\end_inset
+
+Division of Statistics
+\begin_inset Newline newline
+\end_inset
+
+Department of Computer and Information Science
+\begin_inset Newline newline
+\end_inset
+
+Linköping University 
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Course overview
+\end_layout
+
+\begin_layout Itemize
+Five two-day 
+\series bold
+modules
+\series default
+ with:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lectures
+\end_layout
+
+\begin_layout Itemize
+Exercises
+\end_layout
+
+\begin_layout Itemize
+Labs
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Examination
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lab reports, 2 credits
+\end_layout
+
+\begin_layout Itemize
+Bayesian project report, 4 credits
+\end_layout
+
+\begin_layout Itemize
+Oral exam (for some students)
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Bayesian project report
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Individual
+\end_layout
+
+\begin_layout Itemize
+Perform a Bayesian analysis on real data.
+\end_layout
+
+\begin_layout Itemize
+Deadline 
+\series bold
+December 22, 2013.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Lecture overview
+\end_layout
+
+\begin_layout Itemize
+The likelihood function
+\end_layout
+
+\begin_layout Itemize
+Bayesian inference
+\end_layout
+
+\begin_layout Itemize
+The Bernoulli model
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+
+\size larger
+The likelihood function
+\end_layout
+
+\begin_layout Itemize
+Bernoulli trials:
+\begin_inset Formula 
+\[
+x_{1},...,x_{n}|\theta\overset{iid}{\sim}Bern(\theta).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Likelihood:
+\begin_inset Formula 
+\begin{eqnarray*}
+p(x_{1},...,x_{n}|\theta) & = & p(x_{1}|\theta)\cdots p(x_{n}|\theta)\\
+ & = & \theta^{s}(1-\theta)^{f},
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $s=\sum_{i=1}^{n}x_{i}$
+\end_inset
+
+ is the number of successes in the Bernoulli trials and 
+\begin_inset Formula $f=n-s$
+\end_inset
+
+ is the number of failures.
+\end_layout
+
+\begin_layout Itemize
+Given the data 
+\begin_inset Formula $x_{1},...,x_{n}$
+\end_inset
+
+, we may plot 
+\begin_inset Formula $p(x_{1},...,x_{n}|\theta)$
+\end_inset
+
+ as a function of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+
+\size larger
+The likelihood function from Bernoulli trials
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/Teaching/StatMetoder2010/F1/eps/LikelihoodBernoulliDifferentData.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Likelihood
+\end_layout
+
+\begin_layout Itemize
+Two different roles played by 
+\begin_inset Formula $p(x_{1},...,x_{n}|\theta)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+a function of the data
+\series default
+, 
+\begin_inset Formula $x_{1},...,x_{n}$
+\end_inset
+
+, for a 
+\emph on
+fixed
+\emph default
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+, it is a 
+\series bold
+probability distribution
+\series default
+ for the data.
+ Here the 
+\emph on
+data are random
+\emph default
+ and 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is fixed.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+a 
+\emph on
+deterministic function of 
+\emph default
+
+\begin_inset Formula $\theta$
+\end_inset
+
+ 
+\series default
+for a 
+\series bold
+\emph on
+fixed data 
+\series default
+\emph default
+sample.
+ The 
+\series bold
+likelihood function
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The 
+\series bold
+likelihood principle
+\series default
+: Two experiments 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+ that give rise to proportional likelihoods, i.e.
+ 
+\begin_inset Formula $L_{1}(\theta)=c\cdot L_{2}(\theta)$
+\end_inset
+
+ for all 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and some constant 
+\begin_inset Formula $c>0$
+\end_inset
+
+, should provide the same information about 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Many frequentist methods violate the likelihood principle.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Observed information
+\end_layout
+
+\begin_layout Itemize
+The curvature of the likelihood is a measure of the informativeness (precision)
+ of the data.
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+observed information
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+J_{\theta,\mathbf{x}}=-\frac{\partial^{2}\ln L(\theta;\mathbf{x})}{\partial\theta^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Asymptotic approximation of the likelihood function
+\begin_inset Formula 
+\[
+N\left(\hat{\theta},J_{\hat{\theta},\mathbf{x}}^{-1}\right),
+\]
+
+\end_inset
+
+where 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is the Maximum Likelihood Estimate (MLE) of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The normality can be proved heuristically by a second order Taylor expansion
+ of the log-likelihood function.
+\end_layout
+
+\begin_layout Itemize
+Example: Bernoulli data
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+J_{\hat{\theta},\mathbf{x}}=-\left.\frac{\partial^{2}\ln L(\theta;\mathbf{x})}{\partial\theta^{2}}\right|_{\theta=\hat{\theta}}=\frac{s}{\hat{\theta}^{2}}+\frac{f}{(1-\hat{\theta})^{2}}=\frac{n}{\hat{\theta}(1-\hat{\theta})}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Fisher information
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fisher
+\series default
+ 
+\series bold
+information
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+I_{\theta}=E_{\mathbf{x}|\theta}\left(J_{\theta,\mathbf{x}}\right),
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+where the expectation is with respect to the data distribution.
+ 
+\end_layout
+
+\begin_layout Itemize
+The Fisher information is the information that can be 
+\series bold
+expected
+\series default
+ before the data is observed.
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+asymptotic distribution of the MLE
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{\theta}|\theta\overset{approx}{\sim}N\left(\theta,\frac{1}{I_{\theta}}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Example: Bernoulli data
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+I_{\theta}=\frac{E(s)}{\theta^{2}}+\frac{E(f)}{(1-\theta)^{2}}=\frac{n}{\theta(1-\theta)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+
+\size larger
+Uncertainty and subjective probability
+\end_layout
+
+\begin_layout Itemize
+The likelihood function does 
+\series bold
+not
+\series default
+ tell us the probability of different values of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+In order to talk about 
+\begin_inset Formula $\theta$
+\end_inset
+
+ in probabilistic terms we clearly must regard 
+\begin_inset Formula $\theta$
+\end_inset
+
+ as random.
+ But 
+\begin_inset Formula $\theta$
+\end_inset
+
+ may be something that we know is non-random, 
+\shape italic
+e.g.
+ 
+\shape default
+a fixed natural constant.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Bayesian: doesn't matter if 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is fixed or random
+\series default
+.
+ What matters is whether or not You know the value of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is uncertainty to You, then You can assign a probability distribution to
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+ which reflects Your knowledge about 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ 
+\series bold
+Subjective probability
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Different types of prior information
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Real 
+\series bold
+expert information
+\series default
+.
+ Combo of previous studies and experience.
+\end_layout
+
+\begin_layout Itemize
+Vague prior information, or even 
+\series bold
+noninformative priors
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Reporting priors
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Smoothness priors
+\series default
+.
+ Regularization.
+ Shrinkage.
+ Big thing in modern statistics/machine learning.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+
+\size larger
+Learning from data - Bayes' theorem
+\end_layout
+
+\begin_layout Itemize
+Given a distribution for 
+\begin_inset Formula $\theta$
+\end_inset
+
+, 
+\begin_inset Formula $p(\theta)$
+\end_inset
+
+, how can we learn from data? 
+\end_layout
+
+\begin_layout Itemize
+How do we make the transition from 
+\begin_inset Formula $p(\theta)\rightarrow p(\theta|Data)$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+One form of 
+\series bold
+Bayes' theorem
+\series default
+ reads (
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ are events)
+\begin_inset Formula 
+\[
+p(A|B)=\frac{p(B|A)p(A)}{p(B)}.
+\]
+
+\end_inset
+
+So that Bayes' theorem 'reverses the conditioning', i.e.
+ takes us from 
+\begin_inset Formula $p(B|A)$
+\end_inset
+
+ to 
+\begin_inset Formula $p(A|B)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $A=\theta$
+\end_inset
+
+ and 
+\begin_inset Formula $B=Data$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+p(\theta|Data)=\frac{p(Data|\theta)p(\theta)}{p(Data)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Interpreting the likelihood function as a probability density for 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is just as wrong as ignoring the factor 
+\begin_inset Formula $p(A)/p(B)$
+\end_inset
+
+ in Bayes' theorem.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Generalized Bayes' theorem
+\end_layout
+
+\begin_layout Itemize
+From your basic statistics textbook:
+\begin_inset Formula 
+\[
+p(A_{i}|B)=\frac{p(B|A_{i})p(A_{i})}{p(B)}=\frac{p(B|A_{i})p(A_{i})}{\sum_{i=1}^{k}p(B|A_{i})p(A_{i})}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\theta_{1},...,\theta_{k}$
+\end_inset
+
+ be 
+\begin_inset Formula $k$
+\end_inset
+
+ different values on a parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ Bayes' Theorem:
+\begin_inset Formula 
+\[
+p(\theta_{i}|Data)=\frac{p(Data|\theta_{i})p(\theta_{i})}{p(Data)}=\frac{p(Data|\theta_{i})p(\theta_{i})}{\sum_{i=1}^{k}p(Data|\theta_{i})p(\theta_{i})}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\theta$
+\end_inset
+
+ takes on a continuum of values
+\begin_inset Formula 
+\[
+p(\theta|Data)=\frac{p(Data|\theta)p(\theta)}{\int_{\theta}p(Data|\theta)p(\theta)d\theta}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+The joy of ignoring a normalizing constant
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p(Data)$
+\end_inset
+
+ in Bayes' theorem is just a constant that makes 
+\begin_inset Formula $p(\theta|Data)$
+\end_inset
+
+ integrate to one.
+ Example: 
+\begin_inset Formula $x\sim N(\mu,\sigma^{2})$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+p(x)=(2\pi\sigma^{2})^{-1/2}\exp\left[-\frac{1}{2\sigma^{2}}(x-\mu)^{2}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We may write 
+\begin_inset Formula 
+\[
+p(x)\propto\exp\left[-\frac{1}{2\sigma^{2}}(x-\mu)^{2}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Short form of Bayes' theorem
+\begin_inset Formula 
+\[
+p(\theta|Data)\propto p(Data|\theta)p(\theta)
+\]
+
+\end_inset
+
+or
+\begin_inset Formula 
+\[
+\text{Posterior}\propto\text{ Likelihood }\cdot\text{ Prior}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+A great theory makes a great tattoo
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../../../Seminars/Umea2013/BayesTattoo.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Bayesian learning
+\end_layout
+
+\begin_layout Itemize
+Suppose: you already have 
+\begin_inset Formula $x_{1,}x_{2},...,x_{n}$
+\end_inset
+
+ data points, and the corresponding posterior 
+\begin_inset Formula $p(\theta|x_{1},...,x_{n})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Now, a fresh additional data point 
+\begin_inset Formula $x_{n+1}$
+\end_inset
+
+ arrives.
+\end_layout
+
+\begin_layout Itemize
+The posterior based on all available data is
+\begin_inset Formula 
+\[
+p(\theta|x_{1,}...,x_{n+1})\propto p(x_{n+1}|\theta,x_{1},...,x_{n})p(\theta|x_{1},...,x_{n}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The following are therefore equivalent:
+\end_layout
+
+\begin_layout Itemize
+Analyzing the likelihood of all data 
+\begin_inset Formula $x_{1,}...,x_{n+1}$
+\end_inset
+
+ with the prior based on no data 
+\begin_inset Formula $p(\theta)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Analyzing the likelihood of the fresh data point 
+\begin_inset Formula $x_{n+1}$
+\end_inset
+
+ with the 'prior' equal to the posterior based on the old data 
+\begin_inset Formula $p(\theta|x_{1},...,x_{n})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Yesterday's posterior is today's prior
+\series default
+.
+ 
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Bernoulli trials - Beta prior
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Model
+\series default
+ 
+\begin_inset Formula 
+\[
+x_{1},...,x_{n}|\theta\overset{iid}{\sim}Bern(\theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Prior
+\series default
+
+\begin_inset Formula 
+\[
+\theta\sim Beta(\alpha,\beta)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+p(y)=\frac{\Gamma(\alpha,\beta)}{\Gamma(\alpha)\Gamma(\beta)}y^{\alpha-1}(1-y)^{\beta-1}\text{ \ for }0\leq y\leq1\text{.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Posterior
+\series default
+
+\begin_inset Formula 
+\begin{eqnarray*}
+p(\theta|x_{1},...,x_{n}) & \propto & p(x_{1},...,x_{n}|\theta)p(\theta)\\
+ & \propto & \theta^{s}(1-\theta)^{f}\theta^{\alpha-1}(1-\theta)^{\beta-1}\\
+ & = & \theta^{s+\alpha-1}(1-\theta)^{f+\beta-1}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+But this is recognized as proportional to the 
+\begin_inset Formula $Beta(\alpha+s,\beta+f)$
+\end_inset
+
+ density.
+ That is, the 
+\series bold
+prior-to-posterior
+\series default
+ mapping reads
+\begin_inset Formula 
+\[
+\theta\sim Beta(\alpha,\beta)\overset{x_{1},...,x_{n}}{\Longrightarrow}\theta|x_{1},...,x_{n}\sim Beta(\alpha+s,\beta+f).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Bernoulli example: spam emails
+\end_layout
+
+\begin_layout Itemize
+George has gone through his collection of 
+\begin_inset Formula $4601$
+\end_inset
+
+ e-mails.
+ He classified 
+\begin_inset Formula $1813$
+\end_inset
+
+ of them to be spam.
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $x_{i}=1$
+\end_inset
+
+ if i:th email is spam.
+ Assume 
+\begin_inset Formula $x_{i}|\theta\overset{iid}{\sim}Bernoulli(\theta)$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta\sim\mathrm{Beta}(\alpha,\beta)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Posterior
+\begin_inset Formula 
+\[
+\theta|x\sim Beta(\alpha+1813,\beta+2788)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Spam data (n=10): prior sensitivity
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/Projects/BayesBook/Figures/SpamDataSmall.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Spam data (n=100): prior sensitivity
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/Projects/BayesBook/Figures/SpamDataMedium.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Spam data (n=4601): prior sensitivity
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/Projects/BayesBook/Figures/SpamDataFull.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Spam data: Posterior convergence
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/Teaching/StatMetoder2010/F2/eps/spamConvergencePosterior.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document

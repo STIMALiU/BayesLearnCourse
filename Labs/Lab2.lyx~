@@ -1,0 +1,431 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2.5cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\size footnotesize
+Mattias Villani
+\begin_inset space \hspace{}
+\length 11.5cm
+\end_inset
+
+2012-11-13
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Avdelning för statistik
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Institutionen för datavetenskap
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Linköpings universitet
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+mattias.villani@liu.se
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size large
+Bayesian Learning, 6 hp
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size large
+Computer lab 2
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You can use any programming language for the labs, but my hints, help and
+ solutions will be in R.
+ 
+\begin_inset Newline newline
+\end_inset
+
+You are allowed to work and submit your labs in pairs, but do make sure
+ that both of you are contributing.
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+The 
+\series bold
+deadline
+\series default
+ for this lab is 
+\series bold
+November 2
+\series default
+7.
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Linear and polynomial regression
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+The data set JapanTemp.dat contains daily temperatures (in Celcius degrees)
+ at some japanese location over the course of a year.
+ The response variable is 
+\begin_inset Formula $temp$
+\end_inset
+
+ and the covariate is
+\begin_inset Formula 
+\[
+time=\frac{\text{the number of days since beginning of year}}{365}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Perform a Bayesian analysis of a quadratic regression 
+\begin_inset Formula 
+\[
+temp=\beta_{0}+\beta_{1}\cdot time+\beta_{2}\cdot time^{2}+\varepsilon\mbox{,\text{ }}\varepsilon\overset{iid}{\sim}N(0,\sigma^{2})
+\]
+
+\end_inset
+
+using the conjugate prior.
+ Set the prior hyperparameters 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mu_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $\Omega_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $\nu_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{0}^{2}$
+\end_inset
+
+ to sensible values.
+ You may not be an expert in japanese temperatures, and I don't expect any
+ deep expert knowledge, but do come up with something.
+ You may simplify by assuming that 
+\begin_inset Formula $\Omega_{0}$
+\end_inset
+
+ is a diagonal matrix, if you want.
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+[Hint: it may be useful as a preliminary exploratory step to use the 
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+lm()
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ command.
+ The command 
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+lm(y ~ x + I(x^2))
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ fits a quadratic model using plain least squares]
+\end_layout
+
+\begin_layout Enumerate
+One way to check if a suggested prior is reasonable is to simulate draws
+ from the joint prior of all parameters and for every draw compute the regressio
+n curve.
+ This gives a collection of regression curves, one for each draw from the
+ prior.
+ Do the curves look reasonable? If not, change the prior hyperparameters
+ until the collection of prior regression curves do agree with your prior
+ beliefs about the regression curve.
+\begin_inset Newline newline
+\end_inset
+
+[Hint: the R package 
+\family typewriter
+mvtnorm
+\family default
+ will be handy.]
+\end_layout
+
+\begin_layout Enumerate
+Perform sensitivity analysis with respect to some or all of the prior hyperparam
+eters.
+ That is, what is the effect on the posterior from changing the prior?
+\end_layout
+
+\begin_layout Enumerate
+Write a program that simulates from the joint posterior distribution of
+ 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+,
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+ Try it out on the model in a).
+\begin_inset Newline newline
+\end_inset
+
+[Hint: the R package 
+\family typewriter
+mvtnorm
+\family default
+ will be handy.]
+\end_layout
+
+\begin_layout Enumerate
+It is of interest to locate the day with the highest expected temperature
+ (that is, the 
+\begin_inset Formula $time$
+\end_inset
+
+ where 
+\begin_inset Formula $E(temp|time)$
+\end_inset
+
+ is maximal).
+ Let's call this value 
+\begin_inset Formula $\tilde{x}$
+\end_inset
+
+.
+ Use the simulations in d) to simulate from the posterior distribution of
+ 
+\begin_inset Formula $\tilde{x}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Say now that you want to estimate a polynomial model of order 
+\begin_inset Formula $7$
+\end_inset
+
+, but you are worried that higher order terms may not be needed, and may
+ ruin your pretty little quadratic model.
+ Suggest a suitable prior that mitigates this potential problem.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\shape smallcaps
+May Bayes be with you!
+\end_layout
+
+\end_body
+\end_document
