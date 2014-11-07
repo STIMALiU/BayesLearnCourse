@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -39,9 +39,6 @@
 \end_preamble
 \options xcolor=svgnames
 \use_default_options false
-\begin_modules
-knitr
-\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -50,13 +47,13 @@ knitr
 \font_roman palatino
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,15 +64,24 @@ knitr
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -99,7 +105,7 @@ knitr
 \begin_body
 
 \begin_layout Title
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -112,7 +118,7 @@ Bayesian Learning - Lecture 4
 \end_layout
 
 \begin_layout Author
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -127,7 +133,7 @@ Mattias Villani
 \begin_layout Institute
 
 \series bold
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -138,7 +144,7 @@ Statistics, LiU
 
 \end_inset
 
-Division of Statistics
+Division of Statistics and Machine Learning
 \begin_inset Newline newline
 \end_inset
 
@@ -156,14 +162,20 @@ Linköping University
 
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
 
-\end_layout
-
-\begin_layout BeginFrame
+\begin_layout Plain Layout
 Lecture overview
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Prediction
 \end_layout
@@ -200,14 +212,25 @@ Point estimation as a decision problem
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Prediction
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Using the estimated model for 
 \series bold
@@ -277,14 +300,25 @@ averaging over
  
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Prediction - Bernoulli data
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Let 
 \begin_inset Formula $y=\sum\nolimits _{i=1}^{n}y_{i}$
@@ -322,14 +356,25 @@ p(\tilde{y}=1|y)=\frac{y+1}{n+2}.
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Prediction - Normal data, known variance
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Under the uniform prior 
 \begin_inset Formula $p(\theta)\propto c$
@@ -418,14 +463,25 @@ Sequence of predictive draws:
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Predictive distribution - Normal model and uniform prior
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 \begin_inset Formula $\theta^{(1)}=\bar{y}+\varepsilon^{(1)}$
 \end_inset
@@ -517,14 +573,25 @@ Note that the estimation uncertainty (
 .
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Predictive distribution - Normal model and normal prior
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 It easy to see that the predictive distribution is normal.
  
@@ -589,14 +656,25 @@ In summary:
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Bayesian prediction in more complex models
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -686,14 +764,25 @@ For given draw of splitting variables and split points, simulate a response.
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Predicting auction prices on eBay
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Problem: Predicting the auctioned price in eBay coin auctions.
 \end_layout
@@ -726,14 +815,25 @@ Very
  complicated likelihood.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Simulating auction prices on eBay, cont.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 A draw from the posterior predictive distibution of an auction's price:
 \end_layout
@@ -778,18 +878,29 @@ For the bid sequence
  return the next to largest bid (eBay's proxy bidding system).
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Predicting auction prices on eBay, cont.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/BayesStat2011/Lectures/PredAuctionPrice.eps
+	filename PredAuctionPrice.eps
 	scale 40
 	rotateAngle 270
 
@@ -798,14 +909,25 @@ Predicting auction prices on eBay, cont.
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Decision Theory
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Let 
 \begin_inset Formula $\theta$
@@ -870,10 +992,10 @@ Loss table:
  
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -1001,10 +1123,10 @@ Example:
  
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -1099,14 +1221,25 @@ No umbrella
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Decision Theory, cont.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Example loss functions when both 
 \begin_inset Formula $a$
@@ -1176,8 +1309,8 @@ Utility
 \begin_inset Formula 
 \[
 U(a,\theta)=\begin{cases}
-p\cdot\theta-c_{1}(a-\theta) & \textrm{if \ensuremath{a>\theta} \text{ [too much stock]}}\\
-p\cdot a-c_{2}(\theta-a)^{2} & \textrm{if \ensuremath{a\leq\theta} \text{ [too little stock]}}
+p\cdot\theta-c_{1}(a-\theta) & \textrm{if \ensuremath{a>\theta}\text{ [too much stock]}}\\
+p\cdot a-c_{2}(\theta-a)^{2} & \textrm{if \ensuremath{a\leq\theta}\text{ [too little stock]}}
 \end{cases}
 \]
 
@@ -1187,14 +1320,25 @@ p\cdot a-c_{2}(\theta-a)^{2} & \textrm{if \ensuremath{a\leq\theta} \text{ [too l
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Optimal decision
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Ad hoc decision rules:
 \end_layout
@@ -1301,14 +1445,25 @@ Separation principle
 ) is completely separated from the utilities of the choices.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Choosing a point estimate is a decision
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Choosing a point estimator is a decision problem.
  
@@ -1371,7 +1526,7 @@ Lin-Lin loss
 \end_inset
 
  
-\begin_inset Formula $c_{1}/(c_{1}+c_{2})$
+\begin_inset Formula $c_{2}/(c_{1}+c_{2})$
 \end_inset
 
  quantile of the posterior is optimal
@@ -1397,9 +1552,6 @@ Zero-one loss
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document

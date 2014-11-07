@@ -39,9 +39,6 @@
 \end_preamble
 \options xcolor=svgnames, handout
 \use_default_options false
-\begin_modules
-knitr
-\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -147,7 +144,7 @@ Statistics, LiU
 
 \end_inset
 
-Division of Statistics
+Division of Statistics and Machine Learning
 \begin_inset Newline newline
 \end_inset
 
@@ -264,7 +261,7 @@ Posterior
 
 \end_inset
 
-where
+
 \begin_inset Formula 
 \begin{eqnarray*}
 \mu_{n} & = & \frac{\kappa_{0}}{\kappa_{0}+n}\mu_{0}+\frac{n}{\kappa_{0}+n}\bar{y}\\

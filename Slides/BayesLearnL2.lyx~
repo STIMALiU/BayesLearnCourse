@@ -400,7 +400,7 @@ X_{1},...,X_{n}|\theta\sim N(\theta,\sigma^{2}),\text{ }\sigma^{2}=0.4
 Prior
 \begin_inset Formula 
 \[
-\theta\sim N(\mu,\tau^{2})\text{ }\mu=12\text{ and }\tau=10
+\theta\sim N(\mu_{0},\tau_{0}^{2})\text{ }\mu_{0}=12\text{ and }\tau_{0}=10
 \]
 
 \end_inset
@@ -412,7 +412,7 @@ Prior
 Posterior
 \begin_inset Formula 
 \[
-\theta|x_{1},...,x_{n}\sim N\left[\tilde{\theta},\left(\sigma^{-2}n+\tau^{-2}\right)^{-1}\right],
+\theta|x_{1},...,x_{n}\sim N\left(\mu_{n},\tau_{n}^{2}\right),
 \]
 
 \end_inset
@@ -430,7 +430,7 @@ Posterior
 \noun off
 \color none
 where 
-\begin_inset Formula $\tilde{\theta}=w\bar{x}+(1-w)\mu$
+\begin_inset Formula $\mu_{n}=w\bar{x}+(1-w)\mu_{0}$
 \end_inset
 
 .
@@ -452,7 +452,7 @@ where
 For the Canadian wage data:
 \begin_inset Formula 
 \[
-w=\frac{\sigma^{-2}n}{\sigma^{-2}n+\tau^{-2}}=\frac{2.5\cdot205}{2.5\cdot205+1/100}=0.99998.
+w=\frac{\sigma^{-2}n}{\sigma^{-2}n+\tau_{0}^{-2}}=\frac{2.5\cdot205}{2.5\cdot205+1/100}=0.99998.
 \]
 
 \end_inset
@@ -460,7 +460,7 @@ w=\frac{\sigma^{-2}n}{\sigma^{-2}n+\tau^{-2}}=\frac{2.5\cdot205}{2.5\cdot205+1/1
 
 \begin_inset Formula 
 \[
-\tilde{\theta}=w\bar{x}+(1-w)\mu=0.99998\cdot13.48988+(1-0.99998)\cdot12=13.48985
+\mu_{n}=w\bar{x}+(1-w)\mu_{0}=0.99998\cdot13.48988+(1-0.99998)\cdot12=13.48985
 \]
 
 \end_inset
@@ -483,7 +483,7 @@ w=\frac{\sigma^{-2}n}{\sigma^{-2}n+\tau^{-2}}=\frac{2.5\cdot205}{2.5\cdot205+1/1
 \color none
 \begin_inset Formula 
 \[
-\left(\sigma^{-2}n+\tau^{-2}\right)^{-1}=\left(2.5\cdot205+1/100\right)^{-1}=0.00195
+\tau_{n}^{2}=\left(2.5\cdot205+1/100\right)^{-1}=0.00195
 \]
 
 \end_inset

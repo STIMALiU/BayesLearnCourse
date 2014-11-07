@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -12,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -29,15 +29,24 @@
 \use_hyperref false
 \papersize a4paper
 \use_geometry true
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -72,19 +81,20 @@ Mattias Villani
 \length 11.5cm
 \end_inset
 
-2012-11-04
+2014-10-29
 \end_layout
 
 \begin_layout Standard
 
 \size footnotesize
-Avdelning för statistik
+Division of Statistics and Machine Learning
 \end_layout
 
 \begin_layout Standard
 
 \size footnotesize
-Institutionen för datavetenskap
+Dept.
+ of Computer and Information Science
 \end_layout
 
 \begin_layout Standard
@@ -131,17 +141,11 @@ Computer lab 1
 \begin_layout Standard
 You can use any programming language for the labs, but my hints, help and
  solutions will be in R.
- [Disclosure: I am actually a long time Matlab user, but I am moving more
- toward Free software like R and Python]
-\family typewriter
-.
-
-\family default
  
 \begin_inset Newline newline
 \end_inset
 
-You are allowed to work and submit your labs in pairs, but do make sure
+You are supposed to work and submit your labs in pairs, but do make sure
  that both of you are contributing.
 \family typewriter
 
@@ -156,9 +160,9 @@ deadline
 \series default
  for this lab is 
 \series bold
-November 13
+November
 \series default
-.
+ 7.
 \family typewriter
 
 \begin_inset Newline newline
@@ -179,14 +183,15 @@ November 13
 \begin_layout Enumerate
 
 \emph on
-Bernoulli - again.
+Bernoulli ...
+ again.
 \emph default
 
 \begin_inset Newline newline
 \end_inset
 
 Let 
-\begin_inset Formula $x_{1},...,x_{n}|\theta\overset{iid}{\sim}Bern(\theta)$
+\begin_inset Formula $x_{1},...,x_{n}|\theta\sim Bern(\theta)$
 \end_inset
 
 , and assume that you have obtained a sample with 
@@ -216,7 +221,7 @@ Let
 \begin_deeper
 \begin_layout Enumerate
 Draw random numbers from the posterior 
-\begin_inset Formula $\theta|\mathbf{x}\sim Beta(\alpha+s,\beta+f)$
+\begin_inset Formula $\theta\vert\mathbf{x}\sim Beta(\alpha+s,\beta+f)$
 \end_inset
 
  and verify that the posterior mean and standard deviation converges to
@@ -225,7 +230,7 @@ Draw random numbers from the posterior
 
 \begin_layout Enumerate
 Use simulation to compute the posterior probability 
-\begin_inset Formula $Pr(\theta<0.01|\mathbf{x})$
+\begin_inset Formula $\mathrm{Pr}(\theta<0.3\vert\mathbf{x})$
 \end_inset
 
  and compare with the exact value [Hint: 
@@ -240,11 +245,7 @@ Compute the posterior distribution of the log-odds
 \begin_inset Formula $\phi=\ln\frac{\theta}{1-\theta}$
 \end_inset
 
- using random draws from 
-\begin_inset Formula $\theta|\mathbf{x}\sim Beta(\alpha+s,\beta+f)$
-\end_inset
-
-.
+ by simulation.
  [Hint: 
 \family typewriter
 hist()
@@ -256,20 +257,10 @@ density()
  might come in handy]
 \end_layout
 
-\begin_layout Standard
-
-\size footnotesize
-\begin_inset VSpace 0.5cm
-\end_inset
-
-
-\end_layout
-
 \end_deeper
 \begin_layout Enumerate
 
 \emph on
-\lang swedish
 Log-normal distribution and the Gini coefficient.
 \emph default
 
@@ -288,12 +279,12 @@ Assume that you have asked 10 randomly selected persons about their monthly
  has density function
 \begin_inset Formula 
 \[
-p(x|\mu,\sigma^{2})=\frac{1}{x\cdot\sqrt{2\pi\sigma^{2}}}\exp[-\frac{1}{2\sigma^{2}}(\ln x-\mu)^{2}],
+p(x\vert\mu,\sigma^{2})=\frac{1}{x\cdot\sqrt{2\pi\sigma^{2}}}\exp\left[-\frac{1}{2\sigma^{2}}\left(\ln x-\mu\right)^{2}\right],
 \]
 
 \end_inset
 
-where 
+for 
 \begin_inset Formula $x>0$
 \end_inset
 
@@ -311,26 +302,24 @@ where
 \begin_inset Formula $x\sim LN(\mu,\sigma^{2})$
 \end_inset
 
-, then 
-\begin_inset Formula $\ln x\sim N(\mu,\sigma^{2}).$
+ then 
+\begin_inset Formula $\ln x\sim N(\mu,\sigma^{2})$
 \end_inset
 
- 
+.
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-
-\lang swedish
 Let 
-\begin_inset Formula $x_{1},x_{2},...,x_{n}|\mu,\sigma^{2}\overset{iid}{\sim}LN(\mu,\sigma^{2})$
+\begin_inset Formula $x_{1},...,x_{n}\vert\mu,\sigma^{2}\overset{iid}{\sim}LN(\mu,\sigma^{2})$
 \end_inset
 
 , where 
 \begin_inset Formula $\mu$
 \end_inset
 
- is assumed known and 
+ is assumed to be known and 
 \begin_inset Formula $\mu=3.5$
 \end_inset
 
@@ -338,28 +327,23 @@ Let
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
- is unknown.
- Assume the noninformative prior 
+ is unknown with non-informative prior 
 \begin_inset Formula $p(\sigma^{2})\propto1/\sigma^{2}$
 \end_inset
 
 .
- Show that the posterior for 
+ Show (using pen and paper) that the posterior for 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
  is the 
-\begin_inset Formula $Inv-\chi^{2}(\nu,\tau^{2})$
+\begin_inset Formula $Inv-\chi^{2}(n,\tau^{2})$
 \end_inset
 
- distribution [in Wikipedia's parametrization], where 
-\begin_inset Formula $\nu=n$
-\end_inset
-
- and 
+ distribution, where 
 \begin_inset Formula 
 \[
-\tau^{2}=\frac{\sum_{i=1}^{n}\left(\ln x_{i}-\mu\right)^{2}}{n}
+\tau^{2}=\frac{\sum_{i=1}^{n}(\ln x_{i}-\mu)^{2}}{n}.
 \]
 
 \end_inset
@@ -384,8 +368,6 @@ Simulate
 \end_layout
 
 \begin_layout Enumerate
-
-\lang swedish
 The most common measure of income inequality is the Gini coefficient, 
 \begin_inset Formula $G$
 \end_inset
@@ -406,20 +388,134 @@ The most common measure of income inequality is the Gini coefficient,
  means complete income inequality.
  See Wikipedia for more information.
  It can be shown that 
-\begin_inset Formula $G=2\Phi(\sigma/\sqrt{2})-1$
+\begin_inset Formula $G=2\Phi\left(\sigma/\sqrt{2}\right)-1$
 \end_inset
 
- for the special case of a 
-\begin_inset Formula $LN(\mu,\sigma)$
+ when incomes follow a 
+\begin_inset Formula $LN(\mu,\sigma^{2})$
 \end_inset
 
  distribution.
- Use the posterior draws in b to compute the posterior distribution of the
- Gini coefficient 
-\begin_inset Formula $G=2\Phi(\sigma/\sqrt{2})-1$
+ 
+\begin_inset Formula $\Phi(z)$
+\end_inset
+
+ is the cumulative distribution function (CDF) for the standard normal distribut
+ion with mean zero and unit variance.
+ Use the posterior draws in b) to compute the posterior distribution of
+ the Gini coefficient 
+\begin_inset Formula $G$
 \end_inset
 
  for the current data set.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Bayesian inference for the concentration parameter in the von Mises distribution.
+ This exercise is concerned with directional data.
+ The data points are observed wind directions at a given location on ten
+ different days.
+ The data are recorded in degrees: 
+\begin_inset Formula $(40,303,326,285,296,314,20,308,299,296)$
+\end_inset
+
+, where North is located at zero degrees (see Figure 1 on the next page,
+ where the angles are measured clockwise).
+ To fit with Wikipedias description of probability distributions for circular
+ data we convert the data into radians 
+\begin_inset Formula $-\pi\leq x\leq\pi$
+\end_inset
+
+ .
+ The 
+\begin_inset Formula $10$
+\end_inset
+
+ observations in radians are 
+\begin_inset Formula $(-2.44,2.14,2.54,1.83,2.02,2.33,-2.79,2.23,2.07,2.02)$
+\end_inset
+
+ Assume that these data points are independent observations following the
+ von Mises distribution
+\begin_inset Formula 
+\[
+p(x\vert\mu,\kappa)=\frac{\exp\left[\kappa\cdot\cos(x-\mu)\right]}{2\pi I_{0}(\kappa)},\;-\pi\leq x\leq\pi,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $I_{0}(\kappa)$
+\end_inset
+
+ is the modified Bessel function of the first kind of order zero [see 
+\family typewriter
+?besselI
+\family default
+ in R].
+ The parameter 
+\begin_inset Formula $\mu$
+\end_inset
+
+ (
+\begin_inset Formula $-\pi\leq\mu\leq\pi$
+\end_inset
+
+) is the mean direction and 
+\begin_inset Formula $\kappa>0$
+\end_inset
+
+ is called the concentration parameter.
+ Large gives a small variance around 
+\begin_inset Formula $\mu$
+\end_inset
+
+, and vice versa.
+ Assume that 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is known to be 
+\begin_inset Formula $2.39$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\kappa\sim Exponential(\lambda=1)$
+\end_inset
+
+ a priori, where 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is the rate parameter of the exponential distribution (so that the mean
+ is 
+\begin_inset Formula $1/\lambda$
+\end_inset
+
+).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Plot the posterior distribution of 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ for the wind direction data over a fine grid of 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ values.
+\end_layout
+
+\begin_layout Enumerate
+Find the posterior mode of 
+\begin_inset Formula $\kappa$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -432,32 +528,11 @@ The most common measure of income inequality is the Gini coefficient,
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Standard
 
-\emph on
-Bayesian inference for the concentration parameter in the von Mises distribution
-\emph default
-.
-\begin_inset Newline newline
-\end_inset
+\shape smallcaps
+May Bayes be with you!
+\end_layout
 
-This exercise is concerned with directional data.
- The data points are observed wind directions at a given location on ten
- different days.
- The data are recorded in 
-\emph on
-degrees
-\emph default
-: 
-\family typewriter
-c(40,303,326,285,296,314,20,308,299,296)
-\family default
-, where North is located at zero degrees (see Figure 1 on the next page,
- where the angles are measured clockwise).
- To fit with Wikipedias description of probability distributions for circular
- data we convert the data into 
-\emph on
-radians
-\emph default
- 
-\begin_inset F
+\end_body
+\end_document

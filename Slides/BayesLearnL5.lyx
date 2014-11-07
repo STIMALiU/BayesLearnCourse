@@ -144,7 +144,7 @@ Statistics, LiU
 
 \end_inset
 
-Division of Statistics
+Division of Statistics and Machine Learning
 \begin_inset Newline newline
 \end_inset
 
@@ -689,7 +689,7 @@ Posterior
 
 \end_inset
 
-where 
+ 
 \begin_inset Formula 
 \begin{align*}
 \mu_{n} & =\left(X'X+\Omega_{0}\right)^{-1}\left(X'X\hat{\beta}+\Omega_{0}\mu_{0}\right)\\

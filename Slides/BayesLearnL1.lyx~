@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -47,13 +47,13 @@
 \font_roman palatino
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -64,15 +64,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -96,7 +105,7 @@
 \begin_body
 
 \begin_layout Title
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -109,7 +118,7 @@ Bayesian Learning - Lecture 1
 \end_layout
 
 \begin_layout Author
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -124,7 +133,7 @@ Mattias Villani
 \begin_layout Institute
 
 \series bold
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -135,7 +144,7 @@ Statistics, LiU
 
 \end_inset
 
-Division of Statistics
+Division of Statistics and Machine Learning
 \begin_inset Newline newline
 \end_inset
 
@@ -153,16 +162,22 @@ Linköping University
 
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
 
-\end_layout
-
-\begin_layout BeginFrame
+\begin_layout Plain Layout
 Course overview
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
-Five two-day 
+Four 
 \series bold
 modules
 \series default
@@ -180,6 +195,28 @@ Exercises
 
 \begin_layout Itemize
 Labs
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Modules:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The basics, single- and multiparameter models
+\end_layout
+
+\begin_layout Itemize
+Regression models
+\end_layout
+
+\begin_layout Itemize
+Tackling more advanced models with MCMC
+\end_layout
+
+\begin_layout Itemize
+Model Inference
 \end_layout
 
 \end_deeper
@@ -229,18 +266,29 @@ Perform a Bayesian analysis on real data.
 \begin_layout Itemize
 Deadline 
 \series bold
-December 22, 2013.
+December 21, 2014.
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Lecture overview
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 The likelihood function
 \end_layout
@@ -253,16 +301,27 @@ Bayesian inference
 The Bernoulli model
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 
 \size larger
 The likelihood function
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Bernoulli trials:
 \begin_inset Formula 
@@ -312,20 +371,105 @@ Given the data
 .
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Pause
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Itemize
+Two different roles played by 
+\begin_inset Formula $p(x_{1},...,x_{n}|\theta)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+a function of the data
+\series default
+, 
+\begin_inset Formula $x_{1},...,x_{n}$
+\end_inset
+
+, for a 
+\emph on
+fixed
+\emph default
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+, it is a 
+\series bold
+probability distribution
+\series default
+ for the data.
+ Here the 
+\emph on
+data are random
+\emph default
+ and 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is fixed.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+a 
+\emph on
+deterministic function of 
+\emph default
+
+\begin_inset Formula $\theta$
+\end_inset
+
+ 
+\series default
+for a 
+\series bold
+\emph on
+fixed data 
+\series default
+\emph default
+sample.
+ The 
+\series bold
+likelihood function
+\series default
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 
 \size larger
 The likelihood function from Bernoulli trials
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/StatMetoder2010/F1/eps/LikelihoodBernoulliDifferentData.eps
+	filename /Users/matvi05/Dropbox/Teaching/StatMetoder2010/F1/eps/LikelihoodBernoulliDifferentData.eps
 	scale 50
 
 \end_inset
@@ -333,14 +477,25 @@ The likelihood function from Bernoulli trials
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Likelihood
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Two different roles played by 
 \begin_inset Formula $p(x_{1},...,x_{n}|\theta)$
@@ -448,14 +603,25 @@ likelihood principle
 Many frequentist methods violate the likelihood principle.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Observed information
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 The curvature of the likelihood is a measure of the informativeness (precision)
  of the data.
@@ -548,14 +714,25 @@ J_{\hat{\theta},\mathbf{x}}=-\left.\frac{\partial^{2}\ln L(\theta;\mathbf{x})}{\
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Fisher information
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -648,16 +825,27 @@ I_{\theta}=\frac{E(s)}{\theta^{2}}+\frac{E(f)}{(1-\theta)^{2}}=\frac{n}{\theta(1
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 
 \size larger
 Uncertainty and subjective probability
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 The likelihood function does 
 \series bold
@@ -768,16 +956,27 @@ Smoothness priors
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 
 \size larger
 Learning from data - Bayes' theorem
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Given a distribution for 
 \begin_inset Formula $\theta$
@@ -863,14 +1062,129 @@ Interpreting the likelihood function as a probability density for
  in Bayes' theorem.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\size larger
+Bayes' theorem - medical diagnosis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A = 
+\begin_inset Formula $\left\{ \text{Horrible and very rare disease}\right\} $
+\end_inset
+
+, B =
+\begin_inset Formula $\left\{ \text{Positive medical test}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $p(B|A)=0.9$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p(B|A^{c})=0.05$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p(A)=0.0001$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability of being sick given a positive test:
+\begin_inset Formula 
+\begin{align*}
+p(A|B) & =\frac{p(B|A)p(A)}{p(B)}=\frac{p(B|A)p(A)}{p(B|A)p(A)+p(B|A^{c})p(A^{c})}\\
+ & =\frac{0.9\cdot0.0001}{0.9\cdot0.0001+0.05\cdot(1-0.0001)}\approx0.001797.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Very improbable that you are sick, but nearly 
+\begin_inset Formula $18$
+\end_inset
+
+ times more probable than before taking the test.
+\end_layout
+
+\begin_layout Itemize
+Morale of the story: If you want 
+\begin_inset Formula $p(A|B)$
+\end_inset
+
+ then 
+\begin_inset Formula $p(B|A)$
+\end_inset
+
+ does not tell the whole story.
+ The prior probability 
+\begin_inset Formula $p(A)$
+\end_inset
+
+ is also very important.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Generalized Bayes' theorem
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 From your basic statistics textbook:
 \begin_inset Formula 
@@ -924,14 +1238,25 @@ p(\theta|Data)=\frac{p(Data|\theta)p(\theta)}{\int_{\theta}p(Data|\theta)p(\thet
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
-The joy of ignoring a normalizing constant
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The normalizing constant is not important
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 \begin_inset Formula $p(Data)$
 \end_inset
@@ -988,14 +1313,25 @@ or
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 A great theory makes a great tattoo
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
@@ -1007,14 +1343,25 @@ A great theory makes a great tattoo
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Bayesian learning
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Suppose: you already have 
 \begin_inset Formula $x_{1,}x_{2},...,x_{n}$
@@ -1087,14 +1434,25 @@ Yesterday's posterior is today's prior
  
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Bernoulli trials - Beta prior
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -1144,7 +1502,7 @@ Posterior
 \begin_inset Formula 
 \begin{eqnarray*}
 p(\theta|x_{1},...,x_{n}) & \propto & p(x_{1},...,x_{n}|\theta)p(\theta)\\
- & = & \theta^{s}(1-\theta)^{f}\theta^{\alpha-1}(1-\theta)^{\beta-1}\\
+ & \propto & \theta^{s}(1-\theta)^{f}\theta^{\alpha-1}(1-\theta)^{\beta-1}\\
  & = & \theta^{s+\alpha-1}(1-\theta)^{f+\beta-1}.
 \end{eqnarray*}
 
@@ -1174,14 +1532,25 @@ prior-to-posterior
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Bernoulli example: spam emails
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 George has gone through his collection of 
 \begin_inset Formula $4601$
@@ -1224,18 +1593,29 @@ Posterior
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Spam data (n=10): prior sensitivity
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Projects/BayesBook/Figures/SpamDataSmall.eps
+	filename /Users/matvi05/Dropbox/Projects/BayesBook/Figures/SpamDataSmall.eps
 	scale 50
 
 \end_inset
@@ -1243,18 +1623,29 @@ Spam data (n=10): prior sensitivity
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Spam data (n=100): prior sensitivity
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Projects/BayesBook/Figures/SpamDataMedium.eps
+	filename /Users/matvi05/Dropbox/Projects/BayesBook/Figures/SpamDataMedium.eps
 	scale 50
 
 \end_inset
@@ -1262,18 +1653,29 @@ Spam data (n=100): prior sensitivity
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Spam data (n=4601): prior sensitivity
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Projects/BayesBook/Figures/SpamDataFull.eps
+	filename /Users/matvi05/Dropbox/Projects/BayesBook/Figures/SpamDataFull.eps
 	scale 50
 
 \end_inset
@@ -1281,18 +1683,29 @@ Spam data (n=4601): prior sensitivity
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Spam data: Posterior convergence
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/StatMetoder2010/F2/eps/spamConvergencePosterior.eps
+	filename /Users/matvi05/Dropbox/Teaching/StatMetoder2010/F2/eps/spamConvergencePosterior.eps
 	scale 50
 
 \end_inset
@@ -1300,9 +1713,6 @@ Spam data: Posterior convergence
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document
