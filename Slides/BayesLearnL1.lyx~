@@ -1485,7 +1485,7 @@ Prior
 
 \begin_inset Formula 
 \[
-p(y)=\frac{\Gamma(\alpha,\beta)}{\Gamma(\alpha)\Gamma(\beta)}y^{\alpha-1}(1-y)^{\beta-1}\text{ \ for }0\leq y\leq1\text{.}
+p(y)=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}y^{\alpha-1}(1-y)^{\beta-1}\text{ \ for }0\leq y\leq1\text{.}
 \]
 
 \end_inset
