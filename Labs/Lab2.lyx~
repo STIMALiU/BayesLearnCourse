@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -12,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
-\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -29,24 +29,15 @@
 \use_hyperref false
 \papersize a4paper
 \use_geometry true
-\use_package amsmath 1
-\use_package amssymb 1
-\use_package cancel 1
-\use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 1
-\use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
-\cite_engine_type default
-\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -81,20 +72,19 @@ Mattias Villani
 \length 11.5cm
 \end_inset
 
-2014-11-09
+2013-11-07
 \end_layout
 
 \begin_layout Standard
 
 \size footnotesize
-Division of Statistics and Machine Learning
+Avdelning för statistik
 \end_layout
 
 \begin_layout Standard
 
 \size footnotesize
-Dept.
- of Computer and Information Science
+Institutionen för datavetenskap
 \end_layout
 
 \begin_layout Standard
@@ -145,7 +135,7 @@ You can use any programming language for the labs, but my hints, help and
 \begin_inset Newline newline
 \end_inset
 
-You are supposed to work and submit your labs in pairs, but do make sure
+You are allowed to work and submit your labs in pairs, but do make sure
  that both of you are contributing.
 \family typewriter
 
@@ -160,9 +150,9 @@ deadline
 \series default
  for this lab is 
 \series bold
-November
+November 18
 \series default
- 21.
+.
 \family typewriter
 
 \begin_inset Newline newline
