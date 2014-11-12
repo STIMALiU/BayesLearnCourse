@@ -203,21 +203,26 @@ time=\frac{\text{the number of days since beginning of year}}{365}.
 
 \end_inset
 
+The task is to perform a Bayesian analysis of a quadratic regression 
+\begin_inset Formula 
+\[
+temp=\beta_{0}+\beta_{1}\cdot time+\beta_{2}\cdot time^{2}+\varepsilon\mbox{,\text{ }}\varepsilon\overset{iid}{\sim}N(0,\sigma^{2}).
+\]
+
+\end_inset
+
 
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Perform a Bayesian analysis of a quadratic regression 
-\begin_inset Formula 
-\[
-temp=\beta_{0}+\beta_{1}\cdot time+\beta_{2}\cdot time^{2}+\varepsilon\mbox{,\text{ }}\varepsilon\overset{iid}{\sim}N(0,\sigma^{2})
-\]
 
-\end_inset
+\shape italic
+Determining the prior distribution of the model parameter.
 
-using the conjugate prior.
- Set the prior hyperparameters 
+\shape default
+ Use the conjugate prior for the linear regression model.
+ Your task is to set the prior hyperparameters 
 \family roman
 \series medium
 \shape up
@@ -333,7 +338,12 @@ lm(y ~ x + I(x^2))
 \end_layout
 
 \begin_layout Enumerate
-One way to check if a suggested prior is reasonable is to simulate draws
+
+\shape italic
+Check if your prior from a) is sensible
+\shape default
+.
+ One way to check if a suggested prior is reasonable is to simulate draws
  from the joint prior of all parameters and for every draw compute the regressio
 n curve.
  This gives a collection of regression curves, one for each draw from the
@@ -352,14 +362,22 @@ mvtnorm
 \end_layout
 
 \begin_layout Enumerate
-Perform sensitivity analysis with respect to some or all of the prior hyperparam
-eters.
- That is, what is the effect on the posterior from changing the prior?
+
+\shape italic
+Perform sensitivity analysis
+\shape default
+ with respect to some or all of the prior hyperparameters.
+ That is, what is the effect on the posterior from changing the prior? You
+ don't need to simulate from the posterior in this exercise, use the analytical
+ formulas for the posterior distribution instead.
 \end_layout
 
 \begin_layout Enumerate
-Write a program that simulates from the joint posterior distribution of
- 
+Write a program that 
+\shape italic
+simulates from the joint posterior distribution
+\shape default
+ of 
 \begin_inset Formula $\beta_{0}$
 \end_inset
 
@@ -403,8 +421,11 @@ It is of interest to locate the day with the highest expected temperature
 \end_inset
 
 .
- Use the simulations in d) to simulate from the posterior distribution of
- 
+ Use the simulations in d) to simulate from the 
+\shape italic
+posterior distribution of the day with highest temperature
+\shape default
+, 
 \begin_inset Formula $\tilde{x}$
 \end_inset
 
@@ -412,10 +433,14 @@ It is of interest to locate the day with the highest expected temperature
 \end_layout
 
 \begin_layout Enumerate
-Say now that you want to estimate a polynomial model of order 
+Say now that you want to 
+\shape italic
+estimate a polynomial model of order 
 \begin_inset Formula $7$
 \end_inset
 
+
+\shape default
 , but you are worried that higher order terms may not be needed, and may
  ruin your pretty little quadratic model.
  Suggest a suitable prior that mitigates this potential problem.
