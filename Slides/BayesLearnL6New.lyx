@@ -937,86 +937,6 @@ Posterior is complex but can be sampled from by Markov Chain Monte Carlo
 status open
 
 \begin_layout Plain Layout
-Nonparametric regression - smooth interpolation
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Another approach treats all 
-\begin_inset Formula $n$
-\end_inset
-
- ordinates as unknown parameters: 
-\begin_inset Formula 
-\[
-f(x_{i})=\gamma_{i}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Problem: too many parameters.
- Estimated curve wiggles way too much.
-\end_layout
-
-\begin_layout Itemize
-Solution: use a (multivariate) prior on 
-\begin_inset Formula $\gamma=(\gamma_{1},...,\gamma_{n})^{\prime}$
-\end_inset
-
- that carries the info that the regression curve is smooth:
-\begin_inset Formula 
-\[
-\text{if }x_{i}\text{ and }x_{k}\text{ are close then }\gamma_{i}\text{ is }\text{close to }\gamma_{k}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Order the data with respect to covariates and assign the prior 
-\begin_inset Formula 
-\[
-p(\gamma_{i}|\gamma_{i-1})\sim N\left(\gamma_{i-1},\tau_{0}^{2}\cdot\left|x_{i}-x_{i-1}\right|\right),\text{ for }i=2,...,n.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-The hyperparameter 
-\begin_inset Formula $\tau_{0}^{2}$
-\end_inset
-
- controls the degree of prior smoothness.
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
 Non-parametric regression
 \end_layout
 
@@ -1108,7 +1028,6 @@ Restrict attention to a grid of (ordered)
 \end_inset
 
 .
- [weight space view].
 \end_layout
 
 \begin_layout Itemize
@@ -1166,6 +1085,82 @@ Nonparametric = one parameter for every x!
 status open
 
 \begin_layout Plain Layout
+Nonparametric regression - smooth interpolation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Treat all 
+\begin_inset Formula $n$
+\end_inset
+
+ ordinates as unknown parameters: 
+\begin_inset Formula 
+\[
+f(x_{i})=\gamma_{i}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Problem: too many parameters.
+ Estimated curve wiggles way too much.
+\end_layout
+
+\begin_layout Itemize
+Solution: use a (multivariate) prior on 
+\begin_inset Formula $\gamma=(\gamma_{1},...,\gamma_{n})^{\prime}$
+\end_inset
+
+ that carries the info that the regression curve is smooth:
+\begin_inset Formula 
+\[
+\text{if }x_{i}\text{ and }x_{k}\text{ are close then }\gamma_{i}\text{ is }\text{close to }\gamma_{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Order the data with respect to covariates and assign the prior 
+\begin_inset Formula 
+\[
+p(\gamma_{i}|\gamma_{i-1})\sim N\left(\gamma_{i-1},\tau_{0}^{2}\cdot\left|x_{i}-x_{i-1}\right|\right),\text{ for }i=2,...,n.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The hyperparameter 
+\begin_inset Formula $\tau_{0}^{2}$
+\end_inset
+
+ controls the degree of prior smoothness.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gaussian process regression
 \end_layout
 
@@ -1176,8 +1171,8 @@ Gaussian process regression
 
 \begin_deeper
 \begin_layout Itemize
-Natural choice.
- Multivariate normal (Gaussian):
+Generalization of smooth interpolation.
+ Multivariate normal (Gaussian) prior:
 \begin_inset Formula 
 \[
 \left(\begin{array}{c}
@@ -1321,14 +1316,10 @@ any
 \begin_inset Formula $x_{q}$
 \end_inset
 
- (no need for a pre-determined grid)
+.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
-
-\end_layout
-
 \begin_layout Separator
 
 \end_layout
@@ -2102,6 +2093,95 @@ Learning a noise-free Gaussian process
 
 \end_layout
 
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example - Canadian wages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/GaussianProcesses/Graphics/CanadianWages.eps
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Posterior of f - 
+\begin_inset Formula $\ell=0.2,0.5,1,2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/GaussianProcesses/Graphics/CanadianIntervalsF.eps
+	scale 25
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/GaussianProcesses/Graphics/CanadianIntervalsF_ell05.eps
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/GaussianProcesses/Graphics/CanadianIntervalsF_ell1.eps
+	scale 25
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/GaussianProcesses/Graphics/CanadianIntervalsF_ell2.eps
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Separator
 
 \end_layout
