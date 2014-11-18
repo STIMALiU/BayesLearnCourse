@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -39,9 +39,6 @@
 \end_preamble
 \options xcolor=svgnames
 \use_default_options false
-\begin_modules
-knitr
-\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -50,13 +47,13 @@ knitr
 \font_roman palatino
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,15 +64,24 @@ knitr
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -99,7 +105,7 @@ knitr
 \begin_body
 
 \begin_layout Title
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -108,11 +114,11 @@ Bayesian Learning
 
 \end_inset
 
-Bayesian Learning - Lecture 8
+Bayesian Learning - Lecture 7
 \end_layout
 
 \begin_layout Author
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -127,7 +133,7 @@ Mattias Villani
 \begin_layout Institute
 
 \series bold
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -138,7 +144,7 @@ Statistics, LiU
 
 \end_inset
 
-Division of Statistics
+Division of Statistics and Machine Learning
 \begin_inset Newline newline
 \end_inset
 
@@ -156,14 +162,20 @@ Linköping University
 
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
 
-\end_layout
-
-\begin_layout BeginFrame
+\begin_layout Plain Layout
 Lecture overview
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Random number generation
 \end_layout
@@ -176,14 +188,25 @@ Monte Carlo simulation
 Gibbs sampling
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Monte Carlo sampling
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 If 
 \begin_inset Formula $\theta^{(1)},\theta^{(2)},....,\theta^{(N)}$
@@ -237,11 +260,16 @@ and
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 
 \size larger
 Direct sampling by the
@@ -255,6 +283,12 @@ inverse CDF
 method
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 How to simulate from a distribution?
 \end_layout
@@ -336,18 +370,29 @@ But
 .
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Inverse CDF method, discrete case
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../BayesStat2011/Lectures/InverseCDF.pdf
+	filename InverseCDF.pdf
 	scale 40
 
 \end_inset
@@ -355,30 +400,40 @@ Inverse CDF method, discrete case
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Inverse CDF method, continuous case
 \end_layout
 
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename ../../BayesStat2011/Lectures/InverseCDFCont.pdf
-	scale 40
-
 \end_inset
 
 
 \end_layout
 
-\begin_layout EndFrame
+\begin_deeper
+\begin_layout Standard
+\align center
 
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 
 \size larger
 Direct sampling by the
@@ -392,6 +447,12 @@ inverse CDF
 method
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Example 2: Cauchy distribution: 
 \begin_inset Formula 
@@ -451,14 +512,25 @@ Example: Chi-square.
 .
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gibbs sampling
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Easily implemented methods for sampling from multivariate distributions,
  
@@ -506,14 +578,25 @@ Requirements: Easily sampled full conditional posteriors:
 Started out in the early 80's in the image analysis literature.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 The Gibbs sampling algorithm
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 \begin_inset ERT
 status collapsed
@@ -735,14 +818,25 @@ status collapsed
  times.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gibbs sampling, cont.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 The Gibbs draws 
 \begin_inset Formula $\theta^{(1)},\theta^{(2)},....,\theta^{(N)}$
@@ -787,14 +881,25 @@ More generally, the Gibbs sequence
 .
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gibbs sampling for normal model with non-conjugate prior
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Normal model with semi-conjugate prior
 \begin_inset Formula 
@@ -813,7 +918,7 @@ Conditional posteriors
 \begin_inset Formula 
 \begin{align*}
 \mu|\sigma^{2},x & \sim N\left(\mu_{n},\tau_{n}^{2}\right)\\
-\sigma^{2}|\mu,x & \sim Inv-\chi^{2}\left(\nu_{n},\frac{\nu_{0}\tau_{0}^{2}+\sum_{i=1}^{n}\left(x_{i}-\mu\right)^{2}}{n+\nu_{0}}\right)
+\sigma^{2}|\mu,x & \sim Inv-\chi^{2}\left(\nu_{n},\frac{\nu_{0}\sigma_{0}^{2}+\sum_{i=1}^{n}\left(x_{i}-\mu\right)^{2}}{n+\nu_{0}}\right)
 \end{align*}
 
 \end_inset
@@ -821,14 +926,25 @@ Conditional posteriors
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gibbs sampling multivariate normal
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Bivariate normal:
 \end_layout
@@ -869,14 +985,25 @@ Full conditional posteriors:
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gibbs sampling - Bivariate normal
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
@@ -888,14 +1015,25 @@ Gibbs sampling - Bivariate normal
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gibbs sampling - Bivariate normal
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
@@ -907,14 +1045,25 @@ Gibbs sampling - Bivariate normal
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gibbs sampling - Bivariate normal
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
@@ -926,14 +1075,25 @@ Gibbs sampling - Bivariate normal
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gibbs sampling - Bivariate normal
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
@@ -945,14 +1105,25 @@ Gibbs sampling - Bivariate normal
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Autoregressive processes (AR) 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 AR(
 \begin_inset Formula $p$
@@ -1018,14 +1189,25 @@ s and
 .
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gibbs sampling for AR processes
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 The posterior can be simulated by Gibbs sampling:
 \end_layout
@@ -1065,18 +1247,29 @@ Everything above can easily be extended to vector processes (VARs).
 Example: Swedish GDP and inflation forecasts.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 GDP growth forecasts from Bayesian VARs
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/BayesTeoriPraktik2007/F8/Graphs/CascadeGDP.pdf
+	filename /Users/matvi05/Dropbox/Teaching/BayesTeoriPraktik2007/F8/Graphs/CascadeGDP.pdf
 	scale 30
 
 \end_inset
@@ -1084,14 +1277,25 @@ GDP growth forecasts from Bayesian VARs
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Data augmentation - Mixture distributions 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Two-component mixture of normals [MN(
 \begin_inset Formula $2$
@@ -1174,14 +1378,25 @@ If
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Illustration of mixture distributions
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
@@ -1193,14 +1408,25 @@ Illustration of mixture distributions
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Mixture distributions, cont.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Not easy to estimate directly - the likelihood is a product of sums.
 \end_layout
@@ -1257,14 +1483,25 @@ not
 !
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Mixture distributions, cont.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Gibbs sampling to the rescue.
  Assume: Prior 
@@ -1386,14 +1623,25 @@ Algorithm:
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Mixture distributions, cont.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Generalization 
 \begin_inset Formula $k$
@@ -1521,14 +1769,25 @@ Gibbs sampling with multi-class indicators
 More generally: Gibbs sampling is very powerful for missing data problems.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Data augmentation - Probit regression
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Probit model:
 \begin_inset Formula 
@@ -1591,14 +1850,25 @@ If
  Gibbs sampling to the rescue!
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gibbs sampling for the Probit regression
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Simulate from joint posterior 
 \begin_inset Formula $p(u,\beta|y)$
@@ -1684,14 +1954,25 @@ Collect the
 .
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Improving the efficiency of the Gibbs sampler
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \shape italic
@@ -1731,9 +2012,6 @@ Parameter expansion
  between the original parameters (Example probit).
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document
