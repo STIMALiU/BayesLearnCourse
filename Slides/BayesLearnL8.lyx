@@ -821,7 +821,7 @@ The Gibbs draws
  are dependent, but arithmetic means converge to expected values
 \begin_inset Formula 
 \begin{eqnarray*}
-\frac{1}{N}\sum_{t=1}^{N}\theta_{j}^{(t)} & \rightarrow & E(x_{j})\\
+\frac{1}{N}\sum_{t=1}^{N}\theta_{j}^{(t)} & \rightarrow & E(\theta_{j})\\
 \frac{1}{N}\sum_{t=1}^{N}g(\theta^{(t)}) & \rightarrow & E[g(\theta)]
 \end{eqnarray*}
 

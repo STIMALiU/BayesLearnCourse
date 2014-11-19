@@ -410,30 +410,6 @@ Inverse CDF method, discrete case
 status open
 
 \begin_layout Plain Layout
-Inverse CDF method, continuous case
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
 
 \size larger
 Direct sampling by the
