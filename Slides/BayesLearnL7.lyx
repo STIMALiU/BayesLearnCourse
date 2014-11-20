@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -39,9 +39,6 @@
 \end_preamble
 \options xcolor=svgnames
 \use_default_options false
-\begin_modules
-knitr
-\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -50,13 +47,13 @@ knitr
 \font_roman palatino
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,15 +64,24 @@ knitr
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -99,7 +105,7 @@ knitr
 \begin_body
 
 \begin_layout Title
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -112,7 +118,7 @@ Bayesian Learning - Lecture 7
 \end_layout
 
 \begin_layout Author
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -127,7 +133,7 @@ Mattias Villani
 \begin_layout Institute
 
 \series bold
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -138,7 +144,7 @@ Statistics, LiU
 
 \end_inset
 
-Division of Statistics
+Division of Statistics and Machine Learning
 \begin_inset Newline newline
 \end_inset
 
@@ -156,725 +162,97 @@ Linköping University
 
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
 
-\end_layout
-
-\begin_layout BeginFrame
+\begin_layout Plain Layout
 Lecture overview
 \end_layout
 
-\begin_layout Itemize
-An introduction to Gaussian process regression
-\end_layout
-
-\begin_layout Itemize
-Hierarchical models
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Non-parametric regression
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Linear regression
-\series default
-
-\begin_inset Formula 
-\[
-y=\beta\cdot x+\varepsilon
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $\varepsilon\sim N(0,\sigma^{2})$
-\end_inset
-
- and iid over observations.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Nonlinear
-\series default
- 
-\series bold
-regression
-\series default
-
-\begin_inset Formula 
-\[
-y=f(x)+\varepsilon
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $f(\cdot)$
-\end_inset
-
- is some nonlinear function (ex 
-\begin_inset Formula $f(x)=\beta_{0}+\beta_{1}x+\beta_{2}x^{2}$
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Non-parametric regression
-\series default
-: avoiding a parametric form for 
-\begin_inset Formula $f(\cdot)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-How do we put a 
-\series bold
-prior over a set of functions
-\series default
-?
-\end_layout
-
-\begin_layout Itemize
-Restrict attention to a grid of (ordered) 
-\begin_inset Formula $x$
-\end_inset
-
--values: 
-\begin_inset Formula $x_{1},x_{2},..,x_{k}$
-\end_inset
-
-.
- [weight space view].
-\end_layout
-
-\begin_layout Itemize
-We can now put a joint prior on the 
-\begin_inset Formula $k$
-\end_inset
-
- function values: 
-\begin_inset Formula $f(x_{1}),f(x_{2}),...,f(x_{k})$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Gaussian process regression
-\end_layout
-
-\begin_layout Itemize
-Natural choice.
- Multivariate normal (Gaussian):
-\begin_inset Formula 
-\[
-\left(\begin{array}{c}
-f(x_{1})\\
-\vdots\\
-f(x_{k})
-\end{array}\right)\sim N\left(\mathbf{m},\mathbf{K}\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-But how do we specify the 
-\begin_inset Formula $k\times k$
-\end_inset
-
- 
-\series bold
-covariance matrix
-\series default
- 
-\begin_inset Formula $\mathbf{K}$
-\end_inset
-
-?
-\begin_inset Formula 
-\[
-Cov\left(f(x_{p}),f(x_{q})\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Squared exponential covariance function
-\series default
-
-\begin_inset Formula 
-\[
-Cov\left(f(x_{p}),f(x_{q})\right)=K(x_{p},x_{q})=\sigma_{f}^{2}\exp\left(-\frac{1}{2}\left(x_{p}-x_{q}\right)^{2}\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-The covariance between 
-\begin_inset Formula $f(x_{p})$
-\end_inset
-
- and 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $f(x_{q})$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- is a function of 
-\begin_inset Formula $x_{p}$
-\end_inset
-
- and 
-\begin_inset Formula $x_{q}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Nearby 
-\begin_inset Formula $x$
-\end_inset
-
-'s have highly correlated function ordinates 
-\begin_inset Formula $f(x)$
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-.
-\end_layout
-
-\begin_layout Itemize
-We can compute 
-\begin_inset Formula $Cov\left(f(x_{p}),f(x_{q})\right)$
-\end_inset
-
- for 
-\emph on
-any
-\emph default
- 
-\begin_inset Formula $x_{p}$
-\end_inset
-
- and 
-\begin_inset Formula $x_{q}$
-\end_inset
-
- (no need for a pre-determined grid)
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Gaussian process regression, cont.
-\end_layout
-
-\begin_layout Definition
-A 
-\series bold
-Gaussian process
-\series default
- (
-\series bold
-GP
-\series default
-) is a collection of random variables, any finite number of which have a
- multivariate Gaussian distribution.
-\end_layout
-
-\begin_layout Itemize
-A Gaussian process is really a 
-\series bold
-probability distribution over functions
-\series default
- (curves).
- This is exactly what we want! No need for a grid!
-\end_layout
-
-\begin_layout Itemize
-A GP is completely specified by a mean and a covariance function
-\begin_inset Formula 
-\[
-m(x)=\mathrm{E}\left[f(x)\right]
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-K(x,x')=E\left[\left(f(x)-m(x)\right)\left(f(x')-m(x')\right)\right]
-\]
-
-\end_inset
-
-for any two inputs 
-\begin_inset Formula $x$
-\end_inset
-
- and 
-\begin_inset Formula $x'$
-\end_inset
-
- (note: this is 
-\emph on
-not
-\emph default
- the transpose here).
-\end_layout
-
-\begin_layout Itemize
-A Gaussian process (prior) is denoted by
-\begin_inset Formula 
-\[
-f(x)\sim GP\left(m(x),K(x,x')\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Gaussian process regression, cont.
-\end_layout
-
-\begin_layout Itemize
-Example:
-\begin_inset Formula 
-\begin{align*}
-m(x) & =\sin(x)\\
-K(x,x') & =\sigma_{f}^{2}\exp\left(-\frac{1}{2}\left(\frac{x_{p}-x_{q}}{l}\right)^{2}\right)
-\end{align*}
-
-\end_inset
-
-where 
-\begin_inset Formula $l>0$
-\end_inset
-
- is the length scale.
- 
-\end_layout
-
-\begin_layout Itemize
-Larger 
-\begin_inset Formula $l$
-\end_inset
-
- gives more smoothness in 
-\begin_inset Formula $f(x)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Simulate draw from 
-\begin_inset Formula $f(x)\sim GP\left(m(x),K(x,x')\right)$
-\end_inset
-
- over a grid 
-\begin_inset Formula $x_{*}=(x_{1},...,x_{n})$
-\end_inset
-
- by using that
-\begin_inset Formula 
-\[
-f(x_{*})\sim N\left(m(x_{*}),K(x_{*},x_{*})\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Gaussian process regression, cont.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Model
-\series default
-
-\begin_inset Formula 
-\[
-y_{i}=f(\mathbf{\textnormal{x}}_{i})+\varepsilon_{i},\quad\varepsilon\overset{iid}{\sim}N(0,\sigma^{2})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Prior
-\series default
-
-\begin_inset Formula 
-\[
-f(x)\sim GP\left(0,K(x,x')\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-You have observed the data: 
-\begin_inset Formula $\mathbf{x}=(x_{1},...,x_{n})$
-\end_inset
-
-' and 
-\begin_inset Formula $\mathbf{y}=(y_{1},...,y_{n})'$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-Goal: the posterior of 
-\begin_inset Formula $f(\cdot)$
-\end_inset
-
- over a grid of 
-\begin_inset Formula $x$
-\end_inset
-
--values: 
-\begin_inset Formula $\mathbf{f}_{*}=\mathbf{f}(\mathbf{x}_{*})$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Intermediate step: joint distribution of 
-\begin_inset Formula $\mathbf{y}$
-\end_inset
-
- and 
-\begin_inset Formula $\mathbf{f}_{*}$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\left(\begin{array}{c}
-\mathbf{y}\\
-\mathbf{f}_{*}
-\end{array}\right)\sim N\left\{ \left(\begin{array}{c}
-\mathbf{0}\\
-\mathbf{0}
-\end{array}\right),\left[\begin{array}{cc}
-K(\mathbf{x},\mathbf{x})+\sigma^{2}I & K(\mathbf{x},\mathbf{x}_{*})\\
-K(\mathbf{x}_{*},\mathbf{x}) & K(\mathbf{x}_{*},\mathbf{x}_{*})
-\end{array}\right]\right\} 
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-The 
-\series bold
-posterior
-\series default
- 
-\begin_inset Formula 
-\[
-\mathbf{f}_{*}|\mathbf{x},\mathbf{y},\mathbf{x}_{*}\sim N\left(\bar{\mathbf{f}}_{*},\mathrm{cov}(\mathbf{f}_{*})\right)
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{align*}
-\bar{\mathbf{f}}_{*} & =K(\mathbf{x}_{*},\mathbf{x})\left[K(\mathbf{x},\mathbf{x})+\sigma^{2}I\right]^{-1}\mathbf{y}\\
-\mathrm{cov}(\mathbf{f}_{*}) & =K(\mathbf{x}_{*},\mathbf{x_{*}})-K(\mathbf{x}_{*},\mathbf{x})\left[K(\mathbf{x},\mathbf{x})+\sigma^{2}I\right]^{-1}K(\mathbf{x},\mathbf{x_{*}})
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-An hierarchical binomial model 
-\end_layout
-
-\begin_layout Itemize
-Example: 
-\begin_inset Formula 
-\[
-y_{j}|\theta_{j}\sim Bin(n_{j},\theta_{j})\text{, }j=1,...,J\text{.}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-We could do inference on each 
-\begin_inset Formula $\theta_{j}$
-\end_inset
-
- separately.
- Problem: 
-\begin_inset Formula $n_{j}$
-\end_inset
-
- may be small for some 
-\begin_inset Formula $j$
-\end_inset
-
-.
- Not much info then about 
-\begin_inset Formula $\theta_{j}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-If you knew 
-\begin_inset Formula $\theta_{j}$
-\end_inset
-
-, would that give information about 
-\begin_inset Formula $\theta_{i}$
-\end_inset
-
-, 
-\begin_inset Formula $i\neq j$
-\end_inset
-
-? If so, then inference about the parameters 
-\begin_inset Formula $\theta_{j}$
 \end_inset
 
-, 
-\begin_inset Formula $j=1,....,J$
-\end_inset
-
-, may 'borrow strength' from each other.
-\end_layout
-
-\begin_layout Itemize
-Extreme case: assume 
-\begin_inset Formula $\theta_{j}=\theta$
-\end_inset
-
- for all 
-\begin_inset Formula $j$
-\end_inset
-
-.
- Define 
-\begin_inset Formula $y=\sum_{j=1}^{J}y_{j}$
-\end_inset
-
- and 
-\begin_inset Formula $n=\sum_{j=1}^{J}n_{j}$
-\end_inset
-
-.
- Straightforward to analyze 
-\begin_inset Formula $\theta$
-\end_inset
-
- with the usual Beta-Binomial approach.
-\end_layout
-
-\begin_layout Itemize
-Intermediate case: tie the 
-\begin_inset Formula $\theta$
-\end_inset
-
-'s together by assuming a superpopulation/prior
-\begin_inset Formula 
-\[
-\theta_{j}\overset{iid}{\sim}Beta(\alpha,\beta).
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-An hierarchical binomial model, cont.
-\end_layout
-
-\begin_layout Itemize
-Model summary
-\begin_inset Formula 
-\begin{align*}
-y_{j}|\theta_{j} & \sim Bin(n_{j},\theta_{j})\text{, }j=1,...,J\text{.}\\
- & \theta_{j}\overset{iid}{\sim}Beta(\alpha,\beta).\\
-\alpha & \sim Gamma(a_{1},a_{2}).\\
-\beta & \sim Gamma(b_{1},b_{2}).
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Sample from the joint posterior of 
-\begin_inset Formula $p(\theta,\alpha,\beta|y)=p(\theta|\alpha,\beta,y)p(\alpha,\beta|y)$
-\end_inset
 
- by sampling from:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\theta_{j}|\alpha,\beta,y$
-\end_inset
-
-, 
-\begin_inset Formula $j=1,...,J,$
-\end_inset
-
- which are independent 
-\begin_inset Formula $Beta$
-\end_inset
-
- distributions.
+Random number generation
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $p(\alpha,\beta|y)$
-\end_inset
+Monte Carlo simulation
+\end_layout
 
- can be derived in closed form (similar to eq.
- 5.8), but cannot be sampled directly.
- Evaluate on grid and sample.
+\begin_layout Itemize
+Gibbs sampling
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
-The one-way normal random effects model 
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monte Carlo sampling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $\theta^{(1)},\theta^{(2)},....,\theta^{(N)}$
+\end_inset
+
+ is an 
+\begin_inset Formula $iid$
+\end_inset
+
+ sequence from a distribution 
+\begin_inset Formula $p(\theta)$
+\end_inset
+
+, then
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{1}{N}\sum_{t=1}^{N}\theta^{(t)} & \rightarrow & E(\theta)\\
+\frac{1}{N}\sum_{t=1}^{N}g(\theta^{(t)}) & \rightarrow & E[g(\theta)]
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $g(\theta)$
+\end_inset
+
+ is some well-behaved function.
 \end_layout
 
 \begin_layout Itemize
-Consider the data model:
+Easy to compute tail probabilities 
+\begin_inset Formula $\mathrm{Pr}(\theta\leq c)$
+\end_inset
+
+ by letting 
 \begin_inset Formula 
 \[
-y_{j}|\theta_{j}\sim N(\theta_{j},\sigma_{j}^{2})\text{, \ }\sigma_{j}^{2}\text{ known}
+g(\theta)=I\left(\theta\leq c\right)
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\frac{1}{N}\sum_{t=1}^{N}g(\theta^{(t)})=\frac{\#\text{ }\theta\text{-draws smaller than }c}{N}.
 \]
 
 \end_inset
@@ -882,98 +260,1734 @@ y_{j}|\theta_{j}\sim N(\theta_{j},\sigma_{j}^{2})\text{, \ }\sigma_{j}^{2}\text{
 
 \end_layout
 
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\size larger
+Direct sampling by the
+\size default
+ 
+\size larger
+inverse CDF
+\begin_inset space \space{}
+\end_inset
+
+method
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
-At one extreme we may: estimate each 
-\begin_inset Formula $\theta_{j}$
-\end_inset
-
- using the mean 
-\begin_inset Formula $\bar{y}_{j}$
-\end_inset
-
- of observations in the 
-\begin_inset Formula $j$
-\end_inset
-
-th group.
+How to simulate from a distribution?
 \end_layout
 
 \begin_layout Itemize
-At the other extreme we may: assume 
-\begin_inset Formula $\theta_{j}=\theta$
+Let 
+\begin_inset Formula $f(x)$
 \end_inset
 
-, for all 
-\begin_inset Formula $j$
+ be the density function of a stochastic variable.
+ CDF: 
+\begin_inset Formula $F(x)$
 \end_inset
 
 .
- Estimate 
-\begin_inset Formula $\theta$
+ Inverse CDF
+\begin_inset space \space{}
 \end_inset
 
- with a pooling of group means 
-\begin_inset Formula $\bar{y}_{j}.$
+method:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Generate 
+\begin_inset Formula $u$
+\end_inset
+
+ from the uniform distribution on 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Compute 
+\begin_inset Formula $x=F^{-1}(u)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Example 1: Exponential distribution: 
+\begin_inset Formula 
+\[
+u=F(x)=1-\exp(-\lambda x)
+\]
+
+\end_inset
+
+Inverting gives
+\begin_inset Formula 
+\[
+x=-\ln(1-u)/\lambda
+\]
+
+\end_inset
+
+But 
+\begin_inset Formula $1-u$
+\end_inset
+
+ is also uniformly distributed on [0,1].
+ Thus: if 
+\begin_inset Formula $x=-(\ln u)/\lambda$
+\end_inset
+
+ where 
+\begin_inset Formula $u\sim Unif(0,1)$
+\end_inset
+
+, then 
+\begin_inset Formula $x\sim Expon(\lambda)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Inverse CDF method, discrete case
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout EndFrame
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename InverseCDF.pdf
+	scale 40
+
+\end_inset
+
 
 \end_layout
 
-\begin_layout BeginFrame
-The one-way normal random effects model, cont.
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\size larger
+Direct sampling by the
+\size default
+ 
+\size larger
+inverse CDF
+\begin_inset space \space{}
+\end_inset
+
+method
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Example 2: Cauchy distribution: 
+\begin_inset Formula 
+\begin{eqnarray*}
+f(x) & = & \frac{1}{\pi}\frac{1}{1+x^{2}}\\
+u & = & F(x)=\frac{1}{2}+\frac{1}{\pi}\arctan(x)
+\end{eqnarray*}
+
+\end_inset
+
+Inverting ...
+\begin_inset Formula 
+\[
+x=\tan[\pi(u-1/2)].
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-Intermediate: a hierarchical model 
-\begin_inset Formula 
-\[
-y_{j}|\theta_{j}\sim N(\theta_{j},\sigma_{j}^{2})\text{, \ }\sigma_{j}^{2}\text{ known}
-\]
+We can also use relations between distribution to sample from distributions.
+\end_layout
 
+\begin_layout Itemize
+Cauchy-example, cont.
+ If 
+\begin_inset Formula $y$
+\end_inset
+
+ and 
+\begin_inset Formula $z$
+\end_inset
+
+ are independent 
+\begin_inset Formula $N(0,1)$
+\end_inset
+
+ variables, then 
+\begin_inset Formula $z=\frac{y}{z}\sim Cauchy$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Example: Chi-square.
+ If 
+\begin_inset Formula $x_{1},...,x_{v}\overset{iid}{\sim}N(0,1)$
+\end_inset
+
+, then 
+\begin_inset Formula $y=\sum_{i=1}^{v}x_{i}^{2}\sim\chi_{v}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gibbs sampling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Easily implemented methods for sampling from multivariate distributions,
+ 
+\begin_inset Formula $p(\theta_{1},...,\theta_{k})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Requirements: Easily sampled full conditional posteriors:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $p(\theta_{1}|\theta_{2},\theta_{3}...,\theta_{k})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p(\theta_{2}|\theta_{1},\theta_{3},...,\theta_{k})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p(\theta_{k}|\theta_{1},\theta_{2},...,\theta_{k-1})$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Started out in the early 80's in the image analysis literature.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Gibbs sampling algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+A:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Choose initial values 
+\begin_inset Formula $\theta_{2}^{(0)},\theta_{3}^{(0)},...,\theta_{n}^{(0)}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+B:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $B_{1}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Draw 
+\begin_inset Formula $\theta_{1}^{(1)}$
+\end_inset
+
+ from 
+\begin_inset Formula $p(\theta_{1}|\theta_{2}^{(0)},\theta_{3}^{(0)},...,\theta_{n}^{(0)})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $B_{2}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Draw 
+\begin_inset Formula $\theta_{2}^{(1)}$
+\end_inset
+
+ from 
+\begin_inset Formula $p(\theta_{2}|\theta_{1}^{(1)},\theta_{3}^{(0)},...,\theta_{n}^{(0)})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $B_{n}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Draw 
+\begin_inset Formula $\theta_{n}^{(1)}$
+\end_inset
+
+ from 
+\begin_inset Formula $p(\theta_{n}|\theta_{1}^{(1)},\theta_{2}^{(1)},...,\theta_{n-1}^{(1)})$
 \end_inset
 
  
 \end_layout
 
-\begin_layout Standard
-\align center
-\begin_inset Formula 
-\[
-\theta_{j}|\mu,\tau\sim N(\mu,\tau^{2})
-\]
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+C:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Repeat Step B 
+\begin_inset Formula $N$
+\end_inset
+
+ times.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gibbs sampling, cont.
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-\align center
+\begin_deeper
+\begin_layout Itemize
+The Gibbs draws 
+\begin_inset Formula $\theta^{(1)},\theta^{(2)},....,\theta^{(N)}$
+\end_inset
+
+ are dependent, but arithmetic means converge to expected values
 \begin_inset Formula 
-\[
-p(\mu,\tau)=p(\mu|\tau)p(\tau)\propto p(\tau)
-\]
+\begin{eqnarray*}
+\frac{1}{N}\sum_{t=1}^{N}\theta_{j}^{(t)} & \rightarrow & E(\theta_{j})\\
+\frac{1}{N}\sum_{t=1}^{N}g(\theta^{(t)}) & \rightarrow & E[g(\theta)]
+\end{eqnarray*}
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Itemize
-Here we do not assume equal group mean, yet the estimates of each 
+More generally, the Gibbs sequence 
+\begin_inset Formula $\theta^{(1)},\theta^{(2)},....,\theta^{(N)}$
+\end_inset
+
+ converges in distribution to the target posterior 
+\begin_inset Formula $p(\theta_{1},...,\theta_{k})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\theta_{j}^{(1)},...,\theta_{j}^{(N)}$
+\end_inset
+
+ converge to the marginal distribution of 
 \begin_inset Formula $\theta_{j}$
 \end_inset
 
- borrow strength from each other.
+, 
+\begin_inset Formula $p(\theta_{j})$
+\end_inset
+
+.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gibbs sampling for normal model with non-conjugate prior
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Normal model with semi-conjugate prior
+\begin_inset Formula 
+\begin{align*}
+\mu & \sim N(\mu_{0},\tau_{0}^{2})\\
+\sigma^{2} & \sim Inv-\chi^{2}(\nu_{0},\sigma_{0}^{2})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Conditional posteriors
+\begin_inset Formula 
+\begin{align*}
+\mu|\sigma^{2},x & \sim N\left(\mu_{n},\tau_{n}^{2}\right)\\
+\sigma^{2}|\mu,x & \sim Inv-\chi^{2}\left(\nu_{n},\frac{\nu_{0}\sigma_{0}^{2}+\sum_{i=1}^{n}\left(x_{i}-\mu\right)^{2}}{n+\nu_{0}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gibbs sampling multivariate normal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bivariate normal:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Joint distribution
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\theta_{1}\\
+\theta_{2}
+\end{array}\right)\sim N_{2}\left[\left(\begin{array}{c}
+\mu_{1}\\
+\mu_{2}
+\end{array}\right),\left(\begin{array}{cc}
+1 & \rho\\
+\rho & 1
+\end{array}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Full conditional posteriors:
+\begin_inset Formula 
+\begin{eqnarray*}
+\theta_{1}|\theta_{2} & \sim & N[\mu_{1}+\rho(\theta_{2}-\mu_{2}),1-\rho^{2}]\\
+\theta_{2}|\theta_{1} & \sim & N[\mu_{2}+\rho(\theta_{1}-\mu_{1}),1-\rho^{2}]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gibbs sampling - Bivariate normal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../BayesStat2011/Lectures/GibbsBivariateNormal1.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gibbs sampling - Bivariate normal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../BayesStat2011/Lectures/GibbsBivariateNormal2.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gibbs sampling - Bivariate normal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../BayesStat2011/Lectures/GibbsBivariateNormal3.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gibbs sampling - Bivariate normal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../BayesStat2011/Lectures/GibbsBivariateNormal4.eps
+	scale 32
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Autoregressive processes (AR) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+AR(
+\begin_inset Formula $p$
+\end_inset
+
+) process
+\begin_inset Formula 
+\[
+x_{t}=\mu+\phi_{1}(x_{t-1}-\mu)+...+\phi_{p}(x_{t-p}-\mu)+\varepsilon_{t},\text{ \ \ }\varepsilon_{t}\overset{iid}{\sim}N(0,\sigma^{2}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Random walk prior: 
+\begin_inset Formula 
+\begin{eqnarray*}
+E(\phi_{1}) & = & 1\\
+E(\phi_{j}) & = & 0\text{ for }j=2,...,p.\\
+StDev(\phi_{j}) & = & \frac{\psi}{j}.
+\end{eqnarray*}
+
+\end_inset
+
+Note how the prior shrinks longer lags more heavily toward zero.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mu=E(x_{t})$
+\end_inset
+
+ is the unconditional mean or steady-state of the process.
+ 'where the system goes to if the shocks (
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+) are turned off'.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mu$
+\end_inset
+
+ is important as long-run forecasts (quickly) approach the steady state.
+\end_layout
+
+\begin_layout Itemize
+Prior: 
+\begin_inset Formula $\mu\sim N(\theta_{\mu},\psi_{\mu}^{2})$
+\end_inset
+
+, independent of 
+\begin_inset Formula $\phi^{\text{'}}$
+\end_inset
+
+s and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gibbs sampling for AR processes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The posterior can be simulated by Gibbs sampling:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mu|\phi,\sigma^{2},x\sim$
+\end_inset
+
+ Normal
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\phi|\mu,\sigma^{2},x\sim$
+\end_inset
+
+ Multivariate Normal
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma^{2}|\mu,\phi,x\sim$
+\end_inset
+
+ Scaled Inverse 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Everything above can easily be extended to vector processes (VARs).
+\end_layout
+
+\begin_layout Itemize
+Example: Swedish GDP and inflation forecasts.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+GDP growth forecasts from Bayesian VARs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /Users/matvi05/Dropbox/Teaching/BayesTeoriPraktik2007/F8/Graphs/CascadeGDP.pdf
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Data augmentation - Mixture distributions 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Two-component mixture of normals [MN(
+\begin_inset Formula $2$
+\end_inset
+
+)]
+\begin_inset Formula 
+\[
+p(x)=\pi\cdot\phi(x|\mu_{1},\sigma_{1}^{2})+(1-\pi)\cdot\phi(x|\mu_{2},\sigma_{2}^{2}),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\phi(x|\mu,\sigma^{2})$
+\end_inset
+
+ denotes the PDF of a normal variate 
+\begin_inset Formula $x$
+\end_inset
+
+ with mean 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and variance 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Simulate from a MN(
+\begin_inset Formula $2$
+\end_inset
+
+):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Simulate an indicator 
+\begin_inset Formula $I\sim Bern(\pi)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $I=0$
+\end_inset
+
+, simulate 
+\begin_inset Formula $x$
+\end_inset
+
+ from 
+\begin_inset Formula $N(\mu_{1},\sigma_{1}^{2})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $I=1$
+\end_inset
+
+, simulate 
+\begin_inset Formula $x$
+\end_inset
+
+ from 
+\begin_inset Formula $N(\mu_{2},\sigma_{2}^{2}).$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Illustration of mixture distributions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../BayesStat2011/Lectures/MixtureOfNormals.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Mixture distributions, cont.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Not easy to estimate directly - the likelihood is a product of sums.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Assume
+\series default
+ that we knew which of the two densities each observation came from.
+ 
+\begin_inset Formula 
+\[
+I_{i}=\left\{ \begin{array}{c}
+0\text{ if }x_{i}\text{ came from Density 1}\\
+1\text{ if }x_{i}\text{ came from Density 2}
+\end{array}\right..
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Armed with knowledge of 
+\begin_inset Formula $I_{1},...,I_{n}$
+\end_inset
+
+ it is now easy to estimate 
+\begin_inset Formula $\pi$
+\end_inset
+
+, 
+\begin_inset Formula $\mu_{1},\sigma_{1}^{2},\mu_{2},\sigma_{2}^{2}$
+\end_inset
+
+ by separating the sample according to the 
+\begin_inset Formula $I$
+\end_inset
+
+'s.
+\end_layout
+
+\begin_layout Itemize
+But we do 
+\series bold
+not
+\series default
+ know 
+\begin_inset Formula $I_{1},...,I_{n}$
+\end_inset
+
+!
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Mixture distributions, cont.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gibbs sampling to the rescue.
+ Assume: Prior 
+\begin_inset Formula $\pi$
+\end_inset
+
+ 
+\begin_inset Formula $\sim Beta(\alpha_{1},\alpha_{2})$
+\end_inset
+
+.
+ Conjugate prior for 
+\begin_inset Formula $(\mu_{j},\sigma_{j}^{2}),$
+\end_inset
+
+ see Lecture 3.
+ 
+\begin_inset Formula $n_{2}=\sum\nolimits _{i=1}^{n}I_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $n_{1}=n-n_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Algorithm:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\pi$
+\end_inset
+
+ 
+\begin_inset Formula $|$
+\end_inset
+
+ 
+\begin_inset Formula $I,x\sim Beta(\alpha_{1}+n_{1},\alpha_{2}+n_{2})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma_{1}^{2}$
+\end_inset
+
+ 
+\begin_inset Formula $|$
+\end_inset
+
+ 
+\begin_inset Formula $\mu_{1},I,x\sim Inv$
+\end_inset
+
+-
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu_{1}|I,\sigma^{2},x\sim N$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma_{2}^{2}$
+\end_inset
+
+ 
+\begin_inset Formula $|$
+\end_inset
+
+ 
+\begin_inset Formula $\mu_{2},I,x\sim Inv$
+\end_inset
+
+-
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu_{2}|I,\sigma^{2},x\sim N$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ 
+\begin_inset Formula $|$
+\end_inset
+
+ 
+\begin_inset Formula $\pi,\mu_{1},\sigma_{1}^{2},\mu_{2},\sigma_{2}^{2},x\sim Bern(\theta_{i})$
+\end_inset
+
+, 
+\begin_inset Formula $i=1,...,n,$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\theta_{i}=\frac{(1-\pi)\phi(x_{i};\mu_{2},\sigma_{2}^{2})}{\pi\phi(x_{i};\mu_{1},\sigma_{1}^{2})+(1-\pi)\phi(x_{i};\mu_{2},\sigma_{2}^{2})}.
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Mixture distributions, cont.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Generalization 
+\begin_inset Formula $k$
+\end_inset
+
+-component mixture of normals
+\begin_inset Formula 
+\[
+p(x)=\sum_{j=1}^{k}\pi_{j}\phi(x;\mu_{j},\sigma_{j}^{2}),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\sum\nolimits _{j=1}^{k}\pi_{j}=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Gibbs sampling with multi-class indicators 
+\begin_inset Formula $(I_{i}=j$
+\end_inset
+
+ if observation 
+\begin_inset Formula $i$
+\end_inset
+
+ comes from density 
+\begin_inset Formula $j$
+\end_inset
+
+):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $(\pi_{1},...,\pi_{k})$
+\end_inset
+
+ 
+\begin_inset Formula $|$
+\end_inset
+
+ 
+\begin_inset Formula $I,x\sim Dirichlet(\alpha_{1}+n_{1},\alpha_{2}+n_{2},...,\alpha_{k}+n_{k})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma_{j}^{2}$
+\end_inset
+
+ 
+\begin_inset Formula $|$
+\end_inset
+
+ 
+\begin_inset Formula $\mu_{j},I,x\sim Inv$
+\end_inset
+
+-
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu_{j}|I,\sigma_{j}^{2},x\sim N$
+\end_inset
+
+, 
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Formula $for$
+\end_inset
+
+ 
+\begin_inset Formula $j=1,...,k,$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ 
+\begin_inset Formula $|$
+\end_inset
+
+ 
+\begin_inset Formula $\pi,\mu,\sigma^{2},x\sim Multinomial(\theta_{i1},...,\theta_{ik})$
+\end_inset
+
+, 
+\begin_inset Formula $for$
+\end_inset
+
+ 
+\begin_inset Formula $i=1,...,n,$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\theta_{ij}=\frac{\pi_{j}\phi(x_{i};\mu_{j},\sigma_{j}^{2})}{\sum_{r=1}^{k}\pi_{r}\phi(x_{i};\mu_{r},\sigma_{r}^{2})}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+More generally: Gibbs sampling is very powerful for missing data problems.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Data augmentation - Probit regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Probit model:
+\begin_inset Formula 
+\[
+\Pr(y_{i}=1\text{ }|\text{ }x_{i})=\Phi(x_{i}^{\prime}\beta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Random utility formulation of the probit:
+\begin_inset Formula 
+\begin{eqnarray*}
+u_{i} & \sim & N(x_{i}^{\prime}\beta,1)\\
+y_{i} & = & \left\{ \begin{array}{c}
+1\text{ \ \ om }u_{i}>0\\
+0\text{ \ \ om }u_{i}\leq0
+\end{array}.\right.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Check: 
+\begin_inset Formula $\Pr(y_{i}=1$
+\end_inset
+
+ 
+\begin_inset Formula $|$
+\end_inset
+
+ 
+\begin_inset Formula $x_{i})=\Pr(u_{i}>0)=1-\Pr(u_{i}\leq0)=1-\Pr(u_{i}-x_{i}^{\prime}\beta<-x_{i}^{\prime}\beta)=1-\Phi(-x_{i}^{\prime}\beta)=\Phi(x_{i}^{\prime}\beta)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $u=(u_{1},...,u_{n})$
+\end_inset
+
+ were observed, then 
+\begin_inset Formula $\beta$
+\end_inset
+
+ could be analyzed by traditional linear regression.
+ But, 
+\begin_inset Formula $u$
+\end_inset
+
+ is not observed.
+ Gibbs sampling to the rescue!
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gibbs sampling for the Probit regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Simulate from joint posterior 
+\begin_inset Formula $p(u,\beta|y)$
+\end_inset
+
+ iterating between the full conditional posteriors: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $p(\beta|u,y)$
+\end_inset
+
+, which is multivariate normal (this is just a linear regression)
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $p(u_{i}|\beta,y),\text{ }i=1,...,n$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The full conditional posterior distribution of 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ is: 
+\begin_inset Formula 
+\begin{align*}
+p(u_{i}|\beta,y) & \propto p(y_{i}|\beta,u_{i})p(u_{i}|\beta)\\
+ & =\begin{cases}
+N(u_{i}|x_{i}^{\prime}\beta,1) & \text{truncated to }u_{i}\in(-\infty,0]\text{ if }y_{i}=0\\
+N(u_{i}|x_{i}^{\prime}\beta,1) & \text{truncated to }u_{i}\in(0,\infty)\text{ if }y_{i}=1
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Collect the 
+\begin_inset Formula $\beta$
+\end_inset
+
+-draws.
+ A histogram of these draws approximates 
+\begin_inset Formula $p(\beta|y)=$
+\end_inset
+
+ 
+\begin_inset Formula $\int p(u,\beta|y)du$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Improving the efficiency of the Gibbs sampler
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\shape italic
+Efficient blocking
+\shape default
+.
+ Correlated parameters should be included in the same updating block.
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Reparametrization
+\shape default
+.
+ Convergence can improve dramatically in alternative parametrizations.
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Data augmentation
+\shape default
+.
+ Bring in latent (unobserved) variables that make the full conditional posterior
+s more easily sampled (Probit, Mixture models etc).
+ Downside: Typically increases the autocorrelation between draws.
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Parameter expansion
+\shape default
+.
+ Introducing (non-sense) parameters in the model may break the dependence
+ between the original parameters (Example probit).
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
