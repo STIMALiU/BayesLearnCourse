@@ -16,10 +16,10 @@ nComp <- 3    # Number of mixture components
 
 # Prior options
 alpha <- 10*rep(1,nComp) # Dirichlet(alpha)
-muPrior <- rep(0,nComp)
-tau2Prior <- rep(100,nComp)
-sigma2_0 <- rep(var(x),nComp)
-nu0 <- rep(10,nComp)
+muPrior <- rep(0,nComp) # Prior mean of theta
+tau2Prior <- rep(10,nComp) # Prior std theta
+sigma2_0 <- rep(var(x),nComp) # s20 (best guess of sigma2)
+nu0 <- rep(10,nComp) # degrees of freedom for prior on sigma2
   
 # MCMC options
 nIter <- 1000 # Number of Gibbs sampling draws
@@ -27,6 +27,7 @@ nIter <- 1000 # Number of Gibbs sampling draws
 # Plotting options
 plotFit <- TRUE
 lineColors <- c("blue", "green", "magenta", 'yellow')
+sleepTime <- 0.1 # Adding sleep time between iterations for plotting
 ################   END USER INPUT ###############
 
 
@@ -64,12 +65,11 @@ xGridMin <- min(xGrid)
 xGridMax <- max(xGrid)
 mixDensMean <- rep(0,length(xGrid))
 effIterCount <- 0
-ylim <- c(0,2*max(hist(x)$intensities))
+ylim <- c(0,2*max(hist(x)$density))
 
 
 for (k in 1:nIter){
   message(paste('Iteration number:',k))
-  
   alloc <- S2alloc(S) # Just a function that converts between different representations of the group allocations
   nAlloc <- colSums(S)
   print(nAlloc)
@@ -101,7 +101,7 @@ for (k in 1:nIter){
   }
   
   # Printing the fitted density against data histogram
-  if (plotFit && (k%%10 ==0)){
+  if (plotFit && (k%%1 ==0)){
     effIterCount <- effIterCount + 1
     hist(x, breaks = 20, freq = FALSE, xlim = c(xGridMin,xGridMax), main = paste("Iteration number",k), ylim = ylim)
     mixDens <- rep(0,length(xGrid))
@@ -114,16 +114,16 @@ for (k in 1:nIter){
     }
     mixDensMean <- ((effIterCount-1)*mixDensMean + mixDens)/effIterCount
     
-    lines(xGrid, mixDens, type = "l", lwd = 3, col = 'red')
+    lines(xGrid, mixDens, type = "l", lty = 2, lwd = 3, col = 'red')
     legend("topleft", box.lty = 1, legend = c("Data histogram",components, 'Mixture'), 
            col = c("black",lineColors[1:nComp], 'red'), lwd = 2)
-    Sys.sleep(0)
+    Sys.sleep(sleepTime)
   }
   
 }
 
 hist(x, breaks = 20, freq = FALSE, xlim = c(xGridMin,xGridMax), main = "Final fitted density")
-lines(xGrid, mixDensMean, type = "l", lwd = 2, col = "red")
+lines(xGrid, mixDensMean, type = "l", lwd = 2, lty = 4, col = "red")
 lines(xGrid, dnorm(xGrid, mean = mean(x), sd = apply(x,2,sd)), type = "l", lwd = 2, col = "blue")
 legend("topright", box.lty = 1, legend = c("Data histogram","Mixture density","Normal density"), col=c("black","red","blue"), lwd = 2)
 
