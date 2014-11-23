@@ -9,6 +9,9 @@ rm(list=ls())
 
 library(rstan)
 
+nBurnin <- 1000
+nIter <- 2000
+
 rstanSeedModel<-'
 data {
   int<lower=0> N; ## Number of observations
@@ -58,6 +61,7 @@ fit1<-stan(model_code=rstanSeedModel,
            chains=4)
 fit1
 print(fit1,digits_summary=3)
+plot(fit1)
 
 # Extract parameters samples
 fit1ParSamples<-extract(fit1,permuted=FALSE)

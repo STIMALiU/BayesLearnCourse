@@ -9,7 +9,7 @@ rm(list=ls())
 library(rstan)
 
 # Data 
-dataBernHiarch <- list(x = c(1,1,0,0,1,1,1,1,0,1), n = length(x))
+dataBernHiarch <- list(x = c(1,1,0,0,1,1,1,1,0,1), n = 10)
 
 BernBetaHiearchStanModel <- '
 data {
@@ -32,8 +32,8 @@ for (i in 1:n)
 # Do the fitting of the model
 fit1<-stan(model_code=BernBetaHiearchStanModel,
            data=dataBernHiarch,
-           warmup=nBurnin,
-           iter=(nBurnin+nIter),
+           warmup=1000,
+           iter=2000,
            chains=2)
 
 print(fit1,digits_summary=3)

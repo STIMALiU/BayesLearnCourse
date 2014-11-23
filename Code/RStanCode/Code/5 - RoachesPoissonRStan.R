@@ -5,6 +5,7 @@
 # Ported to RStan by Måns Magnusson
 # Date:   2013-10-24
 
+#install.packages("ggplot2")
 library(ggplot2)
 
 roachesData<-read.csv2("Data/roachdata.csv")
