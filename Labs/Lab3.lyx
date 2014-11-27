@@ -227,7 +227,11 @@ Implement (code!) a Gibbs sampler that simulates from the joint posterior
 
 .
  [Hint: the conditional posteriors are given on the slides from Lecture
- 7].
+ 7 where 
+\begin_inset Formula $\nu_{n}=\nu_{0}+n$
+\end_inset
+
+].
 \end_layout
 
 \begin_layout Enumerate
