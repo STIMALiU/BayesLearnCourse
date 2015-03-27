@@ -1,7 +1,6 @@
 # Estimating a simple mixture of normals
 
-#install.packages("geoR") # We need the rinvchisq() function for simulating random draws from the scaled inv chi-square.
-library(geoR)
+
 
 ##########    BEGIN USER INPUT #################
 # Data options
@@ -30,6 +29,10 @@ lineColors <- c("blue", "green", "magenta", 'yellow')
 sleepTime <- 0.1 # Adding sleep time between iterations for plotting
 ################   END USER INPUT ###############
 
+###### Defining a function that simulates from the 
+rScaledInvChi2 <- function(n, df, scale){
+   return((df*scale)/rchisq(n,df=df))
+}
 
 ####### Defining a function that simulates from a Dirichlet distribution
 rDirichlet <- function(param){
@@ -89,7 +92,7 @@ for (k in 1:nIter){
   
   # Update sigma2's
   for (j in 1:nComp){
-    sigma2[j] <- rinvchisq(1, df = nu0[j] + nAlloc[j], scale = (nu0[j]*sigma2_0[j] + sum((x[alloc == j] - theta[j])^2))/(nu0[j] + nAlloc[j]))
+    sigma2[j] <- rScaledInvChi2(1, df = nu0[j] + nAlloc[j], scale = (nu0[j]*sigma2_0[j] + sum((x[alloc == j] - theta[j])^2))/(nu0[j] + nAlloc[j]))
   }
   
   # Update allocation
