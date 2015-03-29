@@ -188,11 +188,25 @@ modules
 
 \begin_deeper
 \begin_layout Itemize
-Lectures
+Lectures (Mattias Villani)
 \end_layout
 
 \begin_layout Itemize
-Computer Labs (and some mathematical exercises)
+Computer Labs (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href[]{http://www.ida.liu.se/department/location/search.en.shtml?code=B3D461}{Shutong
+ Ding}
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \end_deeper
@@ -280,17 +294,19 @@ Oral exam (for some students, if needed)
 \begin_layout Itemize
 
 \series bold
+\color blue
+Individual
 \color red
-Bayesian project report
+ Bayesian project report
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Individual
+Perform a Bayesian analysis on real data.
 \end_layout
 
 \begin_layout Itemize
-Perform a Bayesian analysis on real data.
+Shutong Ding is in charge.
 \end_layout
 
 \begin_layout Itemize
@@ -1976,7 +1992,7 @@ X_{1},...,X_{n}|\theta\sim N(\theta,\sigma^{2}),\text{ }\sigma^{2}=0.4
 Prior
 \begin_inset Formula 
 \[
-\theta\sim N(\mu_{0},\tau_{0}^{2})\text{ }\mu_{0}=12\text{ and }\tau_{0}=10
+\theta\sim N(\mu_{0},\tau_{0}^{2}),\text{ }\mu_{0}=12\text{ and }\tau_{0}=10
 \]
 
 \end_inset

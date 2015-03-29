@@ -188,11 +188,39 @@ modules
 
 \begin_deeper
 \begin_layout Itemize
-Lectures
+Lectures (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href[]{http://www.ida.liu.se/department/location/location.en.shtml?login=matvi05}{Mat
+tias Villani}
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
-Computer Labs (and some mathematical exercises)
+Computer Labs (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href[]{http://www.ida.liu.se/department/location/search.en.shtml?code=B3D461}{Shutong
+ Ding}
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \end_deeper
@@ -280,17 +308,19 @@ Oral exam (for some students, if needed)
 \begin_layout Itemize
 
 \series bold
+\color blue
+Individual
 \color red
-Bayesian project report
+ Bayesian project report
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Individual
+Perform a Bayesian analysis on real data.
 \end_layout
 
 \begin_layout Itemize
-Perform a Bayesian analysis on real data.
+Shutong Ding is in charge.
 \end_layout
 
 \begin_layout Itemize
