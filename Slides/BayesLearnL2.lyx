@@ -177,10 +177,6 @@ Lecture overview
 
 \begin_deeper
 \begin_layout Itemize
-The Normal model 
-\end_layout
-
-\begin_layout Itemize
 The Poisson model
 \end_layout
 
@@ -189,406 +185,11 @@ Conjugate priors
 \end_layout
 
 \begin_layout Itemize
+Prior elicitation - how to come up with a prior.
+\end_layout
+
+\begin_layout Itemize
 Non-informative priors
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Normal data with known variance - uniform prior
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Model: 
-\begin_inset Formula 
-\[
-x_{1},...,x_{n}|\theta,\sigma^{2}\overset{iid}{\sim}N(\theta,\sigma^{2}).
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Prior: 
-\begin_inset Formula 
-\[
-p(\theta)\propto c
-\]
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-Likelihood 
-\begin_inset Formula 
-\begin{eqnarray*}
-p(x_{1},...,x_{n}|\theta,\sigma^{2}) & = & \Pi_{i=1}^{n}(2\pi\sigma^{2})^{-1/2}\exp\left[-\frac{1}{2\sigma^{2}}(x_{i}-\theta)^{2}\right]\\
- & \propto & \exp\left[-\frac{1}{2(\sigma^{2}/n)}(\theta-\bar{x})^{2}\right].
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Posterior
-\begin_inset Formula 
-\[
-\theta|x_{1},...,x_{n}\sim N(\bar{x},\sigma^{2}/n)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Normal with known variance - normal prior
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Prior 
-\begin_inset Formula 
-\[
-\theta\sim N(\mu_{0},\tau_{0}^{2})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Posterior
-\begin_inset Formula 
-\begin{eqnarray*}
-p(\theta|x_{1},...,x_{n}) & \propto & p(x_{1},...,x_{n}|\theta,\sigma^{2})p(\theta)\\
- & \propto & N(\theta|\mu_{n},\tau_{n}^{2}),
-\end{eqnarray*}
-
-\end_inset
-
-where
-\begin_inset Formula 
-\[
-\frac{1}{\tau_{n}^{2}}=\frac{n}{\sigma^{2}}+\frac{1}{\tau_{0}^{2}},
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\mu_{n}=w\bar{x}+(1-w)\mu_{0},
-\]
-
-\end_inset
-
-and
-\begin_inset Formula 
-\[
-w=\frac{\frac{n}{\sigma^{2}}}{\frac{n}{\sigma^{2}}+\frac{1}{\tau_{0}^{2}}}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Normal with known variance - normal prior, cont.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Formula $\theta\sim N(\mu_{0},\tau_{0}^{2})\overset{x_{1},...,x_{n}}{\Longrightarrow}\theta|x\sim N(\mu_{n},\tau_{n}^{2}).$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-Posterior precision = Data precision + Prior precision
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-Posterior mean =
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Formula $\frac{\text{Data precision}}{\text{Posterior precision}}$
-\end_inset
-
-(Data mean) + 
-\begin_inset Formula $\frac{\text{Prior precision}}{\text{Posterior precision}}$
-\end_inset
-
-(Prior mean) 
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Canadian wages data
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Data on wages for 
-\begin_inset Formula $205$
-\end_inset
-
- Canadian workers.
- 
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename CanadianaWagesDataHist.eps
-	scale 45
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Canadian wages
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Model
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-X_{1},...,X_{n}|\theta\sim N(\theta,\sigma^{2}),\text{ }\sigma^{2}=0.4
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Prior
-\begin_inset Formula 
-\[
-\theta\sim N(\mu_{0},\tau_{0}^{2})\text{ }\mu_{0}=12\text{ and }\tau_{0}=10
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Posterior
-\begin_inset Formula 
-\[
-\theta|x_{1},...,x_{n}\sim N\left(\mu_{n},\tau_{n}^{2}\right),
-\]
-
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-where 
-\begin_inset Formula $\mu_{n}=w\bar{x}+(1-w)\mu_{0}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-For the Canadian wage data:
-\begin_inset Formula 
-\[
-w=\frac{\sigma^{-2}n}{\sigma^{-2}n+\tau_{0}^{-2}}=\frac{2.5\cdot205}{2.5\cdot205+1/100}=0.99998.
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\mu_{n}=w\bar{x}+(1-w)\mu_{0}=0.99998\cdot13.48988+(1-0.99998)\cdot12=13.48985
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Formula 
-\[
-\tau_{n}^{2}=\left(2.5\cdot205+1/100\right)^{-1}=0.00195
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Canadian wages data - model fit
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename CanadianaWagesDataHistWithFit.eps
-	scale 45
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -1283,6 +884,63 @@ longer
 status open
 
 \begin_layout Plain Layout
+Different types of prior information
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Real 
+\series bold
+expert information
+\series default
+.
+ Combo of previous studies and experience.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vague prior information, or even 
+\series bold
+noninformative priors
+\series default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Reporting priors
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Smoothness priors
+\series default
+.
+ Regularization.
+ Shrinkage.
+ Big thing in modern statistics/machine learning.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 
 \size larger
 Non-informative priors
@@ -1377,10 +1035,33 @@ p(\theta|y)\rightarrow N\left(\hat{\theta},J_{\hat{\theta},\mathbf{x}}^{-1}\righ
 \end_inset
 
 where 
-\begin_inset Formula $J_{\hat{\theta},\mathbf{x}}$
+\begin_inset Formula $J_{\theta,\mathbf{x}}$
 \end_inset
 
- is the (observed) information (matrix).
+ is the 
+\series bold
+\color blue
+observed information
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+J_{\theta,\mathbf{x}}=-\frac{\partial^{2}\ln L(\theta;\mathbf{x})}{\partial\theta^{2}}\vert_{\theta=\hat{\theta}}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1396,6 +1077,7 @@ A common non-informative prior is
 Jeffreys' prior 
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 \begin_inset Formula 
 \[
@@ -1404,10 +1086,6 @@ p(\theta)=\left|I_{\theta}\right|^{1/2},
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 where 
 \family roman
 \series medium
@@ -1424,9 +1102,40 @@ where
 \begin_inset Formula $I_{\theta}$
 \end_inset
 
- is the Fisher information.
+ is the 
+\series bold
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color blue
+Fisher information
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+I_{\theta}=E_{\mathbf{x}|\theta}\left(J_{\theta,\mathbf{x}}\right)
+\]
+
+\end_inset
+
+
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Separator
 
@@ -1499,87 +1208,6 @@ p(\theta)=\left|J(\theta)\right|^{1/2}\propto\theta^{-1/2}(1-\theta)^{-1/2}\prop
 \end_inset
 
 
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Jeffreys' prior Binomial vs Negative binomial sampling
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Bernoulli experiment: Perform 
-\begin_inset Formula $n$
-\end_inset
-
- independent trials with success probabilty 
-\begin_inset Formula $\theta$
-\end_inset
-
- and count the number of successes.
- Here
-\begin_inset Formula 
-\[
-y|\theta\sim Bin(\theta)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Inverse Bernoulli experiment: Perform independent trials with success probabilty
- 
-\begin_inset Formula $\theta$
-\end_inset
-
- until you have observed 
-\begin_inset Formula $y$
-\end_inset
-
- successes.
- Here
-\begin_inset Formula 
-\[
-y|\theta\sim NegBin(\theta)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Exercise: Suppose you performed both of the two experiments and that in
- both cases you ended up doing 
-\begin_inset Formula $n$
-\end_inset
-
- trials and observed 
-\begin_inset Formula $y$
-\end_inset
-
- successes.
- Show that the likelihood function conveys the same information on 
-\begin_inset Formula $\theta$
-\end_inset
-
- in both cases, but that Jeffreys prior is not the same in both models.
- Is this reasonable?
 \end_layout
 
 \end_deeper

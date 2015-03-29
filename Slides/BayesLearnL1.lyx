@@ -179,8 +179,10 @@ Course overview
 \begin_layout Itemize
 Four 
 \series bold
+\color red
 modules
 \series default
+\color inherit
  with:
 \end_layout
 
@@ -190,11 +192,7 @@ Lectures
 \end_layout
 
 \begin_layout Itemize
-Exercises
-\end_layout
-
-\begin_layout Itemize
-Labs
+Computer Labs (and some mathematical exercises)
 \end_layout
 
 \end_deeper
@@ -204,19 +202,49 @@ Modules:
 
 \begin_deeper
 \begin_layout Itemize
-The basics, single- and multiparameter models
+The 
+\series bold
+\color blue
+basics
+\series default
+\color inherit
+, single- and multiparameter models
 \end_layout
 
 \begin_layout Itemize
-Regression models
+
+\series bold
+\color blue
+Regression
+\series default
+\color inherit
+ models
 \end_layout
 
 \begin_layout Itemize
-Tackling more advanced models with MCMC
+Tackling more advanced models with 
+\series bold
+\color blue
+MCMC
 \end_layout
 
 \begin_layout Itemize
-Model Inference
+
+\series bold
+\color blue
+Flexible models 
+\series default
+\color black
+and
+\series bold
+\color blue
+ Model
+\series default
+\color inherit
+ 
+\series bold
+\color blue
+Inference
 \end_layout
 
 \end_deeper
@@ -227,6 +255,7 @@ Model Inference
 \begin_layout Itemize
 
 \series bold
+\color red
 Examination
 \end_layout
 
@@ -240,7 +269,7 @@ Bayesian project report, 4 credits
 \end_layout
 
 \begin_layout Itemize
-Oral exam (for some students)
+Oral exam (for some students, if needed)
 \end_layout
 
 \end_deeper
@@ -251,6 +280,7 @@ Oral exam (for some students)
 \begin_layout Itemize
 
 \series bold
+\color red
 Bayesian project report
 \end_layout
 
@@ -266,7 +296,7 @@ Perform a Bayesian analysis on real data.
 \begin_layout Itemize
 Deadline 
 \series bold
-December 21, 2014.
+May 22, 2015.
 \end_layout
 
 \end_deeper
@@ -291,14 +321,157 @@ Lecture overview
 \begin_deeper
 \begin_layout Itemize
 The likelihood function
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 Bayesian inference
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-The Bernoulli model
+Bernoulli model
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Normal model with known variance
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\size larger
+The likelihood function - Bernoulli trials
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Bernoulli trials
+\series default
+:
+\begin_inset Formula 
+\[
+x_{1},...,x_{n}|\theta\overset{iid}{\sim}Bern(\theta).
+\]
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Likelihood
+\series default
+ from 
+\begin_inset Formula $s=\sum_{i=1}^{n}x_{i}$
+\end_inset
+
+ successes and 
+\begin_inset Formula $f=n-s$
+\end_inset
+
+ failures.
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+p(x_{1},...,x_{n}|\theta) & = & p(x_{1}|\theta)\cdots p(x_{n}|\theta)=\theta^{s}(1-\theta)^{f}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Maximum likelihood estimator
+\series default
+ 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ maximizes 
+\begin_inset Formula $p(x_{1},...,x_{n}|\theta)$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Given the data 
+\begin_inset Formula $x_{1},...,x_{n}$
+\end_inset
+
+, we may plot 
+\begin_inset Formula $p(x_{1},...,x_{n}|\theta)$
+\end_inset
+
+ as a function of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename BernLike_n10s4.eps
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename BernLike_n100s40.eps
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename BernLike_n10s9.eps
+	scale 20
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -323,124 +496,88 @@ The likelihood function
 
 \begin_deeper
 \begin_layout Itemize
-Bernoulli trials:
-\begin_inset Formula 
-\[
-x_{1},...,x_{n}|\theta\overset{iid}{\sim}Bern(\theta).
-\]
+Say it out loud: 
+\end_layout
 
+\begin_layout Quotation
+The likelihood function is 
+\color blue
+
+\begin_inset Newline newline
 \end_inset
 
+the probability of the observed data
+\color inherit
+ 
+\color red
 
+\begin_inset Newline newline
+\end_inset
+
+considered as a function of the parameter.
 \end_layout
 
 \begin_layout Itemize
-Likelihood:
-\begin_inset Formula 
-\begin{eqnarray*}
-p(x_{1},...,x_{n}|\theta) & = & p(x_{1}|\theta)\cdots p(x_{n}|\theta)\\
- & = & \theta^{s}(1-\theta)^{f},
-\end{eqnarray*}
-
-\end_inset
-
-where 
-\begin_inset Formula $s=\sum_{i=1}^{n}x_{i}$
-\end_inset
-
- is the number of successes in the Bernoulli trials and 
-\begin_inset Formula $f=n-s$
-\end_inset
-
- is the number of failures.
-\end_layout
-
-\begin_layout Itemize
-Given the data 
-\begin_inset Formula $x_{1},...,x_{n}$
-\end_inset
-
-, we may plot 
+The symbol 
 \begin_inset Formula $p(x_{1},...,x_{n}|\theta)$
 \end_inset
 
- as a function of 
-\begin_inset Formula $\theta$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Pause
-
+ plays two different roles:
 \end_layout
 
 \begin_layout Itemize
-Two different roles played by 
-\begin_inset Formula $p(x_{1},...,x_{n}|\theta)$
-\end_inset
 
-:
+\series bold
+Probability distribution
+\series default
+ for the data.
+
+\series bold
+ 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\series bold
-a function of the data
-\series default
-, 
+The data 
 \begin_inset Formula $x_{1},...,x_{n}$
 \end_inset
 
-, for a 
-\emph on
-fixed
-\emph default
- 
-\begin_inset Formula $\theta$
-\end_inset
+, are random.
+\end_layout
 
-, it is a 
-\series bold
-probability distribution
-\series default
- for the data.
- Here the 
-\emph on
-data are random
-\emph default
- and 
+\begin_layout Itemize
 \begin_inset Formula $\theta$
 \end_inset
 
  is fixed.
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \series bold
-a 
-\emph on
-deterministic function of 
-\emph default
+Likelihood function
+\series default
+ for the parameter
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
+The data 
+\begin_inset Formula $x_{1},...,x_{n}$
+\end_inset
+
+ are fixed.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p(x_{1},...,x_{n}|\theta)$
+\end_inset
+
+ is function of 
 \begin_inset Formula $\theta$
 \end_inset
 
- 
-\series default
-for a 
-\series bold
-\emph on
-fixed data 
-\series default
-\emph default
-sample.
- The 
-\series bold
-likelihood function
-\series default
 .
 \end_layout
 
@@ -457,7 +594,7 @@ status open
 \begin_layout Plain Layout
 
 \size larger
-The likelihood function from Bernoulli trials
+Probabilities from the likelihood!!
 \end_layout
 
 \end_inset
@@ -469,8 +606,8 @@ The likelihood function from Bernoulli trials
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /Users/matvi05/Dropbox/Teaching/StatMetoder2010/F1/eps/LikelihoodBernoulliDifferentData.eps
-	scale 50
+	filename BernLikeIntegrateTail.eps
+	scale 45
 
 \end_inset
 
@@ -487,7 +624,9 @@ The likelihood function from Bernoulli trials
 status open
 
 \begin_layout Plain Layout
-Likelihood
+
+\size larger
+Probabilities from the likelihood!!
 \end_layout
 
 \end_inset
@@ -496,329 +635,12 @@ Likelihood
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-Two different roles played by 
-\begin_inset Formula $p(x_{1},...,x_{n}|\theta)$
-\end_inset
-
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-a function of the data
-\series default
-, 
-\begin_inset Formula $x_{1},...,x_{n}$
-\end_inset
-
-, for a 
-\emph on
-fixed
-\emph default
- 
-\begin_inset Formula $\theta$
-\end_inset
-
-, it is a 
-\series bold
-probability distribution
-\series default
- for the data.
- Here the 
-\emph on
-data are random
-\emph default
- and 
-\begin_inset Formula $\theta$
-\end_inset
-
- is fixed.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-a 
-\emph on
-deterministic function of 
-\emph default
-
-\begin_inset Formula $\theta$
-\end_inset
-
- 
-\series default
-for a 
-\series bold
-\emph on
-fixed data 
-\series default
-\emph default
-sample.
- The 
-\series bold
-likelihood function
-\series default
-.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-The 
-\series bold
-likelihood principle
-\series default
-: Two experiments 
-\begin_inset Formula $E_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $E_{2}$
-\end_inset
-
- that give rise to proportional likelihoods, i.e.
- 
-\begin_inset Formula $L_{1}(\theta)=c\cdot L_{2}(\theta)$
-\end_inset
-
- for all 
-\begin_inset Formula $\theta$
-\end_inset
-
- and some constant 
-\begin_inset Formula $c>0$
-\end_inset
-
-, should provide the same information about 
-\begin_inset Formula $\theta$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Many frequentist methods violate the likelihood principle.
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Observed information
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-The curvature of the likelihood is a measure of the informativeness (precision)
- of the data.
-\end_layout
-
-\begin_layout Itemize
-The 
-\series bold
-observed information
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula 
-\[
-J_{\theta,\mathbf{x}}=-\frac{\partial^{2}\ln L(\theta;\mathbf{x})}{\partial\theta^{2}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Asymptotic approximation of the likelihood function
-\begin_inset Formula 
-\[
-N\left(\hat{\theta},J_{\hat{\theta},\mathbf{x}}^{-1}\right),
-\]
-
-\end_inset
-
-where 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $\hat{\theta}$
-\end_inset
-
- is the Maximum Likelihood Estimate (MLE) of 
-\begin_inset Formula $\theta$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-The normality can be proved heuristically by a second order Taylor expansion
- of the log-likelihood function.
-\end_layout
-
-\begin_layout Itemize
-Example: Bernoulli data
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula 
-\[
-J_{\hat{\theta},\mathbf{x}}=-\left.\frac{\partial^{2}\ln L(\theta;\mathbf{x})}{\partial\theta^{2}}\right|_{\theta=\hat{\theta}}=\frac{s}{\hat{\theta}^{2}}+\frac{f}{(1-\hat{\theta})^{2}}=\frac{n}{\hat{\theta}(1-\hat{\theta})}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Fisher information
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Fisher
-\series default
- 
-\series bold
-information
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula 
-\[
-I_{\theta}=E_{\mathbf{x}|\theta}\left(J_{\theta,\mathbf{x}}\right),
-\]
-
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-where the expectation is with respect to the data distribution.
- 
-\end_layout
-
-\begin_layout Itemize
-The Fisher information is the information that can be 
-\series bold
-expected
-\series default
- before the data is observed.
-\end_layout
-
-\begin_layout Itemize
-The 
-\series bold
-asymptotic distribution of the MLE
-\end_layout
-
 \begin_layout Standard
-\begin_inset Formula 
-\[
-\hat{\theta}|\theta\overset{approx}{\sim}N\left(\theta,\frac{1}{I_{\theta}}\right).
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Example: Bernoulli data
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula 
-\[
-I_{\theta}=\frac{E(s)}{\theta^{2}}+\frac{E(f)}{(1-\theta)^{2}}=\frac{n}{\theta(1-\theta)}.
-\]
+\align center
+\begin_inset Graphics
+	filename nocat.jpg
+	lyxscale 20
+	scale 25
 
 \end_inset
 
@@ -847,37 +669,32 @@ Uncertainty and subjective probability
 
 \begin_deeper
 \begin_layout Itemize
-The likelihood function does 
-\series bold
-not
-\series default
- tell us the probability of different values of 
+Statements like 
+\begin_inset Formula $\mathrm{Pr}$
+\end_inset
+
+
+\begin_inset Formula $(\theta<0.6\vert\text{data})$
+\end_inset
+
+ only make sense if 
 \begin_inset Formula $\theta$
 \end_inset
 
-.
+ is random.
+ 
 \end_layout
 
 \begin_layout Itemize
-In order to talk about 
+But 
 \begin_inset Formula $\theta$
 \end_inset
 
- in probabilistic terms we clearly must regard 
-\begin_inset Formula $\theta$
-\end_inset
-
- as random.
- But 
-\begin_inset Formula $\theta$
-\end_inset
-
- may be something that we know is non-random, 
+ may be
 \shape italic
-e.g.
  
 \shape default
-a fixed natural constant.
+a fixed natural constant?
 \end_layout
 
 \begin_layout Itemize
@@ -890,26 +707,34 @@ Bayesian: doesn't matter if
  is fixed or random
 \series default
 .
- What matters is whether or not You know the value of 
+ 
+\end_layout
+
+\begin_layout Itemize
+Do You know the value of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ or not?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p(\theta)$
+\end_inset
+
+ reflects Your knowledge/
+\series bold
+uncertainty
+\series default
+ about 
 \begin_inset Formula $\theta$
 \end_inset
 
 .
- If 
-\begin_inset Formula $\theta$
-\end_inset
+\end_layout
 
- is uncertainty to You, then You can assign a probability distribution to
- 
-\begin_inset Formula $\theta$
-\end_inset
+\begin_layout Itemize
 
- which reflects Your knowledge about 
-\begin_inset Formula $\theta$
-\end_inset
-
-.
- 
 \series bold
 Subjective probability
 \series default
@@ -917,45 +742,182 @@ Subjective probability
 \end_layout
 
 \begin_layout Itemize
-Different types of prior information
+The statement 
+\begin_inset Formula $p(10\text{th}\,\text{decimal of }\pi=9)=0.1$
+\end_inset
+
+ makes sense.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename deFinettiBook.jpeg
+	lyxscale 20
+	scale 40
+
+\end_inset
+
+
+\begin_inset space \enskip{}
+\end_inset
+
+
+\begin_inset space \enskip{}
+\end_inset
+
+
+\begin_inset space \enskip{}
+\end_inset
+
+
+\begin_inset space \enskip{}
+\end_inset
+
+
+\begin_inset space \enskip{}
+\end_inset
+
+
+\begin_inset space \enskip{}
+\end_inset
+
+
+\begin_inset space \enskip{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename deFinetti.jpg
+	lyxscale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pi_circle.jpg
+	lyxscale 20
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bayesian learning
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Real 
+
 \series bold
-expert information
+Bayesian learning
 \series default
+ about a model parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+state your 
+\series bold
+prior
+\series default
+ knowledge about 
+\begin_inset Formula $\theta$
+\end_inset
+
+ as a probability distribution 
+\begin_inset Formula $p(\theta)$
+\end_inset
+
 .
- Combo of previous studies and experience.
 \end_layout
 
 \begin_layout Itemize
-Vague prior information, or even 
+
 \series bold
-noninformative priors
+collect data
 \series default
+ 
+\begin_inset Formula $x$
+\end_inset
+
+ and form the 
+\series bold
+likelihood
+\series default
+ function 
+\begin_inset Formula $p(x\vert\theta)$
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Reporting priors
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Smoothness priors
+combine
 \series default
+ your prior knowledge 
+\begin_inset Formula $p(\theta)$
+\end_inset
+
+ with the data information 
+\begin_inset Formula $p(x\vert\theta)$
+\end_inset
+
 .
- Regularization.
- Shrinkage.
- Big thing in modern statistics/machine learning.
+ 
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\series bold
+How to combine
+\series default
+ the two sources of information? 
+\series bold
+\color blue
+Bayes' theorem
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename BayesTheoremNeon.jpg
+	lyxscale 20
+	scale 18
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Separator
 
@@ -978,31 +940,43 @@ Learning from data - Bayes' theorem
 
 \begin_deeper
 \begin_layout Itemize
-Given a distribution for 
-\begin_inset Formula $\theta$
-\end_inset
-
-, 
+How do we 
+\series bold
+\color blue
+update
+\series default
+\color inherit
+ from the 
+\series bold
+\color blue
+prior
+\series default
+\color inherit
+ 
 \begin_inset Formula $p(\theta)$
 \end_inset
 
-, how can we learn from data? 
-\end_layout
-
-\begin_layout Itemize
-How do we make the transition from 
-\begin_inset Formula $p(\theta)\rightarrow p(\theta|Data)$
+ to the 
+\series bold
+\color blue
+posterior
+\series default
+\color inherit
+ 
+\begin_inset Formula $p(\theta|Data)$
 \end_inset
 
 ?
 \end_layout
 
 \begin_layout Itemize
-One form of 
+
 \series bold
+\color blue
 Bayes' theorem
 \series default
- reads (
+\color inherit
+ for events 
 \begin_inset Formula $A$
 \end_inset
 
@@ -1010,7 +984,7 @@ Bayes' theorem
 \begin_inset Formula $B$
 \end_inset
 
- are events)
+
 \begin_inset Formula 
 \[
 p(A|B)=\frac{p(B|A)p(A)}{p(B)}.
@@ -1018,25 +992,12 @@ p(A|B)=\frac{p(B|A)p(A)}{p(B)}.
 
 \end_inset
 
-So that Bayes' theorem 'reverses the conditioning', i.e.
- takes us from 
-\begin_inset Formula $p(B|A)$
-\end_inset
 
- to 
-\begin_inset Formula $p(A|B)$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Itemize
-Let 
-\begin_inset Formula $A=\theta$
-\end_inset
-
- and 
-\begin_inset Formula $B=Data$
+Bayes' Theorem for a model parameter 
+\begin_inset Formula $\theta$
 \end_inset
 
 
@@ -1051,15 +1012,44 @@ p(\theta|Data)=\frac{p(Data|\theta)p(\theta)}{p(Data)}.
 \end_layout
 
 \begin_layout Itemize
-Interpreting the likelihood function as a probability density for 
+The prior 
+\begin_inset Formula $p(\theta)$
+\end_inset
+
+ is the hero that converts the likelihood function 
+\begin_inset Formula $p(Data|\theta)$
+\end_inset
+
+ into a posterior probability density 
+\begin_inset Formula $p(\theta|Data)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+A probability distribution for 
 \begin_inset Formula $\theta$
 \end_inset
 
- is just as wrong as ignoring the factor 
-\begin_inset Formula $p(A)/p(B)$
-\end_inset
+ is extremely useful.
+ 
+\series bold
+Decision making
+\series default
+.
+\end_layout
 
- in Bayes' theorem.
+\begin_layout Itemize
+
+\series bold
+No prior - no posterior - no useful inferences
+\series default
+ 
+\series bold
+- no fun
+\series default
+.
 \end_layout
 
 \end_deeper
@@ -1074,7 +1064,7 @@ status open
 \begin_layout Plain Layout
 
 \size larger
-Bayes' theorem - medical diagnosis
+Bayes' theorem for medical diagnosis
 \end_layout
 
 \end_inset
@@ -1096,6 +1086,9 @@ A =
 \end_layout
 
 \begin_layout Itemize
+\begin_inset Formula $p(A)=0.0001$
+\end_inset
+
 
 \family roman
 \series medium
@@ -1108,32 +1101,41 @@ A =
 \uwave off
 \noun off
 \color none
+.
+ 
 \begin_inset Formula $p(B|A)=0.9$
 \end_inset
 
+.
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
 
-\end_layout
-
-\begin_layout Itemize
 \begin_inset Formula $p(B|A^{c})=0.05$
 \end_inset
 
-
+.
+ 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $p(A)=0.0001$
-\end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-Probability of being sick given a positive test:
+\color blue
+Probability of being sick
+\color inherit
+ given a positive test:
 \begin_inset Formula 
 \begin{align*}
-p(A|B) & =\frac{p(B|A)p(A)}{p(B)}=\frac{p(B|A)p(A)}{p(B|A)p(A)+p(B|A^{c})p(A^{c})}\\
- & =\frac{0.9\cdot0.0001}{0.9\cdot0.0001+0.05\cdot(1-0.0001)}\approx0.001797.
+p(A|B) & =\frac{p(B|A)p(A)}{p(B)}=\frac{p(B|A)p(A)}{p(B|A)p(A)+p(B|A^{c})p(A^{c})}\approx0.001797.
 \end{align*}
 
 \end_inset
@@ -1142,11 +1144,15 @@ p(A|B) & =\frac{p(B|A)p(A)}{p(B)}=\frac{p(B|A)p(A)}{p(B|A)p(A)+p(B|A^{c})p(A^{c}
 \end_layout
 
 \begin_layout Itemize
-Very improbable that you are sick, but nearly 
+Probably not sick, but 
 \begin_inset Formula $18$
 \end_inset
 
- times more probable than before taking the test.
+ times more probable than before the test.
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1166,72 +1172,103 @@ Morale of the story: If you want
  is also very important.
 \end_layout
 
-\end_deeper
-\begin_layout Separator
+\begin_layout Quote
+
+\series bold
+\emph on
+\color blue
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="right" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Quote
+
+\series bold
+\emph on
+\color blue
+\begin_inset Quotes eld
+\end_inset
+
+You can't enjoy the Bayesian omelette 
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" usebox="none">
+\begin_inset Text
+
+\begin_layout Quote
+
+\series bold
+\emph on
+\color blue
+\begin_inset Graphics
+	filename omelettes.jpg
+	lyxscale 10
+	scale 20
+
+\end_inset
+
 
 \end_layout
 
-\begin_layout Frame
-\begin_inset Argument 4
-status open
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Quote
+
+\series bold
+\emph on
+\color blue
+without breaking the Bayesian eggs
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-Generalized Bayes' theorem
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-From your basic statistics textbook:
-\begin_inset Formula 
-\[
-p(A_{i}|B)=\frac{p(B|A_{i})p(A_{i})}{p(B)}=\frac{p(B|A_{i})p(A_{i})}{\sum_{i=1}^{k}p(B|A_{i})p(A_{i})}.
-\]
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Leonard Jimmie Savage
+\end_layout
 
 \end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Itemize
-Let 
-\begin_inset Formula $\theta_{1},...,\theta_{k}$
 \end_inset
-
- be 
-\begin_inset Formula $k$
-\end_inset
-
- different values on a parameter 
-\begin_inset Formula $\theta$
-\end_inset
-
-.
- Bayes' Theorem:
-\begin_inset Formula 
-\[
-p(\theta_{i}|Data)=\frac{p(Data|\theta_{i})p(\theta_{i})}{p(Data)}=\frac{p(Data|\theta_{i})p(\theta_{i})}{\sum_{i=1}^{k}p(Data|\theta_{i})p(\theta_{i})}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-If 
-\begin_inset Formula $\theta$
-\end_inset
-
- takes on a continuum of values
-\begin_inset Formula 
-\[
-p(\theta|Data)=\frac{p(Data|\theta)p(\theta)}{\int_{\theta}p(Data|\theta)p(\theta)d\theta}.
-\]
+</cell>
+</row>
+</lyxtabular>
 
 \end_inset
 
@@ -1258,15 +1295,38 @@ The normalizing constant is not important
 
 \begin_deeper
 \begin_layout Itemize
+Bayes theorem
+\begin_inset Formula 
+\[
+p(\theta|Data)=\frac{p(Data|\theta)p(\theta)}{p(Data)}=\frac{p(Data|\theta)p(\theta)}{\int_{\theta}p(Data|\theta)p(\theta)d\theta}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The integral 
+\begin_inset Formula $p(Data)=\int_{\theta}p(Data|\theta)p(\theta)d\theta$
+\end_inset
+
+ can make you cry.
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Formula $p(Data)$
 \end_inset
 
- in Bayes' theorem is just a constant that makes 
+ is just a constant that makes 
 \begin_inset Formula $p(\theta|Data)$
 \end_inset
 
  integrate to one.
- Example: 
+\end_layout
+
+\begin_layout Itemize
+Example: 
 \begin_inset Formula $x\sim N(\mu,\sigma^{2})$
 \end_inset
 
@@ -1293,8 +1353,27 @@ p(x)\propto\exp\left[-\frac{1}{2\sigma^{2}}(x-\mu)^{2}\right].
 
 \end_layout
 
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Great theorems make great tattoos
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
-Short form of Bayes' theorem
+All you need to know:
 \begin_inset Formula 
 \[
 p(\theta|Data)\propto p(Data|\theta)p(\theta)
@@ -1313,125 +1392,15 @@ or
 
 \end_layout
 
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-A great theory makes a great tattoo
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
 	filename /Users/matvi05/Dropbox/Seminars/Umea2013/BayesTattoo.png
-	scale 60
+	scale 40
 
 \end_inset
 
 
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Bayesian learning
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Suppose: you already have 
-\begin_inset Formula $x_{1,}x_{2},...,x_{n}$
-\end_inset
-
- data points, and the corresponding posterior 
-\begin_inset Formula $p(\theta|x_{1},...,x_{n})$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Now, a fresh additional data point 
-\begin_inset Formula $x_{n+1}$
-\end_inset
-
- arrives.
-\end_layout
-
-\begin_layout Itemize
-The posterior based on all available data is
-\begin_inset Formula 
-\[
-p(\theta|x_{1,}...,x_{n+1})\propto p(x_{n+1}|\theta,x_{1},...,x_{n})p(\theta|x_{1},...,x_{n}).
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-The following are therefore equivalent:
-\end_layout
-
-\begin_layout Itemize
-Analyzing the likelihood of all data 
-\begin_inset Formula $x_{1,}...,x_{n+1}$
-\end_inset
-
- with the prior based on no data 
-\begin_inset Formula $p(\theta)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Analyzing the likelihood of the fresh data point 
-\begin_inset Formula $x_{n+1}$
-\end_inset
-
- with the 'prior' equal to the posterior based on the old data 
-\begin_inset Formula $p(\theta|x_{1},...,x_{n})$
-\end_inset
-
-.
- 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Yesterday's posterior is today's prior
-\series default
-.
- 
 \end_layout
 
 \end_deeper
@@ -1485,7 +1454,7 @@ Prior
 
 \begin_inset Formula 
 \[
-p(y)=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}y^{\alpha-1}(1-y)^{\beta-1}\text{ \ for }0\leq y\leq1\text{.}
+p(\theta)=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\theta^{\alpha-1}(1-\theta)^{\beta-1}\text{ \ for }0\leq\theta\leq1\text{.}
 \]
 
 \end_inset
@@ -1512,12 +1481,16 @@ p(\theta|x_{1},...,x_{n}) & \propto & p(x_{1},...,x_{n}|\theta)p(\theta)\\
 \end_layout
 
 \begin_layout Itemize
-But this is recognized as proportional to the 
+This is proportional to the 
 \begin_inset Formula $Beta(\alpha+s,\beta+f)$
 \end_inset
 
  density.
- That is, the 
+ 
+\end_layout
+
+\begin_layout Itemize
+The 
 \series bold
 prior-to-posterior
 \series default
@@ -1562,6 +1535,10 @@ George has gone through his collection of
 \end_inset
 
  of them to be spam.
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1579,6 +1556,10 @@ Let
 \end_inset
 
 .
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1714,5 +1695,412 @@ Spam data: Posterior convergence
 \end_layout
 
 \end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Normal data, known variance - uniform prior
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Model: 
+\begin_inset Formula 
+\[
+x_{1},...,x_{n}|\theta,\sigma^{2}\overset{iid}{\sim}N(\theta,\sigma^{2}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Prior: 
+\begin_inset Formula 
+\[
+p(\theta)\propto c\text{ (a constant)}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Likelihood 
+\begin_inset Formula 
+\begin{eqnarray*}
+p(x_{1},...,x_{n}|\theta,\sigma^{2}) & = & \Pi_{i=1}^{n}(2\pi\sigma^{2})^{-1/2}\exp\left[-\frac{1}{2\sigma^{2}}(x_{i}-\theta)^{2}\right]\\
+ & \propto & \exp\left[-\frac{1}{2(\sigma^{2}/n)}(\theta-\bar{x})^{2}\right].
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Posterior
+\begin_inset Formula 
+\[
+\theta|x_{1},...,x_{n}\sim N(\bar{x},\sigma^{2}/n)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Normal data, known variance - normal prior
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Prior 
+\begin_inset Formula 
+\[
+\theta\sim N(\mu_{0},\tau_{0}^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Posterior
+\begin_inset Formula 
+\begin{eqnarray*}
+p(\theta|x_{1},...,x_{n}) & \propto & p(x_{1},...,x_{n}|\theta,\sigma^{2})p(\theta)\\
+ & \propto & N(\theta|\mu_{n},\tau_{n}^{2}),
+\end{eqnarray*}
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+\frac{1}{\tau_{n}^{2}}=\frac{n}{\sigma^{2}}+\frac{1}{\tau_{0}^{2}},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mu_{n}=w\bar{x}+(1-w)\mu_{0},
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+w=\frac{\frac{n}{\sigma^{2}}}{\frac{n}{\sigma^{2}}+\frac{1}{\tau_{0}^{2}}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Normal data, known variance - normal prior
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Formula $\theta\sim N(\mu_{0},\tau_{0}^{2})\overset{x_{1},...,x_{n}}{\Longrightarrow}\theta|x\sim N(\mu_{n},\tau_{n}^{2}).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Posterior precision = Data precision + Prior precision
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Posterior mean =
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $\frac{\text{Data precision}}{\text{Posterior precision}}$
+\end_inset
+
+(Data mean) + 
+\begin_inset Formula $\frac{\text{Prior precision}}{\text{Posterior precision}}$
+\end_inset
+
+(Prior mean) 
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Canadian wages data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Data on wages for 
+\begin_inset Formula $205$
+\end_inset
+
+ Canadian workers.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CanadianaWagesDataHist.eps
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Canadian wages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Model
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{1},...,X_{n}|\theta\sim N(\theta,\sigma^{2}),\text{ }\sigma^{2}=0.4
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Prior
+\begin_inset Formula 
+\[
+\theta\sim N(\mu_{0},\tau_{0}^{2}),\text{ }\mu_{0}=12\text{ and }\tau_{0}=10
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Posterior
+\begin_inset Formula 
+\[
+\theta|x_{1},...,x_{n}\sim N\left(\mu_{n},\tau_{n}^{2}\right),
+\]
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+where 
+\begin_inset Formula $\mu_{n}=w\bar{x}+(1-w)\mu_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+For the Canadian wage data:
+\begin_inset Formula 
+\[
+w=\frac{\sigma^{-2}n}{\sigma^{-2}n+\tau_{0}^{-2}}=\frac{2.5\cdot205}{2.5\cdot205+1/100}=0.999.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mu_{n}=w\bar{x}+(1-w)\mu_{0}=0.999\cdot13.489+(1-0.999)\cdot12\approx13.489
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\tau_{n}^{2}=\left(2.5\cdot205+1/100\right)^{-1}=0.00195
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Canadian wages data - model fit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CanadianaWagesDataHistWithFit.eps
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
 \end_body
 \end_document
