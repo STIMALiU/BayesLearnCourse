@@ -219,12 +219,16 @@ Marginalization
 
 \begin_deeper
 \begin_layout Itemize
-Models usually contains several parameter 
+Models with multiple parameters 
 \begin_inset Formula $\theta_{1},\theta_{2},...$
 \end_inset
 
 .
- Examples: 
+ 
+\end_layout
+
+\begin_layout Itemize
+Examples: 
 \begin_inset Formula $x_{i}\overset{iid}{\sim}N(\theta,\sigma^{2})$
 \end_inset
 
@@ -232,7 +236,13 @@ Models usually contains several parameter
 \end_layout
 
 \begin_layout Itemize
-The Bayesian computes the joint posterior distribution
+
+\series bold
+\color blue
+Joint posterior distribution
+\series default
+\color inherit
+
 \begin_inset Formula 
 \[
 p(\theta_{1},\theta_{2},...,\theta_{p}|y)\propto p(y|\theta_{1},\theta_{2},...,\theta_{p})p(\theta_{1},\theta_{2},...,\theta_{p}).
@@ -257,13 +267,23 @@ Complicated to graph the joint posterior.
 \end_layout
 
 \begin_layout Itemize
-Some of the parameters may not be of direct interest (nuisance parameters),
- but are nevertheless needed in the model.
+Some of the parameters may not be of direct interest (
+\series bold
+\color blue
+nuisance
+\series default
+\color inherit
+).
 \end_layout
 
 \begin_layout Itemize
-No problem: just integrate them out (marginalize with respect to, average
- over) all nuisance parameters.
+Integrate out (
+\series bold
+\color blue
+marginalize
+\series default
+\color inherit
+) all nuisance parameters.
 \end_layout
 
 \begin_layout Itemize
@@ -271,12 +291,16 @@ Example:
 \begin_inset Formula $\theta=(\theta_{1},\theta_{2})^{\prime}$
 \end_inset
 
-, where 
+, 
 \begin_inset Formula $\theta_{2}$
 \end_inset
 
  is a nuisance.
- We are interested in the marginal posterior of 
+ 
+\series bold
+Marginal posterior
+\series default
+ of 
 \begin_inset Formula $\theta_{1}$
 \end_inset
 
@@ -311,7 +335,11 @@ Normal model with unknown variance - Uniform prior
 
 \begin_deeper
 \begin_layout Itemize
-Model:
+
+\series bold
+Model
+\series default
+
 \begin_inset Formula 
 \[
 x_{1},...,x_{n}\overset{iid}{\sim}N(\theta,\sigma^{2})
@@ -323,7 +351,11 @@ x_{1},...,x_{n}\overset{iid}{\sim}N(\theta,\sigma^{2})
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 Prior
+\series default
+
 \begin_inset Formula 
 \[
 p(\theta,\sigma^{2})\propto(\sigma^{2})^{-1}
@@ -335,7 +367,11 @@ p(\theta,\sigma^{2})\propto(\sigma^{2})^{-1}
 \end_layout
 
 \begin_layout Itemize
-Posterior:
+
+\series bold
+Posterior
+\series default
+
 \begin_inset Formula 
 \begin{gather*}
 \theta|\sigma^{2},\mathbf{x}\sim N\left(\bar{x},\frac{\sigma^{2}}{n}\right)\\
@@ -365,7 +401,7 @@ is the usual sample variance.
 status open
 
 \begin_layout Plain Layout
-Normal model with unknown variance - Uniform prior, cont.
+Normal model with unknown variance - Uniform prior
 \end_layout
 
 \end_inset
@@ -375,7 +411,13 @@ Normal model with unknown variance - Uniform prior, cont.
 
 \begin_deeper
 \begin_layout Itemize
-Simulating the posterior of the normal model with non-informative prior:
+
+\series bold
+\color blue
+Simulating
+\series default
+\color inherit
+ the posterior of the normal model with non-informative prior:
 \end_layout
 
 \begin_deeper
@@ -511,7 +553,7 @@ status collapsed
 \end_deeper
 \begin_layout Itemize
 The sampling is implemented in the R program 
-\family sans
+\family typewriter
 NormalNonInfoPrior.R
 \end_layout
 
@@ -525,6 +567,109 @@ We may derive the marginal posterior analytically as
 \end_inset
 
  
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Normal model - normal prior
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Model
+\begin_inset Formula 
+\[
+y_{1},...,y_{n}|\theta,\sigma^{2}\overset{iid}{\sim}N(\theta,\sigma^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Conjugate prior
+\begin_inset Formula 
+\begin{gather*}
+\theta|\sigma^{2}\sim N\left(\mu_{0},\frac{\sigma^{2}}{\kappa_{0}}\right)\\
+\sigma^{2}\sim Inv\text{-}\chi^{2}(\nu_{0},\sigma_{0}^{2})
+\end{gather*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Normal model with normal prior
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Posterior 
+\begin_inset Formula 
+\begin{gather*}
+\theta|y,\sigma^{2}\sim N\left(\mu_{n},\frac{\sigma^{2}}{\kappa_{n}}\right)\\
+\sigma^{2}|y\sim Inv\text{-}\chi^{2}(\nu_{n},\sigma_{n}^{2}).
+\end{gather*}
+
+\end_inset
+
+where
+\begin_inset Formula 
+\begin{eqnarray*}
+\mu_{n} & = & \frac{\kappa_{0}}{\kappa_{0}+n}\mu_{0}+\frac{n}{\kappa_{0}+n}\bar{y}\\
+\kappa_{n} & = & \kappa_{0}+n\\
+\nu_{n} & = & \nu_{0}+n\\
+\nu_{n}\sigma_{n}^{2} & = & \nu_{0}\sigma_{0}^{2}+(n-1)s^{2}+\frac{\kappa_{0}n}{\kappa_{0}+n}(\bar{y}-\mu_{0})^{2}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Marginal posterior
+\begin_inset Formula 
+\begin{gather*}
+\theta\sim t_{\nu_{n}}\left(\mu_{n},\sigma_{n}^{2}/\kappa_{n}\right)
+\end{gather*}
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -573,7 +718,13 @@ th category.
 \end_layout
 
 \begin_layout Itemize
-Multinomial model:
+
+\series bold
+\color blue
+Multinomial model
+\series default
+\color inherit
+:
 \begin_inset Formula 
 \[
 p(y|\theta)\propto\prod_{k=1}^{K}\theta_{k}^{y_{k}},\text{ where }\sum_{k=1}^{K}\theta_{j}=1.
@@ -586,10 +737,21 @@ p(y|\theta)\propto\prod_{k=1}^{K}\theta_{k}^{y_{k}},\text{ where }\sum_{k=1}^{K}
 
 \begin_layout Itemize
 
+\series bold
 \shape italic
-Conjugate prior
+\emph on
+\color blue
+Conjugate
+\series default
+ 
+\series bold
+prior
+\series default
 \shape default
-: 
+\color inherit
+:
+\emph default
+ 
 \begin_inset Formula $\mathrm{Dirichlet}(\alpha_{1},...,\alpha_{K})$
 \end_inset
 
@@ -639,7 +801,7 @@ Note that
 status open
 
 \begin_layout Plain Layout
-Multinomial model with Dirichlet prior, cont.
+Multinomial model with Dirichlet prior
 \end_layout
 
 \end_inset
@@ -654,25 +816,26 @@ Multinomial model with Dirichlet prior, cont.
 \end_inset
 
  (uniform and proper).
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-Simulating from the Dirichlet distribution:
+
+\series bold
+\color blue
+Simulating
+\series default
+\color inherit
+ from the Dirichlet distribution:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 Generate 
-\begin_inset Formula $x_{1}\sim Gamma(\alpha_{1},\beta),...,x_{K}\sim Gamma(\alpha_{K},\beta)$
-\end_inset
-
-, independently.
- Any 
-\begin_inset Formula $\beta$
-\end_inset
-
- will do as long it is the same for all 
-\begin_inset Formula $x_{i}$
+\begin_inset Formula $x_{1}\sim Gamma(\alpha_{1},1),...,x_{K}\sim Gamma(\alpha_{K},1)$
 \end_inset
 
 .
@@ -695,15 +858,26 @@ Compute
 \end_inset
 
  distribution.
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
+\series bold
 \shape italic
+\emph on
+\color blue
 Prior-to-Posterior updating
+\series default
 \shape default
+\color inherit
 :
+\emph default
+
 \begin_inset Formula 
 \begin{gather*}
 Model\text{: \ \ \ \ }y=(y_{1},...y_{K})\sim\mathrm{Multin}(n;\theta_{1},...,\theta_{K})\\
@@ -792,7 +966,7 @@ Posterior:
 \noun off
 \color none
 
-\begin_inset Formula $(\theta_{1},\theta_{2},\theta_{3},\theta_{4})|\mathbf{y}\sim\mathrm{Dirichlet(179,261,72,51)}$
+\begin_inset Formula $(\theta_{1},\theta_{2},\theta_{3},\theta_{4})|\mathbf{y}\sim\mathrm{Dirichlet(195,245,72,51)}$
 \end_inset
 
 
@@ -843,7 +1017,7 @@ alpha <- c(15,15,10,10) # Dirichlet prior hyperparameters
 
 \begin_layout Plain Layout
 
-nIter <- 100 # Number of posterior draws
+nIter <- 1000 # Number of posterior draws
 \end_layout
 
 \begin_layout Plain Layout
@@ -1044,8 +1218,11 @@ frametitle{R code for market share example, cont}
 
 \begin_layout Plain Layout
 
-<<MultinomialPrior2Post3, echo = FALSE, eval=TRUE, out.width = 275 px, out.height
- = 220 px>>=
+<<MultinomialPrior2Post3, echo = FALSE, eval=TRUE, out.height='0.5
+\backslash
+
+\backslash
+linewidth'>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1094,12 +1271,20 @@ end{frame}
 
 \end_layout
 
+\begin_layout Separator
+
+\end_layout
+
 \begin_layout Frame
 \begin_inset Argument 4
 status open
 
 \begin_layout Plain Layout
-Multivariate normal - known covariance matrix
+Multivariate normal - known 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1109,7 +1294,13 @@ Multivariate normal - known covariance matrix
 
 \begin_deeper
 \begin_layout Itemize
-Model:
+
+\series bold
+\color blue
+Model
+\series default
+\color inherit
+
 \begin_inset Formula 
 \[
 y_{1},...,y_{n}\overset{iid}{\sim}N_{p}(\mu,\Sigma)
@@ -1125,7 +1316,11 @@ where
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 Density
+\series default
+
 \begin_inset Formula 
 \[
 p(y|\mu,\Sigma)=\left|\Sigma\right|^{-1/2}\exp\left(-\frac{1}{2}(y-\mu)'\Sigma^{-1}(y-\mu)\right)
@@ -1137,7 +1332,13 @@ p(y|\mu,\Sigma)=\left|\Sigma\right|^{-1/2}\exp\left(-\frac{1}{2}(y-\mu)'\Sigma^{
 \end_layout
 
 \begin_layout Itemize
-Likelihood:
+
+\series bold
+\color blue
+Likelihood
+\series default
+\color inherit
+
 \begin_inset Formula 
 \begin{align*}
 p(y_{1},...,y_{n}|\mu,\Sigma) & \propto\left|\Sigma\right|^{-n/2}\exp\left(-\frac{1}{2}\sum_{i=1}^{n}(y_{i}-\mu)'\Sigma^{-1}(y_{i}-\mu)\right)\\
@@ -1163,7 +1364,11 @@ where
 status open
 
 \begin_layout Plain Layout
-Multivariate normal - known covariance matrix, cont.
+Multivariate normal - known 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1173,7 +1378,13 @@ Multivariate normal - known covariance matrix, cont.
 
 \begin_deeper
 \begin_layout Itemize
-Prior:
+
+\series bold
+\color blue
+Prior
+\series default
+\color inherit
+
 \begin_inset Formula 
 \[
 \mu\sim N_{p}(\mu_{0},\Lambda_{0})
@@ -1185,7 +1396,13 @@ Prior:
 \end_layout
 
 \begin_layout Itemize
-Posterior:
+
+\series bold
+\color blue
+Posterior
+\series default
+\color inherit
+
 \begin_inset Formula 
 \[
 \mu|y\sim N(\mu_{n},\Lambda_{n})
@@ -1211,7 +1428,11 @@ Note how the posterior mean is (matrix) weighted average of prior and data
 \end_layout
 
 \begin_layout Itemize
-Noninformative prior: let the precision go to zero: 
+
+\series bold
+Noninformative prior
+\series default
+: let the precision go to zero: 
 \begin_inset Formula $\Lambda_{0}^{-1}\rightarrow0$
 \end_inset
 
@@ -1223,68 +1444,5 @@ Noninformative prior: let the precision go to zero:
 
 \end_layout
 
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Multivariate normal - Conjugate prior
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Conjugate prior is Normal-IW
-\begin_inset Formula $(\mu_{0},\kappa_{0},\Lambda_{0},\nu_{0})$
-\end_inset
-
-
-\begin_inset Formula 
-\begin{align*}
-\Sigma & \sim Inv-Wishart(\Lambda_{0},\nu_{0})\\
-\mu|\Sigma & \sim N(\mu_{0},\kappa_{0}^{-1}\Sigma)
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Density:
-\begin_inset Formula 
-\[
-\left|\Sigma\right|^{-[(\nu_{0}+p)/2+1]}\exp\left(-\frac{1}{2}tr(\Lambda_{0}\Sigma^{-1})-\frac{\kappa_{0}}{2}(\mu-\mu_{0})'\Sigma^{-1}(\mu-\mu_{0})\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Posterior is Normal-IW
-\begin_inset Formula $(\mu_{n},\kappa_{n},\Lambda_{n},\nu_{n})$
-\end_inset
-
-
-\begin_inset Formula 
-\begin{align*}
-\mu_{n} & =\frac{\kappa_{0}}{\kappa_{0}+n}\mu_{0}+\frac{n}{\kappa_{0}+n}\bar{y}\\
-\kappa_{n} & =\kappa_{0}+n\\
-\nu_{n} & =\nu_{0}+n\\
-\Lambda_{n} & =\Lambda_{0}+S+\frac{\kappa_{0}n}{\kappa_{0}+n}(\bar{y}-\mu_{0})(\bar{y}-\mu_{0})'
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \end_body
 \end_document
