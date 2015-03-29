@@ -357,7 +357,7 @@ Prior-to-Posterior mapping:
 status open
 
 \begin_layout Plain Layout
-Poisson example - Number of bomb hits in London
+Poisson example - Bomb hits in London
 \end_layout
 
 \end_inset
@@ -444,7 +444,7 @@ Poisson bomb hits in London
 \align center
 \begin_inset Graphics
 	filename BombHitsPoisson.eps
-	scale 42
+	scale 40
 	rotateAngle 270
 
 \end_inset
@@ -597,7 +597,7 @@ Illustration of different interval types
 \begin_inset Graphics
 	filename IntervalTypes.png
 	lyxscale 40
-	scale 27
+	scale 25
 
 \end_inset
 

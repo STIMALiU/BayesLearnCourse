@@ -357,7 +357,7 @@ Prior-to-Posterior mapping:
 status open
 
 \begin_layout Plain Layout
-Poisson example - Number of bomb hits in London
+Poisson example - Bomb hits in London
 \end_layout
 
 \end_inset
@@ -462,7 +462,7 @@ Poisson bomb hits in London
 status open
 
 \begin_layout Plain Layout
-Poisson example - posterior probability intervals
+Poisson example - posterior intervals
 \end_layout
 
 \end_inset
