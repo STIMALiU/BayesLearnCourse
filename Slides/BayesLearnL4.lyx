@@ -177,14 +177,13 @@ Lecture overview
 
 \begin_deeper
 \begin_layout Itemize
+
+\series bold
+\color blue
 Prediction
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-Bernoulli model
-\end_layout
-
 \begin_layout Itemize
 Normal model
 \end_layout
@@ -195,6 +194,9 @@ More complex examples
 
 \end_deeper
 \begin_layout Itemize
+
+\series bold
+\color blue
 Decision theory
 \end_layout
 
@@ -222,7 +224,7 @@ Point estimation as a decision problem
 status open
 
 \begin_layout Plain Layout
-Prediction
+Prediction/Forecasting
 \end_layout
 
 \end_inset
@@ -232,32 +234,30 @@ Prediction
 
 \begin_deeper
 \begin_layout Itemize
-Using the estimated model for 
+
 \series bold
-forecasting
+\color blue
+Posterior predictive distribution
 \series default
- a future observation 
+\color inherit
+ for future 
 \begin_inset Formula $\tilde{y}$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Posterior predictive distribution
-\series default
- (
+ given observed data 
 \begin_inset Formula $y$
 \end_inset
 
- denotes available data at the time of forecasting)
+
 \begin_inset Formula 
 \[
 p(\tilde{y}|y)=\int_{\theta}p(\tilde{y}|\theta,y)p(\theta|y)d\theta
 \]
 
+\end_inset
+
+
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -277,83 +277,34 @@ p(\tilde{y}|y)=\int_{\theta}p(\tilde{y}|\theta)p(\theta|y)d\theta
 \end_inset
 
 
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-The uncertainty that comes from not knowing 
-\begin_inset Formula $\theta$
-\end_inset
-
+The 
+\series bold
+\color blue
+parameter uncertainty
+\series default
+\color inherit
  is represented in 
 \begin_inset Formula $p(\tilde{y}|y)$
 \end_inset
 
  by 
 \series bold
+\color blue
 averaging over
 \series default
+\color inherit
  
 \begin_inset Formula $p(\theta|y)$
 \end_inset
 
 .
- 
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Prediction - Bernoulli data
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Let 
-\begin_inset Formula $y=\sum\nolimits _{i=1}^{n}y_{i}$
-\end_inset
-
- and 
-\begin_inset Formula $\tilde{y}$
-\end_inset
-
- the outcome of the next trial 
-\begin_inset Formula 
-\begin{eqnarray*}
-p(\tilde{y} & = & 1|y)=\int_{\theta}p(\tilde{y}=1|\theta)p(\theta|y)d\theta\\
- & = & \int_{\theta}\theta p(\theta|y)d\theta=E_{\theta|y}(\theta)=\frac{\alpha+y}{\alpha+\beta+n}.
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Uniform prior (
-\begin_inset Formula $\alpha=\beta=1$
-\end_inset
-
-)
-\begin_inset Formula 
-\[
-p(\tilde{y}=1|y)=\frac{y+1}{n+2}.
-\]
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -543,34 +494,24 @@ Predictive distribution - Normal model and uniform prior
 \end_layout
 
 \begin_layout Itemize
-The sum of two normal random variables follows a normal distribution, so
- 
-\begin_inset Formula $\tilde{y}$
-\end_inset
-
- follows a normal distribution with 
+The sum of two normal random variables is normal so 
 \begin_inset Formula 
 \begin{eqnarray*}
 E(\tilde{y}|y) & = & \bar{y}\\
-V(\tilde{y}|y) & = & \frac{\sigma^{2}}{n}+\sigma^{2}=\sigma^{2}\left(1+\frac{1}{n}\right).
+V(\tilde{y}|y) & = & \frac{\sigma^{2}}{n}+\sigma^{2}=\sigma^{2}\left(1+\frac{1}{n}\right)
 \end{eqnarray*}
 
 \end_inset
 
- 
-\end_layout
 
-\begin_layout Itemize
-Note that the estimation uncertainty (
-\begin_inset Formula $\sigma^{2}/n$
+\begin_inset Formula 
+\[
+\tilde{y}\vert y\sim N\left[\bar{y},\sigma^{2}\left(1+\frac{1}{n}\right)\right]
+\]
+
 \end_inset
 
-) is typically much less important than the intrinsic population uncertainty,
- 
-\begin_inset Formula $\sigma^{2}$
-\end_inset
 
-.
 \end_layout
 
 \end_deeper
@@ -645,7 +586,11 @@ V(\tilde{y}|y) & = & E_{\theta|y}[V_{\tilde{y}|\theta}(\tilde{y})]+V_{\theta|y}[
 \end_layout
 
 \begin_layout Itemize
-In summary: 
+In 
+\color blue
+summary
+\color inherit
+: 
 \begin_inset Formula 
 \[
 \tilde{y}|y\sim N(\mu_{n},\sigma^{2}+\tau_{n}^{2}).
@@ -678,8 +623,10 @@ Bayesian prediction in more complex models
 \begin_layout Itemize
 
 \series bold
+\color blue
 Autoregressive process
 \series default
+\color inherit
 
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -746,8 +693,10 @@ Repeat for new
 \begin_layout Itemize
 
 \series bold
+\color blue
 Regression trees
 \series default
+\color inherit
 .
  
 \end_layout
@@ -784,30 +733,72 @@ Predicting auction prices on eBay
 
 \begin_deeper
 \begin_layout Itemize
-Problem: Predicting the auctioned price in eBay coin auctions.
+Problem: 
+\color blue
+Predicting the auctioned price
+\color inherit
+ in eBay coin auctions.
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-Data: Bid from 
+
+\color blue
+Data
+\color inherit
+: Bid from 
 \begin_inset Formula $1000$
 \end_inset
 
  auctions on eBay.
- The highest bid is not observed.
- The lowest bids are also not observed because of the seller's reservation
- price.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The highest bid is not observed.
+ 
 \end_layout
 
 \begin_layout Itemize
-Covariates: auction-specific, e.g.
+The lowest bids are also not observed because of the seller's reservation
+ price.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\color blue
+Covariates
+\color inherit
+: auction-specific, e.g.
  Book value from catalog, seller's reservation price, quality of sold object,
  rating of seller, powerseller, verified seller ID etc
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-Buyers are strategic.
+Buyers are 
+\color blue
+strategic
+\color inherit
+.
  Their bids does not fully reflect their valuation.
- Game theory needed in the econometric model.
+ 
+\color blue
+Game theory
+\color inherit
+.
  
 \series bold
 Very
@@ -835,7 +826,11 @@ Simulating auction prices on eBay, cont.
 
 \begin_deeper
 \begin_layout Itemize
-A draw from the posterior predictive distibution of an auction's price:
+A draw from the 
+\color blue
+posterior predictive distibution
+\color inherit
+ of an auction's price:
 \end_layout
 
 \begin_layout Enumerate
@@ -847,7 +842,7 @@ Simulate a draw
 \begin_inset Formula $\theta$
 \end_inset
 
-
+ (using MCMC)
 \end_layout
 
 \begin_layout Enumerate
@@ -855,7 +850,11 @@ Simulate the number of bidders conditional on
 \begin_inset Formula $\theta$
 \end_inset
 
- (which contains the intensity parameter of a Poisson process)
+ (Poisson process)
+\end_layout
+
+\begin_layout Enumerate
+Simulate the bidders' valuations.
 \end_layout
 
 \begin_layout Enumerate
@@ -863,11 +862,11 @@ Simulate a complete auction bid sequence,
 \begin_inset Formula $\mathbf{b}^{(1)},$
 \end_inset
 
- conditional on 
+ conditional on the valuations and 
 \begin_inset Formula $\theta=\theta^{(1)}$
 \end_inset
 
-, for the bidders generated in Step 2.
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -933,8 +932,20 @@ Let
 \begin_inset Formula $\theta$
 \end_inset
 
- be an unknown quantity.
- State of nature.
+ be an 
+\series bold
+\color blue
+unknown quantity
+\series default
+\color inherit
+.
+ 
+\series bold
+\color blue
+State of nature
+\series default
+\color inherit
+.
  Examples: Future inflation, Global temperature, Disease.
 \end_layout
 
@@ -943,7 +954,13 @@ Let
 \begin_inset Formula $a\in\mathcal{A}$
 \end_inset
 
- be an action.
+ be an 
+\series bold
+\color blue
+action
+\series default
+\color inherit
+.
  Ex: Interest rate, Energy tax, Surgery.
 \end_layout
 
@@ -958,8 +975,10 @@ Choosing action
 
  gives 
 \series bold
+\color blue
 utility
 \series default
+\color inherit
 
 \begin_inset Formula 
 \[
@@ -972,7 +991,13 @@ U(a,\theta)
 \end_layout
 
 \begin_layout Itemize
-Alternatively loss 
+Alternatively 
+\series bold
+\color blue
+loss
+\series default
+\color inherit
+ 
 \begin_inset Formula $L(a,\theta)=-U(a,\theta)$
 \end_inset
 
@@ -1170,7 +1195,7 @@ Umbrella
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+20
 \end_layout
 
 \end_inset
@@ -1179,7 +1204,7 @@ Umbrella
 \begin_inset Text
 
 \begin_layout Plain Layout
--10
+10
 \end_layout
 
 \end_inset
@@ -1199,7 +1224,7 @@ No umbrella
 \begin_inset Text
 
 \begin_layout Plain Layout
--50
+50
 \end_layout
 
 \end_inset
@@ -1208,7 +1233,7 @@ No umbrella
 \begin_inset Text
 
 \begin_layout Plain Layout
-20
+0
 \end_layout
 
 \end_inset
@@ -1241,7 +1266,13 @@ Decision Theory, cont.
 
 \begin_deeper
 \begin_layout Itemize
-Example loss functions when both 
+Example 
+\series bold
+\color blue
+loss functions
+\series default
+\color inherit
+ when both 
 \begin_inset Formula $a$
 \end_inset
 
@@ -1254,7 +1285,11 @@ Example loss functions when both
 
 \begin_deeper
 \begin_layout Itemize
-Linear: 
+
+\color blue
+Linear
+\color inherit
+: 
 \begin_inset Formula $L(a,\theta)=\left|a-\theta\right|$
 \end_inset
 
@@ -1262,7 +1297,11 @@ Linear:
 \end_layout
 
 \begin_layout Itemize
-Quadratic: 
+
+\color blue
+Quadratic
+\color inherit
+: 
 \begin_inset Formula $L(a,\theta)=(a-\theta)^{2}$
 \end_inset
 
@@ -1270,7 +1309,11 @@ Quadratic:
 \end_layout
 
 \begin_layout Itemize
-Lin-Lin: 
+
+\color blue
+Lin-Lin
+\color inherit
+: 
 \begin_inset Formula 
 \[
 L(a,\theta)=\begin{cases}
@@ -1359,16 +1402,8 @@ Minimax
 \emph on
 Minimax-regret
 \emph default
-: Choose the decision rule that gives you least regret when you eventually
- find out the true value of 
-\begin_inset Formula $\theta$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-bla bla bla ...
+ ...
+ bla bla bla ...
 \end_layout
 
 \end_deeper
@@ -1379,8 +1414,10 @@ theory
 \series default
 : Just maximize the 
 \series bold
-expected utility
+\color blue
+posterior expected utility
 \series default
+\color inherit
 :
 \begin_inset Formula 
 \[
@@ -1435,14 +1472,39 @@ Using simulated draws
 \begin_layout Itemize
 
 \series bold
+\color blue
 Separation principle
 \series default
-: The analysis of uncertainty (i.e.
- the posterior of 
-\begin_inset Formula $\theta$
+\color inherit
+: 
+\end_layout
+
+\begin_layout Enumerate
+First obtain 
+\begin_inset Formula $p(\theta\vert y)$
 \end_inset
 
-) is completely separated from the utilities of the choices.
+
+\end_layout
+
+\begin_layout Enumerate
+then form 
+\begin_inset Formula $U(a,\theta)$
+\end_inset
+
+ and finally 
+\end_layout
+
+\begin_layout Enumerate
+choose 
+\begin_inset Formula $a$
+\end_inset
+
+ that maximes 
+\begin_inset Formula $E_{p(\theta|y)}[U(a,\theta)]$
+\end_inset
+
+.
 \end_layout
 
 \end_deeper
@@ -1465,7 +1527,13 @@ Choosing a point estimate is a decision
 
 \begin_deeper
 \begin_layout Itemize
-Choosing a point estimator is a decision problem.
+Choosing a 
+\series bold
+\color blue
+point estimator
+\series default
+\color inherit
+ is a decision problem.
  
 \end_layout
 

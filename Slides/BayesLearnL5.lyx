@@ -185,7 +185,114 @@ The linear regression model
 \end_layout
 
 \begin_layout Itemize
-Regression with binary response
+Non-linear regression
+\end_layout
+
+\begin_layout Itemize
+Regularization priors
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Normal model - normal prior
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Model
+\begin_inset Formula 
+\[
+y_{1},...,y_{n}|\theta,\sigma^{2}\overset{iid}{\sim}N(\theta,\sigma^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Conjugate prior
+\begin_inset Formula 
+\begin{gather*}
+\theta|\sigma^{2}\sim N\left(\mu_{0},\frac{\sigma^{2}}{\kappa_{0}}\right)\\
+\sigma^{2}\sim Inv\text{-}\chi^{2}(\nu_{0},\sigma_{0}^{2})
+\end{gather*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Normal model with normal prior
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Posterior 
+\begin_inset Formula 
+\begin{gather*}
+\theta|y,\sigma^{2}\sim N\left(\mu_{n},\frac{\sigma^{2}}{\kappa_{n}}\right)\\
+\sigma^{2}|y\sim Inv\text{-}\chi^{2}(\nu_{n},\sigma_{n}^{2}).
+\end{gather*}
+
+\end_inset
+
+where
+\begin_inset Formula 
+\begin{eqnarray*}
+\mu_{n} & = & \frac{\kappa_{0}}{\kappa_{0}+n}\mu_{0}+\frac{n}{\kappa_{0}+n}\bar{y}\\
+\kappa_{n} & = & \kappa_{0}+n\\
+\nu_{n} & = & \nu_{0}+n\\
+\nu_{n}\sigma_{n}^{2} & = & \nu_{0}\sigma_{0}^{2}+(n-1)s^{2}+\frac{\kappa_{0}n}{\kappa_{0}+n}(\bar{y}-\mu_{0})^{2}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Marginal posterior
+\begin_inset Formula 
+\begin{gather*}
+\theta\sim t_{\nu_{n}}\left(\mu_{n},\sigma_{n}^{2}/\kappa_{n}\right)
+\end{gather*}
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -290,7 +397,7 @@ Linear regression in matrix form
 The linear regression model in matrix form
 \begin_inset Formula 
 \[
-\underset{(n\times1)}{y}=\underset{(n\times k)(k\times1)}{X\beta}+\underset{(n\times1)}{\varepsilon}
+\underset{(n\times1)}{\mathbf{y}}=\underset{(n\times k)(k\times1)}{\mathbf{X}\beta}+\underset{(n\times1)}{\varepsilon}
 \]
 
 \end_inset
@@ -298,7 +405,7 @@ The linear regression model in matrix form
 
 \begin_inset Formula 
 \begin{eqnarray*}
-y & = & \left(\begin{array}{c}
+\mathbf{y} & = & \left(\begin{array}{c}
 y_{1}\\
 \vdots\\
 y_{n}
@@ -311,10 +418,10 @@ y_{n}
 \vdots\\
 \varepsilon_{n}
 \end{array}\right)\\
-X & = & \left(\begin{array}{c}
-x_{1}^{\prime}\\
+\mathbf{X} & = & \left(\begin{array}{c}
+\mathbf{x}_{1}^{\prime}\\
 \vdots\\
-x_{n}^{\prime}
+\mathbf{x}_{n}^{\prime}
 \end{array}\right)=\left(\begin{array}{ccc}
 x_{11} & \cdots & x_{1k}\\
 \vdots & \ddots & \vdots\\
@@ -348,7 +455,7 @@ Usually
 Likelihood for the full sample
 \begin_inset Formula 
 \[
-y|\beta,\sigma^{2},X\sim N(X\beta,\sigma^{2}I_{n})
+\mathbf{y}|\beta,\sigma^{2},\mathbf{X}\sim N(\mathbf{X}\beta,\sigma^{2}I_{n})
 \]
 
 \end_inset
@@ -366,7 +473,7 @@ y|\beta,\sigma^{2},X\sim N(X\beta,\sigma^{2}I_{n})
 status open
 
 \begin_layout Plain Layout
-Posterior for the uniform prior
+Linear regression - uniform prior
 \end_layout
 
 \end_inset
@@ -402,68 +509,44 @@ Joint posterior of
 
 :
 \begin_inset Formula 
-\[
-p(\beta,\sigma^{2}|y)=p(\beta|\sigma^{2},y)p(\sigma^{2}|y).
-\]
+\begin{eqnarray*}
+\beta|\sigma^{2},\mathbf{y} & \sim & N\left[\hat{\beta},\sigma^{2}(\mathbf{X}^{\prime}\mathbf{X})^{-1}\right]\\
+\sigma^{2}|\mathbf{y} & \sim & Inv\text{-}\chi^{2}(n-k,s^{2})
+\end{eqnarray*}
 
+\end_inset
+
+where 
+\begin_inset Formula $\hat{\beta}=(\mathbf{X}^{\prime}\mathbf{X})^{-1}\mathbf{X}^{\prime}\mathbf{y}$
+\end_inset
+
+ and 
+\begin_inset Formula $s^{2}=\frac{1}{n-k}(\mathbf{y}-\mathbf{X}\hat{\beta})^{\prime}(\mathbf{y}-\mathbf{X}\hat{\beta}).$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-Conditional posterior of 
-\begin_inset Formula $\beta:$
-\end_inset
+Simulate from the joint posterior by iteratively simulating from
+\end_layout
 
-
-\begin_inset Formula 
-\begin{eqnarray*}
-\beta|\sigma^{2},y & \sim & N\left[\hat{\beta},\sigma^{2}(X^{\prime}X)^{-1}\right]\\
-\hat{\beta} & = & (X^{\prime}X)^{-1}X^{\prime}y
-\end{eqnarray*}
-
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $p(\sigma^{2}|y)$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-Marginal posterior of 
-\begin_inset Formula $\sigma^{2}:$
-\end_inset
-
-
-\begin_inset Formula 
-\begin{eqnarray*}
-\sigma^{2}|y & \sim & Inv\text{-}\chi^{2}(n-k,s^{2})\\
-s^{2} & = & \frac{1}{n-k}(y-X\hat{\beta})^{\prime}(y-X\hat{\beta}).
-\end{eqnarray*}
-
+\begin_inset Formula $p(\beta|\sigma^{2},y)$
 \end_inset
 
 
 \end_layout
 
 \end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Posterior for the uniform prior, cont.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
 \begin_layout Itemize
 Marginal posterior of 
 \begin_inset Formula $\beta:$
@@ -474,55 +557,6 @@ Marginal posterior of
 \[
 \beta|y\sim t_{n-k}\left[\hat{\beta},s^{2}(X^{\prime}X)^{-1}\right]
 \]
-
-\end_inset
-
-which is proper if 
-\begin_inset Formula $n>k$
-\end_inset
-
- and 
-\begin_inset Formula $X$
-\end_inset
-
- has full column rank.
-\end_layout
-
-\begin_layout Itemize
-Simulate from the joint posterior by iteratively simulating from 
-\begin_inset Formula $p(\sigma^{2}|y)$
-\end_inset
-
- and 
-\begin_inset Formula $p(\beta|\sigma^{2},y)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Predictive distribution of response 
-\begin_inset Formula $\tilde{y}$
-\end_inset
-
- with known predictors 
-\begin_inset Formula $\tilde{x}$
-\end_inset
-
- 
-\begin_inset Formula 
-\[
-\tilde{y}|y,\tilde{x}\sim t_{n-k}\left[\tilde{x}'\hat{\beta},s^{2}(1+\tilde{x}'(X'X)\tilde{x})^{-1}\right]
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{eqnarray*}
-\text{Predictive Precision} & = & s^{-2}+\tilde{x}'(s^{-2}X'X)\tilde{x}\\
- & = & \varepsilon\text{-Precision + }\tilde{x}'(\text{Posterior Precision of }\beta)\tilde{x}.
-\end{eqnarray*}
 
 \end_inset
 
@@ -589,10 +623,10 @@ Posterior
  
 \begin_inset Formula 
 \begin{align*}
-\mu_{n} & =\left(X'X+\Omega_{0}\right)^{-1}\left(X'X\hat{\beta}+\Omega_{0}\mu_{0}\right)\\
-\Omega_{n} & =X'X+\Omega_{0}\\
+\mu_{n} & =\left(\mathbf{X}'\mathbf{X}+\Omega_{0}\right)^{-1}\left(\mathbf{X}'\mathbf{X}\hat{\beta}+\Omega_{0}\mu_{0}\right)\\
+\Omega_{n} & =\mathbf{X}'\mathbf{X}+\Omega_{0}\\
 \nu_{n} & =\nu_{0}+n\\
-\nu_{n}\sigma_{n}^{2} & =\nu_{0}\sigma_{0}^{2}+\left(y'y+\mu_{0}'\Omega_{0}\mu_{0}-\mu_{n}'\Omega_{n}\mu_{n}\right)
+\nu_{n}\sigma_{n}^{2} & =\nu_{0}\sigma_{0}^{2}+\left(\mathbf{y}'\mathbf{y}+\mu_{0}'\Omega_{0}\mu_{0}-\mu_{n}'\Omega_{n}\mu_{n}\right)
 \end{align*}
 
 \end_inset
@@ -610,7 +644,7 @@ Posterior
 status open
 
 \begin_layout Plain Layout
-Regression with binary response
+Polynomial regression
 \end_layout
 
 \end_inset
@@ -620,65 +654,185 @@ Regression with binary response
 
 \begin_deeper
 \begin_layout Itemize
-Response is assumed to be 
-\series bold
-binary
-\series default
- (0-1).
-\end_layout
-
-\begin_layout Itemize
-Example: Predicting whether or not an e-mail is good (
-\begin_inset Formula $y=1$
-\end_inset
-
-) or spam (
-\begin_inset Formula $y=0$
-\end_inset
-
-).
- Covariates: mean word length, proportion of 
-\begin_inset Formula $\$$
-\end_inset
-
--symbols.
-\end_layout
-
-\begin_layout Itemize
 
 \series bold
-Logistic regression
+\color blue
+Polynomial regression
 \series default
+\color inherit
 
 \begin_inset Formula 
 \[
-\Pr(y_{i}=1\text{ }|\text{ }x_{i})=\frac{\exp(x_{i}^{\prime}\beta)}{1+\exp(x_{i}^{\prime}\beta)}.
+f(x_{i})=\beta_{0}+\beta_{1}x_{i}+\beta_{2}x_{i}^{2}+...+\beta_{k}x_{i}^{k}.
 \]
 
 \end_inset
 
-Likelihood:
+
 \begin_inset Formula 
 \[
-p(y|X,\beta)=\prod\nolimits _{i=1}^{n}\frac{[\exp(x_{i}^{\prime}\beta)]^{y_{i}}}{1+\exp(x_{i}^{\prime}\beta)}.
+\mathbf{y}=\mathbf{X}_{P}\beta+\varepsilon,
 \]
 
 \end_inset
 
-Posterior is non-standard, but in most situation can be approximated well
- by a normal distribution.
- Optimization.
+where 
+\begin_inset Formula 
+\[
+\mathbf{X}_{P}=(1,x,x^{2},...,x^{k}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename quadraticBasis.eps
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Spline regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Polynomials are too global.
+ Need more local basis functions.
 \end_layout
 
 \begin_layout Itemize
-Alternative: 
+
 \series bold
-Probit regression
+\shape italic
+\emph on
+\color blue
+Truncated power splines 
+\color black
+given 
+\color blue
+knot
+\color black
+ locations 
+\begin_inset Formula $k_{1},...,k_{m}$
+\end_inset
+
+
+\color blue
+ 
 \series default
+\shape default
+\emph default
+\color inherit
 
 \begin_inset Formula 
 \[
-Pr(y_{i}=1|x_{i})=\Phi(x_{i}^{'}\beta)
+b_{ij}=\left\{ \begin{array}{c}
+(x_{i}-k_{j})^{p}\text{ \ \ if }x_{i}>k_{j}\\
+0\text{ otherwise}
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename brokenStickBasis.eps
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Splines, cont.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Note: given the knots, the non-parametric spline regression model is a linear
+ regression of 
+\begin_inset Formula $y$
+\end_inset
+
+ on the 
+\begin_inset Formula $m$
+\end_inset
+
+ 'dummy variables' 
+\begin_inset Formula $b_{j}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y=\mathbf{X}_{b}\beta+\varepsilon,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $X_{b}$
+\end_inset
+
+ is the basis regression matrix 
+\begin_inset Formula 
+\[
+\mathbf{X}_{b}=(b_{1},...,b_{m}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is also common to include an intercept and the linear part of the model
+ separately.
+ In this case we have
+\begin_inset Formula 
+\[
+\mathbf{X}_{b}=(1,x,b_{1},...,b_{m}).
 \]
 
 \end_inset
@@ -696,7 +850,7 @@ Pr(y_{i}=1|x_{i})=\Phi(x_{i}^{'}\beta)
 status open
 
 \begin_layout Plain Layout
-Asymptotic posterior - Heuristics
+Smoothness prior for splines
 \end_layout
 
 \end_inset
@@ -706,27 +860,23 @@ Asymptotic posterior - Heuristics
 
 \begin_deeper
 \begin_layout Itemize
-Taylor expansion of log-posterior around the posterior mode 
-\begin_inset Formula $\theta=\tilde{\theta}$
-\end_inset
-
-:
-\begin_inset Formula 
-\begin{align*}
-\ln p(\theta|y) & =\ln p(\tilde{\theta}|y)+\frac{\partial\ln p(\theta|y)}{\partial\theta}|_{\theta=\tilde{\theta}}(\theta-\tilde{\theta})\\
- & +\frac{1}{2!}\frac{\partial^{2}\ln p(\theta|y)}{\partial\theta^{2}}|_{\theta=\tilde{\theta}}(\theta-\tilde{\theta})^{2}+...
-\end{align*}
-
-\end_inset
-
-
+Problem: too many knots leads to 
+\series bold
+over-fitting
+\series default
+.
+ 
 \end_layout
 
 \begin_layout Itemize
-From the definition of the posterior mode:
+Solution: 
+\series bold
+smoothness/shrinkage/regularization prior
+\series default
+
 \begin_inset Formula 
 \[
-\frac{\partial\ln p(\theta|y)}{\partial\theta}|_{\theta=\tilde{\theta}}=0
+\beta_{i}|\sigma^{2}\overset{iid}{\sim}N\left(0,\frac{\sigma^{2}}{\lambda}\right)
 \]
 
 \end_inset
@@ -735,27 +885,341 @@ From the definition of the posterior mode:
 \end_layout
 
 \begin_layout Itemize
-So, in large samples (where we can ignore higher order terms):
+Larger 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ gives smoother fit.
+ Note: here we have 
+\begin_inset Formula $\mbox{\Omega}_{0}=\lambda I$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Equivalent to a penalized likelihood: 
+\begin_inset Formula 
+\[
+-2\cdot\log p(\beta\vert\sigma^{2},\mathbf{y},\mathbf{X})\propto RSS(\beta)+\lambda\beta'\beta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Posterior mean gives 
+\series bold
+ridge regression
+\series default
+ estimator
+\begin_inset Formula 
+\[
+\tilde{\beta}=\left(\mathbf{X}'\mathbf{X}+\lambda I\right)^{-1}\mathbf{X}'\mathbf{y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Shrinkage
+\series default
+ toward zero 
+\begin_inset Formula 
+\[
+\text{As }\lambda\rightarrow\infty,\text{ }\tilde{\beta}\rightarrow0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+When 
+\begin_inset Formula $\mathbf{X}'\mathbf{X}=I$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\tilde{\beta}=\frac{1}{1+\lambda}\hat{\beta}_{OLS}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bayesian spline with smoothness prior
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename LidarPoly1Knots24.eps
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Smoothness prior for splines, cont.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The famous 
+\series bold
+\color blue
+Lasso
+\series default
+\color inherit
+ variable selection method is equivalent to using the posterior mode estimate
+ under the prior:
+\begin_inset Formula 
+\[
+\beta_{i}|\sigma^{2}\overset{iid}{\sim}\mathrm{Laplace}\left(0,\frac{\sigma^{2}}{\lambda}\right)
+\]
+
+\end_inset
+
+with density
+\begin_inset Formula 
+\[
+p(\beta_{i})=\frac{\lambda}{2\sigma^{2}}\exp\left(-\frac{\lambda\left|\beta_{i}\right|}{\sigma^{2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The Bayesian shrinkage prior is 
+\series bold
+interpretable
+\series default
+.
+ 
+\series bold
+Not ad hoc
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Laplace distribution have heavy tails.
+\end_layout
+
+\begin_layout Itemize
+Laplace: many 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ are close to zero, but some 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ may be very large.
+\end_layout
+
+\begin_layout Itemize
+Normal distribution have light tails.
+ 
+\end_layout
+
+\begin_layout Itemize
+Normal prior: most 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ are fairly equal in size, and no single 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ can be very much larger than the other ones.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Estimating the shrinkage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How do we determine the degree of smoothness, 
+\begin_inset Formula $\lambda$
+\end_inset
+
+? Cross-validation is one possible approach.
+\end_layout
+
+\begin_layout Itemize
+Bayesian: 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is unknown
+\begin_inset Formula $\;\Rightarrow\;$
+\end_inset
+
+use a prior for 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+One possibility: 
+\begin_inset Formula $\lambda\sim Inv-\chi^{2}(\eta_{0},\lambda_{0})$
+\end_inset
+
+.
+ The user specifies 
+\begin_inset Formula $\eta_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Alternative approach: specify the prior on the 
+\emph on
+degrees of freedom
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Hierarchical setup:
 \begin_inset Formula 
 \begin{align*}
-\ln p(\theta|y) & \approx\ln p(\tilde{\theta}|y)-\frac{1}{2}H_{\mathbf{y}}(\tilde{\theta})(\theta-\tilde{\theta})^{2}
+\mathbf{y}|\beta,\mathbf{X} & \sim N(\mathbf{X}\beta,\sigma^{2}I_{n})\\
+\beta|\sigma^{2} & \sim N\left(0,\sigma^{2}\lambda^{-1}I_{m}\right)\\
+\sigma^{2} & \sim Inv-\chi^{2}(\nu_{0},\sigma_{0}^{2})\\
+\lambda & \sim Inv-\chi^{2}(\eta_{0},\lambda_{0})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Regression with estimated shrinkage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The joint posterior of 
+\begin_inset Formula $\beta$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is
+\begin_inset Formula 
+\begin{align*}
+\beta|\sigma^{2},\lambda,y & \sim N\left(\mu_{n},\Omega_{n}^{-1}\right)\\
+\sigma^{2}|\lambda,y & \sim Inv-\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)\\
+p(\lambda|y) & \propto\sqrt{\frac{\left|\Omega_{0}\right|}{\left|X'X+\Omega_{0}\right|}}\left(\frac{\nu_{n}\sigma_{n}^{2}}{2}\right)^{-\nu_{n}/2}\cdot p(\lambda)
 \end{align*}
 
 \end_inset
 
 where 
-\begin_inset Formula $H_{\mathbf{y}}(\tilde{\theta})=-\frac{\partial^{2}\ln p(\theta|y)}{\partial\theta^{2}}|_{\theta=\tilde{\theta}}$
+\begin_inset Formula $p(\lambda)$
 \end_inset
 
-.
-\end_layout
+ is the prior for 
+\begin_inset Formula $\lambda$
+\end_inset
 
-\begin_layout Itemize
-Approximate posterior
+, and 
 \begin_inset Formula 
-\[
-\theta|y\sim N\left[\tilde{\theta},H_{\mathbf{y}}^{-1}(\tilde{\theta})\right]
-\]
+\begin{align*}
+\mu_{n} & =\left(X'X+\Omega_{0}\right)^{-1}X'y\\
+\Omega_{n} & =X'X+\Omega_{0}\\
+\nu_{n} & =\nu_{0}+n\\
+\nu_{n}\sigma_{n}^{2} & =\nu_{0}\sigma_{0}^{2}+y'y-\mu_{n}'\Omega_{n}\mu_{n}
+\end{align*}
 
 \end_inset
 
@@ -772,7 +1236,7 @@ Approximate posterior
 status open
 
 \begin_layout Plain Layout
-Normal approximation of posterior
+More complexity
 \end_layout
 
 \end_inset
@@ -782,78 +1246,83 @@ Normal approximation of posterior
 
 \begin_deeper
 \begin_layout Itemize
-If posterior is approximately normal, sufficient to find the posterior mode
- and (inverse) information matrix.
+The 
+\series bold
+\color blue
+location of the knots
+\series default
+\color inherit
+ can be treated as unknown, and estimated from the data.
+ Joint posterior
+\begin_inset Formula 
+\[
+p(\beta,\sigma^{2},\lambda,k_{1},...,k_{m}|\mathbf{y},\mathbf{X})
+\]
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-Standard (e.g.
- gradient-based) optimization routines may be used.
- (optim.r).
- Input: an expression proportional to 
-\begin_inset Formula $p(\theta|y)$
+The marginal posterior for 
+\begin_inset Formula $\lambda,k_{1},...,k_{m}$
 \end_inset
 
- and initial values.
- Output: optimum (posterior) mode and Hessian matrix (minus observed information
-).
+ is a nightmare.
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-Joint posterior 
-\begin_inset Formula $p(\theta_{1},\theta_{2}|y)$
-\end_inset
-
- may not be be close to normal, but perhaps 
-\begin_inset Formula $p(\theta_{2}|\theta_{1},y)$
-\end_inset
-
- and 
-\begin_inset Formula $p(\theta_{2}|y)$
-\end_inset
-
- are.
+MCMC can be used to simulate from the joint posterior.
+ Li and Villani (2013, SJS).
 \end_layout
 
 \begin_layout Itemize
-Even if the posterior of 
-\begin_inset Formula $\theta$
-\end_inset
+The basic spline model can be extended with:
+\end_layout
 
- is approx normal, interesting functions of 
-\begin_inset Formula $\theta$
-\end_inset
+\begin_deeper
+\begin_layout Itemize
 
- may not be (e.g.
- predictions).
- Still need to resort to numerical methods.
+\series bold
+\color blue
+Heteroscedastic errors
+\series default
+\color inherit
+ (also modelled with a spline)
 \end_layout
 
 \begin_layout Itemize
-Re-parametrization 
-\begin_inset Formula $\phi=g(\theta)$
-\end_inset
 
- may improve normal approximation.
- If 
-\begin_inset Formula $\theta\geq0$
-\end_inset
-
- use logs.
- If 
-\begin_inset Formula $0\leq\theta\leq1$
-\end_inset
-
-, use 
-\begin_inset Formula $\mathrm{Logit}(\theta)=\ln[\theta/(1-\theta)]$
-\end_inset
-
-.
+\series bold
+\color blue
+Non-normal errors
+\series default
+\color inherit
+ (student-t or mixture distributions)
 \end_layout
 
 \begin_layout Itemize
-Posterior mode and inverse Hessian can be used to approximate the posterior
- with a student-t density.
+
+\series bold
+\color blue
+Autocorrelated/dependent errors
+\series default
+\color inherit
+ (AR process for the error term)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+MCMC can again be used to simulate from the joint posterior.
 \end_layout
 
 \end_deeper
