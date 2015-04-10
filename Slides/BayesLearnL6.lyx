@@ -513,7 +513,7 @@ p(y|X,\beta)=\prod\nolimits _{i=1}^{n}\frac{[\exp(x_{i}^{\prime}\beta)]^{y_{i}}}
 
 \begin_layout Itemize
 Prior 
-\begin_inset Formula $\beta\sim N(0,\lambda I)$
+\begin_inset Formula $\beta\sim N(0,\lambda^{-1}I)$
 \end_inset
 
 .
@@ -546,13 +546,13 @@ Multi-class
 \series default
 \color inherit
  (
-\begin_inset Formula $c=0,1,2,...,C$
+\begin_inset Formula $c=1,2,...,C$
 \end_inset
 
 ) logistic regression
 \begin_inset Formula 
 \[
-\Pr(y_{i}=c\text{ }|\text{ }x_{i})=\frac{\exp(x_{i}^{\prime}\beta_{c})}{1+\exp(x_{i}^{\prime}\beta_{c})}
+\Pr(y_{i}=c\text{ }|\text{ }x_{i})=\frac{\exp(x_{i}^{\prime}\beta_{c})}{\sum_{k=1}^{C}\exp(x_{i}^{\prime}\beta_{k})}
 \]
 
 \end_inset
@@ -858,7 +858,7 @@ Output
 \series default
 \color inherit
 : 
-\begin_inset Formula $p(\tilde{\theta}|y)$
+\begin_inset Formula $\log p(\tilde{\theta}|y)$
 \end_inset
 
 , 
@@ -939,6 +939,120 @@ Heavy tailed approximation
 \end_inset
 
 .
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: gamma posterior - reparam.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Poisson model revisited.
+ Reparameterize to 
+\begin_inset Formula $\phi=\log(\theta)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Use change-of-variables formula from a basic probability course
+\begin_inset Formula 
+\[
+\log p(\phi|y_{1},...,y_{n})\propto(\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1)\phi-\exp(\phi)(\beta+n)+\phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Taking first and second derivatives and evaluating at 
+\begin_inset Formula $\tilde{\phi}$
+\end_inset
+
+ gives
+\begin_inset Formula 
+\[
+\tilde{\phi}=\log\left(\frac{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}{\beta+n}\right)\text{ and }\frac{\partial^{2}\ln p(\phi|y)}{\partial\phi^{2}}|_{\phi=\tilde{\phi}}=\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So, the normal approximation for 
+\begin_inset Formula $p(\phi\vert y_{1},...y_{n})$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+\phi=\log(\theta)\sim N\left[\log\left(\frac{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}{\beta+n}\right),\frac{1}{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}\right]
+\]
+
+\end_inset
+
+which means that 
+\begin_inset Formula $p(\theta\vert y_{1},...y_{n})$
+\end_inset
+
+ is log-normal: 
+\begin_inset Formula 
+\[
+\theta\vert y\sim LN\left[\log\left(\frac{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}{\beta+n}\right),\frac{1}{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: gamma posterior - reparameterized
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename NormalApprox2GammaTrans.eps
+	scale 55
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
