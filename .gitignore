@@ -1,5 +1,6 @@
 /Admin
 /Hidden
 *.~lyx
+*.lyx~
 /HT2012
 /HT2013
