@@ -177,17 +177,50 @@ Lecture overview
 
 \begin_deeper
 \begin_layout Itemize
-Random number generation
+
+\series bold
+\color blue
+Monte Carlo simulation and random number generation
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-Monte Carlo simulation
-\end_layout
 
-\begin_layout Itemize
+\series bold
+\color blue
 Gibbs sampling
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+\color blue
+Data augmentation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Probit regression
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Mixture models
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Separator
 
@@ -213,10 +246,16 @@ If
 \end_inset
 
  is an 
+\series bold
+\color blue
+
 \begin_inset Formula $iid$
 \end_inset
 
- sequence from a distribution 
+ sequence
+\series default
+\color inherit
+ from a distribution 
 \begin_inset Formula $p(\theta)$
 \end_inset
 
@@ -237,7 +276,11 @@ where
 \end_layout
 
 \begin_layout Itemize
-Easy to compute tail probabilities 
+Easy to compute 
+\series bold
+tail probabilities
+\series default
+ 
 \begin_inset Formula $\mathrm{Pr}(\theta\leq c)$
 \end_inset
 
@@ -290,7 +333,13 @@ method
 
 \begin_deeper
 \begin_layout Itemize
-How to simulate from a distribution?
+How to 
+\series bold
+\color blue
+simulate
+\series default
+\color inherit
+ from a distribution?
 \end_layout
 
 \begin_layout Itemize
@@ -304,11 +353,17 @@ Let
 \end_inset
 
 .
- Inverse CDF
+ 
+\series bold
+\color blue
+Inverse CDF
 \begin_inset space \space{}
 \end_inset
 
-method:
+method
+\series default
+\color inherit
+:
 \end_layout
 
 \begin_deeper
@@ -334,7 +389,15 @@ Compute
 
 \end_deeper
 \begin_layout Itemize
-Example 1: Exponential distribution: 
+Example 1: 
+\series bold
+Exponential
+\series default
+ 
+\series bold
+distribution
+\series default
+: 
 \begin_inset Formula 
 \[
 u=F(x)=1-\exp(-\lambda x)
@@ -355,7 +418,11 @@ But
 \end_inset
 
  is also uniformly distributed on [0,1].
- Thus: if 
+ So:
+\end_layout
+
+\begin_layout Itemize
+If 
 \begin_inset Formula $x=-(\ln u)/\lambda$
 \end_inset
 
@@ -430,7 +497,13 @@ method
 
 \begin_deeper
 \begin_layout Itemize
-Example 2: Cauchy distribution: 
+Example 2: 
+\series bold
+\color blue
+Cauchy distribution
+\series default
+\color inherit
+: 
 \begin_inset Formula 
 \begin{eqnarray*}
 f(x) & = & \frac{1}{\pi}\frac{1}{1+x^{2}}\\
@@ -476,7 +549,13 @@ Cauchy-example, cont.
 \end_layout
 
 \begin_layout Itemize
-Example: Chi-square.
+Example: 
+\series bold
+\color blue
+Chi-square
+\series default
+\color inherit
+.
  If 
 \begin_inset Formula $x_{1},...,x_{v}\overset{iid}{\sim}N(0,1)$
 \end_inset
@@ -508,16 +587,31 @@ Gibbs sampling
 
 \begin_deeper
 \begin_layout Itemize
-Easily implemented methods for sampling from multivariate distributions,
- 
+Easily implemented methods for 
+\series bold
+\color blue
+sampling from multivariate distributions
+\series default
+\color inherit
+, 
 \begin_inset Formula $p(\theta_{1},...,\theta_{k})$
 \end_inset
 
 .
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-Requirements: Easily sampled full conditional posteriors:
+Requirements: Easily sampled 
+\series bold
+\color blue
+full conditional posteriors
+\series default
+\color inherit
+:
 \end_layout
 
 \begin_deeper
@@ -552,6 +646,18 @@ Requirements: Easily sampled full conditional posteriors:
 \end_deeper
 \begin_layout Itemize
 Started out in the early 80's in the image analysis literature.
+\end_layout
+
+\begin_layout Itemize
+Gibbs sampling is a 
+\series bold
+special case of Metropolis-Hastings
+\series default
+ (see Lecture 8)
+\end_layout
+
+\begin_layout Itemize
+Metropolis-Hastings is a Markov Chain Monte Carlo (MCMC) algorithm.
 \end_layout
 
 \end_deeper
@@ -818,7 +924,17 @@ The Gibbs draws
 \begin_inset Formula $\theta^{(1)},\theta^{(2)},....,\theta^{(N)}$
 \end_inset
 
- are dependent, but arithmetic means converge to expected values
+ are 
+\series bold
+\color blue
+dependent
+\series default
+\color inherit
+ (autocorrelated), but 
+\series bold
+arithmetic means converge to expected values
+\series default
+
 \begin_inset Formula 
 \begin{eqnarray*}
 \frac{1}{N}\sum_{t=1}^{N}\theta_{j}^{(t)} & \rightarrow & E(\theta_{j})\\
@@ -831,12 +947,15 @@ The Gibbs draws
 \end_layout
 
 \begin_layout Itemize
-More generally, the Gibbs sequence 
-\begin_inset Formula $\theta^{(1)},\theta^{(2)},....,\theta^{(N)}$
+\begin_inset Formula $\theta^{(1)},....,\theta^{(N)}$
 \end_inset
 
- converges in distribution to the target posterior 
-\begin_inset Formula $p(\theta_{1},...,\theta_{k})$
+ 
+\series bold
+converges in distribution
+\series default
+ to the target 
+\begin_inset Formula $p(\theta)$
 \end_inset
 
 .
@@ -857,51 +976,51 @@ More generally, the Gibbs sequence
 .
 \end_layout
 
-\end_deeper
-\begin_layout Separator
+\begin_layout Itemize
 
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Gibbs sampling for normal model with non-conjugate prior
-\end_layout
-
+\series bold
+\color blue
+Dependent
+\series default
+\color inherit
+ draws 
+\begin_inset Formula $\rightarrow$
 \end_inset
 
+ 
+\series bold
+\color blue
+less efficient
+\series default
+\color inherit
+ than iid sampling.
+ 
+\end_layout
 
+\begin_layout Itemize
+Compare sampling from:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Normal model with semi-conjugate prior
-\begin_inset Formula 
-\begin{align*}
-\mu & \sim N(\mu_{0},\tau_{0}^{2})\\
-\sigma^{2} & \sim Inv-\chi^{2}(\nu_{0},\sigma_{0}^{2})
-\end{align*}
-
+\begin_inset Formula $x_{t}\overset{iid}{\sim}N(0,\sigma^{2})$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-Conditional posteriors
-\begin_inset Formula 
-\begin{align*}
-\mu|\sigma^{2},x & \sim N\left(\mu_{n},\tau_{n}^{2}\right)\\
-\sigma^{2}|\mu,x & \sim Inv-\chi^{2}\left(\nu_{n},\frac{\nu_{0}\sigma_{0}^{2}+\sum_{i=1}^{n}\left(x_{i}-\mu\right)^{2}}{n+\nu_{0}}\right)
-\end{align*}
-
+\begin_inset Formula $x_{t}=0.9x_{t-1}+\varepsilon_{t}$
 \end_inset
 
+ with 
+\begin_inset Formula $\varepsilon_{t}\overset{iid}{\sim}N(0,\sigma^{2})$
+\end_inset
 
+.
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Separator
 
@@ -1061,7 +1180,7 @@ Gibbs sampling - Bivariate normal
 status open
 
 \begin_layout Plain Layout
-Gibbs sampling - Bivariate normal
+Direct sampling vs Gibbs sampling
 \end_layout
 
 \end_inset
@@ -1073,8 +1192,8 @@ Gibbs sampling - Bivariate normal
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../BayesStat2011/Lectures/GibbsBivariateNormal4.eps
-	scale 32
+	filename DirectvsGibbs.svg
+	scale 42
 
 \end_inset
 
@@ -1091,7 +1210,45 @@ Gibbs sampling - Bivariate normal
 status open
 
 \begin_layout Plain Layout
-Autoregressive processes (AR) 
+Estimating the density of 
+\begin_inset Formula $g(\theta_{1},\theta_{2})=\sqrt{\theta_{1}^{2}+\theta_{2}^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename EstLengthVector.svg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Estimating 
+\begin_inset Formula $Pr(\theta_{1}>0,\theta_{2}>0)$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1101,68 +1258,71 @@ Autoregressive processes (AR)
 
 \begin_deeper
 \begin_layout Itemize
-AR(
-\begin_inset Formula $p$
-\end_inset
-
-) process
+We can estimate a joint probability by counting: 
 \begin_inset Formula 
 \[
-x_{t}=\mu+\phi_{1}(x_{t-1}-\mu)+...+\phi_{p}(x_{t-p}-\mu)+\varepsilon_{t},\text{ \ \ }\varepsilon_{t}\overset{iid}{\sim}N(0,\sigma^{2}).
+Pr(\theta_{1}>0,\theta_{2}>0)\approx N^{-1}\sum_{i=1}^{N}1(\theta_{1}^{(i)}>0,\theta_{2}^{i)}>0)
 \]
 
 \end_inset
 
+ .
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CumsumJointProb.svg
+	scale 40
+
+\end_inset
+
 
 \end_layout
 
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gibbs sampling for normal model with non-conjugate prior
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
-Random walk prior: 
+Normal model with semi-conjugate prior
 \begin_inset Formula 
-\begin{eqnarray*}
-E(\phi_{1}) & = & 1\\
-E(\phi_{j}) & = & 0\text{ for }j=2,...,p.\\
-StDev(\phi_{j}) & = & \frac{\psi}{j}.
-\end{eqnarray*}
+\begin{align*}
+\mu & \sim N(\mu_{0},\tau_{0}^{2})\\
+\sigma^{2} & \sim Inv-\chi^{2}(\nu_{0},\sigma_{0}^{2})
+\end{align*}
 
 \end_inset
 
-Note how the prior shrinks longer lags more heavily toward zero.
+
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\mu=E(x_{t})$
+Conditional posteriors
+\begin_inset Formula 
+\begin{align*}
+\mu|\sigma^{2},x & \sim N\left(\mu_{n},\tau_{n}^{2}\right)\\
+\sigma^{2}|\mu,x & \sim Inv-\chi^{2}\left(\nu_{n},\frac{\nu_{0}\sigma_{0}^{2}+\sum_{i=1}^{n}\left(x_{i}-\mu\right)^{2}}{n+\nu_{0}}\right)
+\end{align*}
+
 \end_inset
 
- is the unconditional mean or steady-state of the process.
- 'where the system goes to if the shocks (
-\begin_inset Formula $\varepsilon_{t}$
-\end_inset
 
-) are turned off'.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\mu$
-\end_inset
-
- is important as long-run forecasts (quickly) approach the steady state.
-\end_layout
-
-\begin_layout Itemize
-Prior: 
-\begin_inset Formula $\mu\sim N(\theta_{\mu},\psi_{\mu}^{2})$
-\end_inset
-
-, independent of 
-\begin_inset Formula $\phi^{\text{'}}$
-\end_inset
-
-s and 
-\begin_inset Formula $\sigma$
-\end_inset
-
-.
 \end_layout
 
 \end_deeper
@@ -1185,7 +1345,80 @@ Gibbs sampling for AR processes
 
 \begin_deeper
 \begin_layout Itemize
-The posterior can be simulated by Gibbs sampling:
+
+\series bold
+\color blue
+AR(
+\begin_inset Formula $p$
+\end_inset
+
+) process
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+x_{t}=\mu+\phi_{1}(x_{t-1}-\mu)+...+\phi_{p}(x_{t-p}-\mu)+\varepsilon_{t},\text{ \ \ }\varepsilon_{t}\overset{iid}{\sim}N(0,\sigma^{2}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\phi=(\phi_{1},...,\phi_{p})'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Prior
+\series default
+\color inherit
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mu\sim$
+\end_inset
+
+Normal
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\phi\sim$
+\end_inset
+
+Multivariate Normal
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma^{2}\sim$
+\end_inset
+
+Scaled Inverse 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The 
+\series bold
+\color blue
+posterior
+\series default
+\color inherit
+ can be simulated by Gibbs sampling:
 \end_layout
 
 \begin_deeper
@@ -1197,7 +1430,7 @@ The posterior can be simulated by Gibbs sampling:
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\phi|\mu,\sigma^{2},x\sim$
+\begin_inset Formula $\text{\phi}|\mu,\sigma^{2},x\sim$
 \end_inset
 
  Multivariate Normal
@@ -1215,44 +1448,6 @@ The posterior can be simulated by Gibbs sampling:
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-Everything above can easily be extended to vector processes (VARs).
-\end_layout
-
-\begin_layout Itemize
-Example: Swedish GDP and inflation forecasts.
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-GDP growth forecasts from Bayesian VARs
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename /Users/matvi05/Dropbox/Teaching/BayesTeoriPraktik2007/F8/Graphs/CascadeGDP.pdf
-	scale 30
-
-\end_inset
-
-
-\end_layout
-
 \end_deeper
 \begin_layout Separator
 
@@ -1273,39 +1468,63 @@ Data augmentation - Mixture distributions
 
 \begin_deeper
 \begin_layout Itemize
-Two-component mixture of normals [MN(
+Let 
+\begin_inset Formula $\phi(x|\mu,\sigma^{2})$
+\end_inset
+
+ denotes the 
+\series bold
+PDF
+\series default
+ of a 
+\series bold
+normal
+\series default
+ variable 
+\begin_inset Formula $x\sim N(\mu,\sigma^{2})$
+\end_inset
+
+.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Two-component mixture of normals
+\series default
+\color inherit
+ [MN(
 \begin_inset Formula $2$
 \end_inset
 
 )]
 \begin_inset Formula 
 \[
-p(x)=\pi\cdot\phi(x|\mu_{1},\sigma_{1}^{2})+(1-\pi)\cdot\phi(x|\mu_{2},\sigma_{2}^{2}),
+p(x)=\pi\cdot\phi(x|\mu_{1},\sigma_{1}^{2})+(1-\pi)\cdot\phi(x|\mu_{2},\sigma_{2}^{2})
 \]
 
 \end_inset
 
-where 
-\begin_inset Formula $\phi(x|\mu,\sigma^{2})$
+
+\begin_inset VSpace medskip
 \end_inset
 
- denotes the PDF of a normal variate 
-\begin_inset Formula $x$
-\end_inset
 
- with mean 
-\begin_inset Formula $\mu$
-\end_inset
-
- and variance 
-\begin_inset Formula $\sigma^{2}$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Itemize
-Simulate from a MN(
+
+\series bold
+\color blue
+Simulate
+\series default
+\color inherit
+ from a MN(
 \begin_inset Formula $2$
 \end_inset
 
@@ -1480,7 +1699,11 @@ Mixture distributions, cont.
 \begin_deeper
 \begin_layout Itemize
 Gibbs sampling to the rescue.
- Assume: Prior 
+ 
+\end_layout
+
+\begin_layout Itemize
+Assume: Prior 
 \begin_inset Formula $\pi$
 \end_inset
 
@@ -1534,7 +1757,7 @@ Algorithm:
 \end_inset
 
  
-\begin_inset Formula $\mu_{1},I,x\sim Inv$
+\begin_inset Formula $I,x\sim Inv$
 \end_inset
 
 -
@@ -1542,7 +1765,7 @@ Algorithm:
 \end_inset
 
  and 
-\begin_inset Formula $\mu_{1}|I,\sigma^{2},x\sim N$
+\begin_inset Formula $\mu_{1}|I,\sigma_{1}^{2},x\sim N$
 \end_inset
 
 
@@ -1557,7 +1780,7 @@ Algorithm:
 \end_inset
 
  
-\begin_inset Formula $\mu_{2},I,x\sim Inv$
+\begin_inset Formula $I,x\sim Inv$
 \end_inset
 
 -
@@ -1565,7 +1788,7 @@ Algorithm:
 \end_inset
 
  and 
-\begin_inset Formula $\mu_{2}|I,\sigma^{2},x\sim N$
+\begin_inset Formula $\mu_{2}|I,\sigma_{2}^{2},x\sim N$
 \end_inset
 
 
@@ -1619,28 +1842,37 @@ Mixture distributions, cont.
 
 \begin_deeper
 \begin_layout Itemize
-Generalization 
-\begin_inset Formula $k$
+
+\series bold
+\color blue
+\begin_inset Formula $K$
 \end_inset
 
 -component mixture of normals
+\series default
+\color inherit
+
 \begin_inset Formula 
 \[
-p(x)=\sum_{j=1}^{k}\pi_{j}\phi(x;\mu_{j},\sigma_{j}^{2}),
+p(x)=\sum_{k=1}^{K}\pi_{k}\phi(x;\mu_{k},\sigma_{k}^{2}),
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $\sum\nolimits _{j=1}^{k}\pi_{j}=1$
+\begin_inset Formula $\sum\nolimits _{k=1}^{K}\pi_{k}=1$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Itemize
-Gibbs sampling with multi-class indicators 
-\begin_inset Formula $(I_{i}=j$
+
+\series bold
+Multi-class indicators
+\series default
+: 
+\begin_inset Formula $I_{i}=k$
 \end_inset
 
  if observation 
@@ -1648,15 +1880,25 @@ Gibbs sampling with multi-class indicators
 \end_inset
 
  comes from density 
-\begin_inset Formula $j$
+\begin_inset Formula $k$
 \end_inset
 
-):
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Gibbs sampling
+\series default
+\color inherit
+ with 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $(\pi_{1},...,\pi_{k})$
+\begin_inset Formula $(\pi_{1},...,\pi_{K})$
 \end_inset
 
  
@@ -1664,14 +1906,14 @@ Gibbs sampling with multi-class indicators
 \end_inset
 
  
-\begin_inset Formula $I,x\sim Dirichlet(\alpha_{1}+n_{1},\alpha_{2}+n_{2},...,\alpha_{k}+n_{k})$
+\begin_inset Formula $I,x\sim Dirichlet(\alpha_{1}+n_{1},\alpha_{2}+n_{2},...,\alpha_{K}+n_{K})$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\sigma_{j}^{2}$
+\begin_inset Formula $\sigma_{k}^{2}$
 \end_inset
 
  
@@ -1679,7 +1921,7 @@ Gibbs sampling with multi-class indicators
 \end_inset
 
  
-\begin_inset Formula $\mu_{j},I,x\sim Inv$
+\begin_inset Formula $I,x\sim Inv$
 \end_inset
 
 -
@@ -1687,7 +1929,7 @@ Gibbs sampling with multi-class indicators
 \end_inset
 
  and 
-\begin_inset Formula $\mu_{j}|I,\sigma_{j}^{2},x\sim N$
+\begin_inset Formula $\mu_{k}|I,\sigma_{k}^{2},x\sim Normal$
 \end_inset
 
 , 
@@ -1703,7 +1945,7 @@ Gibbs sampling with multi-class indicators
 \end_inset
 
  
-\begin_inset Formula $j=1,...,k,$
+\begin_inset Formula $k=1,...,K,$
 \end_inset
 
 
@@ -1718,7 +1960,7 @@ Gibbs sampling with multi-class indicators
 \end_inset
 
  
-\begin_inset Formula $\pi,\mu,\sigma^{2},x\sim Multinomial(\theta_{i1},...,\theta_{ik})$
+\begin_inset Formula $\pi,\mu,\sigma^{2},x\sim Multinomial(\theta_{i1},...,\theta_{iK})$
 \end_inset
 
 , 
@@ -1742,7 +1984,20 @@ Gibbs sampling with multi-class indicators
 
 \end_deeper
 \begin_layout Itemize
-More generally: Gibbs sampling is very powerful for missing data problems.
+Gibbs sampling is very powerful for 
+\series bold
+\color blue
+missing data
+\series default
+\color inherit
+ problems.
+ 
+\series bold
+\color blue
+Semi-supervised learning
+\series default
+\color inherit
+.
 \end_layout
 
 \end_deeper
@@ -1765,7 +2020,13 @@ Data augmentation - Probit regression
 
 \begin_deeper
 \begin_layout Itemize
-Probit model:
+
+\series bold
+\color blue
+Probit
+\series default
+\color inherit
+ model:
 \begin_inset Formula 
 \[
 \Pr(y_{i}=1\text{ }|\text{ }x_{i})=\Phi(x_{i}^{\prime}\beta)
@@ -1777,7 +2038,13 @@ Probit model:
 \end_layout
 
 \begin_layout Itemize
-Random utility formulation of the probit:
+
+\series bold
+\color blue
+Random utility formulation
+\series default
+\color inherit
+ of the probit:
 \begin_inset Formula 
 \begin{eqnarray*}
 u_{i} & \sim & N(x_{i}^{\prime}\beta,1)\\
@@ -1822,7 +2089,11 @@ If
 \begin_inset Formula $u$
 \end_inset
 
- is not observed.
+ is 
+\series bold
+not observed
+\series default
+.
  Gibbs sampling to the rescue!
 \end_layout
 
@@ -1850,7 +2121,13 @@ Simulate from joint posterior
 \begin_inset Formula $p(u,\beta|y)$
 \end_inset
 
- iterating between the full conditional posteriors: 
+ iterating between the 
+\series bold
+\color blue
+full conditional posteriors
+\series default
+\color inherit
+: 
 \end_layout
 
 \begin_deeper
@@ -1951,38 +2228,74 @@ Improving the efficiency of the Gibbs sampler
 \begin_deeper
 \begin_layout Itemize
 
+\series bold
 \shape italic
+\emph on
+\color blue
 Efficient blocking
+\series default
 \shape default
+\emph default
+\color inherit
 .
- Correlated parameters should be included in the same updating block.
+ Correlated parameters should ideally be included in the same updating block.
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 
+\series bold
 \shape italic
+\emph on
+\color blue
 Reparametrization
+\series default
 \shape default
+\emph default
+\color inherit
 .
  Convergence can improve dramatically in alternative parametrizations.
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 
+\series bold
 \shape italic
+\emph on
+\color blue
 Data augmentation
+\series default
 \shape default
+\emph default
+\color inherit
 .
  Bring in latent (unobserved) variables that make the full conditional posterior
 s more easily sampled (Probit, Mixture models etc).
  Downside: Typically increases the autocorrelation between draws.
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 
+\series bold
 \shape italic
+\emph on
+\color blue
 Parameter expansion
+\series default
 \shape default
+\emph default
+\color inherit
 .
  Introducing (non-sense) parameters in the model may break the dependence
  between the original parameters (Example probit).
