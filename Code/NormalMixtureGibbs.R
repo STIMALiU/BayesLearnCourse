@@ -1,25 +1,22 @@
 # Estimating a simple mixture of normals
-
-
+# Author: Mattias Villani, IDA, Linköping University. http://mattiasvillani.com
 
 ##########    BEGIN USER INPUT #################
 # Data options
-#rawData <- read.table('/home/mv/Dropbox/Teaching/BayesLearn2012/Code/CanadianWages.dat', header = TRUE)
-#x <- as.matrix(rawData['logWage'])
-
-rawData <- geyser
-x <- as.matrix(rawData['duration'])
+data(faithful)
+rawData <- faithful
+x <- as.matrix(rawData['eruptions'])
 
 # Model options
-nComp <- 3    # Number of mixture components
+nComp <- 4    # Number of mixture components
 
 # Prior options
 alpha <- 10*rep(1,nComp) # Dirichlet(alpha)
 muPrior <- rep(0,nComp) # Prior mean of theta
 tau2Prior <- rep(10,nComp) # Prior std theta
 sigma2_0 <- rep(var(x),nComp) # s20 (best guess of sigma2)
-nu0 <- rep(10,nComp) # degrees of freedom for prior on sigma2
-  
+nu0 <- rep(4,nComp) # degrees of freedom for prior on sigma2
+
 # MCMC options
 nIter <- 1000 # Number of Gibbs sampling draws
 
@@ -31,7 +28,7 @@ sleepTime <- 0.1 # Adding sleep time between iterations for plotting
 
 ###### Defining a function that simulates from the 
 rScaledInvChi2 <- function(n, df, scale){
-   return((df*scale)/rchisq(n,df=df))
+  return((df*scale)/rchisq(n,df=df))
 }
 
 ####### Defining a function that simulates from a Dirichlet distribution
@@ -131,4 +128,3 @@ lines(xGrid, dnorm(xGrid, mean = mean(x), sd = apply(x,2,sd)), type = "l", lwd =
 legend("topright", box.lty = 1, legend = c("Data histogram","Mixture density","Normal density"), col=c("black","red","blue"), lwd = 2)
 
 #########################    Helper functions    ##############################################
-
