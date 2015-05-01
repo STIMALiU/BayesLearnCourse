@@ -1,7 +1,7 @@
 # Model comparison: Geometric model vs Poisson model
 # Author: Mattias Villani, Linköping University. http://mattiasvillani.com
 
-# Log marginal likelihood Geometric model with gamma prior
+# Log marginal likelihood Geometric model with beta prior
 LogMargLikeGeo <- function(y,alpha1,beta1){
   yBar <- mean(y)
   n <- length(y)
