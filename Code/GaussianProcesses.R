@@ -1,3 +1,6 @@
+# Some simple code to simulate from a Gaussian Process.
+# Author: Mattias Villani, http://mattiasvillani.com
+
 # User input
 nSim <- 10
 sigmaF <- 0.1
@@ -60,3 +63,4 @@ manipulate(
   sigmaF = slider(0, 2, step=0.1, initial = 1, label = "SigmaF"),
   l = slider(0, 2, step=0.1, initial = 1, label = "Length scale, l")
 )
+
