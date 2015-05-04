@@ -79,12 +79,12 @@
 \begin_layout Standard
 
 \size footnotesize
-Mattias Villani
+Shutong Ding and Mattias Villani
 \begin_inset space \hspace{}
-\length 11.5cm
+\length 7.5cm
 \end_inset
 
-2014-12-03
+2015-05-07
 \end_layout
 
 \begin_layout Standard
@@ -109,7 +109,7 @@ Linköpings universitet
 \begin_layout Standard
 
 \size footnotesize
-mattias.villani@liu.se
+shutong.ding@liu.se
 \begin_inset VSpace 1cm
 \end_inset
 
@@ -163,15 +163,13 @@ deadline
 \series default
  for this lab is 
 \series bold
-December
+May 19
 \series default
- 11.
-\family typewriter
-
-\begin_inset Newline newline
-\end_inset
-
-
+ at 
+\series bold
+midnight
+\series default
+.
 \end_layout
 
 \begin_layout Standard
@@ -205,7 +203,7 @@ Poisson regression - the MCMC way
 Consider the following Poisson regression model
 \begin_inset Formula 
 \begin{align*}
-y_{i} & \vert\beta\sim Poisson\left[\exp\left(x_{i}'\beta\right)\right],\; i=1,...,n,
+y_{i} & \vert\beta\sim Poisson\left[\exp\left(x_{i}'\beta\right)\right],\;i=1,...,n,
 \end{align*}
 
 \end_inset
@@ -242,41 +240,77 @@ nBids
 \begin_inset Formula $x$
 \end_inset
 
-).
- They are: 
+): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
 \series bold
 Const
 \series default
- (for the intercept), 
+ (for the intercept)
+\end_layout
+
+\begin_layout Itemize
+
 \series bold
 PowerSeller
 \series default
- (is the seller selling large volumes on eBay?), 
+ (is the seller selling large volumes on eBay?)
+\end_layout
+
+\begin_layout Itemize
+
 \series bold
 VerifyID
 \series default
- (is the seller verified by eBay?), 
+ (is the seller verified by eBay?)
+\end_layout
+
+\begin_layout Itemize
+
 \series bold
 Sealed
 \series default
- (was the coin sold sealed in never opened envelope?), 
+ (was the coin sold sealed in never opened envelope?)
+\end_layout
+
+\begin_layout Itemize
+
 \series bold
 MinBlem
 \series default
- (did the coin have a minor defect?), 
+ (did the coin have a minor defect?)
+\end_layout
+
+\begin_layout Itemize
+
 \series bold
 MajBlem
 \series default
- (a major defect?), 
+ (a major defect?)
+\end_layout
+
+\begin_layout Itemize
+
 \series bold
 LargNeg
 \series default
- (did the seller get a lot of negative feedback from customers?), 
+ (did the seller get a lot of negative feedback from customers?)
+\end_layout
+
+\begin_layout Itemize
+
 \series bold
 LogBook
 \series default
  (logarithm of the coins book value according to expert sellers.
- Standardized) and 
+ Standardized)
+\end_layout
+
+\begin_layout Itemize
+
 \series bold
 MinBidShare
 \series default
@@ -286,7 +320,6 @@ MinBidShare
  
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
 Obtain the maximum likelihood estimator of 
 \begin_inset Formula $\beta$
@@ -346,24 +379,25 @@ Now, let's simulate from the actual posterior of
 \begin_inset Formula $\beta$
 \end_inset
 
- using the Metropolis algorithm and compare with the results in b).
+ using the Metropolis algorithm and compare with the approximate results
+ in b).
  Program a general function that uses the Metropolis algorithm to generate
  random draws from an 
 \shape italic
 arbitrary
 \shape default
  posterior density.
- Let the proposal density be the multivariate normal density mentioned on
- Page 9 in Lecture 9:
+ Let the proposal density be the multivariate normal density mentioned in
+ Lecture 8 (random walk Metropolis):
 \begin_inset Formula 
 \[
-N\left[\theta^{(t-1)},\Sigma\right],
+\theta_{p}\vert\theta^{(i-1)}\sim N\left(\theta^{(i-1)},c\cdot\Sigma\right),
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $\Sigma=c^{2}J_{\tilde{\theta},\mathbf{x}}^{-1}$
+\begin_inset Formula $\Sigma=J_{\tilde{\theta},\mathbf{x}}^{-1}$
 \end_inset
 
  and 
@@ -432,17 +466,17 @@ log
  probability can be written
 \begin_inset Formula 
 \[
-\frac{p(\theta^{\ast}|y)}{p(\theta^{(t-1)}|y)}=\exp\left[\log p(\theta^{\ast}|y)-\log p(\theta^{(t-1)}|y)\right]
+\frac{p(\theta_{p}|y)}{p(\theta^{(i-1)}|y)}=\exp\left[\log p(\theta_{p}|y)-\log p(\theta^{(i-1)}|y)\right]
 \]
 
 \end_inset
 
 This is smart since the large or small common factors in 
-\begin_inset Formula $p(\theta^{\ast}|y)$
+\begin_inset Formula $p(\theta_{p}|y)$
 \end_inset
 
  and 
-\begin_inset Formula $p(\theta^{(t-1)}|y)$
+\begin_inset Formula $p(\theta^{(i-1)}|y)$
 \end_inset
 
  cancel out before we evaluate the exponential function (which can otherwise
@@ -495,7 +529,7 @@ any
 MultiplyByTwo
 \family default
 \size default
- that returns 2 times the log posterior density evalated at 
+ that returns 2 times the log posterior density evaluated at 
 \begin_inset Formula $\theta=0.3$
 \end_inset
 
@@ -558,7 +592,7 @@ varargin
 \family default
 \size default
 , however, but it is not as pretty as in R or Python.
- See the Matlab help.]
+ See the Matlab help.] 
 \begin_inset Newline newline
 \end_inset
 
@@ -568,19 +602,91 @@ Use your new Metropolis function to sample from the posterior of
 
  in the Poisson regression for the eBay dataset.
  Assess MCMC convergence by graphical methods.
+ The parameters 
+\begin_inset Formula $\phi_{j}=\exp(\beta_{j})$
+\end_inset
+
+ are usually considered more interpretable than the 
+\begin_inset Formula $\beta_{j}$
+\end_inset
+
+.
+ Compute the posterior distribution of 
+\begin_inset Formula $\phi_{j}$
+\end_inset
+
+ for all variables.
 \end_layout
 
 \begin_layout Enumerate
-Use the posterior predictive distribution 
-\begin_inset Formula $p(\mathbf{y}^{rep}|\mathbf{y})$
-\end_inset
+Use the MCMC draws from c) to simulate from the predictive distribution
+ of the number of bidders in a new auction with the characteristics below.
+ Plot the predictive distribution.
+ What is the probability of no bidders in this new auction?
+\end_layout
 
- for some suitable summary statistic 
-\begin_inset Formula $T(\mathbf{y},\beta)$
-\end_inset
+\begin_layout Itemize
 
- to check the quality of the Poisson regression model for the eBay data.
- Is that model any good?
+\series bold
+PowerSeller 
+\series default
+= 1
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+VerifyID
+\series default
+ = 1
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sealed
+\series default
+ = 1
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+MinBlem
+\series default
+ = 0
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+MajBlem
+\series default
+ = 0
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+LargNeg
+\series default
+ = 0
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+LogBook
+\series default
+ = 1
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+MinBidShare
+\series default
+ = 0.5 
 \end_layout
 
 \end_deeper
