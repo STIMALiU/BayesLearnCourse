@@ -39,9 +39,6 @@
 \end_preamble
 \options xcolor=svgnames
 \use_default_options false
-\begin_modules
-knitr
-\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -180,7 +177,15 @@ Lecture overview
 
 \begin_deeper
 \begin_layout Itemize
-Hierarchical models
+Metropolis-Hastings within Gibbs
+\end_layout
+
+\begin_layout Itemize
+Heteroscedastic regression
+\end_layout
+
+\begin_layout Itemize
+Regularized regression with Gibbs
 \end_layout
 
 \begin_layout Itemize
@@ -197,7 +202,7 @@ RStan
 status open
 
 \begin_layout Plain Layout
-An hierarchical binomial model 
+Metropolis-Hastings within Gibbs
 \end_layout
 
 \end_inset
@@ -207,103 +212,91 @@ An hierarchical binomial model
 
 \begin_deeper
 \begin_layout Itemize
-Example: 
-\begin_inset Formula 
-\[
-y_{j}|\theta_{j}\sim Bin(n_{j},\theta_{j})\text{, }j=1,...,J\text{.}
-\]
 
+\series bold
+Gibbs sampling
+\series default
+ from 
+\begin_inset Formula $p(\theta_{1},\theta_{2},\theta_{3}\vert\mathbf{y})$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sample 
+\begin_inset Formula $p(\theta_{1}\vert\theta_{2},\theta_{3},\mathbf{y})$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-We could do inference on each 
-\begin_inset Formula $\theta_{j}$
+Sample 
+\begin_inset Formula $p(\theta_{2}\vert\theta_{1},\theta_{3},\mathbf{y})$
 \end_inset
 
- separately.
- Problem: 
-\begin_inset Formula $n_{j}$
-\end_inset
 
- may be small for some 
-\begin_inset Formula $j$
-\end_inset
-
-.
- Not much info then about 
-\begin_inset Formula $\theta_{j}$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Itemize
-If you knew 
-\begin_inset Formula $\theta_{j}$
+Sample 
+\begin_inset Formula $p(\theta_{3}\vert\theta_{1},\theta_{2},\mathbf{y})$
 \end_inset
 
-, would that give information about 
-\begin_inset Formula $\theta_{i}$
+
+\begin_inset VSpace medskip
 \end_inset
 
-, 
-\begin_inset Formula $i\neq j$
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+When a 
+\series bold
+full conditional is not easily sampled
+\series default
+ we can simulate from it using MH.
+\begin_inset VSpace medskip
 \end_inset
 
-? If so, then inference about the parameters 
-\begin_inset Formula $\theta_{j}$
-\end_inset
 
-, 
-\begin_inset Formula $j=1,....,J$
-\end_inset
-
-, may 'borrow strength' from each other.
 \end_layout
 
 \begin_layout Itemize
-Extreme case: assume 
-\begin_inset Formula $\theta_{j}=\theta$
+Example: at 
+\begin_inset Formula $i$
 \end_inset
 
- for all 
-\begin_inset Formula $j$
+th iteration, propose 
+\begin_inset Formula $\theta_{2}$
 \end_inset
 
-.
- Define 
-\begin_inset Formula $y=\sum_{j=1}^{J}y_{j}$
-\end_inset
-
- and 
-\begin_inset Formula $n=\sum_{j=1}^{J}n_{j}$
+ from 
+\begin_inset Formula $q(\theta_{2}\vert\theta_{1},\theta_{3},\theta_{2}^{(i-1)},\mathbf{y})$
 \end_inset
 
 .
- Straightforward to analyze 
-\begin_inset Formula $\theta$
+ Accept/reject.
+\begin_inset VSpace medskip
 \end_inset
 
- with the usual Beta-Binomial approach.
+
 \end_layout
 
 \begin_layout Itemize
-Intermediate case: tie the 
-\begin_inset Formula $\theta$
+Gibbs sampling is a special case of MH when 
+\begin_inset Formula $q(\theta_{2}\vert\theta_{1},\theta_{3},\theta_{2}^{(i-1)},\mathbf{y})=p(\theta_{2}\vert\theta_{1},\theta_{3},\mathbf{y})$
 \end_inset
 
-'s together by assuming a superpopulation/prior
-\begin_inset Formula 
-\[
-\theta_{j}\overset{iid}{\sim}Beta(\alpha,\beta).
-\]
-
+, which gives 
+\begin_inset Formula $\alpha=1$
 \end_inset
 
-
+.
+ Always accept.
 \end_layout
 
 \end_deeper
@@ -316,7 +309,99 @@ Intermediate case: tie the
 status open
 
 \begin_layout Plain Layout
-An hierarchical binomial model, cont.
+Heteroscedastic regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Heteroscedastic regression:
+\begin_inset Formula 
+\[
+y_{i}=x_{i}'\beta+\varepsilon_{i}
+\]
+
+\end_inset
+
+where the errors are heteroscedastic 
+\begin_inset Formula 
+\[
+\varepsilon_{i}\sim N\left[0,\sigma^{2}\exp\left(x_{i}'\gamma\right)\right].
+\]
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Priors: Multivariate normal for 
+\begin_inset Formula $\beta$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
+ Inv-
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ for 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Gibbs sampling:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\beta,\sigma^{2}\vert\gamma,\mathbf{y},X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\gamma\vert\beta,\sigma^{2},\mathbf{y},\mathbf{X}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Heteroscedastic regression
 \end_layout
 
 \end_inset
@@ -326,120 +411,210 @@ An hierarchical binomial model, cont.
 
 \begin_deeper
 \begin_layout Itemize
-Model summary
+Draws from 
+\begin_inset Formula $\beta,\sigma^{2}\vert\gamma,\mathbf{y},X$
+\end_inset
+
+ can be easily obtained since we can rewrite the model as
+\begin_inset Formula 
+\[
+\tilde{y}_{i}=\tilde{x}_{i}'\beta+\tilde{\varepsilon}_{i}
+\]
+
+\end_inset
+
+where 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\tilde{y}_{i}=\exp\left(-x_{i}'\gamma/2\right)y_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\tilde{x}_{i}'=\exp\left(-x_{i}'\gamma/2\right)x_{i}'$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\tilde{\varepsilon}_{i}=\exp\left(-x_{i}'\gamma/2\right)\varepsilon_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Note that 
+\begin_inset Formula $Var(\tilde{\varepsilon}_{i})=\sigma^{2}$
+\end_inset
+
+, so homoscedastic.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $p(\gamma\vert\beta,\sigma^{2},\mathbf{y},\mathbf{X})$
+\end_inset
+
+ is non-standard, but we can use MH to sample from proposal 
+\begin_inset Formula $N(\hat{\delta},\Sigma)$
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\hat{\delta}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ can be obtained from approximate maximum likelihood estimators.
+ (but there are better proposals).
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Regularized regression with Gibbs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Recap: The joint posterior of 
+\begin_inset Formula $\beta$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is
 \begin_inset Formula 
 \begin{align*}
-y_{j}|\theta_{j} & \sim Bin(n_{j},\theta_{j})\text{, }j=1,...,J\text{.}\\
- & \theta_{j}\overset{iid}{\sim}Beta(\alpha,\beta).\\
-\alpha & \sim Gamma(a_{1},a_{2}).\\
-\beta & \sim Gamma(b_{1},b_{2}).
+\beta|\sigma^{2},\lambda,\mathbf{y},\mathbf{X} & \sim N\left(\mu_{n},\Omega_{n}^{-1}\right)\\
+\sigma^{2}|\lambda,\mathbf{y},\mathbf{X} & \sim Inv-\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)\\
+p(\lambda|\mathbf{y},\mathbf{X}) & \propto\sqrt{\frac{\left|\Omega_{0}\right|}{\left|X'X+\Omega_{0}\right|}}\left(\frac{\nu_{n}\sigma_{n}^{2}}{2}\right)^{-\nu_{n}/2}\cdot p(\lambda)
 \end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-Sample from the joint posterior of 
-\begin_inset Formula $p(\theta,\alpha,\beta|y)=p(\theta|\alpha,\beta,y)p(\alpha,\beta|y)$
+where 
+\begin_inset Formula $p(\lambda)$
 \end_inset
 
- by sampling from:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Formula $\theta_{j}|\alpha,\beta,y$
+ is the 
+\begin_inset Formula $Inv-\chi^{2}$
 \end_inset
 
-, 
-\begin_inset Formula $j=1,...,J,$
-\end_inset
-
- which are independent 
-\begin_inset Formula $Beta$
-\end_inset
-
- distributions.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $p(\alpha,\beta|y)$
-\end_inset
-
- can be derived in closed form (similar to eq.
- 5.8), but cannot be sampled directly.
- Evaluate on grid and sample.
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-The one-way normal random effects model 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Consider the data model:
-\begin_inset Formula 
-\[
-y_{j}|\theta_{j}\sim N(\theta_{j},\sigma_{j}^{2})\text{, \ }\sigma_{j}^{2}\text{ known}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-At one extreme we may: estimate each 
-\begin_inset Formula $\theta_{j}$
-\end_inset
-
- using the mean 
-\begin_inset Formula $\bar{y}_{j}$
-\end_inset
-
- of observations in the 
-\begin_inset Formula $j$
-\end_inset
-
-th group.
-\end_layout
-
-\begin_layout Itemize
-At the other extreme we may: assume 
-\begin_inset Formula $\theta_{j}=\theta$
-\end_inset
-
-, for all 
-\begin_inset Formula $j$
+ prior for 
+\begin_inset Formula $\lambda$
 \end_inset
 
 .
- Estimate 
-\begin_inset Formula $\theta$
+\end_layout
+
+\begin_layout Itemize
+This is the 
+\series bold
+conditional-marginal decomposition
+\series default
+
+\begin_inset Formula 
+\[
+p(\beta,\sigma^{2},\lambda\vert\mathbf{y},\mathbf{X})=p(\beta\vert\sigma^{2},\lambda,\mathbf{y},\mathbf{X})p(\sigma^{2}\vert\lambda,\mathbf{y},\mathbf{X})p(\lambda\vert\mathbf{y},\mathbf{X})
+\]
+
 \end_inset
 
- with a pooling of group means 
-\begin_inset Formula $\bar{y}_{j}.$
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Gibbs sampling
+\series default
+ can instead be used:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sample 
+\begin_inset Formula $\beta\vert\sigma^{2},\lambda,\mathbf{y},\mathbf{X}$
+\end_inset
+
+ from Normal
+\end_layout
+
+\begin_layout Itemize
+Sample 
+\begin_inset Formula $\sigma^{2}\vert\beta,\lambda,\mathbf{y},\mathbf{X}$
+\end_inset
+
+ from Inv-
+\begin_inset Formula $\chi^{2}$
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+Sample 
+\begin_inset Formula $\lambda\vert\beta,\sigma^{2},\mathbf{y},\mathbf{X}$
+\end_inset
+
+ from Inv-
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Note that 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is not easy to simulate once we condition on 
+\begin_inset Formula $\beta$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
 \end_layout
 
 \end_deeper
@@ -447,64 +622,5 @@ At the other extreme we may: assume
 
 \end_layout
 
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-The one-way normal random effects model, cont.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Intermediate: a hierarchical model 
-\begin_inset Formula 
-\[
-y_{j}|\theta_{j}\sim N(\theta_{j},\sigma_{j}^{2})\text{, \ }\sigma_{j}^{2}\text{ known}
-\]
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Formula 
-\[
-\theta_{j}|\mu,\tau\sim N(\mu,\tau^{2})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Formula 
-\[
-p(\mu,\tau)=p(\mu|\tau)p(\tau)\propto p(\tau)
-\]
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-Here we do not assume equal group mean, yet the estimates of each 
-\begin_inset Formula $\theta_{j}$
-\end_inset
-
- borrow strength from each other.
-\end_layout
-
-\end_deeper
 \end_body
 \end_document

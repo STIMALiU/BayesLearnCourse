@@ -614,8 +614,8 @@ Posterior
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\beta|\sigma^{2} & \sim N\left[\mu_{n},\sigma^{2}\Omega_{n}^{-1}\right]\\
-\sigma^{2} & \sim Inv-\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)
+\beta|\sigma^{2},\mathbf{y},\mathbf{X} & \sim N\left[\mu_{n},\sigma^{2}\Omega_{n}^{-1}\right]\\
+\sigma^{2}\vert\mathbf{y},\mathbf{X} & \sim Inv-\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)
 \end{align*}
 
 \end_inset

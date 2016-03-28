@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -50,13 +50,13 @@ knitr
 \font_roman palatino
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,15 +67,24 @@ knitr
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -99,7 +108,7 @@ knitr
 \begin_body
 
 \begin_layout Title
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -112,7 +121,7 @@ Bayesian Learning - Lecture 11
 \end_layout
 
 \begin_layout Author
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -127,7 +136,7 @@ Mattias Villani
 \begin_layout Institute
 
 \series bold
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -156,336 +165,63 @@ Linköping University
 
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
-Likelihood is no good for model comparison
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Overview
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
-Consider two models: 
-\begin_inset Formula $M_{1}$
-\end_inset
 
- and 
-\begin_inset Formula $M_{2}$
-\end_inset
-
-.
- Let :
-\begin_inset Formula $p_{i}(y|\theta_{i})$
-\end_inset
-
- denote the data density under model 
-\begin_inset Formula $M_{i}$
-\end_inset
-
-.
- If we knew the values of 
-\begin_inset Formula $\theta_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\theta_{2}$
-\end_inset
-
-, then the likelihood ratio 
-\begin_inset Formula 
-\[
-\frac{p_{1}(y|\theta_{1})}{p_{2}(y|\theta_{2})},
-\]
-
-\end_inset
-
-could be used to compare the models.
-\end_layout
-
-\begin_layout Itemize
-What if the model parameters are unknown? The estimated likelihood ratio:
-\begin_inset Formula 
-\[
-\frac{p_{1}(y|\hat{\theta}_{1})}{p_{2}(y|\hat{\theta}_{2})}.
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $\hat{\theta}_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\hat{\theta}_{2}$
-\end_inset
-
- are the maximum likelihood estimates.
-\end_layout
-
-\begin_layout Itemize
-Estimated likelihood ratio is useless in itself as the larger model always
- has larger likelihood.
- Comparison with sampling distribution of the estimated likelihood ratio
- is one solution.
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Enter Bayes
-\end_layout
-
-\begin_layout Itemize
-Bayesian: use your priors 
-\begin_inset Formula $p_{1}(\theta_{1})$
-\end_inset
-
- och 
-\begin_inset Formula $p_{2}(\theta_{2})$
-\end_inset
-
- and compute the 
 \series bold
-marginal likelihood
+\color blue
+Bayesian variable selection
 \series default
-, or 
-\series bold
-prior predictive density
-\series default
-, for each model
-\begin_inset Formula 
-\[
-p_{k}(y)=\int p_{k}(y|\theta_{k})p_{k}(\theta_{k})d\theta_{k}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-The 
-\series bold
-Bayes factor
-\series default
- can be used to compare to models
-\begin_inset Formula 
-\[
-B_{12}(y)=\frac{p_{1}(y)}{p_{2}(y)}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-The marginal likelihoods may be converted into posterior probabilities of
- the models (
-\begin_inset Formula $M_{1},M_{2}$
-\end_inset
-
-):
-\begin_inset Formula 
-\[
-\frac{p(M_{1}|y)}{p(M_{2}|y)}=\frac{p(M_{1})}{p(M_{2})}B_{12}(y),
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $B_{12}(y)$
-\end_inset
-
- is the Bayes factor in favor of 
-\begin_inset Formula $M_{1}$
-\end_inset
-
+\color inherit
 .
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\text{Posterior model odds ratio = Prior model odds ratio }\cdot\text{Bayes factor}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Bayesian hypothesis testing - Bernoulli
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Hypothesis testing
+\color blue
+Model checking
 \series default
- is just a special case of model selection: 
-\begin_inset Formula 
-\begin{align*}
-M_{0}: & x_{1},...,x_{n}\overset{iid}{\sim}Bernoulli(\theta_{0})\\
-M_{1}: & x_{1},...,x_{n}\overset{iid}{\sim}Bernoulli(\theta),\text{}\theta\sim Beta(\alpha,\beta)
-\end{align*}
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-p(x_{1},...,x_{n}|M_{0})=\theta_{0}^{s}(1-\theta_{0})^{f},
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{eqnarray*}
-p(x_{1},...,x_{n}|M_{1}) & = & \int_{0}^{1}\theta^{s}(1-\theta)^{f}B(\alpha,\beta)^{-1}\theta^{\alpha-1}(1-\theta)^{\beta-1}d\theta\\
- & = & B(\alpha+s,\beta+f)/B(\alpha,\beta),
-\end{eqnarray*}
-
-\end_inset
-
-where 
-\begin_inset Formula $B(\cdot,\cdot)$
-\end_inset
-
- is the 
-\series bold
-Beta function
-\series default
-.
+\color inherit
+ using posterior predictive distribution.
 \end_layout
 
-\begin_layout Itemize
-Posterior model probabilities
-\begin_inset Formula 
-\[
-Pr(M_{k}|x_{1},...,x_{n})\propto p(x_{1},...,x_{n}|M_{k})Pr(M_{k}),\text{ for }k=0,1.
-\]
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bayesian variable selection
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Itemize
-The Bayes factor 
-\begin_inset Formula 
-\[
-BF(M_{0};M_{1})=\frac{p(x_{1},...,x_{n}\mathbf{|}H_{0})}{p(x_{1},...,x_{n}\mathbf{|}H_{1})}=\frac{\theta_{0}^{s}(1-\theta_{0})^{f}B(\alpha,\beta)}{B(\alpha+s,\beta+f)}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Bayesian hypothesis testing - Bernoulli example
-\end_layout
-
-\begin_layout Itemize
-This is equivalent to the posterior under the following 'spike-and-slab'
- prior:
-\begin_inset Formula 
-\[
-p(\theta)=\pi I_{\theta_{0}}(\theta)+(1-\pi)Beta(\alpha,\beta)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Note: data can now 
-\shape italic
-support
-\shape default
- a null hypothesis (not only reject it).
- This is all due to the introduction of a prior.
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Bayesian hypothesis testing, cont.
-\end_layout
-
-\begin_layout Itemize
-Bayes tests are consistent (not true for frequentist test) 
-\begin_inset Formula 
-\[
-p(H_{k}\mathbf{|x})\rightarrow1\text{ as }n\rightarrow\infty\text{ if }H_{k}\text{ is true.}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-The priors must be proper.
- Example: Let 
-\begin_inset Formula $x_{1},...,x_{n}$
-\end_inset
-
- be an independent sample from 
-\begin_inset Formula $N(\theta,1)$
-\end_inset
-
-.
- 
-\begin_inset Formula 
-\begin{eqnarray*}
-H_{0} & : & \theta=\theta_{0}\\
-H_{1} & : & \theta\neq\theta_{0}\text{, \ with prior }N(\mu_{0},\tau_{0}^{2})\text{ if }H_{1}\text{ holds.}
-\end{eqnarray*}
-
-\end_inset
-
-Then it can be shown that:
-\begin_inset Formula 
-\[
-p(H_{0}\mathbf{|x})\rightarrow1\text{ as }\tau_{0}^{2}\rightarrow\infty,
-\]
-
-\end_inset
-
-regardless of which hypothesis is the true one.
- 
-\end_layout
-
-\begin_layout Itemize
-This result is entirely in the logic of Bayesian testing!
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Example - Variable selection
-\end_layout
-
+\begin_deeper
 \begin_layout Itemize
 Linear regression:
 \begin_inset Formula 
@@ -495,526 +231,1347 @@ y=\beta_{0}+\beta_{1}x_{1}+...+\beta_{p}x_{p}+\varepsilon.
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Itemize
 Which variables have non-zero coefficient? Example of hypotheses: 
 \begin_inset Formula 
 \begin{eqnarray*}
-H_{0} & : & \beta_{0}=\beta_{1}=...\beta_{p}=0\\
+H_{0} & : & \beta_{0}=\beta_{1}=...=\beta_{p}=0\\
 H_{1} & : & \beta_{1}=0\\
 H_{2} & : & \beta_{1}=\beta_{2}=0
 \end{eqnarray*}
 
 \end_inset
 
-we could consider all possible subsets of 
+
+\end_layout
+
+\begin_layout Itemize
+Introduce 
+\series bold
+\color blue
+variable selection indicators
+\series default
+\color inherit
+ 
+\begin_inset Formula $\mathcal{I}=(I_{1},...,I_{p}).$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Example: 
+\begin_inset Formula $\mathcal{I}=(1,1,0)$
+\end_inset
+
+ means that 
+\begin_inset Formula $\beta_{1}\neq0$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{2}\neq0$
+\end_inset
+
+, but 
+\begin_inset Formula $\beta_{3}=0$
+\end_inset
+
+, so 
+\begin_inset Formula $x_{3}$
+\end_inset
+
+ drops out of the model.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bayesian variable selection, cont.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Model inference, just crank the Bayesian machine:
+\begin_inset Formula 
+\[
+p(\mathcal{I}|\mathbf{y},\mathbf{X})\propto p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}})\cdot p(\mathcal{I})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The prior 
+\begin_inset Formula $p(\mathbf{\mathcal{I}})$
+\end_inset
+
+ is typically taken to be 
+\begin_inset Formula $I_{1},...,I_{p}|\theta\overset{iid}{\sim}Bernoulli(\theta)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\theta$
+\end_inset
+
+ is the 
+\series bold
+prior inclusion probability
+\series default
+.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Challenge: Computing the 
+\series bold
+marginal likelihood
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ for each model (
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+)
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\[
+p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}})=\int p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}},\beta)p(\beta|\mathbf{X},\mathbf{\mathcal{I}})d\beta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bayesian variable selection, cont.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\beta_{\mathcal{I}}$
+\end_inset
+
+ denote the 
+\series bold
+non-zero
+\series default
+ coefficients under 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Prior:
+\begin_inset Formula 
+\begin{align*}
+\beta_{\mathcal{I}}|\sigma^{2} & \sim N\left(0,\sigma^{2}\Omega_{\mathcal{I},0}^{-1}\right)\\
+\sigma^{2} & \sim Inv-\chi^{2}\left(\nu_{0},\sigma_{0}^{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Marginal likelihood
+\series default
+ 
+\begin_inset Formula 
+\[
+p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}})\propto\left|\mathbf{X}_{\mathcal{I}}'\mathbf{X}_{\mathcal{I}}+\Omega_{\mathcal{I},0}^{-1}\right|^{-1/2}\left|\Omega_{\mathcal{I},0}\right|^{1/2}\left(\nu_{0}\sigma_{0}^{2}+RSS_{\mathcal{I}}\right)^{-(\nu_{0}+n-1)/2}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{X}_{\mathcal{I}}$
+\end_inset
+
+ is the covariate matrix for the subset given by 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $RSS_{\mathcal{I}}$
+\end_inset
+
+ is (almost) the residual sum of squares under model implied by 
+\begin_inset Formula $\mathbf{\mathcal{I}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+RSS_{\mathcal{I}}=\mathbf{y}'\mathbf{y}-\mathbf{y}'\mathbf{X}_{\mathcal{I}}\left(\mathbf{X}_{\mathcal{I}}'\mathbf{X}_{\mathcal{I}}+\Omega_{\mathcal{I},0}\right)^{-1}\mathbf{X}_{\mathcal{I}}'\mathbf{y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bayesian variable selection via Gibbs sampling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+But there are 
+\begin_inset Formula $2^{p}$
+\end_inset
+
+ model combinations to go through! Ouch!
+\end_layout
+
+\begin_layout Itemize
+...
+ but most will have essentially zero posterior probability.
+ Phew!
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Simulate from the joint posterior distribution:
+\begin_inset Formula 
+\[
+p(\beta,\sigma^{2},\mathcal{I}|\mathbf{y\textnormal{,}X})=p(\beta,\sigma^{2}|\mathcal{I},\mathbf{y}\textnormal{,}\mathbf{X})p(\mathcal{I}|\mathbf{y},\mathbf{X}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Simulate from 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $p(\mathbf{\mathcal{I}}|\mathbf{y})$
+\end_inset
+
+ using Gibbs sampling:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Draw 
+\begin_inset Formula $I_{1}|\mathcal{I}_{-1},\mathbf{y},\mathbf{X}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Draw 
+\begin_inset Formula $I_{2}|\mathbf{\mathcal{I}}_{-2}\textnormal{,}\mathbf{y},\mathbf{X}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+...
+\end_layout
+
+\begin_layout Itemize
+Draw 
+\begin_inset Formula $I_{p}|\mathbf{\mathcal{I}}_{-p},\mathbf{y},\mathbf{X}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Only need to compute 
+\begin_inset Formula $Pr(I_{i}=0|\mathbf{\mathcal{I}}_{-i},\mathbf{y},\mathbf{X})$
+\end_inset
+
+ and 
+\begin_inset Formula $Pr(I_{i}=1|\mathbf{\mathcal{I}}_{-i},\mathbf{y},\mathbf{X})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Automatic model averaging, all in one simulation run.
+\end_layout
+
+\begin_layout Itemize
+If needed, simulate from 
+\begin_inset Formula $p(\beta,\sigma^{2}|\mathcal{I},\mathbf{y}\textnormal{,}\mathbf{X})$
+\end_inset
+
+ for each draw of 
+\begin_inset Formula $\mathbf{\mathcal{I}}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Pseudo code for Bayesian variable selection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+0
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Initialize 
+\begin_inset Formula $\mathcal{I}^{(0)}=(I_{1}^{(0)},I_{2}^{(0)}...,I_{p}^{(0)})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Simulate 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ and 
 \begin_inset Formula $\beta$
 \end_inset
 
- coefficients to be zero.
- Easy! Just compute the marginal likelihood of each hypothesis.
-\end_layout
-
-\begin_layout Itemize
-MCMC sampling algorithms for variable selection.
- Introduce variable indicators:
-\begin_inset Formula 
-\[
-I_{j}=\begin{cases}
-0 & \text{ if }\beta_{j}=0\\
-1 & \text{ if }\beta_{j}\neq0
-\end{cases}
-\]
-
+ from 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+[Note: 
+\begin_inset Formula $\nu_{n},\sigma_{n}^{2}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-Sample from the joint posterior 
-\begin_inset Formula $p(\beta_{0},\beta_{1},...,\beta_{p},I_{1},I_{2},...,I_{p}|y,x)$
+,
+\begin_inset Formula $\mu_{n},\Omega_{n}$
 \end_inset
 
- using Gibbs sampling (linear Gaussian regression) or Metropolis-Hastings
- (everything else).
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Model averaging
-\end_layout
-
-\begin_layout Itemize
-Let 
-\begin_inset Formula $\gamma$
+ all depend on 
+\begin_inset Formula $\mathcal{I}^{(0)}$
 \end_inset
 
- be a quanitity with an interpretation which stays the same across the two
- models (for example a future value of the data 
-\begin_inset Formula $\tilde{y}$
-\end_inset
-
-).
- The marginal posterior distribution of 
-\begin_inset Formula $\gamma$
-\end_inset
-
- reads
-\begin_inset Formula 
-\[
-p(\gamma|y)=p(M_{1}|y)p_{1}(\gamma|y)+p(M_{2}|y)p_{2}(\gamma|y),
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $p_{k}(\gamma|y)$
-\end_inset
-
- is the marginal posterior of 
-\begin_inset Formula $\gamma$
-\end_inset
-
- conditional on model 
-\begin_inset Formula $k$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Prediction: 
-\begin_inset Formula $\gamma=(y_{T+1},...,y_{T+h})$
-\end_inset
-
-'.
-\end_layout
-
-\begin_layout Itemize
-Predictive distribution includes three sources of uncertainty:
+]
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Future errors/disturbances (e.g.
- the 
-\begin_inset Formula $\varepsilon$
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\sigma^{2}|\mathcal{I}^{(0)},\mathbf{y},\mathbf{X}\sim Inv-\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)$
 \end_inset
 
-'s in a regression)
+
 \end_layout
 
 \begin_layout Itemize
-Parameter uncertainty (the predictive distribution 
-\begin_inset Formula $p(\tilde{y}|y$
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\beta|\sigma^{2},\mathcal{I}^{(0)},\mathbf{y},\mathbf{X}\sim N\left[\mu_{n},\sigma^{2}\Omega_{n}^{-1}\right]$
 \end_inset
 
-) has the parameters integrated out by their posteriors)
-\end_layout
-
-\begin_layout Itemize
-Model uncertainty (by model averaging)
+ 
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Marginal likelihood as measure of out-of-sample predictive performance 
-\end_layout
-
 \begin_layout Itemize
-The marginal likelihood of a sample 
-\begin_inset Formula $y_{1},...,y_{T}$
-\end_inset
+\begin_inset ERT
+status collapsed
 
- can be expressed as
-\begin_inset Formula 
-\[
-p(y_{1},...,y_{n})=p(y_{1})p(y_{2}|y_{1})\cdots p(y_{n}|y_{1},y_{2},...,y_{n-1})
-\]
+\begin_layout Plain Layout
 
-\end_inset
-
-
-\begin_inset Formula 
-\[
-p(y_{t}|y_{1},...,y_{t-1})=\int p(y_{t}|\theta)p(\theta|y_{1},...,y_{t-1})d\theta
-\]
-
-\end_inset
-
-where we assume that 
-\begin_inset Formula $y_{t}$
-\end_inset
-
- is independent of 
-\begin_inset Formula $y_{1},...,y_{t-1}$
-\end_inset
-
- conditional on 
-\begin_inset Formula $\theta$
-\end_inset
-
-.
+[
 \end_layout
 
-\begin_layout Itemize
-The prediction of 
-\begin_inset Formula $y_{1}$
 \end_inset
 
- is based on the prior of 
-\begin_inset Formula $\theta$
+2.1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
 \end_inset
 
-, and is therefore sensitive to the prior.
-\end_layout
-
-\begin_layout Itemize
-The prediction of 
-\begin_inset Formula $y_{T}$
-\end_inset
-
- uses almost all the data to infer 
-\begin_inset Formula $\theta$
-\end_inset
-
-.
- Very little influenced by the prior when 
-\begin_inset Formula $T$
-\end_inset
-
- is not small.
-\end_layout
-
-\begin_layout Itemize
-Log Predictive Score.
-\end_layout
-
-\begin_layout Itemize
-Cross-validation.
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Marginal likelihood in conjugate models
-\end_layout
-
-\begin_layout Itemize
-Computing the marginal likelihood requires integration w.r.t.
+ Simulate
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
  
-\begin_inset Formula $\theta$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Short cut for conjugate models by rearragement of Bayes' theorem:
-\begin_inset Formula 
-\[
-p(y)=\frac{p(y|\theta)p(\theta)}{p(\theta|y)}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Bernoulli model example
-\begin_inset Formula 
-\begin{align*}
-p(\theta) & =\frac{1}{B(\alpha,\beta)}\theta^{\alpha-1}(1-\theta)^{\beta-1}\\
-p(y|\theta) & =\theta^{s}(1-\theta)^{f}\\
-p(\theta|y) & =\frac{1}{B(\alpha+s,\beta+f)}\theta^{\alpha+s-1}(1-\theta)^{\beta+f-1}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Marginal likelihood
-\begin_inset Formula 
-\[
-p(y)=\frac{\theta^{s}(1-\theta)^{f}\frac{1}{B(\alpha,\beta)}\theta^{\alpha-1}(1-\theta)^{\beta-1}}{\frac{1}{B(\alpha+s,\beta+f)}\theta^{\alpha+s-1}(1-\theta)^{\beta+f-1}}=\frac{B(\alpha+s,\beta+f)}{B(\alpha,\beta)}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Computing the marginal likelihood
-\end_layout
-
-\begin_layout Itemize
-Usually difficult to evaluate the integral
-\begin_inset Formula 
-\[
-p(y)=\int p(y|\theta)p(\theta)d\theta=E_{p(\theta)}[p(y|\theta)].
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-A (naive) first try is
-\begin_inset space \space{}
-\end_inset
-
-to draw from the prior 
-\begin_inset Formula $\theta^{(1)},...,\theta^{(N)}$
-\end_inset
-
- and estimating the marginal likelihood by the average likelihood
-\begin_inset Formula 
-\[
-\hat{p}(y)=\frac{1}{N}\sum_{i=1}^{N}p(y|\theta^{(i)}).
-\]
-
-\end_inset
-
-Unstable if the posterior is very different from the prior.
-\end_layout
-
-\begin_layout Itemize
-Importance sampling.
- Let 
-\begin_inset Formula $\theta^{(1)},...,\theta^{(N)}$
-\end_inset
-
- be iid draws from some density 
-\begin_inset Formula $g(\theta)$
-\end_inset
-
-.
- 
-\begin_inset Formula 
-\begin{align*}
-p(y) & =\int p(y|\theta)p(\theta)d\theta=\int\frac{p(y|\theta)p(\theta)}{g(\theta)}g(\theta)d\theta\\
- & =\mbox{E}_{g}\left[\frac{p(y|\theta)p(\theta)}{g(\theta)}\right]\approx N^{-1}\sum_{i=1}^{N}\frac{p(y|\theta^{(i)})p(\theta^{(i)})}{g(\theta^{(i)})}.
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Computing the marginal likelihood, cont.
-\end_layout
-
-\begin_layout Itemize
-Rearrangement of Bayes' theorem: 
-\begin_inset Formula 
-\[
-p(y)=\frac{p(y|\theta)p(\theta)}{p(\theta|y)}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Problem: we must know the posterior, 
-\series bold
-including
+\family default
 \series default
- the normalization constant.
- The 
-\begin_inset Formula $\propto$
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $I_{1}|\mathcal{I}_{-1},\mathbf{y},\mathbf{X}$
 \end_inset
 
- trick does not work here.
+ by [define 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mathcal{I}_{prop}^{(0)}=(1-I_{1}^{(0)},I_{2}^{(0)}...,I_{p}^{(0)})$
+\end_inset
+
+]
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+compute marginal likelihoods:
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $p(\mathbf{y}|\mathbf{X},\mathcal{I}^{(0)})$
+\end_inset
+
+ and 
+\begin_inset Formula $p(\mathbf{y}|\mathbf{X},\mathcal{I}_{prop}^{(0)})$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-But we only need to know 
+Simulate 
+\begin_inset Formula $I_{1}^{(1)}\sim Bernoulli(\mbox{\kappa})$
+\end_inset
+
+ where 
+\begin_inset Formula 
+\[
+\kappa=\frac{p(\mathbf{y}|\mathbf{X},\mathcal{I}^{(0)})\cdot p(\mathcal{I}^{(0)})}{p(\mathbf{y}|\mathbf{X},\mathcal{I}^{(0)})\cdot p(\mathcal{I}^{(0)})+p(\mathbf{y}|\mathbf{X},\mathcal{I}_{prop}^{(0)})\cdot p(\mathcal{I}_{prop}^{(0)})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+2.2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Simulate
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $I_{2}|\mathcal{I}_{-2},\mathbf{y},\mathbf{X}$
+\end_inset
+
+ as in Step 2.1, but 
+\begin_inset Formula $\mathcal{I}^{(0)}=(I_{1}^{(1)},I_{2}^{(0)},...,I_{p}^{(0)})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+2.p
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Simulate
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $I_{p}|\mathcal{I}_{-p},\mathbf{y},\mathbf{X}$
+\end_inset
+
+ as in Step 2.1, but 
+\begin_inset Formula $\mathcal{I}^{(0)}=(I_{1}^{(1)},I_{2}^{(1)},...,I_{p}^{(0)})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+3
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Repeat Steps 1-2 many times.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Simple general Bayesian variable selection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The previous algorithm only works when we can integrate out all the model
+ parameters to obtain
+\begin_inset Formula 
+\[
+p(\mathcal{I}|\mathbf{y},\mathbf{X})=\int p(\beta,\sigma^{2},\mathcal{I}|\mathbf{y},\mathbf{X})d\beta d\sigma
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+MH - propose 
+\begin_inset Formula $\beta$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ jointly from the proposal distribution
+\begin_inset Formula 
+\[
+q(\beta_{p}|\beta_{c},\mathcal{I}_{p})q(\mathcal{I}_{p}|\mathcal{I}_{c})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Main difficulty: how to propose the non-zero elements in 
+\begin_inset Formula $\beta_{p}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+Simple approach:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Approximate posterior with all variables in the model: 
+\begin_inset Formula $\beta|\mathbf{y},\mathbf{X}\overset{approx}{\sim}N\left[\hat{\beta},J_{\mathbf{y}}^{-1}(\hat{\beta})\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Propose 
+\begin_inset Formula $\beta_{p}$
+\end_inset
+
+ from 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $N\left[\hat{\beta},J_{\mathbf{y}}^{-1}(\hat{\beta})\right]$
+\end_inset
+
+, conditional on the zero restrictions implied by 
+\begin_inset Formula $\mathcal{I}_{p}$
+\end_inset
+
+.
+ Formulas are available.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Posterior predictive analysis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $p(y|\theta)$
+\end_inset
+
+ is a 'good' model, then the data actually observed should not differ 'too
+ much' from simulated data from 
+\begin_inset Formula $p(y|\theta)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Bayesian: simulate data from the 
+\series bold
+\color blue
+posterior predictive distribution
+\series default
+\color inherit
+:
+\begin_inset Formula 
+\[
+p(y^{rep}|y)=\int p(y^{rep}|\theta)p(\theta|y)d\theta.
+\]
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Difficult to compare 
+\begin_inset Formula $y$
+\end_inset
+
+ and 
+\begin_inset Formula $y^{rep}$
+\end_inset
+
+ because of dimensionality.
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution: compare 
+\series bold
+low-dimensional
+\series default
+ 
+\series bold
+statistic
+\series default
+ 
+\begin_inset Formula $T(y,\theta)$
+\end_inset
+
+ to 
+\begin_inset Formula $T(y^{rep},\theta)$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Evaluates the full probability model consisting of both the likelihood 
+\shape italic
+and
+\shape default
+ prior distribution.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Posterior predictive analysis, cont.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Algorithm
+\series default
+ for simulating from the posterior predictive density 
+\begin_inset Formula $p[T(y^{rep})|y]$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Draw a 
+\begin_inset Formula $\theta^{(1)}$
+\end_inset
+
+ from the posterior 
 \begin_inset Formula $p(\theta|y)$
 \end_inset
 
- in a single point 
-\begin_inset Formula $\theta_{0}$
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Simulate a data-replicate 
+\begin_inset Formula $y^{(1)}$
+\end_inset
+
+ from 
+\begin_inset Formula $p(y^{rep}|\theta^{(1)})$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Itemize
-Kernel density estimator may be used to approximate 
-\begin_inset Formula $p(\theta_{0}|y)$
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+3
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Compute 
+\begin_inset Formula $T(y^{(1)})$
 \end_inset
 
 .
- Unstable.
- Chib (1995, JASA) and Chib-Jeliazkov (2001, JASA) provide better solutions.
 \end_layout
 
 \begin_layout Itemize
-Reversible Jump MCMC
-\begin_inset space \space{}
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
 \end_inset
 
-(RJMCMC) for model inference.
+4
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Repeat steps 1-3 a large number of times to obtain a sample from 
+\begin_inset Formula $T(y^{rep})$
+\end_inset
+
+.
  
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-MCMC
-\begin_inset space \space{}
+\begin_layout Standard
+\begin_inset VSpace medskip
 \end_inset
 
-methods can be extended to not only move in the parameter space for a given
- model, but also jumping between models.
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+We may now compare the observed statistic 
+\begin_inset Formula $T(y)$
+\end_inset
+
+ with the distribution of 
+\begin_inset Formula $T(y^{rep})$
+\end_inset
+
+.
  
 \end_layout
 
 \begin_layout Itemize
-The proportion of iterations spent in model 
-\begin_inset Formula $k$
+
+\series bold
+\color blue
+Posterior predictive p-value
+\series default
+\color inherit
+: 
+\begin_inset Formula $\Pr[T(y^{rep})\geq T(y)]$
 \end_inset
 
- is an estimate of 
-\begin_inset Formula $\Pr(M_{k}|y)$
-\end_inset
+ 
+\end_layout
 
+\begin_layout Itemize
+Informal 
+\series bold
+graphical analysis
+\series default
 .
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
-Approximate marginal likelihoods
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Posterior predictive analysis - Examples
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
-Taylor approximation of the log posterior
-\begin_inset Formula 
-\begin{align*}
-\ln p(\mathbf{y}|\theta)p(\theta) & \approx\ln p(\mathbf{y}|\hat{\theta})+\ln p(\hat{\theta})-\frac{1}{2}J_{\hat{\theta},\mathbf{y}}(\theta-\hat{\theta})^{2},
-\end{align*}
-
+Ex.
+ 1.
+ Model: 
+\begin_inset Formula $y_{1},...,y_{n}\overset{iid}{\sim}N(\mu,\sigma^{2})$
 \end_inset
 
-
-\begin_inset Formula 
-\[
-p(\mathbf{y}|\theta)p(\theta)\approx p(\mathbf{y}|\hat{\theta})p(\hat{\theta})\exp\left[-\frac{1}{2}J_{\hat{\theta},\mathbf{y}}(\theta-\hat{\theta})^{2}\right],
-\]
-
-\end_inset
-
-which can be integrated analytically w.r.t.
+.
  
-\begin_inset Formula $\theta$
+\begin_inset Formula $T(y)=\max_{i}\left|y_{i}\right|$
 \end_inset
 
-, using properties of the multivariate normal pdf.
+.
 \end_layout
 
-\begin_layout Itemize
-The Laplace approximation: 
-\begin_inset Formula 
-\[
-\ln\hat{p}(\mathbf{y})=\ln p(\mathbf{y}|\hat{\theta})+\text{ln}p(\hat{\theta})+\frac{1}{2}\ln\left\vert J_{\hat{\theta},\mathbf{y}}^{-1}\right\vert +\frac{p}{2}\ln(2\pi),
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $p$
-\end_inset
-
- is the number of unrestricted parameters in the model.
-\end_layout
-
-\begin_layout Itemize
-Cruder version of the Laplace: The SBC (BIC) approximation
-\begin_inset Formula 
-\[
-\ln\hat{p}(\mathbf{y})=\ln p(\mathbf{y}|\hat{\theta})+\ln p(\hat{\theta})-\frac{p}{2}\ln n.
-\]
-
+\begin_layout Standard
+\begin_inset VSpace medskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Bayesian model inference - a critique
-\end_layout
-
 \begin_layout Itemize
-Bayes factors (model probabilities) are very sharp inference objects.
- Handle with care.
-\end_layout
-
-\begin_layout Itemize
-Minor differences in the prior can lead to large differences in the Bayes
- factor, especially in high-dimensional non-linear models.
-\end_layout
-
-\begin_layout Itemize
-Continuous model expansion is usually a better alternative, when feasible.
-\end_layout
-
-\begin_layout Itemize
-Improper priors cannot be used to compute Bayes factors.
- Several tricks have been developed to handle this, but they are non-Bayesian.
-\end_layout
-
-\begin_layout Itemize
-Bayes factors are relative measures, all models under consideration may
- be bad approximations to the data.
-\end_layout
-
-\begin_layout Itemize
-Bayes model probabilities essentially assume the true data generating process
- (DGP) is among the compared models.
- Box: All models are false, but some are useful.
-\end_layout
-
-\begin_layout Itemize
-When none of the compared models are true: 
-\begin_inset Formula $Pr(M_{i}|y)\rightarrow1$
+Ex.
+ 2.
+ Assumption of no reciprocity in networks.
+ 
+\begin_inset Newline newline
 \end_inset
 
- for the model which is closest to the DGP in the Kullback-Leibler sense.
- Putting all eggs in one basket is not always a good idea.
+
+\begin_inset Formula $y_{ij}|\theta\overset{iid}{\sim}Bernoulli(\theta)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $T(y)=$
+\end_inset
+
+proportion of reciprocated node pairs.
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex.
+ 3.
+ ARIMA-process.
+ 
+\begin_inset Formula $T(y)$
+\end_inset
+
+ may be the autocorrelation function.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex.
+ 4.
+ Poisson regression.
+ 
+\begin_inset Formula $T(y)$
+\end_inset
+
+ frequency distribution of the response counts.
+ Proportions of zero counts.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Posterior predictive analysis - Normal model, max statistic
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/matvi05/Dropbox/Teaching/StatMetoder2010/F11/PostPredNormalMaxStatistic.eps
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 

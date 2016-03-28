@@ -177,7 +177,17 @@ Overview
 
 \begin_deeper
 \begin_layout Itemize
-Bayesian variable selection
+
+\series bold
+\color blue
+Multivariate normal
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Gaussian process regression
 \end_layout
 
 \end_deeper
@@ -190,7 +200,7 @@ Bayesian variable selection
 status open
 
 \begin_layout Plain Layout
-Bayesian variable selection
+Multivariate normal
 \end_layout
 
 \end_inset
@@ -200,162 +210,62 @@ Bayesian variable selection
 
 \begin_deeper
 \begin_layout Itemize
-Linear regression:
-\begin_inset Formula 
-\[
-y=\beta_{0}+\beta_{1}x_{1}+...+\beta_{p}x_{p}+\varepsilon.
-\]
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Which variables have non-zero coefficient? Example of hypotheses: 
-\begin_inset Formula 
-\begin{eqnarray*}
-H_{0} & : & \beta_{0}=\beta_{1}=...=\beta_{p}=0\\
-H_{1} & : & \beta_{1}=0\\
-H_{2} & : & \beta_{1}=\beta_{2}=0
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Introduce 
 \series bold
-variable selection indicators
+\color blue
+Multivariate normal
 \series default
- 
-\begin_inset Formula $\mathcal{I}=(I_{1},...,I_{p}).$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-Example: 
-\begin_inset Formula $\mathcal{I}=(1,1,0)$
-\end_inset
-
- means that 
-\begin_inset Formula $\beta_{1}\neq0$
-\end_inset
-
- and 
-\begin_inset Formula $\beta_{2}\neq0$
-\end_inset
-
-, but 
-\begin_inset Formula $\beta_{3}=0$
-\end_inset
-
-, so 
-\begin_inset Formula $x_{3}$
-\end_inset
-
- drops out of the model.
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Bayesian variable selection, cont.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Model inference, just crank the Bayesian machine:
-\begin_inset Formula 
-\[
-p(\mathcal{I}|\mathbf{y},\mathbf{X})\propto p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}})\cdot p(\mathcal{I})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-The prior 
-\begin_inset Formula $p(\mathbf{\mathcal{I}})$
-\end_inset
-
- is typically taken to be 
-\begin_inset Formula $I_{1},...,I_{p}|\theta\overset{iid}{\sim}Bernoulli(\theta)$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\theta$
-\end_inset
-
- is the 
-\series bold
-prior inclusion probability
-\series default
-.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Challenge: Computing the 
-\series bold
-marginal likelihood
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- for each model (
-\begin_inset Formula $\mathcal{I}$
-\end_inset
-
-)
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
 \color inherit
 
 \begin_inset Formula 
 \[
-p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}})=\int p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}},\beta)p(\beta|\mathbf{X},\mathbf{\mathcal{I}})d\beta
+\mathbf{x}\sim N_{p}(\mu,\Sigma)
 \]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mu=(\mu_{1},...,\mu_{p})'$
+\end_inset
+
+ and
+\begin_inset Formula 
+\[
+\Sigma=\left(\begin{array}{cccc}
+\sigma_{1}^{2} & \rho_{12}\sigma_{1}\sigma_{2} & \cdots & \rho_{1p}\sigma_{1}\sigma_{p}\\
+\rho_{12}\sigma_{1}\sigma_{2} & \sigma_{2}^{2} &  & \rho_{2p}\sigma_{2}\sigma_{2}\\
+\vdots &  & \ddots\\
+\rho_{p1}\sigma_{p}\sigma_{1} & \rho_{p2}\sigma_{p}\sigma_{2} & \cdots & \sigma_{p}^{2}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename BivariateNormalSurf.png
+	lyxscale 20
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename BivariateNormalDens.png
+	lyxscale 20
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename PrincipalAxes.png
+	lyxscale 20
+	scale 20
 
 \end_inset
 
@@ -372,7 +282,7 @@ p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}})=\int p(\mathbf{y}|\mathbf{X},\math
 status open
 
 \begin_layout Plain Layout
-Bayesian variable selection, cont.
+Multivariate normal - some properties
 \end_layout
 
 \end_inset
@@ -383,15 +293,1017 @@ Bayesian variable selection, cont.
 \begin_deeper
 \begin_layout Itemize
 Let 
-\begin_inset Formula $\beta_{\mathcal{I}}$
+\begin_inset Formula $\mathbf{x}\sim N_{p}(\mu,\Sigma)$
 \end_inset
 
- denote the 
+.
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\mathbf{x}=\left(\begin{array}{c}
+\mathbf{x}_{1}\\
+\mathbf{x}_{2}
+\end{array}\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $\mathbf{x}_{1}$
+\end_inset
+
+ is 
+\begin_inset Formula $p_{1}\times1$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{x}_{2}$
+\end_inset
+
+ is 
+\begin_inset Formula $p_{2}\times1$
+\end_inset
+
+ (
+\begin_inset Formula $p_{1}+p_{2}=p$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\mu=\left(\begin{array}{c}
+\mu_{1}\\
+\mu_{2}
+\end{array}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\Sigma=\left(\begin{array}{cc}
+\Sigma_{11} & \Sigma_{12}\\
+\Sigma_{21} & \Sigma_{22}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
 \series bold
-non-zero
+\color blue
+Marginal distributions
 \series default
- coefficients under 
-\begin_inset Formula $\mathcal{I}$
+\color inherit
+ are normal
+\begin_inset Formula 
+\[
+\mathbf{x}_{1}\sim N_{p_{1}}(\mu_{1},\Sigma_{1})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Conditional distributions 
+\series default
+\color inherit
+are normal
+\begin_inset Formula 
+\[
+\mathbf{x}_{1}|\mathbf{x}_{2}\sim N_{p_{1}}\left[\mu_{1}+\Sigma_{12}\Sigma_{22}^{-1}(x_{2}-\mu_{2}),\;\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Non-parametric regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Linear regression
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+y=\beta\cdot x+\varepsilon
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\varepsilon\sim N(0,\sigma^{2})$
+\end_inset
+
+ and iid over observations.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Nonlinear
+\series default
+ 
+\series bold
+regression
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+y=f(x)+\varepsilon
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $f(\cdot)$
+\end_inset
+
+ is some nonlinear function (ex 
+\begin_inset Formula $f(x)=\beta_{0}+\beta_{1}x+\beta_{2}x^{2}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Non-parametric regression
+\series default
+\color inherit
+: avoiding a parametric form for 
+\begin_inset Formula $f(\cdot)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+How do we put a 
+\series bold
+\color blue
+prior over a set of functions
+\series default
+\color inherit
+?
+\end_layout
+
+\begin_layout Itemize
+Restrict attention to a grid of (ordered) 
+\begin_inset Formula $x$
+\end_inset
+
+-values: 
+\begin_inset Formula $x_{1},x_{2},..,x_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+We can now put a joint prior on the 
+\begin_inset Formula $k$
+\end_inset
+
+ function values: 
+\begin_inset Formula $f(x_{1}),f(x_{2}),...,f(x_{k})$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Nonparametric = one parameter for every x!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncSmoothManyPoints.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gaussian process regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We clearly need to impose 
+\series bold
+\color blue
+smoothness
+\series default
+\color inherit
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Multivariate normal (Gaussian) prior:
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+f(x_{1})\\
+\vdots\\
+f(x_{k})
+\end{array}\right)\sim N\left(\mathbf{m},\mathbf{K}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+But how do we specify the 
+\begin_inset Formula $k\times k$
+\end_inset
+
+ 
+\series bold
+\color blue
+covariance matrix
+\series default
+ 
+\color inherit
+
+\begin_inset Formula $\mathbf{K}$
+\end_inset
+
+?
+\begin_inset Formula 
+\[
+Cov\left(f(x_{p}),f(x_{q})\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Squared exponential covariance function
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+Cov\left(f(x_{p}),f(x_{q})\right)=K(x_{p},x_{q})=\sigma_{f}^{2}\exp\left(-\frac{1}{2}\left(\frac{x_{p}-x_{q}}{\ell}\right)^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The covariance between 
+\begin_inset Formula $f(x_{p})$
+\end_inset
+
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $f(x_{q})$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ is a function of 
+\begin_inset Formula $x_{p}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{q}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Nearby 
+\begin_inset Formula $x$
+\end_inset
+
+'s have highly correlated function ordinates 
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Smooth function - points nearby
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncSmoothTwoPointsNear.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Smooth function - points nearby
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncSmoothTwoPointsNearWithDensity.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Smooth function - points far apart
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncSmoothTwoPointsApart.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Smooth function - points far apart
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncSmoothTwoPointsApartWithDensity.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jagged function - points nearby
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncJaggedTwoPointsNear.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jagged function - points nearby
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncJaggedTwoPointsNearWithDensity.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jagged function - points far apart
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncJaggedTwoPointsApart.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jagged function - points far apart
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncJaggedTwoPointsApartWithDensity.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gaussian process regression, cont.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Definition
+A 
+\series bold
+\color blue
+Gaussian process
+\series default
+\color inherit
+ (
+\series bold
+\color blue
+GP
+\series default
+\color inherit
+) is a collection of random variables, any finite number of which have a
+ multivariate Gaussian distribution.
+\end_layout
+
+\begin_layout Itemize
+A Gaussian process is a 
+\series bold
+\color blue
+probability distribution over functions
+\series default
+\color inherit
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A GP is completely specified by a 
+\series bold
+mean
+\series default
+ and a 
+\series bold
+covariance function
+\series default
+
+\begin_inset Formula 
+\[
+m(x)=\mathrm{E}\left[f(x)\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+K(x,x')=E\left[\left(f(x)-m(x)\right)\left(f(x')-m(x')\right)\right]
+\]
+
+\end_inset
+
+for any two inputs 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $x'$
+\end_inset
+
+ (note: this is 
+\emph on
+not
+\emph default
+ the transpose here).
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A 
+\series bold
+\color blue
+Gaussian process
+\series default
+\color inherit
+ (prior) is denoted by
+\begin_inset Formula 
+\[
+f(x)\sim GP\left(m(x),K(x,x')\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gaussian process regression, cont.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Example:
+\begin_inset Formula 
+\begin{align*}
+m(x) & =\sin(x)\\
+K(x,x') & =\sigma_{f}^{2}\exp\left(-\frac{1}{2}\left(\frac{x_{p}-x_{q}}{\ell}\right)^{2}\right)
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\ell>0$
+\end_inset
+
+ is the length scale.
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Larger 
+\begin_inset Formula $\ell$
+\end_inset
+
+ gives more smoothness in 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Simulate
+\series default
+\color inherit
+ a draw from 
+\begin_inset Formula $f(x)\sim GP\left(m(x),K(x,x')\right)$
+\end_inset
+
+ over any grid 
+\begin_inset Formula $x_{*}=(x_{1},...,x_{n})$
+\end_inset
+
+ by using that
+\begin_inset Formula 
+\[
+f(x_{*})\sim N\left(m(x_{*}),K(x_{*},x_{*})\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Simulating a GP - sine mean and SE kernel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename GPPriorDraws_l2_sigmaf1.svg
+	lyxscale 20
+	scale 21
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename GPPriorDraws_l1_sigmaf1.svg
+	lyxscale 20
+	scale 21
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename GPPriorDraws_l05_sigmaf1.svg
+	lyxscale 20
+	scale 21
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename GPPriorDraws_l02_sigmaf1.svg
+	lyxscale 20
+	scale 21
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename GPPriorDraws_l1_sigmaf02.svg
+	lyxscale 20
+	scale 21
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename GPPriorDraws_l2_sigmaf02.svg
+	lyxscale 20
+	scale 21
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gaussian process regression, cont.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Model
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+y_{i}=f(\mathbf{\textnormal{x}}_{i})+\varepsilon_{i},\quad\varepsilon\overset{iid}{\sim}N(0,\sigma^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Prior
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+f(x)\sim GP\left(0,K(x,x')\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+You have observed the data: 
+\begin_inset Formula $\mathbf{x}=(x_{1},...,x_{n})$
+\end_inset
+
+' and 
+\begin_inset Formula $\mathbf{y}=(y_{1},...,y_{n})'$
 \end_inset
 
 .
@@ -399,11 +1311,49 @@ non-zero
 \end_layout
 
 \begin_layout Itemize
-Prior:
+Goal: the posterior of 
+\begin_inset Formula $f(\cdot)$
+\end_inset
+
+ over a grid of 
+\begin_inset Formula $x$
+\end_inset
+
+-values:
+\begin_inset Formula 
+\[
+\mathbf{f}_{*}=\mathbf{f}(\mathbf{x}_{*})=\left(f(x_{1*}),f(x_{2*}),...,f(x_{m*})\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+\color blue
+posterior
+\series default
+\color inherit
+ 
+\begin_inset Formula 
+\[
+\mathbf{f}_{*}|\mathbf{x},\mathbf{y},\mathbf{x}_{*}\sim N\left(\bar{\mathbf{f}}_{*},\mathrm{cov}(\mathbf{f}_{*})\right)
+\]
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{align*}
-\beta_{\mathcal{I}}|\sigma^{2} & \sim N\left(0,\sigma^{2}\Omega_{\mathcal{I},0}^{-1}\right)\\
-\sigma^{2} & \sim Inv-\chi^{2}\left(\nu_{0},\sigma_{0}^{2}\right)
+\bar{\mathbf{f}}_{*} & =K(\mathbf{x}_{*},\mathbf{x})\left[K(\mathbf{x},\mathbf{x})+\sigma^{2}I\right]^{-1}\mathbf{y}\\
+\mathrm{cov}(\mathbf{f}_{*}) & =K(\mathbf{x}_{*},\mathbf{x_{*}})-K(\mathbf{x}_{*},\mathbf{x})\left[K(\mathbf{x},\mathbf{x})+\sigma^{2}I\right]^{-1}K(\mathbf{x},\mathbf{x_{*}})
 \end{align*}
 
 \end_inset
@@ -411,43 +1361,166 @@ Prior:
 
 \end_layout
 
-\begin_layout Itemize
+\end_deeper
+\begin_layout Separator
 
-\series bold
-Marginal likelihood
-\series default
- 
-\begin_inset Formula 
-\[
-p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}})\propto\left|\mathbf{X}_{\mathcal{I}}'\mathbf{X}_{\mathcal{I}}+\Omega_{\mathcal{I},0}^{-1}\right|^{-1/2}\left|\Omega_{\mathcal{I},0}\right|^{1/2}\left(\nu_{0}\sigma_{0}^{2}+RSS_{\mathcal{I}}\right)^{-(\nu_{0}+n-1)/2}
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $\mathbf{X}_{\mathcal{I}}$
-\end_inset
-
- is the covariate matrix for the subset given by 
-\begin_inset Formula $\mathcal{I}$
-\end_inset
-
-.
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Formula $RSS_{\mathcal{I}}$
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Learning a noise-free Gaussian process
+\end_layout
+
 \end_inset
 
- is (almost) the residual sum of squares under model implied by 
-\begin_inset Formula $\mathbf{\mathcal{I}}$
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename ConditionalSimEll1_0.eps
+	scale 32
+
 \end_inset
 
 
-\begin_inset Formula 
-\[
-RSS_{\mathcal{I}}=\mathbf{y}'\mathbf{y}-\mathbf{y}'\mathbf{X}_{\mathcal{I}}\left(\mathbf{X}_{\mathcal{I}}'\mathbf{X}_{\mathcal{I}}+\Omega_{\mathcal{I},0}\right)^{-1}\mathbf{X}_{\mathcal{I}}'\mathbf{y}
-\]
+\begin_inset Graphics
+	filename ConditionalSimEll02_0.eps
+	scale 32
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Learning a noise-free Gaussian process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename ConditionalSimEll1_1.eps
+	scale 32
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ConditionalSimEll02_1.eps
+	scale 32
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Learning a noise-free Gaussian process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename ConditionalSimEll1_2.eps
+	scale 32
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ConditionalSimEll02_2.eps
+	scale 32
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Learning a noise-free Gaussian process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename ConditionalSimEll1_3.eps
+	scale 32
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ConditionalSimEll02_3.eps
+	scale 32
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example - Canadian wages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CanadianWages.eps
+	scale 45
 
 \end_inset
 
@@ -464,138 +1537,11 @@ RSS_{\mathcal{I}}=\mathbf{y}'\mathbf{y}-\mathbf{y}'\mathbf{X}_{\mathcal{I}}\left
 status open
 
 \begin_layout Plain Layout
-Bayesian variable selection via Gibbs sampling
-\end_layout
-
+Posterior of f - 
+\begin_inset Formula $\ell=0.2,0.5,1,2$
 \end_inset
 
 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-But there are 
-\begin_inset Formula $2^{p}$
-\end_inset
-
- model combinations to go through! Ouch!
-\end_layout
-
-\begin_layout Itemize
-...
- but most will have essentially zero posterior probability.
- Phew!
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Simulate from the joint posterior distribution:
-\begin_inset Formula 
-\[
-p(\beta,\sigma^{2},\mathcal{I}|\mathbf{y\textnormal{,}X})=p(\beta,\sigma^{2}|\mathcal{I},\mathbf{y}\textnormal{,}\mathbf{X})p(\mathcal{I}|\mathbf{y},\mathbf{X}).
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Simulate from 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $p(\mathbf{\mathcal{I}}|\mathbf{y})$
-\end_inset
-
- using Gibbs sampling:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Draw 
-\begin_inset Formula $I_{1}|\mathcal{I}_{-1},\mathbf{y},\mathbf{X}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Draw 
-\begin_inset Formula $I_{2}|\mathbf{\mathcal{I}}_{-2}\textnormal{,}\mathbf{y},\mathbf{X}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-...
-\end_layout
-
-\begin_layout Itemize
-Draw 
-\begin_inset Formula $I_{p}|\mathbf{\mathcal{I}}_{-p},\mathbf{y},\mathbf{X}$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Only need to compute 
-\begin_inset Formula $Pr(I_{i}=0|\mathbf{\mathcal{I}}_{-i},\mathbf{y},\mathbf{X})$
-\end_inset
-
- and 
-\begin_inset Formula $Pr(I_{i}=1|\mathbf{\mathcal{I}}_{-i},\mathbf{y},\mathbf{X})$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Automatic model averaging, all in one simulation run.
-\end_layout
-
-\begin_layout Itemize
-If needed, simulate from 
-\begin_inset Formula $p(\beta,\sigma^{2}|\mathcal{I},\mathbf{y}\textnormal{,}\mathbf{X})$
-\end_inset
-
- for each draw of 
-\begin_inset Formula $\mathbf{\mathcal{I}}$
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Pseudo code for Bayesian variable selection
 \end_layout
 
 \end_inset
@@ -604,492 +1550,42 @@ Pseudo code for Bayesian variable selection
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-0
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
- Initialize 
-\begin_inset Formula $\mathcal{I}^{(0)}=(I_{1}^{(0)},I_{2}^{(0)}...,I_{p}^{(0)})$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
- Simulate 
-\begin_inset Formula $\sigma^{2}$
-\end_inset
-
- and 
-\begin_inset Formula $\beta$
-\end_inset
-
- from 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-[Note: 
-\begin_inset Formula $\nu_{n},\sigma_{n}^{2}$
-\end_inset
-
-,
-\begin_inset Formula $\mu_{n},\Omega_{n}$
-\end_inset
-
- all depend on 
-\begin_inset Formula $\mathcal{I}^{(0)}$
-\end_inset
-
-]
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Formula $\sigma^{2}|\mathcal{I}^{(0)},\mathbf{y},\mathbf{X}\sim Inv-\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Formula $\beta|\sigma^{2},\mathcal{I}^{(0)},\mathbf{y},\mathbf{X}\sim N\left[\mu_{n},\sigma^{2}\Omega_{n}^{-1}\right]$
-\end_inset
-
- 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-2.1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
- Simulate
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-
-\begin_inset Formula $I_{1}|\mathcal{I}_{-1},\mathbf{y},\mathbf{X}$
-\end_inset
-
- by [define 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $\mathcal{I}_{prop}^{(0)}=(1-I_{1}^{(0)},I_{2}^{(0)}...,I_{p}^{(0)})$
-\end_inset
-
-]
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-compute marginal likelihoods:
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\begin_inset Formula $p(\mathbf{y}|\mathbf{X},\mathcal{I}^{(0)})$
-\end_inset
-
- and 
-\begin_inset Formula $p(\mathbf{y}|\mathbf{X},\mathcal{I}_{prop}^{(0)})$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Simulate 
-\begin_inset Formula $I_{1}^{(1)}\sim Bernoulli(\mbox{\kappa})$
-\end_inset
-
- where 
-\begin_inset Formula 
-\[
-\kappa=\frac{p(\mathbf{y}|\mathbf{X},\mathcal{I}^{(0)})\cdot p(\mathcal{I}^{(0)})}{p(\mathbf{y}|\mathbf{X},\mathcal{I}^{(0)})\cdot p(\mathcal{I}^{(0)})+p(\mathbf{y}|\mathbf{X},\mathcal{I}_{prop}^{(0)})\cdot p(\mathcal{I}_{prop}^{(0)})}
-\]
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CanadianIntervalsF.eps
+	scale 25
 
 \end_inset
 
 
-\end_layout
+\begin_inset Graphics
+	filename CanadianIntervalsF_ell05.eps
+	scale 25
 
-\end_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-2.2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
- Simulate
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-
-\begin_inset Formula $I_{2}|\mathcal{I}_{-2},\mathbf{y},\mathbf{X}$
-\end_inset
-
- as in Step 2.1, but 
-\begin_inset Formula $\mathcal{I}^{(0)}=(I_{1}^{(1)},I_{2}^{(0)},...,I_{p}^{(0)})$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\vdots$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
+\align center
+\begin_inset Graphics
+	filename CanadianIntervalsF_ell1.eps
+	scale 25
 
 \end_inset
 
-2.p
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
- Simulate
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-
-\begin_inset Formula $I_{p}|\mathcal{I}_{-p},\mathbf{y},\mathbf{X}$
-\end_inset
-
- as in Step 2.1, but 
-\begin_inset Formula $\mathcal{I}^{(0)}=(I_{1}^{(1)},I_{2}^{(1)},...,I_{p}^{(0)})$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-3
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
- Repeat Steps 1-2 many times.
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Simple general Bayesian variable selection
-\end_layout
+\begin_inset Graphics
+	filename CanadianIntervalsF_ell2.eps
+	scale 25
 
 \end_inset
 
 
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-The previous algorithm only works when we can integrate out all the model
- parameters to obtain
-\begin_inset Formula 
-\[
-p(\mathcal{I}|\mathbf{y},\mathbf{X})=\int p(\beta,\sigma^{2},\mathcal{I}|\mathbf{y},\mathbf{X})d\beta d\sigma
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-MH - propose 
-\begin_inset Formula $\beta$
-\end_inset
-
- and 
-\begin_inset Formula $\mathcal{I}$
-\end_inset
-
- jointly from the proposal distribution
-\begin_inset Formula 
-\[
-q(\beta_{p}|\beta_{c},\mathcal{I}_{p})q(\mathcal{I}_{p}|\mathcal{I}_{c})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Main difficulty: how to propose the non-zero elements in 
-\begin_inset Formula $\beta_{p}$
-\end_inset
-
-?
-\end_layout
-
-\begin_layout Itemize
-Simple approach:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Approximate posterior with all variables in the model: 
-\begin_inset Formula $\beta|\mathbf{y},\mathbf{X}\overset{approx}{\sim}N\left[\hat{\beta},J_{\mathbf{y}}^{-1}(\hat{\beta})\right]$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Propose 
-\begin_inset Formula $\beta_{p}$
-\end_inset
-
- from 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $N\left[\hat{\beta},J_{\mathbf{y}}^{-1}(\hat{\beta})\right]$
-\end_inset
-
-, conditional on the zero restrictions implied by 
-\begin_inset Formula $\mathcal{I}_{p}$
-\end_inset
-
-.
- Formulas are available.
-\end_layout
-
-\end_deeper
 \end_deeper
 \begin_layout Separator
 

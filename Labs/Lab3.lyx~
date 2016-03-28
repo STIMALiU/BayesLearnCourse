@@ -76,12 +76,12 @@
 \begin_layout Standard
 
 \size footnotesize
-Mattias Villani
+Shutong Ding and Mattias Villani
 \begin_inset space \hspace{}
-\length 11.5cm
+\length 7.5cm
 \end_inset
 
-2014-11-20
+2015-04-24
 \end_layout
 
 \begin_layout Standard
@@ -106,7 +106,7 @@ Linköpings universitet
 \begin_layout Standard
 
 \size footnotesize
-mattias.villani@liu.se
+shutong.ding@liu.se
 \begin_inset VSpace 1cm
 \end_inset
 
@@ -139,7 +139,7 @@ Computer lab 3
 \end_layout
 
 \begin_layout Standard
-You can use any programming language for the labs, but my hints, help and
+You can use any programming language for the labs, but the hints, help and
  solutions will be in R.
  
 \begin_inset Newline newline
@@ -158,17 +158,15 @@ The
 \series bold
 deadline
 \series default
- for this lab is
+ for this lab is 
 \series bold
- December
+May 6
 \series default
- 3, midnight.
-\family typewriter
-
-\begin_inset Newline newline
-\end_inset
-
-
+ at 
+\series bold
+midnight
+\series default
+.
 \end_layout
 
 \begin_layout Standard
@@ -183,22 +181,47 @@ deadline
 \begin_layout Enumerate
 
 \emph on
-Gibbs sampling
-\emph default
- 
-\emph on
-for a normal model with semi-conjugate prior.
+Normal model, mixture of normal model with semi-conjugate prior.
 \emph default
 
 \begin_inset Newline newline
 \end_inset
 
-Let 
-\begin_inset Formula $x_{1},...,x_{n}|\theta,\sigma^{2}\sim N(\theta,\sigma^{2})$
+The data 
+\family typewriter
+rainfall.dat
+\family default
+ consist of daily records, from the beginning of 1948 to the end of 1983,
+ of precipitation (rain or snow in units of 
+\begin_inset Formula $\frac{1}{100}$
+\end_inset
+
+ inch, and records of zero precipitation are excluded) at Snoqualmie Falls,
+ Washington.
+ Analyze the data using the following two models.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\emph on
+Normal model.
+
+\emph default
+ 
+\begin_inset Newline newline
+\end_inset
+
+Assume the daily precipitation 
+\begin_inset Formula $\left\{ x_{1},...,x_{n}\right\} $
+\end_inset
+
+ are independent normally distributed, 
+\begin_inset Formula $x_{1},...,x_{n}|\mu,\sigma^{2}\sim N(\mu,\sigma^{2})$
 \end_inset
 
  where both 
-\begin_inset Formula $\theta$
+\begin_inset Formula $\mu$
 \end_inset
 
  and 
@@ -207,7 +230,7 @@ Let
 
  are unknown.
  Let 
-\begin_inset Formula $\theta\sim N(\mu_{0},\tau_{0}^{2})$
+\begin_inset Formula $\mu\sim N(\mu_{0},\tau_{0}^{2})$
 \end_inset
 
  independently of 
@@ -222,12 +245,12 @@ Let
 \begin_layout Enumerate
 Implement (code!) a Gibbs sampler that simulates from the joint posterior
  
-\begin_inset Formula $p(\theta,\sigma^{2}|x_{1},...,x_{n})$
+\begin_inset Formula $p(\mu,\sigma^{2}|x_{1},...,x_{n})$
 \end_inset
 
 .
  [Hint: the conditional posteriors are given on the slides from Lecture
- 7 and 
+ 7 where 
 \begin_inset Formula $\nu_{n}=\nu_{0}+n$
 \end_inset
 
@@ -235,11 +258,79 @@ Implement (code!) a Gibbs sampler that simulates from the joint posterior
 \end_layout
 
 \begin_layout Enumerate
-Analyze the log(wage) in the dataset CanadianWages.dat using your Gibbs sampler
- in a).
+Analyze the daily precipitation using your Gibbs sampler in (a)-i.
  Investigate the convergence of the Gibbs sampler by suitable graphical
  methods.
  Is the Gibbs sampler efficient?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
+Mixture normal model.
+
+\emph default
+ 
+\begin_inset Newline newline
+\end_inset
+
+Alternatively, let's consider the daily precipitation 
+\begin_inset Formula $\left\{ x_{1},...,x_{n}\right\} $
+\end_inset
+
+ are i.i.d two-component mixture of normals,
+\begin_inset Formula 
+\[
+p(x_{i})=\pi N(x_{i}|\mu_{1},\sigma_{1}^{2})+(1-\pi)N(x_{i}|\mu_{2},\sigma_{2}^{2}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Use the Gibbs sampling data augmentation algorithm in Mattias' code (or
+ code your own!) in 
+\family typewriter
+NormalMixtureGibbs.R
+\family default
+ (available under Lecture 7 on the course page) to analyze the daily precipitati
+on data.
+ Set the prior hyperparameters suitably.
+\end_layout
+
+\begin_layout Enumerate
+Investigate the convergence of the Gibbs sampler by suitable graphical methods.
+ Is this Gibbs sampler efficient?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
+Graphical comparison.
+
+\emph default
+ 
+\begin_inset Newline newline
+\end_inset
+
+Plot the following densities in one figure: 1) a histogram or kernel density
+ estimate of the data.
+ 2) Normal density 
+\begin_inset Formula $N(\mu,\sigma^{2})$
+\end_inset
+
+ in (a); 3) Mixture of normals density 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ in (b).
+ Use the posterior mean value for all the parameters.
+ Which model is better in terms of fitting?
 \end_layout
 
 \end_deeper
@@ -251,8 +342,12 @@ Binary regression models
 
 \begin_deeper
 \begin_layout Enumerate
-Use my code OptimizeSpamR.zip from the course web page to analyze the spam
- data set using logistic regression.
+Use the code 
+\family typewriter
+OptimizeSpamR.zip
+\family default
+ from the course web page (under Lecture 6) to analyze the spam data set
+ using logistic regression.
  Approximate the posterior of the regression coefficients 
 \begin_inset Formula $\beta$
 \end_inset
@@ -311,11 +406,8 @@ Analyze the spam data using your code from b), again using the prior
 
 \begin_layout Enumerate
 Compare the results in a) and c).
-\end_layout
-
-\begin_layout Standard
-
 \size footnotesize
+
 \begin_inset VSpace 0.5cm
 \end_inset
 

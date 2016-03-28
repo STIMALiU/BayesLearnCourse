@@ -16,7 +16,7 @@ BetaPriorPostPlot <- function(a,b,n,p){
        ylab = 'Density', main = 'Bernoulli model - Beta(a,b) prior')
   lines(xGrid, posterior, lwd = 3, col = "red")
   lines(xGrid, prior, lwd = 3, col = "green")
-  legend(x = 0.01, y = maxDensity*0.95, legend = c("Likelihood", "Prior", "Posterior"), col = c("blue","green","red"), lwd = c(3,3,3), cex = 0.7)
+  legend(x = 0.01, y = maxDensity*0.95, legend = c("Likelihood (normalized)", "Prior", "Posterior"), col = c("blue","green","red"), lwd = c(3,3,3), cex = 0.7)
 }
 
 manipulate(
