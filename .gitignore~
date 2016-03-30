@@ -1,4 +1,8 @@
 /Admin
+/Hidden
 *.~lyx
+*.lyx~
+*.lyx#
 /HT2012
 /HT2013
+.DS_Store
