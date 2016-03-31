@@ -13,5 +13,6 @@
 *.gz
 *.toc
 *.log
+*.nav
 .gitignore~
-.nav
+
