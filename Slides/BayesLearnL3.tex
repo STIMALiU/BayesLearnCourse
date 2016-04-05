@@ -362,17 +362,17 @@ is the usual sample variance.\medskip
 \begin{frame}{Normal model with unknown variance - Uniform prior, cont.}
 
 \begin{itemize}
-\item $\sigma_n^2 \sim \mathrm{Inv}\text{-}\chi^{2}(\nu_n,s_n^{2})$ if 
+\item $\sigma^2 \sim \mathrm{Inv}\text{-}\chi^{2}(\nu_n,s_n^{2})$ if 
 $$p(\sigma^2) \propto \sigma^{-2(\nu_n/2+1)}\exp\left(-\frac{\nu_n s^2_n}{2\sigma^2}\right).$$
 \item By technique {\color{blue}\#3} $$p(\sigma^2|y) \propto \frac{p(y|\theta, \sigma^2)p(\theta, \sigma^2)}{p(\theta|\sigma^2,y)}=\frac{p(y|\theta, \sigma^2) (\sigma^2)^{-1}}{\mathcal{N}(\theta|\bar{y}, \sigma^2/n)}$$
 \item \textbf{\color{blue}Important}: \textbf{As a function} of $\sigma^2\quad [\textbf{at }\theta=\bar{y}]$
 \begin{enumerate}\medskip
-\item $\mathcal{N}(\theta|\bar{y}, \sigma^2/n) \propto (\sigma^{-2})^{-1/2} \quad $\medskip
+\item $\mathcal{N}(\theta|\bar{y}, \sigma^2/n) \propto (\sigma^{-2})^{1/2} \quad $\medskip
 \item $p(y|\theta, \sigma^2)(\sigma^2)^{-1}  \propto  (\sigma^{-2})^{n/2+1} \exp\left(-\frac{1}{2\sigma^2}\sum	_{i=1}^n(y_i-\bar{y})^2\right)$
 
 \end{enumerate}\medskip
 
-\item {\color{purple!75!black}1.}/{\color{purple!75!black}2.} gives
+\item {\color{purple!75!black}2.}/{\color{purple!75!black}1.} gives
 $$\sigma^{-2(\frac{(n-1)}{2}+1)} \exp\left(-\frac{\overbrace{n-1}^{\nu_n}}{2\sigma^2}\overbrace{\frac{1}{n-1}\sum	_{i=1}^n(y_i-\bar{y})^2}^{s^2_n} \right).$$
 
 \end{itemize}
