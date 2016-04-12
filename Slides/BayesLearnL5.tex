@@ -176,12 +176,12 @@
 \begin{itemize}
 \item \textbf{\color{blue}Model}
 \[
-y_{1},...,y_{n}|\theta,\sigma^{2}\overset{iid}{\sim}N(\theta,\sigma^{2})
+y_{1},...,y_{n}|\theta,\sigma^{2}\overset{iid}{\sim}\mathcal{N}(\theta,\sigma^{2})
 \]
 \bigskip
-\item \textbf{\color{blue}Conjugate prior}
+\item \textbf{\color{blue}Conjugate prior} $\theta,\sigma^2 \sim \mathcal{N}\text{-}Inv\text{-}\chi^{2}(\mu_0, \sigma^2/\kappa_0; \nu_0, \sigma^2_0)$
 \begin{gather*}
-\theta|\sigma^{2}\sim N\left(\mu_{0},\frac{\sigma^{2}}{\kappa_{0}}\right)\\
+\theta|\sigma^{2}\sim \mathcal{N}\left(\mu_{0},\frac{\sigma^{2}}{\kappa_{0}}\right)\\
 \sigma^{2}\sim Inv\text{-}\chi^{2}(\nu_{0},\sigma_{0}^{2})
 \end{gather*}
 \bigskip
@@ -199,9 +199,9 @@ y_{1},...,y_{n}|\theta,\sigma^{2}\overset{iid}{\sim}N(\theta,\sigma^{2})
 \begin{frame}{Normal model - conjugate prior for both $\theta$ and $\sigma^2$, cont.}
 
 \begin{itemize}
-\item \textbf{\color{blue}Posterior} 
+\item \textbf{\color{blue}Posterior} $\theta,\sigma^2 |y \sim \mathcal{N}\text{-}Inv\text{-}\chi^{2}(\mu_n, \sigma^2/\kappa_n; \nu_n, \sigma^2_n)$
 \begin{gather*}
-\theta|\sigma^{2},y \sim N\left(\mu_{n},\frac{\sigma^{2}}{\kappa_{n}}\right)\\
+\theta|\sigma^{2},y \sim \mathcal{N}\left(\mu_{n},\frac{\sigma^{2}}{\kappa_{n}}\right)\\
 \sigma^{2}|y\sim Inv\text{-}\chi^{2}(\nu_{n},\sigma_{n}^{2}).
 \end{gather*}
 where
