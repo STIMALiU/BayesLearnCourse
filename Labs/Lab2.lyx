@@ -76,12 +76,12 @@
 \begin_layout Standard
 
 \size footnotesize
-Shutong Ding and Mattias Villani
+Matias Quiroz and Mattias Villani
 \begin_inset space \hspace{}
 \length 7.5cm
 \end_inset
 
-2015-04-10
+2016-04-19
 \end_layout
 
 \begin_layout Standard
@@ -106,7 +106,7 @@ Linköpings universitet
 \begin_layout Standard
 
 \size footnotesize
-shutong.ding@liu.se
+matias.quiroz@liu.se
 \begin_inset VSpace 1cm
 \end_inset
 
@@ -147,35 +147,21 @@ You can use any programming language for the labs, but my hints, help and
 
 You are supposed to work and submit your labs in pairs, but do make sure
  that both of you are contributing.
-\family typewriter
-
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-The 
-\series bold
-deadline
-\series default
- for this lab is 
+ Submit your solutions by Lisam no later than 
 \series bold
 April
 \series default
- 23 at 
+ 29 at 
 \series bold
 midnight
 \series default
 .
- 
+
 \family typewriter
-
-\begin_inset Newline newline
-\end_inset
-
-
+ 
 \family default
-Send the report to shutong.ding@liu.se.
+You should submit the report (pdf only) and an executable file containing
+ your code.
 \family typewriter
 
 \begin_inset Newline newline
@@ -1669,7 +1655,7 @@ Assume that voters of each age group are independent random samples from
  age group:
 \begin_inset Formula 
 \[
-y_{i1},...,y_{ik}\sim Multin(y_{i};\theta_{i1,}...,\theta_{ik})\quad\quad\mbox{for}\quad i=1,...,4;\quad k=9
+y_{i1},...,y_{ik}\sim\mathrm{Multinomial}(y_{i};\theta_{i1,}...,\theta_{ik})\quad\quad\mbox{for}\quad i=1,...,4;\quad k=9
 \]
 
 \end_inset
@@ -1708,7 +1694,7 @@ where
 \end_inset
 
  is the same for all age groups, which is 
-\begin_inset Formula $Dirichlet(\alpha_{1},...,\alpha_{k})$
+\begin_inset Formula $\mathrm{Dirichlet}(\alpha_{1},...,\alpha_{k})$
 \end_inset
 
 , and the age groups are assumed to be independent a priori.
@@ -1934,10 +1920,6 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -1978,7 +1960,7 @@ Show that the posterior distribution of
 \end_inset
 
 th voting group is also 
-\begin_inset Formula $Dirichlet(\alpha_{1}+y_{i1},...,\alpha_{k}+y_{ik}).$
+\begin_inset Formula $\mathrm{Dirichlet}(\alpha_{1}+y_{i1},...,\alpha_{k}+y_{ik}).$
 \end_inset
 
 
@@ -2013,7 +1995,7 @@ For the voters of age 18-29, what is the posterior probability that the
 \end_inset
 
 [Hint: Use simulation methods to compute 
-\begin_inset Formula $Pr(\sum_{j=5}^{7}\theta_{1j}>\sum_{j=1}^{4}\theta_{1j}\text{\vert y})$
+\begin_inset Formula $\Pr(\sum_{j=5}^{7}\theta_{1j}>\sum_{j=1}^{4}\theta_{1j}\text{\vert y})$
 \end_inset
 
  for each age group.]
@@ -2033,7 +2015,7 @@ Who actually wins the elections clearly depend on the number of voters in
 , be the number of voters in each age group that actually vote on the election
  day.
  Suppose that 
-\begin_inset Formula $Y_{1},...,Y_{4}\sim Multin(Y,0.2,0.3,0.3,0.2),$
+\begin_inset Formula $Y_{1},...,Y_{4}\sim\mathrm{Multinomial}(Y,0.2,0.3,0.3,0.2),$
 \end_inset
 
  where 
@@ -2050,7 +2032,7 @@ Who actually wins the elections clearly depend on the number of voters in
 \end_inset
 
 , we model the vote counts for each party in this age group as 
-\begin_inset Formula $Y_{i1},...,Y_{ik}\sim Multin(Y_{i};\theta_{i1,}...,\theta_{ik})$
+\begin_inset Formula $Y_{i1},...,Y_{ik}\sim\mathrm{Multinomial}(Y_{i};\theta_{i1,}...,\theta_{ik})$
 \end_inset
 
 .
@@ -2078,7 +2060,7 @@ Who actually wins the elections clearly depend on the number of voters in
 
 ; 3.
  Evaluate the probability 
-\begin_inset Formula $Pr(\sum_{j=5}^{7}\sum_{i=1}^{4}Y_{ij}>\sum_{j=1}^{4}\sum_{i=1}^{4}Y_{ij})$
+\begin_inset Formula $\Pr(\sum_{j=5}^{7}\sum_{i=1}^{4}Y_{ij}>\sum_{j=1}^{4}\sum_{i=1}^{4}Y_{ij})$
 \end_inset
 
 .]
@@ -2094,8 +2076,12 @@ Linear and polynomial regression
 \begin_inset Newline newline
 \end_inset
 
-The data set JapanTemp.dat contains daily temperatures (in Celcius degrees)
- at some Japanese location over the course of a year.
+The data set 
+\begin_inset Formula $\texttt{JapanTemp.dat}$
+\end_inset
+
+ contains daily temperatures (in Celcius degrees) at some Japanese location
+ over the course of a year.
  The response variable is 
 \begin_inset Formula $temp$
 \end_inset
@@ -2260,9 +2246,9 @@ n curve.
 \end_inset
 
 [Hint: the R package 
-\family typewriter
-mvtnorm
-\family default
+\begin_inset Formula $\texttt{mvtnorm}$
+\end_inset
+
  will be handy.]
 \end_layout
 
@@ -2293,9 +2279,9 @@ simulates from the joint posterior distribution
 \end_inset
 
 [Hint: the R package 
-\family typewriter
-mvtnorm
-\family default
+\begin_inset Formula $\texttt{mvtnorm}$
+\end_inset
+
  will be handy.]
 \end_layout
 
