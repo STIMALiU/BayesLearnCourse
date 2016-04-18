@@ -471,7 +471,7 @@ p(c|x)\propto p(x|c)p(c)
 \item \textbf{Data:} $\{c_i, x_i\}_{i=1}^n$
 \item $p(c)$ can be estimated by a conjugate \textbf{\color{blue}Bernoulli-Beta} model with data $c_i, i=1,\dots, n$  (or \textbf{\color{blue}Multinomial-Dirichlet} if $C>2$)
 %$c \$
-\item \textbf{\color{blue}Non-naive}: $p(x|c)$ can be $\mathcal{N}_{p}(\theta_{c},\Sigma_{c})$ (or more flexibly a \textbf{Mixture of normals}, see last module) (\textbf{Note}: $p=3$ in Ex.).
+\item \textbf{\color{blue}Non-naive}: $p(x|c)$ can be $\mathcal{N}_{p}(\theta_{c},\Sigma_{c})$ (or more flexibly a \textbf{Finite mixture of normals}, see next module) (\textbf{Note}: $p=3$ in Ex.).
 \item \textbf{\textcolor{blue}{Naive Bayes}}: features are \textbf{assumed
 independent}\[
 p(x|c)=\prod_{j=1}^{p}p(x_{j}|c) \implies p(c|x)\propto\left[\prod_{j=1}^{p}p(x_{j}|c)\right]p(c),
