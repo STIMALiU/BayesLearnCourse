@@ -275,14 +275,14 @@ $1813$ of them to be spam (and 2788 non-spam).\bigskip{}
 \item The posterior \textbf{approaches a normal distribution}
 \item The posterior \textbf{concentrates around a value}
 \end{enumerate}
-\item[2.] {\color{blue}Taylor series} expansion $p(\theta | y)$ w.r.t $\theta	\in \mathbb{R}^{p}$ around the {\color{blue}posterior mode} $\theta^{\star}$ 
+\item[2.] {\color{blue}Taylor series} expansion of $\log p(\theta | y)$ w.r.t $\theta	\in \mathbb{R}^{p}$ around the {\color{blue}posterior mode} $\theta^{\star}$ 
 \small{\begin{align*}
 \log p(\theta|y) & = \log p(\theta^\star|y)+\nabla_{\theta} \log p(\theta^\star|y)^{\prime}(\theta-\theta^{\star}) \\ & +\frac{1}{2!}(\theta-\theta^{\star})^{\prime} \nabla\nabla^{\prime}_{\theta}\log p(\theta^\star|y)(\theta-\theta^{\star})+ \dots
 \end{align*}
 where 
 \begin{eqnarray*}
 \nabla_{\theta} \log p(\theta^\star|y) &=& \frac{\partial\ln p(\theta|y)}{\partial\theta}\bigg|_{\theta=\theta^{\star}} \in \mathbb{R}^{p} \quad \phantom{11} (\textbf{\color{blue}gradient})\\
-\nabla\nabla^{\prime}_{\theta} \log p(\theta^\star|y) &=& \frac{\partial^2\ln p(\theta|y)}{\partial\theta\partial\theta^{\prime}}\bigg|_{\theta=\theta^{\star}} \in \mathbb{R}^{p\times p} \quad (\textbf{\color{blue}Hessian})
+\nabla\nabla^{\prime}_{\theta} \log p(\theta^\star|y) &=& \frac{\partial^2\log p(\theta|y)}{\partial\theta\partial\theta^{\prime}}\bigg|_{\theta=\theta^{\star}} \in \mathbb{R}^{p\times p} \quad (\textbf{\color{blue}Hessian})
 \end{eqnarray*}}
 \end{itemize}
 
@@ -378,11 +378,11 @@ is the \textbf{\color{blue}Fisher information}.
 
 \item First derivative (\textbf{\color{blue}gradient} for $p=1$) of log density
 \[
-\frac{\partial\ln p(\theta|y)}{\partial\theta}=\frac{\alpha_0+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}{\theta}-(\beta_0+n)=0 \implies \theta^{\star}=\frac{\alpha_0+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}{\beta_0+n}
+\frac{\partial\log p(\theta|y)}{\partial\theta}=\frac{\alpha_0+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}{\theta}-(\beta_0+n)=0 \implies \theta^{\star}=\frac{\alpha_0+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}{\beta_0+n}
 \]
 \item Second derivative (\textbf{\color{blue}Hessian} for $p=1$) at mode $\theta^{\star}$ 
 \[
-\frac{\partial^{2}\ln p(\theta|y)}{\partial\theta^{2}}\bigg|_{\theta=\theta^{\star}}=-\frac{\alpha_0+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}{\left(\frac{\alpha_0+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}{\beta_0+n}\right)^{2}}=-\frac{(\beta_0+n)^{2}}{\alpha_0+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}.
+\frac{\partial^{2}\log p(\theta|y)}{\partial\theta^{2}}\bigg|_{\theta=\theta^{\star}}=-\frac{\alpha_0+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}{\left(\frac{\alpha_0+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}{\beta_0+n}\right)^{2}}=-\frac{(\beta_0+n)^{2}}{\alpha_0+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}.
 \]
 
 \item The \textbf{normal approximation} is
@@ -418,7 +418,7 @@ and initial values.
 
 \begin{itemize}
 \item If $\theta\geq0$ use $\phi=\log(\theta)$. 
-\item If $0\leq\theta\leq1$, use $\phi=\ln[\theta/(1-\theta)]$.\medskip{}
+\item If $0\leq\theta\leq1$, use $\phi=\log[\theta/(1-\theta)]$.\medskip{}
 
 \end{itemize}
 
