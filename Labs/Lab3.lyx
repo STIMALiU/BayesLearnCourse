@@ -76,12 +76,12 @@
 \begin_layout Standard
 
 \size footnotesize
-Shutong Ding and Mattias Villani
+Matias Quiroz and Mattias Villani
 \begin_inset space \hspace{}
-\length 7.5cm
+\length 8cm
 \end_inset
 
-2015-04-24
+2016-05-03
 \end_layout
 
 \begin_layout Standard
@@ -106,7 +106,7 @@ Linköpings universitet
 \begin_layout Standard
 
 \size footnotesize
-shutong.ding@liu.se
+matias.quiroz@liu.se
 \begin_inset VSpace 1cm
 \end_inset
 
@@ -147,26 +147,31 @@ You can use any programming language for the labs, but the hints, help and
 
 You are supposed to work and submit your labs in pairs, but do make sure
  that both of you are contributing.
+
+\family typewriter
+ 
+\family default
+Submit your solutions by Lisam no later than 
+\series bold
+May 
+\series default
+13 at 
+\series bold
+midnight
+\series default
+.
+
+\family typewriter
+ 
+\family default
+You should submit the report (pdf only) and an executable file containing
+ your code.
 \family typewriter
 
 \begin_inset Newline newline
 \end_inset
 
 
-\family default
-The 
-\series bold
-deadline
-\series default
- for this lab is 
-\series bold
-May 6
-\series default
- at 
-\series bold
-midnight
-\series default
-.
 \end_layout
 
 \begin_layout Standard
@@ -213,11 +218,11 @@ Normal model.
 \end_inset
 
 Assume the daily precipitation 
-\begin_inset Formula $\left\{ x_{1},...,x_{n}\right\} $
+\begin_inset Formula $\left\{ y_{1},...,y_{n}\right\} $
 \end_inset
 
  are independent normally distributed, 
-\begin_inset Formula $x_{1},...,x_{n}|\mu,\sigma^{2}\sim N(\mu,\sigma^{2})$
+\begin_inset Formula $y_{1},...,y_{n}|\mu,\sigma^{2}\sim\mathcal{N}(\mu,\sigma^{2})$
 \end_inset
 
  where both 
@@ -230,11 +235,11 @@ Assume the daily precipitation
 
  are unknown.
  Let 
-\begin_inset Formula $\mu\sim N(\mu_{0},\tau_{0}^{2})$
+\begin_inset Formula $\mu\sim\mathcal{N}(\mu_{0},\tau_{0}^{2})$
 \end_inset
 
  independently of 
-\begin_inset Formula $\sigma^{2}\sim Inv-\chi^{2}(\nu_{0},\sigma_{0}^{2})$
+\begin_inset Formula $\sigma^{2}\sim Inv\text{-}\chi^{2}(\nu_{0},\sigma_{0}^{2})$
 \end_inset
 
 .
@@ -245,16 +250,12 @@ Assume the daily precipitation
 \begin_layout Enumerate
 Implement (code!) a Gibbs sampler that simulates from the joint posterior
  
-\begin_inset Formula $p(\mu,\sigma^{2}|x_{1},...,x_{n})$
+\begin_inset Formula $p(\mu,\sigma^{2}|y_{1},...,y_{n})$
 \end_inset
 
 .
- [Hint: the conditional posteriors are given on the slides from Lecture
- 7 where 
-\begin_inset Formula $\nu_{n}=\nu_{0}+n$
-\end_inset
-
-].
+ [Hint: the full conditional posteriors are given on the slides from Lecture
+ 8].
 \end_layout
 
 \begin_layout Enumerate
@@ -276,13 +277,21 @@ Mixture normal model.
 \end_inset
 
 Alternatively, let's us now assume that the daily precipitation 
-\begin_inset Formula $\left\{ x_{1},...,x_{n}\right\} $
+\begin_inset Formula $\left\{ y_{1},...,y_{n}\right\} $
 \end_inset
 
  follow an i.i.d two-component mixture of normals model:
 \begin_inset Formula 
 \[
-p(x_{i})=\pi N(x_{i}|\mu_{1},\sigma_{1}^{2})+(1-\pi)N(x_{i}|\mu_{2},\sigma_{2}^{2}).
+p(y_{i}|\mu,\sigma^{2},\pi)=\pi\mathcal{N}(y_{i}|\mu_{1},\sigma_{1}^{2})+(1-\pi)\mathcal{N}(y_{i}|\mu_{2},\sigma_{2}^{2}),
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+\mu=(\mu_{1},\mu_{2})\quad\text{and}\quad\sigma^{2}=(\sigma_{1}^{2},\sigma_{2}^{2}).
 \]
 
 \end_inset
@@ -321,11 +330,11 @@ Graphical comparison.
 Plot the following densities in one figure: 1) a histogram or kernel density
  estimate of the data.
  2) Normal density 
-\begin_inset Formula $N(\mu,\sigma^{2})$
+\begin_inset Formula $\mathcal{N}(\mu,\sigma^{2})$
 \end_inset
 
  in (a); 3) Mixture of normals density 
-\begin_inset Formula $p(x)$
+\begin_inset Formula $p(y_{i}|\mu,\sigma^{2},\pi)$
 \end_inset
 
  in (b).
@@ -353,7 +362,7 @@ OptimizeSpamR.zip
 \end_inset
 
  by 
-\begin_inset Formula $N(\tilde{\beta},J^{-1})$
+\begin_inset Formula $\mathcal{N}(\tilde{\beta},J^{-1})$
 \end_inset
 
 , where 
@@ -367,7 +376,7 @@ OptimizeSpamR.zip
 .
  All of this is given by the code.
  Use the prior 
-\begin_inset Formula $\beta\sim N(0,\tau^{2}I)$
+\begin_inset Formula $\beta\sim\mathcal{N}(0,\tau^{2}I)$
 \end_inset
 
 , with 
@@ -388,12 +397,12 @@ rtnorm
 \family typewriter
 the msm
 \family default
--package.]
+-package + Lecture 8.]
 \end_layout
 
 \begin_layout Enumerate
 Analyze the spam data using your code from b), again using the prior 
-\begin_inset Formula $\beta\sim N(0,\tau^{2}I)$
+\begin_inset Formula $\beta\sim\mathcal{N}(0,\tau^{2}I)$
 \end_inset
 
 , with 
