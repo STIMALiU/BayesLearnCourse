@@ -356,8 +356,10 @@ Use the code
 OptimizeSpamR.zip
 \family default
  from the course web page (under Lecture 6) to analyze the spam data set
- using logistic regression.
- Approximate the posterior of the regression coefficients 
+ using a probit regression.
+ As an alternative to exact simulation using the Gibbs sampler (see below)
+ or Metropolis-Hastings, we can approximate the posterior of the regression
+ coefficients 
 \begin_inset Formula $\beta$
 \end_inset
 
