@@ -129,7 +129,7 @@
 
 %\institute[Riksbank and LiU]{Sveriges Riksbank and Division of Statistics and Machine Learning, Link\"{o}ping University}
 
-\date[]{April 2016} %\today 
+\date[]{May 2016} %\today 
 
 %\usebackgroundtemplate{%
 %  \vbox to \paperheight{\vfil\hbox to \paperwidth{\hfil\includegraphics[width=1.5in]{Bayes.jpg}\hfil}\vfil}
@@ -240,7 +240,7 @@ where $\theta_c$ denotes \textbf{\color{blue}the current state} of the chain.
 \medskip
 \item $\Sigma = \tilde{c}I$. Choose $\tilde{c}$ so that your \textbf{\color{blue}acceptance probability} (on average) is $\alpha\approx 0.23$. 
 \medskip
-\item If the parameters are \textbf{\color{red}heavily correlated}: $\Sigma = \tilde{c} \Sigma_{\star}$, where $\Sigma^*$ is the \textbf{posterior covariance} evaluated at the mode $\theta^{\star}$ (\textbf{\color{blue}recall}: \texttt{optim} in \texttt{R}).
+\item If the parameters are \textbf{\color{red}heavily correlated}: $\Sigma = \tilde{c} \Sigma_{\star}$, where $\Sigma_{\star}$ is the \textbf{posterior covariance} evaluated at the mode $\theta^{\star}$ (\textbf{\color{blue}recall}: \texttt{optim} in \texttt{R}).
 \medskip
 \item \textbf{Question:} Why do you think that $\alpha \approx 1$ is \textbf{\color{red}not} desirable with a Random walk proposal?
 \pause
@@ -313,15 +313,15 @@ where $\theta_c$ denotes \textbf{\color{blue}the current state} of the chain.
 \item \textbf{\color{blue}Note}: if $q(\theta)=\text{symmetric} \implies$ \textbf{\color{blue}Metropolis} algorithm [$q$ cancels].
 \item \textbf{\color{blue}Independence Metropolis-Hastings}:
 $$q(\theta | \theta_c) = q(\theta) \quad \text{[ind. of the current state (\textbf{\color{red}not a RW})]}$$
-\item \textbf{Example}: $$q(\cdot)=t_{\nu}(\theta^{*}, \Sigma_{\theta^*}),$$
+\item \textbf{Example}: $$q(\cdot)=t_{\nu}(\theta^{\star}, \Sigma_{\theta^{\star}}),$$
 where
 \begin{eqnarray*}
-\theta^{*} & = & \text{the {\textbf{\color{blue}mode}} from a numerical optimization} \\
-\Sigma_{\theta^*} & = & \text{the {\textbf{\color{blue}covariance}} at } \theta^* \quad [-H_{\theta^*}^{-1}].
+\theta^{\star} & = & \text{the {\textbf{\color{blue}mode}} from a numerical optimization} \\
+\Sigma_{\theta^{\star}} & = & \text{the {\textbf{\color{blue}covariance}} at } \theta^{\star} \quad [-H_{\theta^{\star}}^{-1}].
 %$\theta^{*}$ & $=$ & 1 \\
 \end{eqnarray*}
 \item Very efficient... \textbf{but can get stuck}!
-\item Make sure $t_{\nu}(\theta^{*}, \Sigma_{\theta^*})$ has \textbf{\color{red}heavier tails} than $p(y|\theta)p(\theta)$. 
+\item Make sure $t_{\nu}(\theta^{\star}, \Sigma_{\theta^{\star}})$ has \textbf{\color{red}heavier tails} than $p(y|\theta)p(\theta)$. 
  
 \end{itemize}
 \end{frame}
