@@ -240,7 +240,7 @@ where $\theta_c$ denotes \textbf{\color{blue}the current state} of the chain.
 \medskip
 \item $\Sigma = \tilde{c}I$. Choose $\tilde{c}$ so that your \textbf{\color{blue}acceptance probability} (on average) is $\alpha\approx 0.23$. 
 \medskip
-\item If the parameters are \textbf{\color{red}heavily correlated}: $\Sigma = \tilde{c} \Sigma_{\star}$, where $\Sigma_{\star}$ is the \textbf{posterior covariance} evaluated at the mode $\theta^{\star}$ (\textbf{\color{blue}recall}: \texttt{optim} in \texttt{R}).
+\item If the parameters are \textbf{\color{red}heavily correlated}: $\Sigma = \tilde{c} \Sigma_{\theta^{\star}}$, where $\Sigma_{\theta^\star}$ is the \textbf{posterior covariance} evaluated at the mode $\theta^{\star}$ (\textbf{\color{blue}recall}: \texttt{optim} in \texttt{R}).
 \medskip
 \item \textbf{Question:} Why do you think that $\alpha \approx 1$ is \textbf{\color{red}not} desirable with a Random walk proposal?
 \pause
