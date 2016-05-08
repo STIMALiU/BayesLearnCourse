@@ -79,12 +79,12 @@
 \begin_layout Standard
 
 \size footnotesize
-Shutong Ding and Mattias Villani
+Matias Quiroz and Mattias Villani
 \begin_inset space \hspace{}
 \length 7.5cm
 \end_inset
 
-2015-05-07
+2016-05-17
 \end_layout
 
 \begin_layout Standard
@@ -109,7 +109,7 @@ Linköpings universitet
 \begin_layout Standard
 
 \size footnotesize
-shutong.ding@liu.se
+matias.quiroz@liu.se
 \begin_inset VSpace 1cm
 \end_inset
 
@@ -143,13 +143,41 @@ Computer lab 4
 
 \begin_layout Standard
 You can use any programming language for the labs, but my hints, help and
- solutions will be in R.
+ solutions will be in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{R}
+\end_layout
+
+\end_inset
+
+.
  
 \begin_inset Newline newline
 \end_inset
 
 You are supposed to work and submit your labs in pairs, but do make sure
  that both of you are contributing.
+ Submit your solutions by Lisam no later than 
+\series bold
+May
+\series default
+ 24 at 
+\series bold
+midnight
+\series default
+.
+
+\family typewriter
+ 
+\family default
+You should submit the report (pdf only) and an executable file containing
+ your code.
 \family typewriter
 
 \begin_inset Newline newline
@@ -157,24 +185,8 @@ You are supposed to work and submit your labs in pairs, but do make sure
 
 
 \family default
-The 
-\series bold
-deadline
-\series default
- for this lab is 
-\series bold
-May 19
-\series default
- at 
-\series bold
-midnight
-\series default
-.
-\end_layout
-
-\begin_layout Standard
-
 \size footnotesize
+
 \begin_inset VSpace 0.5cm
 \end_inset
 
@@ -203,7 +215,7 @@ Poisson regression - the MCMC way
 Consider the following Poisson regression model
 \begin_inset Formula 
 \begin{align*}
-y_{i} & \vert\beta\sim Poisson\left[\exp\left(x_{i}'\beta\right)\right],\;i=1,...,n,
+y_{i} & \vert\beta\sim\mathrm{Poisson}\left[\exp\left(x_{i}'\beta\right)\right],\;i=1,...,n,
 \end{align*}
 
 \end_inset
@@ -229,8 +241,25 @@ th observation in the sample and
 \end_inset
 
 th observation.
- Use the data set eBayNumberOfBidderData.dat.
- That dataset contains observations from 1000 eBay auctions of coins.
+ Use the data set 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+ 
+\backslash
+texttt{eBayNumberOfBidderData.dat}
+\end_layout
+
+\end_inset
+
+.
+ This dataset contains observations from 1000 eBay auctions of coins.
  The response variable is 
 \series bold
 nBids
@@ -325,20 +354,44 @@ Obtain the maximum likelihood estimator of
 \begin_inset Formula $\beta$
 \end_inset
 
- in the Poisson regression model for the eBay data [Hint: glm function in
- R, don't forget that glm() adds its own intercept so don't input the covariate
- Const.].
+ in the Poisson regression model for the eBay data [Hint: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{glm.R}
+\end_layout
+
+\end_inset
+
+, don't forget that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{glm()}
+\end_layout
+
+\end_inset
+
+ adds its own intercept so don't input the covariate Const.].
  Which covariates are significant?
 \end_layout
 
 \begin_layout Enumerate
 Let's now do a Bayesian analysis of the Poisson regression.
  Let the prior be 
-\begin_inset Formula $\beta\sim N\left[\mathbf{0},100\cdot(\mathbf{X'X})^{-1}\right]$
+\begin_inset Formula $\beta\sim\mathcal{N}\left[\mathbf{0},100\cdot(X^{\prime}X){}^{-1}\right]$
 \end_inset
 
  where 
-\begin_inset Formula $\mathbf{X}$
+\begin_inset Formula $X$
 \end_inset
 
  is the 
@@ -346,13 +399,27 @@ Let's now do a Bayesian analysis of the Poisson regression.
 \end_inset
 
  covariate matrix.
- This is a commonly used prior.
- Assume first that the posterior density is approximately multivariate normal:
- 
-\begin_inset Formula $\beta|\mathbf{y},\mathbf{X}\sim N\left(\tilde{\beta},J_{\tilde{\beta}}^{-1}\right)$
+ This is a commonly used prior which is called Zellner's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+g
+\end_layout
+
 \end_inset
 
- where 
+-prior.
+ Assume first that the posterior density is approximately multivariate normal:
+\begin_inset Formula 
+\begin{eqnarray*}
+\beta|y & \sim & \mathcal{N}\left(\tilde{\beta},J_{y,\tilde{\beta}}^{-1}\right),
+\end{eqnarray*}
+
+\end_inset
+
+where 
 \begin_inset Formula $\tilde{\beta}$
 \end_inset
 
@@ -369,9 +436,22 @@ Let's now do a Bayesian analysis of the Poisson regression.
 \begin_inset Formula $J_{\tilde{\beta}}$
 \end_inset
 
- can be obtained by numerical optimization (optim.R) exactly like you already
- did for the logistic regression on the spam data (but with the log posterior
- function replaced by a corresponding one for the Poisson model).
+ can be obtained by numerical optimization (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{optim.R}
+\end_layout
+
+\end_inset
+
+) exactly like you already did for the probit regression on the spam data
+ (but with the log posterior function replaced by the corresponding one
+ for the Poisson model).
 \end_layout
 
 \begin_layout Enumerate
@@ -388,20 +468,20 @@ arbitrary
 \shape default
  posterior density.
  Let the proposal density be the multivariate normal density mentioned in
- Lecture 8 (random walk Metropolis):
+ Lecture 9 (random walk Metropolis):
 \begin_inset Formula 
 \[
-\theta_{p}\vert\theta^{(i-1)}\sim N\left(\theta^{(i-1)},c\cdot\Sigma\right),
+\theta_{p}\vert\theta_{c}\sim N\left(\theta_{c},\tilde{c}\cdot\Sigma\right),
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $\Sigma=J_{\tilde{\theta},\mathbf{x}}^{-1}$
+\begin_inset Formula $\Sigma=J_{\tilde{\theta},y}^{-1}$
 \end_inset
 
  and 
-\begin_inset Formula $J_{\tilde{\theta},\mathbf{x}}$
+\begin_inset Formula $J_{\tilde{\theta},y}$
 \end_inset
 
  is the negative Hessian at the posterior mode 
@@ -411,7 +491,7 @@ where
 .
  These are already available from question b) above.
  The value 
-\begin_inset Formula $c$
+\begin_inset Formula $\tilde{c}$
 \end_inset
 
  is a tuning parameter and should be an input to your Metropolis function
@@ -422,7 +502,20 @@ where
 \emph on
 function objects
 \emph default
- in R and the triple dot (
+ in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{R}
+\end_layout
+
+\end_inset
+
+ and the triple dot (
 \family typewriter
 \size footnotesize
 ...
@@ -466,7 +559,7 @@ log
  probability can be written
 \begin_inset Formula 
 \[
-\frac{p(\theta_{p}|y)}{p(\theta^{(i-1)}|y)}=\exp\left[\log p(\theta_{p}|y)-\log p(\theta^{(i-1)}|y)\right]
+\frac{p(\theta_{p}|y)}{p(\theta_{c}|y)}=\exp\left[\log p(\theta_{p}|y)-\log p(\theta_{c}|y)\right]
 \]
 
 \end_inset
@@ -476,7 +569,7 @@ This is smart since the large or small common factors in
 \end_inset
 
  and 
-\begin_inset Formula $p(\theta^{(i-1)}|y)$
+\begin_inset Formula $p(\theta_{c}|y)$
 \end_inset
 
  cancel out before we evaluate the exponential function (which can otherwise
@@ -502,9 +595,9 @@ first
 \end_inset
 
 Third, the user's posterior density is also a function of the data and prior
- hyperparameters and those need to be supplied to the Metropolis function
+ hyper-parameters and those need to be supplied to the Metropolis function
  in some way.
- The nice way of doing that is use the triple dot (
+ A nice way of doing that is to use the triple dot (
 \family typewriter
 \size footnotesize
 ...
@@ -517,7 +610,7 @@ any
  parameters supplied by the user.
  This makes it possible to use the Metropolis function for any problem,
  even when you as a programmer don't know what the user's posterior density
- function looks like or what kind of data and hyperparameters being used
+ function looks like or what kind of data and hyper-parameters being used
  in that particular problem.
  To make all of this very clear (I hope!) I give a simple code below where
  the log posterior density for the Bernoulli model with a Beta prior is
@@ -554,7 +647,7 @@ takes a function object as input and how it uses the triple dot (
 \begin_inset Formula $f$
 \end_inset
 
-, and the prior hyperparameters 
+, and the prior hyper-parameters 
 \begin_inset Formula $a$
 \end_inset
 
@@ -577,22 +670,104 @@ any
 \begin_inset Newline newline
 \end_inset
 
-[Matlab users: Here is one instance where Matlab's lack of proper function
- objects becomes a pain.
+[
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{MATLAB}
+\end_layout
+
+\end_inset
+
+ users: Here is one instance where 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{MATLAB}
+\end_layout
+
+\end_inset
+
+'s lack of proper function objects becomes a pain.
  You can do the same thing with 
 \family typewriter
 \size footnotesize
-eval()
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{eval()
+\family typewriter
+\size footnotesize
+}
+\end_layout
+
+\end_inset
+
+
 \family default
 \size default
  and 
 \family typewriter
 \size footnotesize
-varargin
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\family typewriter
+\size footnotesize
+
+\backslash
+texttt{varargin}
+\end_layout
+
+\end_inset
+
+
 \family default
 \size default
-, however, but it is not as pretty as in R or Python.
- See the Matlab help.] 
+, however, but it is not as pretty as in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{R}
+\end_layout
+
+\end_inset
+
+.
+ See the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{MATLAB}
+\end_layout
+
+\end_inset
+
+ help.] 
 \begin_inset Newline newline
 \end_inset
 
@@ -601,7 +776,21 @@ Use your new Metropolis function to sample from the posterior of
 \end_inset
 
  in the Poisson regression for the eBay dataset.
- Assess MCMC convergence by graphical methods.
+ Assess MCMC convergence by graphical methods and compute the effective
+ sample size (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{CODA.R}
+\end_layout
+
+\end_inset
+
+).
  The parameters 
 \begin_inset Formula $\phi_{j}=\exp(\beta_{j})$
 \end_inset
@@ -785,7 +974,7 @@ MultiplyByTwo <- function(myFunction, ...){
 \end_layout
 
 \begin_layout Standard
-    y <- myFunction(x,...)
+y <- myFunction(x,...)
 \end_layout
 
 \begin_layout Standard
