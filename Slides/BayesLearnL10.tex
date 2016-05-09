@@ -281,7 +281,7 @@ p_{1}(y) & =\int p_{1}(y\vert\theta_{1})p(\theta_{1})d\theta_{1}\\
 & = \frac{\Gamma(\alpha_1 + \beta_1)}{\Gamma(\alpha_1)\Gamma(\beta_1)}  \int \theta_1^{n + \alpha_1-1} (1-\theta_1)^{n \bar{y} + \beta_1 - 1}  d\theta_1\\ 
 \end{align*}
 \item The \textbf{\color{blue}beta function}
-$$B(a, b) = \int_0^1 t^{a - 1}(1 - t)^{b - 1}, \quad a,b>0.$$ 
+$$B(a, b) = \int_0^1 t^{a - 1}(1 - t)^{b - 1}dt, \quad a,b>0.$$ 
 \item \textbf{Nice property} of the beta function
 $$B(a, b) = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a + b)}.$$
 
@@ -633,14 +633,14 @@ for Independence MH, not so good for RWM).
 \item By \textbf{normal approximation} of the posterior distribution (\textbf{\color{blue}Lecture 6}).\smallskip
 \item \textbf{\color{blue}Recall}: for large $n$ 
 \begin{align*}
-p(\theta|y) & \approx \mathcal{N}_p(\theta^{\star}, \Sigma_{\theta^{\star}}=J_{\theta^{\star}, y})\\
-& = (2\pi)^{-p/2}|J_{\theta^{\star}, y}|^{-1/2}\exp\left(-\frac{1}{2}(\theta-\theta^{\star})^{\prime}J^{-1}_{\theta^{\star}, y}(\theta-\theta^{\star})\right).
+p(\theta|y) & \approx \mathcal{N}_p(\theta^{\star}, \Sigma_{\theta^{\star}}=J^{-1}_{\theta^{\star}, y})\\
+& = (2\pi)^{-p/2}|J^{-1}_{\theta^{\star}, y}|^{-1/2}\exp\left(-\frac{1}{2}(\theta-\theta^{\star})^{\prime}J_{\theta^{\star}, y}(\theta-\theta^{\star})\right).
 \end{align*}
 \item \textbf{\textcolor{blue}{The Laplace approximation}}: Use rearranged Bayes' theorem with $\theta=\theta^{\star}$
 \[
 \log\hat{p}(y)=\log p(y|\theta^{\star})+\log p(\theta^{\star})+\frac{p}{2}\log(2\pi)+\frac{1}{2}\log\left\vert J^{-1}_{\theta^{\star}, y}\right\vert.
 \]
-\item \textbf{\color{red}As usual}: $\theta^{\star}$ and $J_{\theta^{\star},y}$ [$-H^{-1}_{\theta^{\star}}]$ are obtained via a numerical optimization (e.g. \texttt{optim} in \texttt{R}).
+\item \textbf{\color{red}As usual}: $\theta^{\star}$ and $J_{\theta^{\star},y}$ [$-H_{\theta^{\star}}]$ are obtained via a numerical optimization (e.g. \texttt{optim} in \texttt{R}).
 
 
 \end{itemize}
