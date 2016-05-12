@@ -249,7 +249,7 @@ model implied by $\mathbf{\mathcal{I}}$
 \item \textbf{\color{blue}Gibbs sampling} to the rescue!
 \end{itemize}
 \smallskip
-\item But the \textbf{outcome space} is still $2^p$ (huge!). \textbf{\color{blue}Example}: $$p=10\implies 2^{20}=1,048,576\quad \text{different models to explore...}$$ 
+\item But the \textbf{outcome space} is still $2^p$ (huge!). \textbf{\color{blue}Example}: $$p=20\implies 2^{20}=1,048,576\quad \text{different models to explore...}$$ 
 \item ... Don't I have to run the sampler for a \textbf{huge number} of iterations to \textbf{converge}?
 \item Most of the $2^{p}$ models have \textbf{essentially zero probability}. We are saved!
 \end{itemize}
@@ -334,7 +334,7 @@ Formulas are available (conditional of a multivariate normal is also normal).
 \end{frame}
 
 
-\begin{frame}{Posterior predictive analysis}
+\begin{frame}{Evaluating models by posterior predictive analysis}
 
 \begin{itemize}
 \item \textbf{\color{red}Idea}: If $p(y|\theta)$ is a 'good' model, then the data \textbf{\color{blue}actually observed} should not differ 'too much' from \textbf{\color{blue}simulated data} from $p(y|\theta)$.  \medskip
@@ -353,7 +353,7 @@ to $T(y^{\mathrm{rep}},\theta)$. \medskip{}
 
 
 \begin{frame}
-\frametitle{Posterior predictive analysis, cont.}
+\frametitle{Evaluating models by posterior predictive analysis, cont.}
 \begin{center}
 \begin{minipage}{\columnwidth}
 \begin{varblock}[0.95\columnwidth]{Simulate from the \textbf{\color{yellow}posterior predictive density}
