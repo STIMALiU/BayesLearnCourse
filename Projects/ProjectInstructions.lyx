@@ -157,6 +157,14 @@ individual
 Deadlines
 \series default
  
+\series bold
+for
+\series default
+ 
+\series bold
+Round 1
+\series default
+
 \begin_inset Newline newline
 \end_inset
 
@@ -184,6 +192,51 @@ Project
 : No later than
 \series bold
  June 5 at midnight
+\series default
+.
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+Deadlines
+\series default
+ 
+\series bold
+for
+\series default
+ 
+\series bold
+Round 2
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Project proposal
+\series default
+: No later than
+\series bold
+ October 18 at midnight
+\series default
+.
+
+\series bold
+ 
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Project
+\series default
+: No later than
+\series bold
+ November 4 at midnight
 \series default
 .
 \end_layout
