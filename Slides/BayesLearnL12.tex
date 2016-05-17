@@ -211,10 +211,10 @@ where $i = 1, \dots, N$ (observations) and $j = 1, \dots, J$ (groups). Let $n_j$
 \begin{frame} %[fragile]
 \frametitle{Some remarks on a hierarchical model}
 \begin{itemize}
-\item \textbf{\color{blue}Note}: the (unconditional/marginal) prior for $\theta$ is $$p(\theta)=p(\theta_1, \dots, \theta_J)= \int \left(\prod_{j=1}^N p(\theta_j|\mu, \tau^2)\right) p(\mu, \tau^2) d\mu d\tau^2.$$
+\item \textbf{\color{blue}Note}: the (unconditional/marginal) prior for $\theta$ is $$p(\theta)=p(\theta_1, \dots, \theta_J)= \int \left(\prod_{j=1}^J p(\theta_j|\mu, \tau^2)\right) p(\mu, \tau^2) d\mu d\tau^2.$$
 \item $\theta_1, \dots, \theta_J$ \textbf{\color{red}are not} independent because
 $$p(\theta_1, \theta_2, \dots, \theta_J) \neq p(\theta_1)p(\theta_2) \cdots p(\theta_J), \text{ but they are \textbf{\color{blue}exchangeable}.}$$
-\item \textbf{\color{blue}Exchangeable}: $p(\theta)$ invariant to \textbf{permutation of indices}. \textbf{Weaker} than independence.
+\item \textbf{\color{blue}Exchangeable}: $p(\theta)$ invariant to \textbf{permutation of indices}. \textbf{\color{red}Weaker} than independence.
 \item Hyper-parameters set to \textbf{\color{blue}sensible values} earlier. Modelling them now!
 \vspace{-2mm}
 \begin{center}
@@ -355,7 +355,7 @@ is a \textbf{\color{red}nightmare}... \textbf{But} assuming $p(\sigma^2, \mu,\ta
 \item \textbf{\color{blue}$L$-layers with params $\gamma_1, \dots \gamma_L$}:
  Just crank the \textbf{\color{blue}Bayesian machine}
 $$p(\gamma_1, \dots, \gamma_L|y) \propto p(y|\gamma_1, \dots, \gamma_L)p(\gamma_1, \dots, \gamma_L)$$
-and \textbf{\color{blue}factorize the prior} with the formula we have used more than 1000 times $$p(\gamma_1,\dots, \gamma_L)= p(\gamma_L|, \gamma_{L-1} \dots, \gamma_2, \gamma_1)p(\gamma_2|\gamma_1)p(\gamma_1).$$
+and \textbf{\color{blue}factorize the prior} with the formula we have used more than 1000 times $$p(\gamma_1,\dots, \gamma_L)= p(\gamma_L|\gamma_{L-1}, \dots, \gamma_2, \gamma_1)p(\gamma_2|\gamma_1)p(\gamma_1).$$
 \item Derive \textbf{\color{blue}full conditionals} $\gamma_l|\mathrm{rest},y$ by choosing (if possible) a \textbf{\color{blue}conjugate prior}.
 \item \textbf{\color{blue}Estimation}: \textbf{\color{magenta}Gibbs sampling}. Is any $\gamma_l$ of unknown form? \textbf{Metropolis-Hastings} within Gibbs (Lecture 9)! 
 \end{itemize}
@@ -462,7 +462,7 @@ and take (for example) $\Omega_0 = \lambda I$. \medskip
 \begin{frame}{RStan - a short demonstration}
 
 \begin{itemize}
-\item Why \textbf{\color{blue}Stan} (\href{http://mc-stan.org}{mc-stan.org})
+\item Why \textbf{\color{blue}Stan} (\href{http://mc-stan.org}{mc-stan.org})?
 \begin{itemize}
 \item \textbf{Easy} to install (see \href{https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started}{here}).
 \item \textbf{Easy} to use.
