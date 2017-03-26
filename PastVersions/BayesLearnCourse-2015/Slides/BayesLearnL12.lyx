@@ -1,0 +1,1599 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{RawSienna}{cmyk}{0,0.87,0.82,0.31}
+\definecolor{gray97}{cmyk}{0,0,0,0.03}
+\definecolor{robinsegg}{cmyk}{0.18,0.04,0,0.07}
+\definecolor{cola}{cmyk}{0,0.315,0.35,0.155}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=RawSienna]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+\useoutertheme{infolines}
+\usetheme{default}
+\setbeamertemplate{blocks}[shadow=true]
+%\setbeamerfont{structure}{shape=\itshape}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{background canvas}{
+ % \ifnum \thepage>0 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/greyribbonLighter.jpg}
+ % \else
+ 	% No background for page 2 and onwards
+ % \fi
+}
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Bayesian Learning
+\end_layout
+
+\end_inset
+
+Bayesian Learning - Lecture 12
+\end_layout
+
+\begin_layout Author
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Mattias Villani
+\end_layout
+
+\end_inset
+
+Mattias Villani
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Statistics, LiU
+\end_layout
+
+\end_inset
+
+Division of Statistics and Machine Learning
+\begin_inset Newline newline
+\end_inset
+
+Department of Computer and Information Science
+\begin_inset Newline newline
+\end_inset
+
+Linköping University 
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Overview
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Multivariate normal
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Gaussian process regression
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Multivariate normal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Multivariate normal
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+\mathbf{x}\sim N_{p}(\mu,\Sigma)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mu=(\mu_{1},...,\mu_{p})'$
+\end_inset
+
+ and
+\begin_inset Formula 
+\[
+\Sigma=\left(\begin{array}{cccc}
+\sigma_{1}^{2} & \rho_{12}\sigma_{1}\sigma_{2} & \cdots & \rho_{1p}\sigma_{1}\sigma_{p}\\
+\rho_{12}\sigma_{1}\sigma_{2} & \sigma_{2}^{2} &  & \rho_{2p}\sigma_{2}\sigma_{2}\\
+\vdots &  & \ddots\\
+\rho_{p1}\sigma_{p}\sigma_{1} & \rho_{p2}\sigma_{p}\sigma_{2} & \cdots & \sigma_{p}^{2}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename BivariateNormalSurf.png
+	lyxscale 20
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename BivariateNormalDens.png
+	lyxscale 20
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename PrincipalAxes.png
+	lyxscale 20
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Multivariate normal - some properties
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\mathbf{x}\sim N_{p}(\mu,\Sigma)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\mathbf{x}=\left(\begin{array}{c}
+\mathbf{x}_{1}\\
+\mathbf{x}_{2}
+\end{array}\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $\mathbf{x}_{1}$
+\end_inset
+
+ is 
+\begin_inset Formula $p_{1}\times1$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{x}_{2}$
+\end_inset
+
+ is 
+\begin_inset Formula $p_{2}\times1$
+\end_inset
+
+ (
+\begin_inset Formula $p_{1}+p_{2}=p$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\mu=\left(\begin{array}{c}
+\mu_{1}\\
+\mu_{2}
+\end{array}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\Sigma=\left(\begin{array}{cc}
+\Sigma_{11} & \Sigma_{12}\\
+\Sigma_{21} & \Sigma_{22}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Marginal distributions
+\series default
+\color inherit
+ are normal
+\begin_inset Formula 
+\[
+\mathbf{x}_{1}\sim N_{p_{1}}(\mu_{1},\Sigma_{1})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Conditional distributions 
+\series default
+\color inherit
+are normal
+\begin_inset Formula 
+\[
+\mathbf{x}_{1}|\mathbf{x}_{2}\sim N_{p_{1}}\left[\mu_{1}+\Sigma_{12}\Sigma_{22}^{-1}(x_{2}-\mu_{2}),\;\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Non-parametric regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Linear regression
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+y=\beta\cdot x+\varepsilon
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\varepsilon\sim N(0,\sigma^{2})$
+\end_inset
+
+ and iid over observations.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Nonlinear
+\series default
+ 
+\series bold
+regression
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+y=f(x)+\varepsilon
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $f(\cdot)$
+\end_inset
+
+ is some nonlinear function (ex 
+\begin_inset Formula $f(x)=\beta_{0}+\beta_{1}x+\beta_{2}x^{2}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Non-parametric regression
+\series default
+\color inherit
+: avoiding a parametric form for 
+\begin_inset Formula $f(\cdot)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+How do we put a 
+\series bold
+\color blue
+prior over a set of functions
+\series default
+\color inherit
+?
+\end_layout
+
+\begin_layout Itemize
+Restrict attention to a grid of (ordered) 
+\begin_inset Formula $x$
+\end_inset
+
+-values: 
+\begin_inset Formula $x_{1},x_{2},..,x_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+We can now put a joint prior on the 
+\begin_inset Formula $k$
+\end_inset
+
+ function values: 
+\begin_inset Formula $f(x_{1}),f(x_{2}),...,f(x_{k})$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Nonparametric = one parameter for every x!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncSmoothManyPoints.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gaussian process regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We clearly need to impose 
+\series bold
+\color blue
+smoothness
+\series default
+\color inherit
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Multivariate normal (Gaussian) prior:
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+f(x_{1})\\
+\vdots\\
+f(x_{k})
+\end{array}\right)\sim N\left(\mathbf{m},\mathbf{K}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+But how do we specify the 
+\begin_inset Formula $k\times k$
+\end_inset
+
+ 
+\series bold
+\color blue
+covariance matrix
+\series default
+ 
+\color inherit
+
+\begin_inset Formula $\mathbf{K}$
+\end_inset
+
+?
+\begin_inset Formula 
+\[
+Cov\left(f(x_{p}),f(x_{q})\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Squared exponential covariance function
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+Cov\left(f(x_{p}),f(x_{q})\right)=K(x_{p},x_{q})=\sigma_{f}^{2}\exp\left(-\frac{1}{2}\left(\frac{x_{p}-x_{q}}{\ell}\right)^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The covariance between 
+\begin_inset Formula $f(x_{p})$
+\end_inset
+
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $f(x_{q})$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ is a function of 
+\begin_inset Formula $x_{p}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{q}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Nearby 
+\begin_inset Formula $x$
+\end_inset
+
+'s have highly correlated function ordinates 
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Smooth function - points nearby
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncSmoothTwoPointsNear.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Smooth function - points nearby
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncSmoothTwoPointsNearWithDensity.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Smooth function - points far apart
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncSmoothTwoPointsApart.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Smooth function - points far apart
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncSmoothTwoPointsApartWithDensity.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jagged function - points nearby
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncJaggedTwoPointsNear.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jagged function - points nearby
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncJaggedTwoPointsNearWithDensity.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jagged function - points far apart
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncJaggedTwoPointsApart.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jagged function - points far apart
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename GPFuncJaggedTwoPointsApartWithDensity.svg
+	lyxscale 40
+	scale 50
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gaussian process regression, cont.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Definition
+A 
+\series bold
+\color blue
+Gaussian process
+\series default
+\color inherit
+ (
+\series bold
+\color blue
+GP
+\series default
+\color inherit
+) is a collection of random variables, any finite number of which have a
+ multivariate Gaussian distribution.
+\end_layout
+
+\begin_layout Itemize
+A Gaussian process is a 
+\series bold
+\color blue
+probability distribution over functions
+\series default
+\color inherit
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A GP is completely specified by a 
+\series bold
+mean
+\series default
+ and a 
+\series bold
+covariance function
+\series default
+
+\begin_inset Formula 
+\[
+m(x)=\mathrm{E}\left[f(x)\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+K(x,x')=E\left[\left(f(x)-m(x)\right)\left(f(x')-m(x')\right)\right]
+\]
+
+\end_inset
+
+for any two inputs 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $x'$
+\end_inset
+
+ (note: this is 
+\emph on
+not
+\emph default
+ the transpose here).
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A 
+\series bold
+\color blue
+Gaussian process
+\series default
+\color inherit
+ (prior) is denoted by
+\begin_inset Formula 
+\[
+f(x)\sim GP\left(m(x),K(x,x')\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gaussian process regression, cont.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Example:
+\begin_inset Formula 
+\begin{align*}
+m(x) & =\sin(x)\\
+K(x,x') & =\sigma_{f}^{2}\exp\left(-\frac{1}{2}\left(\frac{x_{p}-x_{q}}{\ell}\right)^{2}\right)
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\ell>0$
+\end_inset
+
+ is the length scale.
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Larger 
+\begin_inset Formula $\ell$
+\end_inset
+
+ gives more smoothness in 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Simulate
+\series default
+\color inherit
+ a draw from 
+\begin_inset Formula $f(x)\sim GP\left(m(x),K(x,x')\right)$
+\end_inset
+
+ over any grid 
+\begin_inset Formula $x_{*}=(x_{1},...,x_{n})$
+\end_inset
+
+ by using that
+\begin_inset Formula 
+\[
+f(x_{*})\sim N\left(m(x_{*}),K(x_{*},x_{*})\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Simulating a GP - sine mean and SE kernel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename GPPriorDraws_l2_sigmaf1.svg
+	lyxscale 20
+	scale 21
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename GPPriorDraws_l1_sigmaf1.svg
+	lyxscale 20
+	scale 21
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename GPPriorDraws_l05_sigmaf1.svg
+	lyxscale 20
+	scale 21
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename GPPriorDraws_l02_sigmaf1.svg
+	lyxscale 20
+	scale 21
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename GPPriorDraws_l1_sigmaf02.svg
+	lyxscale 20
+	scale 21
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename GPPriorDraws_l2_sigmaf02.svg
+	lyxscale 20
+	scale 21
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gaussian process regression, cont.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Model
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+y_{i}=f(\mathbf{\textnormal{x}}_{i})+\varepsilon_{i},\quad\varepsilon\overset{iid}{\sim}N(0,\sigma^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Prior
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+f(x)\sim GP\left(0,K(x,x')\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+You have observed the data: 
+\begin_inset Formula $\mathbf{x}=(x_{1},...,x_{n})$
+\end_inset
+
+' and 
+\begin_inset Formula $\mathbf{y}=(y_{1},...,y_{n})'$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Goal: the posterior of 
+\begin_inset Formula $f(\cdot)$
+\end_inset
+
+ over a grid of 
+\begin_inset Formula $x$
+\end_inset
+
+-values:
+\begin_inset Formula 
+\[
+\mathbf{f}_{*}=\mathbf{f}(\mathbf{x}_{*})=\left(f(x_{1*}),f(x_{2*}),...,f(x_{m*})\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+\color blue
+posterior
+\series default
+\color inherit
+ 
+\begin_inset Formula 
+\[
+\mathbf{f}_{*}|\mathbf{x},\mathbf{y},\mathbf{x}_{*}\sim N\left(\bar{\mathbf{f}}_{*},\mathrm{cov}(\mathbf{f}_{*})\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\bar{\mathbf{f}}_{*} & =K(\mathbf{x}_{*},\mathbf{x})\left[K(\mathbf{x},\mathbf{x})+\sigma^{2}I\right]^{-1}\mathbf{y}\\
+\mathrm{cov}(\mathbf{f}_{*}) & =K(\mathbf{x}_{*},\mathbf{x_{*}})-K(\mathbf{x}_{*},\mathbf{x})\left[K(\mathbf{x},\mathbf{x})+\sigma^{2}I\right]^{-1}K(\mathbf{x},\mathbf{x_{*}})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Learning a noise-free Gaussian process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename ConditionalSimEll1_0.eps
+	scale 32
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ConditionalSimEll02_0.eps
+	scale 32
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Learning a noise-free Gaussian process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename ConditionalSimEll1_1.eps
+	scale 32
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ConditionalSimEll02_1.eps
+	scale 32
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Learning a noise-free Gaussian process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename ConditionalSimEll1_2.eps
+	scale 32
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ConditionalSimEll02_2.eps
+	scale 32
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Learning a noise-free Gaussian process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename ConditionalSimEll1_3.eps
+	scale 32
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ConditionalSimEll02_3.eps
+	scale 32
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example - Canadian wages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CanadianWages.eps
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Posterior of f - 
+\begin_inset Formula $\ell=0.2,0.5,1,2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CanadianIntervalsF.eps
+	scale 25
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename CanadianIntervalsF_ell05.eps
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CanadianIntervalsF_ell1.eps
+	scale 25
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename CanadianIntervalsF_ell2.eps
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\end_body
+\end_document
