@@ -688,7 +688,7 @@ Multinomial model
 :
 \begin_inset Formula 
 \[
-p(y|\theta)\propto\prod_{k=1}^{K}\theta_{k}^{y_{k}},\text{ where }\sum_{k=1}^{K}\theta_{j}=1.
+p(y|\theta)\propto\prod_{k=1}^{K}\theta_{k}^{y_{k}},\text{ where }\sum_{k=1}^{K}\theta_{k}=1.
 \]
 
 \end_inset
@@ -719,7 +719,7 @@ prior
 
 \begin_inset Formula 
 \[
-p(\theta)\propto\prod_{k=1}^{K}\theta_{j}^{\alpha_{j}-1}.
+p(\theta)\propto\prod_{k=1}^{K}\theta_{k}^{\alpha_{k}-1}.
 \]
 
 \end_inset
@@ -736,7 +736,7 @@ Moments of
 \begin_inset Formula 
 \begin{align*}
 \mathrm{E}(\theta_{k}) & =\frac{\alpha_{k}}{\sum_{j=1}^{K}\alpha_{j}}\\
-\mathrm{V}(\theta_{k}) & =\frac{\mathrm{E}(\theta_{k})\left[1-\mathrm{E}(\theta_{k})\right]}{1+\sum_{k=1}^{K}\alpha_{k}}
+\mathrm{V}(\theta_{k}) & =\frac{\mathrm{E}(\theta_{k})\left[1-\mathrm{E}(\theta_{k})\right]}{1+\sum_{j=1}^{K}\alpha_{j}}
 \end{align*}
 
 \end_inset

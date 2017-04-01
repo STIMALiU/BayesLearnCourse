@@ -1176,7 +1176,7 @@ Subjective consensus
 : when extreme priors give essentially the same posterior.
 \begin_inset Formula 
 \[
-p(\theta|y)\rightarrow N\left(\hat{\theta},J_{\hat{\theta},\mathbf{x}}^{-1}\right)\text{ for all }p(\theta)\text{ as }n\rightarrow\infty,
+p(\theta|\mathbf{x})\rightarrow N\left(\hat{\theta},J_{\hat{\theta},\mathbf{x}}^{-1}\right)\text{ for all }p(\theta)\text{ as }n\rightarrow\infty,
 \]
 
 \end_inset
