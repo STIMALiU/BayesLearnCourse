@@ -421,7 +421,7 @@ Posterior
 \begin_inset Formula 
 \begin{gather*}
 \theta|\sigma^{2},\mathbf{x}\sim N\left(\bar{x},\frac{\sigma^{2}}{n}\right)\\
-\sigma^{2}|\mathbf{x}\sim\mathrm{Inv}-\chi^{2}(n-1,s^{2}),
+\sigma^{2}|\mathbf{x}\sim\mathrm{Inv}\text{-}\chi^{2}(n-1,s^{2}),
 \end{gather*}
 
 \end_inset
