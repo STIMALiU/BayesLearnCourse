@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass beamer
 \begin_preamble
 \setcounter{MaxMatrixCols}{10}
@@ -47,16 +49,16 @@ knitr
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman palatino
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -176,27 +178,52 @@ Lecture overview
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
+
+\series bold
+\color blue
 Classification
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
+\color blue
 Naive Bayes
 \end_layout
 
 \begin_layout Itemize
-Logistic regression
+
+\series bold
+\color blue
+Normal approximation
+\series default
+\color inherit
+ of posterior
 \end_layout
 
 \begin_layout Itemize
-Normal approximation of posterior
+
+\series bold
+\color blue
+Logistic regression
+\series default
+\color inherit
+ - demo in R
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -208,6 +235,10 @@ status open
 Bayesian classification
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -223,6 +254,10 @@ Classification: output is a discrete label
 \color inherit
 .
  Examples: 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -318,7 +353,10 @@ Examples: discriminant analysis, naive Bayes.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -330,6 +368,10 @@ status open
 Naive Bayes
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -428,7 +470,10 @@ p(c|\mathbf{x})\propto\left[\prod_{j=1}^{n}p(x_{j}|c)\right]p(c)
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -440,6 +485,10 @@ status open
 Classification with logistic regression
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -513,11 +562,11 @@ p(y|X,\beta)=\prod\nolimits _{i=1}^{n}\frac{[\exp(x_{i}^{\prime}\beta)]^{y_{i}}}
 
 \begin_layout Itemize
 Prior 
-\begin_inset Formula $\beta\sim N(0,\lambda^{-1}I)$
+\begin_inset Formula $\beta\sim N(0,\tau^{2}I)$
 \end_inset
 
 .
- Posterior is non-standard.
+ Posterior is non-standard (see demo in R later).
 \end_layout
 
 \begin_layout Itemize
@@ -561,7 +610,10 @@ Multi-class
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -573,6 +625,10 @@ status open
 Large sample approximate posterior
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -631,7 +687,11 @@ where
 \begin_inset Formula $J_{\mathbf{y}}(\tilde{\theta})=-\frac{\partial^{2}\ln p(\theta|y)}{\partial\theta^{2}}|_{\theta=\tilde{\theta}}$
 \end_inset
 
- is the observed information.
+ is the 
+\series bold
+observed information
+\series default
+.
 \end_layout
 
 \begin_layout Itemize
@@ -653,7 +713,10 @@ Approximate posterior
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -665,6 +728,10 @@ status open
 Example: gamma posterior
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -736,7 +803,10 @@ N\left[\frac{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}{\beta+n},\frac{\alpha+\sum\
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -748,6 +818,10 @@ status open
 Example: gamma posterior
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -766,7 +840,10 @@ Example: gamma posterior
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -778,6 +855,10 @@ status open
 Normal approximation of posterior
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -830,6 +911,10 @@ optim.r
 ).
  
 \begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -890,6 +975,10 @@ Re-parametrization
 Jacobian
 \series default
 !]
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -942,7 +1031,10 @@ Heavy tailed approximation
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -954,6 +1046,10 @@ status open
 Example: gamma posterior - reparam.
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1026,7 +1122,10 @@ which means that
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1038,6 +1137,10 @@ status open
 Example: gamma posterior - reparameterized
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1056,7 +1159,10 @@ Example: gamma posterior - reparameterized
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1068,6 +1174,10 @@ status open
 Normal approximation of posterior
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1126,6 +1236,10 @@ simulating
 Example
 \series default
 : Posterior of Gini coefficient.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1194,7 +1308,10 @@ Compute
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
