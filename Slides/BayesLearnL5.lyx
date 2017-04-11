@@ -386,7 +386,7 @@ Assumptions:
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $Corr(y_{i},y_{j}|X)=0$
+\begin_inset Formula $Corr(y_{i},y_{j}|X,\beta,\sigma^{2})=0$
 \end_inset
 
 , 
@@ -402,6 +402,10 @@ Normality of
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Itemize
+The x's are assumed known (non-random).
 \end_layout
 
 \end_deeper
@@ -582,14 +586,14 @@ Simulate from the joint posterior by iteratively simulating from
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $p(\sigma^{2}|y)$
+\begin_inset Formula $p(\sigma^{2}|\mathbf{y})$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $p(\beta|\sigma^{2},y)$
+\begin_inset Formula $p(\beta|\sigma^{2},\mathbf{y})$
 \end_inset
 
 
@@ -604,7 +608,7 @@ Marginal posterior of
 
 \begin_inset Formula 
 \[
-\beta|y\sim t_{n-k}\left[\hat{\beta},s^{2}(X^{\prime}X)^{-1}\right]
+\beta|\mathbf{y}\sim t_{n-k}\left[\hat{\beta},s^{2}(X^{\prime}X)^{-1}\right]
 \]
 
 \end_inset
@@ -670,8 +674,8 @@ Posterior
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\beta|\sigma^{2} & \sim N\left[\mu_{n},\sigma^{2}\Omega_{n}^{-1}\right]\\
-\sigma^{2} & \sim Inv-\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)
+\beta|\sigma^{2},\mathbf{y} & \sim N\left[\mu_{n},\sigma^{2}\Omega_{n}^{-1}\right]\\
+\sigma^{2}\vert\mathbf{y} & \sim Inv-\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)
 \end{align*}
 
 \end_inset
@@ -883,7 +887,7 @@ Note: given the knots, the non-parametric spline regression model is a linear
 
 \begin_inset Formula 
 \[
-y=\mathbf{X}_{b}\beta+\varepsilon,
+\mathbf{y}=\mathbf{X}_{b}\beta+\varepsilon,
 \]
 
 \end_inset
@@ -1309,9 +1313,9 @@ The joint posterior of
  is
 \begin_inset Formula 
 \begin{align*}
-\beta|\sigma^{2},\lambda,y & \sim N\left(\mu_{n},\Omega_{n}^{-1}\right)\\
-\sigma^{2}|\lambda,y & \sim Inv-\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)\\
-p(\lambda|y) & \propto\sqrt{\frac{\left|\Omega_{0}\right|}{\left|X'X+\Omega_{0}\right|}}\left(\frac{\nu_{n}\sigma_{n}^{2}}{2}\right)^{-\nu_{n}/2}\cdot p(\lambda)
+\beta|\sigma^{2},\lambda,\mathbf{y} & \sim N\left(\mu_{n},\Omega_{n}^{-1}\right)\\
+\sigma^{2}|\lambda,\mathbf{y} & \sim Inv-\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)\\
+p(\lambda|\mathbf{y}) & \propto\sqrt{\frac{\left|\Omega_{0}\right|}{\left|X'X+\Omega_{0}\right|}}\left(\frac{\nu_{n}\sigma_{n}^{2}}{2}\right)^{-\nu_{n}/2}\cdot p(\lambda)
 \end{align*}
 
 \end_inset
