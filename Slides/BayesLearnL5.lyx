@@ -659,7 +659,7 @@ Joint prior for
 \begin_inset Formula 
 \begin{align*}
 \beta|\sigma^{2} & \sim N\left(\mu_{0},\sigma^{2}\Omega_{0}^{-1}\right)\\
-\sigma^{2} & \sim Inv-\chi^{2}\left(\nu_{0},\sigma_{0}^{2}\right)
+\sigma^{2} & \sim Inv\text{-}\chi^{2}\left(\nu_{0},\sigma_{0}^{2}\right)
 \end{align*}
 
 \end_inset
@@ -675,7 +675,7 @@ Posterior
 \begin_inset Formula 
 \begin{align*}
 \beta|\sigma^{2},\mathbf{y} & \sim N\left[\mu_{n},\sigma^{2}\Omega_{n}^{-1}\right]\\
-\sigma^{2}\vert\mathbf{y} & \sim Inv-\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)
+\sigma^{2}\vert\mathbf{y} & \sim Inv\text{-}\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)
 \end{align*}
 
 \end_inset
@@ -1233,7 +1233,7 @@ use a prior for
 
 \begin_layout Itemize
 One possibility: 
-\begin_inset Formula $\lambda\sim Inv-\chi^{2}(\eta_{0},\lambda_{0})$
+\begin_inset Formula $\lambda\sim Inv\text{-}\chi^{2}(\eta_{0},\lambda_{0})$
 \end_inset
 
 .
@@ -1262,8 +1262,8 @@ Hierarchical setup:
 \begin{align*}
 \mathbf{y}|\beta,\mathbf{X} & \sim N(\mathbf{X}\beta,\sigma^{2}I_{n})\\
 \beta|\sigma^{2},\lambda & \sim N\left(0,\sigma^{2}\lambda^{-1}I_{m}\right)\\
-\sigma^{2} & \sim Inv-\chi^{2}(\nu_{0},\sigma_{0}^{2})\\
-\lambda & \sim Inv-\chi^{2}(\eta_{0},\lambda_{0})
+\sigma^{2} & \sim Inv\text{-}\chi^{2}(\nu_{0},\sigma_{0}^{2})\\
+\lambda & \sim Inv\text{-}\chi^{2}(\eta_{0},\lambda_{0})
 \end{align*}
 
 \end_inset
@@ -1314,7 +1314,7 @@ The joint posterior of
 \begin_inset Formula 
 \begin{align*}
 \beta|\sigma^{2},\lambda,\mathbf{y} & \sim N\left(\mu_{n},\Omega_{n}^{-1}\right)\\
-\sigma^{2}|\lambda,\mathbf{y} & \sim Inv-\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)\\
+\sigma^{2}|\lambda,\mathbf{y} & \sim Inv\text{-}\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)\\
 p(\lambda|\mathbf{y}) & \propto\sqrt{\frac{\left|\Omega_{0}\right|}{\left|X'X+\Omega_{0}\right|}}\left(\frac{\nu_{n}\sigma_{n}^{2}}{2}\right)^{-\nu_{n}/2}\cdot p(\lambda)
 \end{align*}
 

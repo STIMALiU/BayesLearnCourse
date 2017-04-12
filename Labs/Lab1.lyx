@@ -356,7 +356,7 @@ for
 \end_inset
 
  is the 
-\begin_inset Formula $Inv-\chi^{2}(n,\tau^{2})$
+\begin_inset Formula $Inv\text{-}\chi^{2}(n,\tau^{2})$
 \end_inset
 
  distribution, where
@@ -385,7 +385,7 @@ Simulate
 \end_inset
 
 ) and compare with the theoretical 
-\begin_inset Formula $Inv-\chi^{2}(n,\tau^{2})$
+\begin_inset Formula $Inv\text{-}\chi^{2}(n,\tau^{2})$
 \end_inset
 
  posterior distribution.
