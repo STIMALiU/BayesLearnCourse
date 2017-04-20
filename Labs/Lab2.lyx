@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
@@ -9,16 +11,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -76,12 +78,12 @@
 \begin_layout Standard
 
 \size footnotesize
-Matias Quiroz and Mattias Villani
+Mattias Villani and Måns Magnusson
 \begin_inset space \hspace{}
 \length 7.5cm
 \end_inset
 
-2016-04-19
+2017-04-20
 \end_layout
 
 \begin_layout Standard
@@ -100,13 +102,13 @@ Dept.
 \begin_layout Standard
 
 \size footnotesize
-Linköpings universitet
+Linköping University
 \end_layout
 
 \begin_layout Standard
 
 \size footnotesize
-matias.quiroz@liu.se
+mattias.villani@liu.se
 \begin_inset VSpace 1cm
 \end_inset
 
@@ -138,36 +140,41 @@ Computer lab 2
 
 \end_layout
 
-\begin_layout Standard
-You can use any programming language for the labs, but my hints, help and
- solutions will be in R.
+\begin_layout Itemize
+You are strongly recommended to use R for solving the labs since the computer
+ exam will be in R.
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Itemize
 You are supposed to work and submit your labs in pairs, but do make sure
  that both of you are contributing.
- Submit your solutions by Lisam no later than 
+ 
+\end_layout
+
+\begin_layout Itemize
+It is OK to discuss the lab with other student pairs in general terms, but
+ 
+\family typewriter
 \series bold
-April
+\color blue
+it is not allowed to share exact solutions
+\family default
 \series default
- 29 at 
+\color inherit
+.
+\end_layout
+
+\begin_layout Itemize
+Submit your solutions via LISAM no later than 
+\series bold
+May
+\series default
+ 2 at 
 \series bold
 midnight
 \series default
 .
-
-\family typewriter
- 
-\family default
-You should submit the report (pdf only) and an executable file containing
- your code.
-\family typewriter
-
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -181,1907 +188,20 @@ You should submit the report (pdf only) and an executable file containing
 
 \begin_layout Enumerate
 
-\emph on
-Multinomial model with Dirichlet prior
-\emph default
- 
-\family typewriter
-
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-In May 2014, Statistics Sweden conducted a Party Preference Survey (PSU)
- asking Swedish voters to state which party they would vote if there were
- a general election in September 2014.
- A total of 9085 voters were asked and 4757 voters responded.
- The choices offered were 1.
- M - Moderate Party; 2.
- C - Center Party; 3.
- FP - Liberal People's Party; 4.
- KD - Christian Democrats; 5.
- MP - Green Party; 6.
- S - Swedish Social Democratic Party; 7.
- V - Left Party; 8.
- SD - Sweden Democrats; 9.
- Others - Other parties.
- The data is summarized in four age-categories (excluding non-response)
- 
-\family typewriter
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="11">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-Age
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-M
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-C
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-FP
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-KD
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-MP
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-S
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-V
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-SD
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-Others
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-Total
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-18-29
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-208
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-45
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-46
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-35
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-110
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-189
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-34
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-53
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-88
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-808
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-30-49
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-403
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-58
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-74
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-42
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-146
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-413
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-127
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-93
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-57
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-1413
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-50-64
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-370
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-51
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-60
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-47
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-67
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-401
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-59
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-61
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-15
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-1131
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-65+
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-383
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-89
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-86
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-65
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-45
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-567
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-74
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-79
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-17
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-1405
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-Total
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-1364
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-243
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-266
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-189
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-368
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-1570
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-294
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-286
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-177
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-4757
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\family default
-Assume that voters of each age group are independent random samples from
- the population.
- Model the data with four different multinomial distributions, one for each
- age group:
-\begin_inset Formula 
-\[
-y_{i1},...,y_{ik}\sim\mathrm{Multinomial}(y_{i};\theta_{i1,}...,\theta_{ik})\quad\quad\mbox{for}\quad i=1,...,4;\quad k=9
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $y_{ij}$
-\end_inset
-
- is the number of voters in age group 
-\begin_inset Formula $i$
-\end_inset
-
- that responded that they would vote for party 
-\begin_inset Formula $j$
-\end_inset
-
-, 
-\begin_inset Formula $y_{i}=\sum_{j=1}^{k}y_{ij}$
-\end_inset
-
-, and 
-\begin_inset Formula $\theta_{ij}$
-\end_inset
-
- is the probability that a randomly selected voter in age group 
-\begin_inset Formula $i$
-\end_inset
-
- states that he/she would vote for party 
-\begin_inset Formula $j$
-\end_inset
-
-.
- Our prior distribution for 
-\begin_inset Formula $(\theta_{i1},...,\theta_{ik})$
-\end_inset
-
- is the same for all age groups, which is 
-\begin_inset Formula $\mathrm{Dirichlet}(\alpha_{1},...,\alpha_{k})$
-\end_inset
-
-, and the age groups are assumed to be independent a priori.
- Based on the election results in 2010, we specify the prior hyperparameters
- as
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="9">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\alpha_{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\alpha_{2}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\alpha_{3}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\alpha_{4}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\alpha_{5}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\alpha_{6}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\alpha_{7}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\alpha_{8}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\alpha_{9}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-30
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-30
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-Show that the posterior distribution of 
-\begin_inset Formula $(\theta_{i1},...,\theta_{ik})$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- for the 
-\begin_inset Formula $i$
-\end_inset
-
-th voting group is also 
-\begin_inset Formula $\mathrm{Dirichlet}(\alpha_{1}+y_{i1},...,\alpha_{k}+y_{ik}).$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\shape italic
-Analy
-\shape default
-\emph on
-zing
-\emph default
- 
-\shape italic
-the impact of voting age
-\shape default
-.
- Calculate the posterior distribution of 
-\begin_inset Formula $(\theta_{i1},...,\theta_{ik})$
-\end_inset
-
- separately for each age group.
- Compare the voting behaviour between age groups in a suitable graph.
-\end_layout
-
-\begin_layout Enumerate
-For the voters of age 18-29, what is the posterior probability that the
- Red-Greens (S, MP, V) will win against the Alliance (M, C, FP, KD)? Now
- compute the same probability for all four age groups.
-\begin_inset Newline newline
-\end_inset
-
-[Hint: Use simulation methods to compute 
-\begin_inset Formula $\Pr(\sum_{j=5}^{7}\theta_{1j}>\sum_{j=1}^{4}\theta_{1j}\text{\vert y})$
-\end_inset
-
- for each age group.]
-\end_layout
-
-\begin_layout Enumerate
-Who actually wins the elections clearly depend on the number of voters in
- each age group that actually vote on the day of the election.
- Let 
-\begin_inset Formula $Y_{i}$
-\end_inset
-
-, 
-\begin_inset Formula $i=1,2,3,4$
-\end_inset
-
-, be the number of voters in each age group that actually vote on the election
- day.
- Suppose that 
-\begin_inset Formula $Y_{1},...,Y_{4}\sim\mathrm{Multinomial}(Y,0.2,0.3,0.3,0.2),$
-\end_inset
-
- where 
-\begin_inset Formula $Y=6,300,000$
-\end_inset
-
- is the size of the population that are allowed to vote.
- Now, given the total number of voters in age group 
-\begin_inset Formula $i$
-\end_inset
-
-, 
-\begin_inset Formula $Y_{i}$
-\end_inset
-
-, we model the vote counts for each party in this age group as 
-\begin_inset Formula $Y_{i1},...,Y_{ik}\sim\mathrm{Multinomial}(Y_{i};\theta_{i1,}...,\theta_{ik})$
-\end_inset
-
-.
- What is your prediction that the Red-Greens will win the election? 
-\begin_inset Newline newline
-\end_inset
-
-[Hint: 1.
- For 
-\begin_inset Formula $i=1,...,4$
-\end_inset
-
-, simulate a draw of 
-\begin_inset Formula $\theta_{i1,}...,\theta_{ik}$
-\end_inset
-
- and 
-\begin_inset Formula $Y_{i}$
-\end_inset
-
-; 2.
- Simulate 
-\begin_inset Formula $Y_{i1},...,Y_{ik}$
-\end_inset
-
-; 3.
- Evaluate the probability 
-\begin_inset Formula $\Pr(\sum_{j=5}^{7}\sum_{i=1}^{4}Y_{ij}>\sum_{j=1}^{4}\sum_{i=1}^{4}Y_{ij})$
-\end_inset
-
-.]
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\emph on
+\series bold
 Linear and polynomial regression
-\emph default
+\series default
 
 \begin_inset Newline newline
 \end_inset
 
-The data set 
-\begin_inset Formula $\texttt{JapanTemp.dat}$
+The dataset 
+\begin_inset Formula $\texttt{TempLinkoping.txt}$
 \end_inset
 
- contains daily temperatures (in Celcius degrees) at some Japanese location
- over the course of a year.
+ contains daily temperatures (in Celcius degrees) at Malmslätt, Linköping
+ (close to our campus) over the course of the year 2016 (366 days since
+ 2016 was a leap year).
  The response variable is 
 \begin_inset Formula $temp$
 \end_inset
@@ -2089,7 +209,7 @@ The data set
  and the covariate is
 \begin_inset Formula 
 \[
-time=\frac{\text{the number of days since beginning of year}}{365}.
+time=\frac{\text{the number of days since beginning of year}}{366}.
 \]
 
 \end_inset
@@ -2100,6 +220,10 @@ The task is to perform a Bayesian analysis of a quadratic regression
 temp=\beta_{0}+\beta_{1}\cdot time+\beta_{2}\cdot time^{2}+\varepsilon\mbox{,\text{ }}\varepsilon\overset{iid}{\sim}N(0,\sigma^{2}).
 \]
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2142,13 +266,13 @@ Determining the prior distribution of the model parameter.
 \end_inset
 
  to sensible values.
- You may not be an expert in Japanese temperatures, and I don't expect any
- deep expert knowledge, but do come up with something.
+ I don't expect any deep expert knowledge, just think about the problem
+ and use what knowledge you have.
  You may simplify by assuming that 
 \begin_inset Formula $\Omega_{0}$
 \end_inset
 
- is a diagonal matrix, if you want.
+ is a diagonal matrix.
 \family default
 \series default
 \shape default
@@ -2213,7 +337,7 @@ lm()
 \uwave default
 \noun default
 \color inherit
-lm(y ~ x + I(x^2))
+lm(temp ~ time + I(time^2))
 \family roman
 \series medium
 \shape up
@@ -2225,7 +349,7 @@ lm(y ~ x + I(x^2))
 \uwave off
 \noun off
 \color none
- fits a quadratic model using plain least squares]
+ fits a quadratic model using ordinary least squares]
 \end_layout
 
 \begin_layout Enumerate
@@ -2249,7 +373,16 @@ n curve.
 \begin_inset Formula $\texttt{mvtnorm}$
 \end_inset
 
- will be handy.]
+ will be handy.
+ And use your 
+\begin_inset Formula $Inv$
+\end_inset
+
+-
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ simulator from Lab 1.]
 \end_layout
 
 \begin_layout Enumerate
@@ -2274,20 +407,32 @@ simulates from the joint posterior distribution
 \end_inset
 
 .
- Try it out on the model in a).
-\begin_inset Newline newline
+ Produce a scatter plot of the temperature data and overlay a curve for
+ the posterior mean of the regression function 
+\begin_inset Formula $f(time)=\beta_{0}+\beta_{1}\cdot time+\beta_{2}\cdot time^{2}$
 \end_inset
 
-[Hint: the R package 
-\begin_inset Formula $\texttt{mvtnorm}$
+.
+ Also overlay a curve for the lower 5% and upper 95% posterior credible
+ interval for 
+\begin_inset Formula $f(time)$
 \end_inset
 
- will be handy.]
+.
+ That is, compute the 95% equal tail posterior probability intervals for
+ every value of 
+\begin_inset Formula $time$
+\end_inset
+
+ and then connect the lower and upper limits of the interval by curves.
 \end_layout
 
 \begin_layout Enumerate
-It is of interest to locate the day with the highest expected temperature
- (that is, the 
+It is of interest to locate the 
+\begin_inset Formula $time$
+\end_inset
+
+ with the highest expected temperature (that is, the 
 \begin_inset Formula $time$
 \end_inset
 
@@ -2301,9 +446,9 @@ It is of interest to locate the day with the highest expected temperature
 \end_inset
 
 .
- Use the simulations in d) to simulate from the 
+ Use the simulations in c) to simulate from the 
 \shape italic
-posterior distribution of the day with highest temperature
+posterior distribution of the time with highest temperature
 \shape default
 , 
 \begin_inset Formula $\tilde{x}$
@@ -2335,9 +480,19 @@ estimate a polynomial model of order
 
 
 \shape default
-, but you are worried that higher order terms may not be needed, and you
- worry about over-fitting.
+, but you suspect that higher order terms may not be needed, and you worry
+ about over-fitting.
  Suggest a suitable prior that mitigates this potential problem.
+ You do not need to compute the posterior, just write down your prior.
+ [Hint: the task is to specify 
+\begin_inset Formula $\mu_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Omega_{0}$
+\end_inset
+
+ in a smart way.]
 \end_layout
 
 \begin_layout Standard
@@ -2350,10 +505,614 @@ estimate a polynomial model of order
 \end_layout
 
 \end_deeper
+\begin_layout Enumerate
+
+\series bold
+Posterior approximation for classification with logistic regression
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+The dataset 
+\family typewriter
+WomenWork.dat
+\family default
+ contains 
+\begin_inset Formula $n=200$
+\end_inset
+
+ observations (i.e.
+ women) on the following nine variables:
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Variable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data type
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Meaning
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Role
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Work 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Binary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Whether or not the woman works
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Response
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Constant 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Constant to the intercept
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feature
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+HusbandInc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Numeric
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Husband's income
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feature
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+EducYears
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Counts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Years of education
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feature
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ExpYears
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Counts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Years of experience
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feature
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ExpYears2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Numeric
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(Years of experience/10)
+\begin_inset Formula $^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feature
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Counts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feature
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NSmallChild
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Counts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Number of child 
+\begin_inset Formula $\leq6$
+\end_inset
+
+ years in household
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feature
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NBigChild
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Counts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Number of child 
+\begin_inset Formula $>6$
+\end_inset
+
+ years in household
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feature
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Consider the logistic regression
+\begin_inset Formula 
+\[
+\mathrm{Pr}(y=1\vert\mathbf{x})=\frac{\exp\left(\mathbf{x}^{T}\beta\right)}{1+\exp\left(\mathbf{x}^{T}\beta\right)},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $y$
+\end_inset
+
+ is the binary variable with 
+\begin_inset Formula $y=1$
+\end_inset
+
+ if the woman works and 
+\begin_inset Formula $y=0$
+\end_inset
+
+ if she does not.
+ 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ is a 
+\begin_inset Formula $8$
+\end_inset
+
+-dimensional vector containing the eight features (including a one for the
+ constant term that models the intercept).
+ Fit the logistic regression using maximum likelihood estimation by the
+ command: 
+\family typewriter
+glmModel <- glm(Work ~ 0 + ., data = WomenWork, family = binomial)
+\family default
+.
+ Note how I added a zero in the model formula so that R doesn't add an extra
+ intercept (we already have an intercept term from the 
+\family typewriter
+Constant
+\family default
+ feature).
+ Note also that a dot (.) in the model formula means to add all other variables
+ in the dataset as features.
+ 
+\family typewriter
+family = binomial 
+\family default
+tells R that we want to fit a logistic regression (the glm function can
+ fit many other models and data types, for example a regression where the
+ response variable are counts following a Poisson distribution).
+\end_layout
+
+\begin_layout Enumerate
+Now the fun begins.
+ Our goal is to approximate the posterior distribution of the 8-dim parameter
+ vector 
+\begin_inset Formula $\beta$
+\end_inset
+
+ with a multivariate normal distribution
+\begin_inset Formula 
+\[
+\beta\vert\mathbf{y},\mathbf{X}\sim N\left(\tilde{\beta},J_{\mathbf{y}}^{-1}(\tilde{\beta})\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{\beta}$
+\end_inset
+
+ is the posterior mode and 
+\begin_inset Formula $J(\tilde{\beta})=-\frac{\partial^{2}\ln p(\beta\vert\mathbf{y})}{\partial\beta\partial\beta^{T}}\vert_{\beta=\tilde{\beta}}$
+\end_inset
+
+ is the observed Hessian evaluated at the posterior mode.
+ Note that 
+\begin_inset Formula $\frac{\partial^{2}\ln p(\beta\vert\mathbf{y})}{\partial\beta\partial\beta^{T}}$
+\end_inset
+
+ is an 
+\begin_inset Formula $8\times8$
+\end_inset
+
+ matrix with second derivatives on the diagonal and cross-derivatives 
+\begin_inset Formula $\frac{\partial^{2}\ln p(\beta\vert\mathbf{y})}{\partial\beta_{i}\partial\beta_{j}}$
+\end_inset
+
+ on the off-diagonal.
+ It is actually not hard to compute this derivative by hand, but don't worry,
+ we will let the computer do it numerically for you.
+ Now, both 
+\begin_inset Formula $\tilde{\beta}$
+\end_inset
+
+ and 
+\begin_inset Formula $J(\tilde{\beta})$
+\end_inset
+
+ are computed by the 
+\family typewriter
+optim
+\family default
+ function in R.
+ See my code 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/STIMALiU/BayesLearnCourse/raw/master/Code/MainOptimizeSpam.zip
+\end_layout
+
+\end_inset
+
+ where I have coded everything up for the spam prediction example (it also
+ does probit regression, but that is not needed here).
+ I want you to implement you own version of this.
+ You can use my code as a template, but I want you to write your own file
+ so that you understand every line of your code.
+ Don't just copy my code.
+\begin_inset Newline newline
+\end_inset
+
+Your report should include your code as well as numerical values for 
+\begin_inset Formula $\tilde{\beta}$
+\end_inset
+
+ and 
+\begin_inset Formula $J_{\mathbf{y}}^{-1}(\tilde{\beta})$
+\end_inset
+
+ for the 
+\family typewriter
+WomenWork
+\family default
+ data.
+ Compute an approximate 95% credible interval for the variable NSmallChild.
+ Would you say that this feature is an important determinant of the probability
+ that a women works?
+\end_layout
+
+\begin_layout Enumerate
+Write a function that simulates from the predictive distribution of the
+ response variable in a logistic regression.
+ Use your normal approximation from 2(b).
+ Use that function to simulate and plot the predictive distribution for
+ the 
+\family typewriter
+Work
+\family default
+ variable for a 40 year old women, with two children (3 and 9 years old),
+ 8 years of education, 10 years of experience.
+ and a husband with an income of 10.
+\begin_inset Newline newline
+\end_inset
+
+[Hint: the R package 
+\begin_inset Formula $\texttt{mvtnorm}$
+\end_inset
+
+ will again be handy.
+ And remember my discussion on how Bayesian prediction can be done by simulation.
+]
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 
 \shape smallcaps
-May Bayes be with you!
+Have fun!
 \end_layout
 
 \end_body
