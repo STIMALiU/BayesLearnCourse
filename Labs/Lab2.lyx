@@ -1063,6 +1063,15 @@ https://github.com/STIMALiU/BayesLearnCourse/raw/master/Code/MainOptimizeSpam.zi
  You can use my code as a template, but I want you to write your own file
  so that you understand every line of your code.
  Don't just copy my code.
+ Use the prior 
+\begin_inset Formula $\beta\sim\mathcal{N}(0,\tau^{2}I)$
+\end_inset
+
+, with 
+\begin_inset Formula $\tau=10$
+\end_inset
+
+.
 \begin_inset Newline newline
 \end_inset
 

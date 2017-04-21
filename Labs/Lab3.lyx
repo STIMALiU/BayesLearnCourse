@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
@@ -9,16 +11,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -76,12 +78,12 @@
 \begin_layout Standard
 
 \size footnotesize
-Matias Quiroz and Mattias Villani
+Mattias Villani and Måns Magnusson
 \begin_inset space \hspace{}
 \length 8cm
 \end_inset
 
-2016-05-03
+2017-05-03
 \end_layout
 
 \begin_layout Standard
@@ -100,13 +102,13 @@ Dept.
 \begin_layout Standard
 
 \size footnotesize
-Linköpings universitet
+Linköping University
 \end_layout
 
 \begin_layout Standard
 
 \size footnotesize
-matias.quiroz@liu.se
+mattias.villani@liu.se
 \begin_inset VSpace 1cm
 \end_inset
 
@@ -138,40 +140,41 @@ Computer lab 3
 
 \end_layout
 
-\begin_layout Standard
-You can use any programming language for the labs, but the hints, help and
- solutions will be in R.
+\begin_layout Itemize
+You are strongly recommended to use R for solving the labs since the computer
+ exam will be in R.
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Itemize
 You are supposed to work and submit your labs in pairs, but do make sure
  that both of you are contributing.
-
-\family typewriter
  
-\family default
-Submit your solutions by Lisam no later than 
+\end_layout
+
+\begin_layout Itemize
+It is OK to discuss the lab with other student pairs in general terms, but
+ 
+\family typewriter
 \series bold
-May 
+\color blue
+it is not allowed to share exact solutions
+\family default
 \series default
-13 at 
+\color inherit
+.
+\end_layout
+
+\begin_layout Itemize
+Submit your solutions via LISAM no later than 
+\series bold
+May
+\series default
+ 15 at 
 \series bold
 midnight
 \series default
 .
-
-\family typewriter
- 
-\family default
-You should submit the report (pdf only) and an executable file containing
- your code.
-\family typewriter
-
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -204,6 +207,10 @@ rainfall.dat
  inch, and records of zero precipitation are excluded) at Snoqualmie Falls,
  Washington.
  Analyze the data using the following two models.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -244,6 +251,10 @@ Assume the daily precipitation
 
 .
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -297,6 +308,10 @@ where
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -313,7 +328,6 @@ on data.
 
 \begin_layout Enumerate
 Investigate the convergence of the Gibbs sampler by suitable graphical methods.
- Is this Gibbs sampler efficient?
 \end_layout
 
 \end_deeper
@@ -339,58 +353,26 @@ Plot the following densities in one figure: 1) a histogram or kernel density
 
  in (b).
  Use the posterior mean value for all the parameters.
- Which model is better in terms of fitting?
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
 
 \emph on
-Binary regression models
+Probit regression
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Use the code 
-\family typewriter
-OptimizeSpamR.zip
-\family default
- from the course web page (under Lecture 6) to analyze the spam data set
- using a probit regression.
- As an alternative to exact simulation using the Gibbs sampler (see below)
- or Metropolis-Hastings, we can approximate the posterior of the regression
- coefficients 
-\begin_inset Formula $\beta$
-\end_inset
-
- by 
-\begin_inset Formula $\mathcal{N}(\tilde{\beta},J^{-1})$
-\end_inset
-
-, where 
-\begin_inset Formula $J$
-\end_inset
-
- is the observed information matrix evaluated at the posterior mode 
-\begin_inset Formula $\tilde{\beta}$
-\end_inset
-
-.
- All of this is given by the code.
- Use the prior 
-\begin_inset Formula $\beta\sim\mathcal{N}(0,\tau^{2}I)$
-\end_inset
-
-, with 
-\begin_inset Formula $\tau=10$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
 Implement (code!) a data augmentation Gibbs sampler for the probit regression
- model.
+ model
+\begin_inset Formula 
+\[
+\text{\mathrm{Pr}}(y=1\vert\mathbf{x})=\Phi(\mathbf{x}^{T}\beta).
+\]
+
+\end_inset
+
  [Hint: 
 \family typewriter
 rtnorm
@@ -403,7 +385,12 @@ the msm
 \end_layout
 
 \begin_layout Enumerate
-Analyze the spam data using your code from b), again using the prior 
+Compute the posterior of 
+\begin_inset Formula $\beta$
+\end_inset
+
+ in the probit regression for the WomenWork dataset from Lab 2 using the
+ prior 
 \begin_inset Formula $\beta\sim\mathcal{N}(0,\tau^{2}I)$
 \end_inset
 
@@ -416,7 +403,19 @@ Analyze the spam data using your code from b), again using the prior
 \end_layout
 
 \begin_layout Enumerate
-Compare the results in a) and c).
+Do a normal approximation 
+\begin_inset Formula $\beta\vert\mathbf{y},\mathbf{X}\sim N\left(\tilde{\beta},J_{\mathbf{y}}^{-1}(\tilde{\beta})\right)$
+\end_inset
+
+ of the posterior for 
+\begin_inset Formula $\beta$
+\end_inset
+
+ in the probit regression.
+ Compare with the results from 2(b).
+ Is the normal approximation accurate? [Hint: you can use your code from
+ Lab 2 for the logistic regression.
+ Just change the likelihood to a probit likelihood.]
 \size footnotesize
 
 \begin_inset VSpace 0.5cm
