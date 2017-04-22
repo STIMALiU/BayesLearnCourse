@@ -382,11 +382,11 @@ texttt{glm()}
 \begin_layout Enumerate
 Let's now do a Bayesian analysis of the Poisson regression.
  Let the prior be 
-\begin_inset Formula $\beta\sim\mathcal{N}\left[\mathbf{0},100\cdot(X^{\prime}X){}^{-1}\right]$
+\begin_inset Formula $\beta\sim\mathcal{N}\left[\mathbf{0},100\cdot(\mathbf{X}^{T}\mathbf{X}){}^{-1}\right]$
 \end_inset
 
  where 
-\begin_inset Formula $X$
+\begin_inset Formula $\mathbf{X}$
 \end_inset
 
  is the 
