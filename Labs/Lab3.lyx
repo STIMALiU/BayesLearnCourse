@@ -83,7 +83,7 @@ Mattias Villani and Måns Magnusson
 \length 8cm
 \end_inset
 
-2017-05-03
+2017-04-20
 \end_layout
 
 \begin_layout Standard
@@ -166,7 +166,11 @@ it is not allowed to share exact solutions
 \end_layout
 
 \begin_layout Itemize
-Submit your solutions via LISAM no later than 
+Submit your 
+\emph on
+solutions
+\emph default
+ via LISAM no later than 
 \series bold
 May
 \series default
@@ -229,7 +233,7 @@ Assume the daily precipitation
 \end_inset
 
  are independent normally distributed, 
-\begin_inset Formula $y_{1},...,y_{n}|\mu,\sigma^{2}\sim\mathcal{N}(\mu,\sigma^{2})$
+\begin_inset Formula $y_{1},...,y_{n}|\mu,\sigma^{2}\sim\mathcal{N}(\theta,\sigma^{2})$
 \end_inset
 
  where both 
@@ -265,15 +269,13 @@ Implement (code!) a Gibbs sampler that simulates from the joint posterior
 \end_inset
 
 .
- [Hint: the full conditional posteriors are given on the slides from Lecture
- 8].
+ The full conditional posteriors are given on the slides from Lecture 7.
 \end_layout
 
 \begin_layout Enumerate
 Analyze the daily precipitation using your Gibbs sampler in (a)-i.
  Investigate the convergence of the Gibbs sampler by suitable graphical
  methods.
- Is the Gibbs sampler efficient?
 \end_layout
 
 \end_deeper
@@ -287,11 +289,15 @@ Mixture normal model.
 \begin_inset Newline newline
 \end_inset
 
-Alternatively, let's us now assume that the daily precipitation 
+Let us now instead assume that the daily precipitation 
 \begin_inset Formula $\left\{ y_{1},...,y_{n}\right\} $
 \end_inset
 
- follow an i.i.d two-component mixture of normals model:
+ follow an iid two-component 
+\series bold
+mixture of normals
+\series default
+ model:
 \begin_inset Formula 
 \[
 p(y_{i}|\mu,\sigma^{2},\pi)=\pi\mathcal{N}(y_{i}|\mu_{1},\sigma_{1}^{2})+(1-\pi)\mathcal{N}(y_{i}|\mu_{2},\sigma_{2}^{2}),
@@ -316,8 +322,8 @@ where
 
 \begin_deeper
 \begin_layout Enumerate
-Use the Gibbs sampling data augmentation algorithm in Mattias' code (or
- code your own!) in 
+Use the Gibbs sampling data augmentation algorithm in my code (or code your
+ own!) in 
 \family typewriter
 NormalMixtureGibbs.R
 \family default
@@ -389,8 +395,11 @@ Compute the posterior of
 \begin_inset Formula $\beta$
 \end_inset
 
- in the probit regression for the WomenWork dataset from Lab 2 using the
- prior 
+ in the probit regression for the 
+\family typewriter
+WomenWork
+\family default
+ dataset from Lab 2 using the prior 
 \begin_inset Formula $\beta\sim\mathcal{N}(0,\tau^{2}I)$
 \end_inset
 
@@ -428,7 +437,7 @@ Do a normal approximation
 \begin_layout Standard
 
 \shape smallcaps
-May Bayes be with you!
+Have fun!
 \end_layout
 
 \end_body

@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 
@@ -12,16 +14,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -79,12 +81,12 @@
 \begin_layout Standard
 
 \size footnotesize
-Matias Quiroz and Mattias Villani
+Mattias Villani and Mans Magnusson
 \begin_inset space \hspace{}
 \length 7.5cm
 \end_inset
 
-2016-05-17
+2017-04-22
 \end_layout
 
 \begin_layout Standard
@@ -103,13 +105,13 @@ Dept.
 \begin_layout Standard
 
 \size footnotesize
-Linköpings universitet
+Linköping university
 \end_layout
 
 \begin_layout Standard
 
 \size footnotesize
-matias.quiroz@liu.se
+mattias.villani@liu.se
 \begin_inset VSpace 1cm
 \end_inset
 
@@ -141,56 +143,45 @@ Computer lab 4
 
 \end_layout
 
-\begin_layout Standard
-You can use any programming language for the labs, but my hints, help and
- solutions will be in 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texttt{R}
+\begin_layout Itemize
+You are strongly recommended to use R for solving the labs since the computer
+ exam will be in R.
+ 
 \end_layout
 
-\end_inset
-
-.
- 
-\begin_inset Newline newline
-\end_inset
-
+\begin_layout Itemize
 You are supposed to work and submit your labs in pairs, but do make sure
  that both of you are contributing.
- Submit your solutions by Lisam no later than 
+ 
+\end_layout
+
+\begin_layout Itemize
+It is OK to discuss the lab with other student pairs in general terms, but
+ 
+\family typewriter
+\series bold
+\color blue
+it is not allowed to share exact solutions
+\family default
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Itemize
+Submit your 
+\emph on
+solutions
+\emph default
+ via LISAM no later than 
 \series bold
 May
 \series default
- 24 at 
+ 25 at 
 \series bold
 midnight
 \series default
 .
-
-\family typewriter
- 
-\family default
-You should submit the report (pdf only) and an executable file containing
- your code.
-\family typewriter
-
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-\size footnotesize
-
-\begin_inset VSpace 0.5cm
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -215,7 +206,7 @@ Poisson regression - the MCMC way
 Consider the following Poisson regression model
 \begin_inset Formula 
 \begin{align*}
-y_{i} & \vert\beta\sim\mathrm{Poisson}\left[\exp\left(x_{i}'\beta\right)\right],\;i=1,...,n,
+y_{i} & \vert\beta\sim\mathrm{Poisson}\left[\exp\left(\mathbf{x}_{i}^{T}\beta\right)\right],\;i=1,...,n,
 \end{align*}
 
 \end_inset
@@ -265,11 +256,15 @@ texttt{eBayNumberOfBidderData.dat}
 nBids
 \series default
  and records the number of bids in each auction.
- The remaining variables are covariates (
-\begin_inset Formula $x$
+ The remaining variables are features/covariates (
+\begin_inset Formula $\mathbf{x}$
 \end_inset
 
 ): 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -380,7 +375,7 @@ texttt{glm()}
 
 \end_inset
 
- adds its own intercept so don't input the covariate Const.].
+ adds its own intercept so don't input the covariate Const].
  Which covariates are significant?
 \end_layout
 
@@ -414,7 +409,7 @@ g
  Assume first that the posterior density is approximately multivariate normal:
 \begin_inset Formula 
 \begin{eqnarray*}
-\beta|y & \sim & \mathcal{N}\left(\tilde{\beta},J_{y,\tilde{\beta}}^{-1}\right),
+\beta|y & \sim & \mathcal{N}\left(\tilde{\beta},J_{\mathbf{y}}^{-1}(\tilde{\beta})\right),
 \end{eqnarray*}
 
 \end_inset
@@ -449,9 +444,9 @@ texttt{optim.R}
 
 \end_inset
 
-) exactly like you already did for the probit regression on the spam data
- (but with the log posterior function replaced by the corresponding one
- for the Poisson model).
+) exactly like you already did for the probit regression in Lab 3 (but with
+ the log posterior function replaced by the corresponding one for the Poisson
+ model, which you have to code up.).
 \end_layout
 
 \begin_layout Enumerate
@@ -467,8 +462,14 @@ Now, let's simulate from the actual posterior of
 arbitrary
 \shape default
  posterior density.
+ In order to show that it is a general function for any model, I will denote
+ the vector of model parameters by 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
  Let the proposal density be the multivariate normal density mentioned in
- Lecture 9 (random walk Metropolis):
+ Lecture 8 (random walk Metropolis):
 \begin_inset Formula 
 \[
 \theta_{p}\vert\theta_{c}\sim N\left(\theta_{c},\tilde{c}\cdot\Sigma\right),
@@ -477,19 +478,22 @@ arbitrary
 \end_inset
 
 where 
-\begin_inset Formula $\Sigma=J_{\tilde{\theta},y}^{-1}$
+\begin_inset Formula $\Sigma=J_{\mathbf{y}}^{-1}(\tilde{\beta})$
 \end_inset
 
- and 
-\begin_inset Formula $J_{\tilde{\theta},y}$
+ obtained in b) and 
+\begin_inset Formula $\theta_{c}$
 \end_inset
 
- is the negative Hessian at the posterior mode 
-\begin_inset Formula $\tilde{\theta}$
+ is the current draw (hence the subscript 
+\begin_inset Formula $c$
 \end_inset
 
-.
- These are already available from question b) above.
+) and is the same as 
+\begin_inset Formula $\theta^{(i)}$
+\end_inset
+
+ in the slides for Lecture 8.
  The value 
 \begin_inset Formula $\tilde{c}$
 \end_inset
@@ -497,7 +501,8 @@ where
  is a tuning parameter and should be an input to your Metropolis function
  (so that a user can change it).
  The user of your Metropolis function should be able to supply her own posterior
- density function and still be able to use your Metropolis function.
+ density function, not necessarily for the Poisson regression, and still
+ be able to use your Metropolis function.
  This is not so straightforward, unless you have come across 
 \emph on
 function objects
@@ -559,17 +564,17 @@ log
  probability can be written
 \begin_inset Formula 
 \[
-\frac{p(\theta_{p}|y)}{p(\theta_{c}|y)}=\exp\left[\log p(\theta_{p}|y)-\log p(\theta_{c}|y)\right]
+\frac{p(\theta_{p}|\mathbf{y})}{p(\theta_{c}|\mathbf{y})}=\exp\left[\log p(\theta_{p}|\mathbf{y})-\log p(\theta_{c}|\mathbf{y})\right]
 \]
 
 \end_inset
 
 This is smart since the large or small common factors in 
-\begin_inset Formula $p(\theta_{p}|y)$
+\begin_inset Formula $p(\theta_{p}|\mathbf{y})$
 \end_inset
 
  and 
-\begin_inset Formula $p(\theta_{c}|y)$
+\begin_inset Formula $p(\theta_{c}|\mathbf{y})$
 \end_inset
 
  cancel out before we evaluate the exponential function (which can otherwise
@@ -656,7 +661,7 @@ takes a function object as input and how it uses the triple dot (
 \end_inset
 
  without explicitly using these symbols inside the function.
- That makes the useless 
+ That makes the 
 \family typewriter
 \size footnotesize
 MultiplyByTwo 
@@ -670,127 +675,12 @@ any
 \begin_inset Newline newline
 \end_inset
 
-[
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texttt{MATLAB}
-\end_layout
-
-\end_inset
-
- users: Here is one instance where 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texttt{MATLAB}
-\end_layout
-
-\end_inset
-
-'s lack of proper function objects becomes a pain.
- You can do the same thing with 
-\family typewriter
-\size footnotesize
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texttt{eval()
-\family typewriter
-\size footnotesize
-}
-\end_layout
-
-\end_inset
-
-
-\family default
-\size default
- and 
-\family typewriter
-\size footnotesize
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\family typewriter
-\size footnotesize
-
-\backslash
-texttt{varargin}
-\end_layout
-
-\end_inset
-
-
-\family default
-\size default
-, however, but it is not as pretty as in 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texttt{R}
-\end_layout
-
-\end_inset
-
-.
- See the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texttt{MATLAB}
-\end_layout
-
-\end_inset
-
- help.] 
-\begin_inset Newline newline
-\end_inset
-
-Use your new Metropolis function to sample from the posterior of 
+Now, use your new Metropolis function to sample from the posterior of 
 \begin_inset Formula $\beta$
 \end_inset
 
  in the Poisson regression for the eBay dataset.
- Assess MCMC convergence by graphical methods and compute the effective
- sample size (
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texttt{CODA.R}
-\end_layout
-
-\end_inset
-
-).
+ Assess MCMC convergence by graphical methods.
  The parameters 
 \begin_inset Formula $\phi_{j}=\exp(\beta_{j})$
 \end_inset
@@ -891,7 +781,7 @@ MinBidShare
 \begin_layout Standard
 
 \shape smallcaps
-May Bayes be with you!
+Good luck!
 \end_layout
 
 \begin_layout Standard
@@ -906,18 +796,26 @@ May Bayes be with you!
 \end_layout
 
 \begin_layout Standard
+
+\family typewriter
 LogPostBernBeta <- function(theta, s, f, a, b){   
 \end_layout
 
 \begin_layout Standard
+
+\family typewriter
 	logPost <- (s+a-1)*log(theta) + (f+b-1)*log(1-theta)   
 \end_layout
 
 \begin_layout Standard
+
+\family typewriter
 	return(logPost) 
 \end_layout
 
 \begin_layout Standard
+
+\family typewriter
 }
 \end_layout
 
@@ -935,14 +833,20 @@ LogPostBernBeta <- function(theta, s, f, a, b){
 \end_layout
 
 \begin_layout Standard
+
+\family typewriter
 s <- 8;f <- 2;a <- 1;b <- 1 
 \end_layout
 
 \begin_layout Standard
+
+\family typewriter
 logPost <- LogPostBernBeta(theta = 0.1, s, f, a, b)  
 \end_layout
 
 \begin_layout Standard
+
+\family typewriter
 print(logPost)
 \end_layout
 
@@ -966,22 +870,32 @@ print(logPost)
 \end_layout
 
 \begin_layout Standard
+
+\family typewriter
 MultiplyByTwo <- function(myFunction, ...){   
 \end_layout
 
 \begin_layout Standard
+
+\family typewriter
 	x <- 0.3   
 \end_layout
 
 \begin_layout Standard
-y <- myFunction(x,...)
+
+\family typewriter
+	y <- myFunction(x,...)
 \end_layout
 
 \begin_layout Standard
+
+\family typewriter
 	return(2*y) 
 \end_layout
 
 \begin_layout Standard
+
+\family typewriter
 }
 \end_layout
 
@@ -990,6 +904,8 @@ y <- myFunction(x,...)
 \end_layout
 
 \begin_layout Standard
+
+\family typewriter
 MultiplyByTwo(LogPostBernBeta,s,f,a,b)
 \end_layout
 
