@@ -5,6 +5,7 @@
 
 rm(list=ls())
 
+#install.packages("rstan")
 library(rstan)
 
 # Data 
@@ -26,13 +27,13 @@ data {
 }
 
 parameters {
-  real<lower=0,upper=1> p;
+  real<lower=0,upper=1> theta;
 } 
 
 model {
-  p ~ beta(a,b);
+  theta ~ beta(a,b);
   for (i in 1:n)
-    x[i] ~ bernoulli(p);
+    x[i] ~ bernoulli(theta);
 }
 '
 
@@ -42,14 +43,15 @@ fit1<-stan(model_code=BernBetaStanModel,
            warmup=1000,
            iter=2000,
            chains=4)
+
 print(fit1,digits_summary=3)
 plot(fit1)
 
 # Plot some results
 res <- extract(fit1) 
-pSeq <- seq(0,1,by=0.01)
+thetaSeq <- seq(0,1,by=0.01)
 par(mfrow = c(1,1))
-hist(res$p, 40, freq = FALSE, main = 'Posterior of p - all chains') # histogram of draws of a from the first Markov Chain
-lines(pSeq, dbeta(pSeq, shape1 = sum(x) + a, shape2 = n - sum(x) + b), col = "red")
+hist(res$theta, 40, freq = FALSE, main = 'Posterior of theta - all chains', xlab ='theta') # histogram of draws of a from the first Markov Chain
+lines(thetaSeq, dbeta(thetaSeq, shape1 = sum(x) + a, shape2 = n - sum(x) + b), col = "red")
 legend("topleft", inset=.05, legend = c('MCMC approximation','True density'), lty =c(1,1),col=c('black','red'))
 

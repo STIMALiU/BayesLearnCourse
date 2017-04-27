@@ -11,6 +11,7 @@ setwd("~/Dropbox/Teaching/BayesLearning/Code/RStanCode/")
 library(ggplot2)
 
 roachesData<-read.csv2("Data/roachdata.csv")
+head(roachesData)
 
 roachDataRStan<-
   list(N = nrow(roachesData),
@@ -20,7 +21,7 @@ roachDataRStan<-
        y = roachesData$y) 
 
 # The poisson regression model
-roachModel<-'
+roachModel = '
 data {
   int<lower=0> N;
   vector[N] exposure2;
@@ -31,7 +32,7 @@ data {
 
 transformed data {
   vector[N] log_expo;
-  log_expo <- log(exposure2);
+  log_expo = log(exposure2);
 }
 
 parameters {
@@ -49,11 +50,12 @@ model {
 generated quantities {
   int<lower=0> pred_treat;
   int<lower=0> pred_notreat;
-  vector[3] exp_beta; 
 
-  exp_beta <- exp(beta);
-  pred_treat <- poisson_rng(exp_beta[1]*exp_beta[2]);
-  pred_notreat <- poisson_rng(exp_beta[1]);
+  vector[3] exp_beta; 
+  exp_beta = exp(beta);
+
+  pred_treat = poisson_rng(exp_beta[1]*exp_beta[2]);
+  pred_notreat = poisson_rng(exp_beta[1]);
 }
 '
 
@@ -62,7 +64,7 @@ fitRoach<-stan(model_code=roachModel,
            par=c("exp_beta","pred_treat","pred_notreat"),
            warmup=1000,
            iter=10000,
-           chains=4)
+           chains=2)
 
 print(fitRoach,digits=2)
 

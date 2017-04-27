@@ -58,7 +58,7 @@ fit1<-stan(model_code=rstanSeedModel,
            data=seedsData,
            warmup=nBurnin,
            iter=(nBurnin+nIter),
-           chains=4)
+           chains=2)
 fit1
 print(fit1,digits_summary=3)
 plot(fit1)
