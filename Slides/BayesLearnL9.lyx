@@ -255,10 +255,16 @@ We have already seen:
 
 \series bold
 \color blue
-Mean field approximation
+Mean field Variational Bayes
 \series default
 \color inherit
-
+ (
+\series bold
+\color blue
+VB
+\series default
+\color inherit
+)
 \begin_inset Formula 
 \[
 q(\theta)=\prod_{i=1}^{M}q_{i}(\theta_{i})
@@ -409,6 +415,7 @@ Structured mean field approximation
 \color inherit
 .
  Group subset of parameters in tractable blocks.
+ Similar to Gibbs sampling.
 \end_layout
 
 \end_deeper
@@ -473,7 +480,7 @@ Repeat until convergence:
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $q_{p}^{*}(\theta_{p})\leftarrow\frac{\exp\left[E_{-\theta_{M}}\ln p(\mathbf{y},\theta)\right]}{\int\exp\left[E_{-\theta_{p}}\ln p(\mathbf{y},\theta)\right]d\theta_{p}}$
+\begin_inset Formula $q_{p}^{*}(\theta_{p})\leftarrow\frac{\exp\left[E_{-\theta_{p}}\ln p(\mathbf{y},\theta)\right]}{\int\exp\left[E_{-\theta_{p}}\ln p(\mathbf{y},\theta)\right]d\theta_{p}}$
 \end_inset
 
 
@@ -613,10 +620,14 @@ Normal model - VB algorithm
 
 \begin_deeper
 \begin_layout Itemize
+
+\series bold
 Variational density for 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
+
+\series default
 
 \begin_inset Formula 
 \[
@@ -637,10 +648,14 @@ where
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 Variational density for 
 \begin_inset Formula $\mu$
 \end_inset
 
+
+\series default
 
 \begin_inset Formula 
 \[
@@ -887,10 +902,15 @@ Model
 Prior
 \series default
 : 
-\begin_inset Formula $\beta\sim N(\mu_{\beta},\Sigma_{\beta})$
+\begin_inset Formula $\beta\sim N(0,\Sigma_{\beta})$
 \end_inset
 
+.
+ For example: 
+\begin_inset Formula $\Sigma_{\beta}=\tau^{2}I$
+\end_inset
 
+.
 \end_layout
 
 \begin_layout Itemize
@@ -953,19 +973,7 @@ q(\mathbf{u},\beta)=q_{\mathbf{u}}(\mathbf{u})q_{\beta}(\beta)
 status open
 
 \begin_layout Plain Layout
-Probit regression - updating
-\series bold
-\size largest
-\color blue
- 
-\begin_inset Formula $\beta$
-\end_inset
-
-
-\series default
-\size default
-\color inherit
- 
+VB for probit regression 
 \end_layout
 
 \end_inset
@@ -979,7 +987,7 @@ Probit regression - updating
 
 \begin_deeper
 \begin_layout Itemize
-It can be shown that the VB posterior is
+VB posterior
 \begin_inset Formula 
 \[
 \beta\sim N\left(\tilde{\mu}_{\beta},\left(\mathbf{X}^{T}\mathbf{X}+\Sigma_{\beta}^{-1}\right)^{-1}\right)
@@ -990,7 +998,7 @@ It can be shown that the VB posterior is
 where 
 \begin_inset Formula 
 \[
-\tilde{\mu}_{\beta}=\left(\mathbf{X}^{T}\mathbf{X}+\Sigma_{\beta}^{-1}\right)^{-1}\left(\mathbf{X}^{T}\tilde{\mu}_{\mathbf{u}}+\Sigma_{\beta}^{-1}\mu_{\beta}\right)
+\tilde{\mu}_{\beta}=\left(\mathbf{X}^{T}\mathbf{X}+\Sigma_{\beta}^{-1}\right)^{-1}\mathbf{X}^{T}\tilde{\mu}_{\mathbf{u}}
 \]
 
 \end_inset
@@ -998,7 +1006,7 @@ where
 and 
 \begin_inset Formula 
 \[
-\tilde{\mu}_{\mathbf{u}}=X\tilde{\mu}_{\beta}+\frac{\phi\left(X\tilde{\mu}_{\beta}\right)}{\Phi\left(X\tilde{\mu}_{\beta}\right)^{\mathbf{y}}\left[\Phi\left(X\tilde{\mu}_{\beta}\right)-\mathbf{1}_{n}\right]^{\mathbf{1_{n}-y}}}.
+\tilde{\mu}_{\mathbf{u}}=\mathbf{X}\tilde{\mu}_{\beta}+\frac{\phi\left(\mathbf{X}\tilde{\mu}_{\beta}\right)}{\Phi\left(\mathbf{X}\tilde{\mu}_{\beta}\right)^{\mathbf{y}}\left[\Phi\left(\mathbf{X}\tilde{\mu}_{\beta}\right)-\mathbf{1}_{n}\right]^{\mathbf{1}_{n}-\mathbf{y}}}.
 \]
 
 \end_inset

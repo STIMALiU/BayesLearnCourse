@@ -5,6 +5,8 @@
 # Ported to RStan by Måns Magnusson
 # Date:   2013-10-24
 
+setwd("~/Dropbox/Teaching/BayesLearning/Code/RStanCode/")
+
 #install.packages("ggplot2")
 library(ggplot2)
 

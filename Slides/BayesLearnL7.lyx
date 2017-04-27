@@ -942,7 +942,7 @@ status collapsed
 \end_inset
 
  from 
-\begin_inset Formula $p(\theta_{n}|\theta_{1}^{(1)},\theta_{2}^{(1)},...,\theta_{k-1}^{(1)})$
+\begin_inset Formula $p(\theta_{k}|\theta_{1}^{(1)},\theta_{2}^{(1)},...,\theta_{k-1}^{(1)})$
 \end_inset
 
  
@@ -2272,8 +2272,8 @@ Random utility formulation
 \begin{eqnarray*}
 u_{i} & \sim & N(x_{i}^{\prime}\beta,1)\\
 y_{i} & = & \left\{ \begin{array}{c}
-1\text{ \ \ om }u_{i}>0\\
-0\text{ \ \ om }u_{i}\leq0
+1\text{ \ \ if }u_{i}>0\\
+0\text{ \ \ if }u_{i}\leq0
 \end{array}.\right.
 \end{eqnarray*}
 
