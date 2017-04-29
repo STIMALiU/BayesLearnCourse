@@ -2252,7 +2252,7 @@ Probit
  model:
 \begin_inset Formula 
 \[
-\Pr(y_{i}=1\text{ }|\text{ }x_{i})=\Phi(x_{i}^{\prime}\beta)
+\Pr(y_{i}=1\text{ }|\text{ }x_{i})=\Phi(x_{i}^{T}\beta)
 \]
 
 \end_inset
@@ -2270,7 +2270,7 @@ Random utility formulation
  of the probit:
 \begin_inset Formula 
 \begin{eqnarray*}
-u_{i} & \sim & N(x_{i}^{\prime}\beta,1)\\
+u_{i} & \sim & N(x_{i}^{T}\beta,1)\\
 y_{i} & = & \left\{ \begin{array}{c}
 1\text{ \ \ if }u_{i}>0\\
 0\text{ \ \ if }u_{i}\leq0
@@ -2292,7 +2292,7 @@ Check:
 \end_inset
 
  
-\begin_inset Formula $x_{i})=\Pr(u_{i}>0)=1-\Pr(u_{i}\leq0)=1-\Pr(u_{i}-x_{i}^{\prime}\beta<-x_{i}^{\prime}\beta)=1-\Phi(-x_{i}^{\prime}\beta)=\Phi(x_{i}^{\prime}\beta)$
+\begin_inset Formula $x_{i})=\Pr(u_{i}>0)=1-\Pr(u_{i}\leq0)=1-\Pr(u_{i}-x_{i}^{T}\beta<-x_{i}^{T}\beta)=1-\Phi(-x_{i}^{T}\beta)=\Phi(x_{i}^{T}\beta)$
 \end_inset
 
 .
