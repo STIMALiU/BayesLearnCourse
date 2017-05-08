@@ -9,6 +9,8 @@ setwd("~/Dropbox/Teaching/BayesLearning/Code/RStanCode/")
 
 #install.packages("ggplot2")
 library(ggplot2)
+#install.packages("rstan")
+library(rstan)
 
 roachesData<-read.csv2("Data/roachdata.csv")
 head(roachesData)
