@@ -267,7 +267,7 @@ VB
 )
 \begin_inset Formula 
 \[
-q(\theta)=\prod_{i=1}^{M}q_{i}(\theta_{i})
+q(\theta)=\prod_{i=1}^{p}q_{i}(\theta_{i})
 \]
 
 \end_inset
@@ -651,7 +651,7 @@ where
 
 \series bold
 Variational density for 
-\begin_inset Formula $\mu$
+\begin_inset Formula $\theta$
 \end_inset
 
 
