@@ -1044,7 +1044,7 @@ Simulate from
 \noun off
 \color none
 
-\begin_inset Formula $p(\mathbf{\mathcal{I}}|\mathbf{y})$
+\begin_inset Formula $p(\mathbf{\mathcal{I}}|\mathbf{y},\mathbf{X})$
 \end_inset
 
  using 
