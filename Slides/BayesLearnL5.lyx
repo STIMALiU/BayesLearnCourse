@@ -1268,7 +1268,11 @@ Hierarchical setup:
 
 \end_inset
 
+so 
+\begin_inset Formula $\Omega_{0}=\lambda I_{m}$
+\end_inset
 
+ in the previous notation.
 \end_layout
 
 \end_deeper
@@ -1315,12 +1319,16 @@ The joint posterior of
 \begin{align*}
 \beta|\sigma^{2},\lambda,\mathbf{y} & \sim N\left(\mu_{n},\Omega_{n}^{-1}\right)\\
 \sigma^{2}|\lambda,\mathbf{y} & \sim Inv-\chi^{2}\left(\nu_{n},\sigma_{n}^{2}\right)\\
-p(\lambda|\mathbf{y}) & \propto\sqrt{\frac{\left|\Omega_{0}\right|}{\left|X'X+\Omega_{0}\right|}}\left(\frac{\nu_{n}\sigma_{n}^{2}}{2}\right)^{-\nu_{n}/2}\cdot p(\lambda)
+p(\lambda|\mathbf{y}) & \propto\sqrt{\frac{\left|\Omega_{0}\right|}{\left|\mathbf{X}^{T}\mathbf{X}+\Omega_{0}\right|}}\left(\frac{\nu_{n}\sigma_{n}^{2}}{2}\right)^{-\nu_{n}/2}\cdot p(\lambda)
 \end{align*}
 
 \end_inset
 
 where 
+\begin_inset Formula $\Omega_{0}=\lambda I_{m}$
+\end_inset
+
+, and 
 \begin_inset Formula $p(\lambda)$
 \end_inset
 
@@ -1331,10 +1339,10 @@ where
 , and 
 \begin_inset Formula 
 \begin{align*}
-\mu_{n} & =\left(X'X+\Omega_{0}\right)^{-1}X'y\\
-\Omega_{n} & =X'X+\Omega_{0}\\
+\mu_{n} & =\left(\mathbf{X}^{T}\mathbf{X}+\Omega_{0}\right)^{-1}\mathbf{X}^{T}\mathbf{y}\\
+\Omega_{n} & =\mathbf{X}^{T}\mathbf{X}+\Omega_{0}\\
 \nu_{n} & =\nu_{0}+n\\
-\nu_{n}\sigma_{n}^{2} & =\nu_{0}\sigma_{0}^{2}+y'y-\mu_{n}'\Omega_{n}\mu_{n}
+\nu_{n}\sigma_{n}^{2} & =\nu_{0}\sigma_{0}^{2}+\mathbf{y}^{T}\mathbf{y}-\mu_{n}^{T}\Omega_{n}\mu_{n}
 \end{align*}
 
 \end_inset
