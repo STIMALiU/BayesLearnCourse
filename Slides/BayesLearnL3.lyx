@@ -1190,7 +1190,7 @@ message(sd(100*thetaDraws[,2]))
 
 \begin_layout Plain Layout
 
-PrAndroidLargest <- sum(thetaDraws[,2] > max(thetaDraws[,c(1,3,4)]))/nIter
+PrAndroidLargest <- sum(thetaDraws[,2]>apply(thetaDraws[,c(1,3,4)],1,max))/nIter
 \end_layout
 
 \begin_layout Plain Layout
