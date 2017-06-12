@@ -1085,7 +1085,7 @@ Taking first and second derivatives and evaluating at
  gives
 \begin_inset Formula 
 \[
-\tilde{\phi}=\log\left(\frac{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}{\beta+n}\right)\text{ and }\frac{\partial^{2}\ln p(\phi|y)}{\partial\phi^{2}}|_{\phi=\tilde{\phi}}=\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1
+\tilde{\phi}=\log\left(\frac{\alpha+\sum\nolimits _{i=1}^{n}y_{i}}{\beta+n}\right)\text{ and }\frac{\partial^{2}\ln p(\phi|y)}{\partial\phi^{2}}|_{\phi=\tilde{\phi}}=\alpha+\sum\nolimits _{i=1}^{n}y_{i}
 \]
 
 \end_inset
@@ -1101,7 +1101,7 @@ So, the normal approximation for
  is
 \begin_inset Formula 
 \[
-\phi=\log(\theta)\sim N\left[\log\left(\frac{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}{\beta+n}\right),\frac{1}{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}\right]
+\phi=\log(\theta)\sim N\left[\log\left(\frac{\alpha+\sum\nolimits _{i=1}^{n}y_{i}}{\beta+n}\right),\frac{1}{\alpha+\sum\nolimits _{i=1}^{n}y_{i}}\right]
 \]
 
 \end_inset
@@ -1113,7 +1113,7 @@ which means that
  is log-normal: 
 \begin_inset Formula 
 \[
-\theta\vert y\sim LN\left[\log\left(\frac{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}{\beta+n}\right),\frac{1}{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}\right]
+\theta\vert y\sim LN\left[\log\left(\frac{\alpha+\sum\nolimits _{i=1}^{n}y_{i}}{\beta+n}\right),\frac{1}{\alpha+\sum\nolimits _{i=1}^{n}y_{i}}\right]
 \]
 
 \end_inset
