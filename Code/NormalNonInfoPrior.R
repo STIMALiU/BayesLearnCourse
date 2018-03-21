@@ -33,5 +33,5 @@ return(PostDraws)
 }
 
 Data<-rnorm(100,5,10) 			# Sampling 100 observations from the N(5,10) density##
-PostDraws<-NormalNonInfoPrior(100,Data) # Generating 1000 draws from the joint posterior density of mu and sigma^2
+PostDraws<-NormalNonInfoPrior(1000,Data) # Generating 1000 draws from the joint posterior density of mu and sigma^2
 hist(PostDraws[,1]) 			# Plotting the histogram of mu-draws

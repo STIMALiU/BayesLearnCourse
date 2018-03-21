@@ -38,6 +38,8 @@
  	% No background for page 2 and onwards
  % \fi
 }
+%\usepackage{handoutWithNotes}
+%\pgfpagesuselayout{4 on 1 with notes}[a4paper,border shrink=5mm]
 \end_preamble
 \options xcolor=svgnames
 \use_default_options false
@@ -781,7 +783,7 @@ Dirichlet distribution
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../ProbStatUProg/Lectures/DirichletPlot.png
+	filename DirichletPlot.png
 	lyxscale 30
 	scale 30
 
@@ -1351,7 +1353,7 @@ Density
 
 \begin_inset Formula 
 \[
-p(y|\mu,\Sigma)=\left|\Sigma\right|^{-1/2}\exp\left(-\frac{1}{2}(y-\mu)'\Sigma^{-1}(y-\mu)\right)
+p(y|\mu,\Sigma)=\left|2\pi\Sigma\right|^{-1/2}\exp\left(-\frac{1}{2}(y-\mu)'\Sigma^{-1}(y-\mu)\right)
 \]
 
 \end_inset
