@@ -83,7 +83,7 @@ Mattias Villani and Per Sidén
 \length 8.5cm
 \end_inset
 
-2018-03-27
+2018-03-29
 \end_layout
 
 \begin_layout Standard
@@ -233,7 +233,7 @@ temp=\beta_{0}+\beta_{1}\cdot time+\beta_{2}\cdot time^{2}+\varepsilon\mbox{,\te
 \begin_layout Enumerate
 
 \shape italic
-Determining the prior distribution of the model parameter.
+Determining the prior distribution of the model parameters.
 
 \shape default
  Use the conjugate prior for the linear regression model.
@@ -412,6 +412,10 @@ simulates from the joint posterior distribution
 \begin_inset Formula $f(time)=\beta_{0}+\beta_{1}\cdot time+\beta_{2}\cdot time^{2}$
 \end_inset
 
+, computed for every value of 
+\begin_inset Formula $time$
+\end_inset
+
 .
  Also overlay a curve for the lower 5% and upper 95% posterior credible
  interval for 
@@ -419,12 +423,13 @@ simulates from the joint posterior distribution
 \end_inset
 
 .
- That is, compute the 95% equal tail posterior probability intervals for
+ That is, compute the 90% equal tail posterior probability intervals for
  every value of 
 \begin_inset Formula $time$
 \end_inset
 
  and then connect the lower and upper limits of the interval by curves.
+ Does the interval contain most of the data points? Should it?
 \end_layout
 
 \begin_layout Enumerate
@@ -437,7 +442,7 @@ It is of interest to locate the
 \end_inset
 
  where 
-\begin_inset Formula $E(temp|time)$
+\begin_inset Formula $f(time)$
 \end_inset
 
  is maximal).
