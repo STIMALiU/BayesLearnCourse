@@ -27,7 +27,7 @@ s2<-var(Data)
 n<-length(Data)
 PostDraws=matrix(0,NDraws,2)
 PostDraws[,2]<-((n-1)*s2)/rchisq(NDraws,n-1)
-PostDraws[,1]<-Datamean+rnorm(NDraws,0,1)*sqrt(PostDraws[,2]/n)
+PostDraws[,1]<-Datamean+rnorm(NDraws,0,1)*sqrt(PostDraws[,2])/n
 
 return(PostDraws)
 }
