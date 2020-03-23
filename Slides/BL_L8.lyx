@@ -25,7 +25,7 @@
 
 \date{} % Date, can be changed to a custom date
 
-\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}
+\titlegraphic{\includegraphics[width=2cm]{LiU_secondary_1_black.png}
 }
 
 \definecolor{blue}{RGB}{38, 122, 181}
@@ -118,7 +118,7 @@
 
 \size largest
 \color orange
-Bayesian Statistics I
+Bayesian Learning
 \size default
 
 \begin_inset Argument 1
@@ -127,7 +127,7 @@ status open
 \begin_layout Plain Layout
 
 \color gray
-Multiparameter models
+MCMC and Metropolis-Hastings
 \end_layout
 
 \end_inset
@@ -138,8 +138,7 @@ Multiparameter models
 \begin_layout Subtitle
 
 \color orange
-Lecture 8 - Markov Chain Monte Carlo.
- Metropolis-Hastings.
+Lecture 8 - Markov Chain Monte Carlo and Metropolis-Hastings
 \end_layout
 
 \begin_layout Author
@@ -151,7 +150,7 @@ status open
 
 \series bold
 \color gray
-Bayesian Statistics I
+Bayesian Learning
 \end_layout
 
 \end_inset
