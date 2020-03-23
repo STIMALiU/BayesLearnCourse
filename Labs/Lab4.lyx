@@ -509,7 +509,8 @@ Use your function from a) to simulate two AR(1)-processes,
 \end_inset
 
 .
- Now, treat the values of 
+ Now, treat your simulated vectors as synthetic data, and treat the values
+ of 
 \begin_inset Formula $\mu$
 \end_inset
 
@@ -524,8 +525,8 @@ Use your function from a) to simulate two AR(1)-processes,
  as unknown and estimate them using MCMC.
  Implement Stan-code that samples from the posterior of the three parameters,
  using suitable non-informative priors of your choice.
- [Hint: Look at the time-series models examples in the Stan reference manual,
- and note the different parameterization used here.]
+ [Hint: Look at the time-series models examples in the Stan user's guide/referen
+ce manual, and note the different parameterization used here.]
 \end_layout
 
 \begin_deeper
