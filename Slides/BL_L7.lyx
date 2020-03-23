@@ -2152,7 +2152,7 @@ Gibbs sampling
 \end_inset
 
  and 
-\begin_inset Formula $\mu_{1}|\mathbf{I},\sigma_{1}^{2},\mathbf{x}\sim N\left(\mu_{n_{1}},\frac{\sigma_{1}^{2}}{\kappa_{n_{1}}}\right)$
+\begin_inset Formula $\mu_{1}|\mathbf{I},\sigma_{1}^{2},\mathbf{x}\sim N\left(\mu_{n_{1}},\tau_{n_{1}}^{2}\right)$
 \end_inset
 
 
@@ -2179,7 +2179,7 @@ Gibbs sampling
 \end_inset
 
  and 
-\begin_inset Formula $\mu_{2}|\mathbf{I},\sigma_{2}^{2},\mathbf{x}\sim N\left(\mu_{n_{2}},\frac{\sigma_{2}^{2}}{\kappa_{n_{2}}}\right)$
+\begin_inset Formula $\mu_{2}|\mathbf{I},\sigma_{2}^{2},\mathbf{x}\sim N\left(\mu_{n_{2}},\tau_{n_{2}}^{2}\right)$
 \end_inset
 
 
