@@ -257,7 +257,7 @@ Linköping University
 \noindent
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="1">
+<lyxtabular version="3" rows="10" columns="1">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <row>
@@ -361,7 +361,30 @@ It is not allowed to share exact solutions
 \begin_inset Text
 
 \begin_layout Plain Layout
-Submit your solutions via LISAM (Linköping) or Mondo (Stockholm).
+The submitted lab reports will be verified through URKUND and indications
+ of
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+plagiarism will be investigated by the Disciplinary Board.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Submit your solutions via LISAM, no later than May 13 at 23:30.
 \end_layout
 
 \end_inset
