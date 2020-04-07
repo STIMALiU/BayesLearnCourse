@@ -260,7 +260,7 @@ Linköping University
 \noindent
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="1">
+<lyxtabular version="3" rows="10" columns="1">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <row>
@@ -364,7 +364,30 @@ It is not allowed to share exact solutions
 \begin_inset Text
 
 \begin_layout Plain Layout
-Submit your solutions via LISAM (Linköping) or Mondo (Stockholm).
+The submitted lab reports will be verified through URKUND and indications
+ of
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+plagiarism will be investigated by the Disciplinary Board.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Submit your solutions via LISAM, no later than May 26 at 23:30.
 \end_layout
 
 \end_inset
@@ -509,7 +532,8 @@ Use your function from a) to simulate two AR(1)-processes,
 \end_inset
 
 .
- Now, treat the values of 
+ Now, treat your simulated vectors as synthetic data, and treat the values
+ of 
 \begin_inset Formula $\mu$
 \end_inset
 
@@ -524,8 +548,8 @@ Use your function from a) to simulate two AR(1)-processes,
  as unknown and estimate them using MCMC.
  Implement Stan-code that samples from the posterior of the three parameters,
  using suitable non-informative priors of your choice.
- [Hint: Look at the time-series models examples in the Stan reference manual,
- and note the different parameterization used here.]
+ [Hint: Look at the time-series models examples in the Stan user's guide/referen
+ce manual, and note the different parameterization used here.]
 \end_layout
 
 \begin_deeper

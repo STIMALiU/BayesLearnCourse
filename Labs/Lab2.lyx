@@ -257,7 +257,7 @@ Linköping University
 \noindent
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="1">
+<lyxtabular version="3" rows="10" columns="1">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <row>
@@ -361,7 +361,30 @@ It is not allowed to share exact solutions
 \begin_inset Text
 
 \begin_layout Plain Layout
-Submit your solutions via LISAM (Linköping) or Mondo (Stockholm).
+The submitted lab reports will be verified through URKUND and indications
+ of
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+plagiarism will be investigated by the Disciplinary Board.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Submit your solutions via LISAM, no later than April 29 at 23:30.
 \end_layout
 
 \end_inset
@@ -414,8 +437,8 @@ The dataset
 \begin_inset Formula $\texttt{TempLinkoping.txt}$
 \end_inset
 
- contains daily temperatures (in Celcius degrees) at Malmslätt, Linköping
- over the course of the year 2016 (366 days since 2016 was a leap year).
+ contains daily average temperatures (in Celcius degrees) at Malmslätt,
+ Linköping over the course of the year 2018.
  The response variable is 
 \begin_inset Formula $temp$
 \end_inset
@@ -423,7 +446,7 @@ The dataset
  and the covariate is
 \begin_inset Formula 
 \[
-time=\frac{\text{the number of days since beginning of year}}{366}.
+time=\frac{\text{the number of days since beginning of year}}{365}.
 \]
 
 \end_inset
@@ -1129,8 +1152,12 @@ where
 
 -dimensional vector containing the eight features (including a one for the
  constant term that models the intercept).
- Fit the logistic regression using maximum likelihood estimation by the
- command: 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Fit the logistic regression using maximum likelihood estimation by the command:
+ 
 \family typewriter
 glmModel <- glm(Work ~ 0 + ., data = WomenWork, family = binomial)
 \family default
@@ -1150,9 +1177,13 @@ family = binomial
 tells R that we want to fit a logistic regression.
 \end_layout
 
-\begin_layout Enumerate
-Now the fun begins.
- Our goal is to approximate the posterior distribution of the 8-dim parameter
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The goal is to approximate the posterior distribution of the 8-dim parameter
  vector 
 \begin_inset Formula $\beta$
 \end_inset
@@ -1248,12 +1279,21 @@ WomenWork
  Compute an approximate 95% credible interval for the variable NSmallChild.
  Would you say that this feature is an important determinant of the probability
  that a women works?
+\begin_inset Newline newline
+\end_inset
+
+[Hint: To verify that your results are reasonable, you can compare to you
+ get by estimating the parameters using maximum likelihood: 
+\family typewriter
+glmModel <- glm(Work ~ 0 + ., data = WomenWork, family = binomial)
+\family default
+.]
 \end_layout
 
 \begin_layout Enumerate
 Write a function that simulates from the predictive distribution of the
  response variable in a logistic regression.
- Use your normal approximation from 2(b).
+ Use your normal approximation from 2(a).
  Use that function to simulate and plot the predictive distribution for
  the 
 \family typewriter
@@ -1265,13 +1305,21 @@ Work
 \begin_inset Newline newline
 \end_inset
 
-[Hint: the R package 
+[Hints: The R package 
 \begin_inset Formula $\texttt{mvtnorm}$
 \end_inset
 
  will again be handy.
- And remember my discussion on how Bayesian prediction can be done by simulation.
-]
+ Remember my discussion on how Bayesian prediction can be done by simulation.]
+\end_layout
+
+\begin_layout Enumerate
+Now, consider 10 women which all have the same features as the woman in
+ 2(b).
+ Rewrite your function and plot the predictive distribution for the number
+ of women, out of these 10, that are working.
+ [Hint: Which distribution can be described as a sum of Bernoulli random
+ variables?]
 \end_layout
 
 \end_deeper

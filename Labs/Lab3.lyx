@@ -257,7 +257,7 @@ Linköping University
 \noindent
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="1">
+<lyxtabular version="3" rows="10" columns="1">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <row>
@@ -361,7 +361,30 @@ It is not allowed to share exact solutions
 \begin_inset Text
 
 \begin_layout Plain Layout
-Submit your solutions via LISAM (Linköping) or Mondo (Stockholm).
+The submitted lab reports will be verified through URKUND and indications
+ of
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+plagiarism will be investigated by the Disciplinary Board.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Submit your solutions via LISAM, no later than May 13 at 23:30.
 \end_layout
 
 \end_inset
@@ -544,27 +567,18 @@ Graphical comparison.
 \begin_inset Newline newline
 \end_inset
 
-Let 
-\begin_inset Formula $\hat{\mu}$
-\end_inset
-
- denote the posterior mean of the parameter 
-\begin_inset Formula $\mu$
-\end_inset
-
- and correspondingly for the other parameters.
- Plot the following densities in one figure: 1) a histogram or kernel density
+Plot the following densities in one figure: 1) a histogram or kernel density
  estimate of the data.
  2) Normal density 
-\begin_inset Formula $\mathcal{N}(\hat{\mu},\hat{\sigma}^{2})$
+\begin_inset Formula $\mathcal{N}(y_{i}|\mu,\sigma^{2})$
 \end_inset
 
- in (a).
- 3) Mixture of normals density 
-\begin_inset Formula $p(y_{i}|\hat{\mu},\hat{\sigma}^{2},\hat{\pi})$
+ in (a); 3) Mixture of normals density 
+\begin_inset Formula $p(y_{i}|\mu,\sigma^{2},\pi)$
 \end_inset
 
  in (b).
+ Base your plots on the mean over all posterior draws.
 \end_layout
 
 \end_deeper
@@ -904,6 +918,77 @@ Now, use your new Metropolis function to sample from the posterior of
 
  in the Poisson regression for the eBay dataset.
  Assess MCMC convergence by graphical methods.
+\end_layout
+
+\begin_layout Enumerate
+Use the MCMC draws from c) to simulate from the predictive distribution
+ of the number of bidders in a new auction with the characteristics below.
+ Plot the predictive distribution.
+ What is the probability of no bidders in this new auction?
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+PowerSeller 
+\series default
+= 1
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+VerifyID
+\series default
+ = 1
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sealed
+\series default
+ = 1
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+MinBlem
+\series default
+ = 0
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+MajBlem
+\series default
+ = 0
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+LargNeg
+\series default
+ = 0
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+LogBook
+\series default
+ = 1
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+MinBidShare
+\series default
+ = 0.5
 \end_layout
 
 \end_deeper

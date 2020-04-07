@@ -257,7 +257,7 @@ Linköping University
 \noindent
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="1">
+<lyxtabular version="3" rows="10" columns="1">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <row>
@@ -361,7 +361,30 @@ It is not allowed to share exact solutions
 \begin_inset Text
 
 \begin_layout Plain Layout
-Submit your solutions via LISAM (Linköping) or Mondo (Stockholm).
+The submitted lab reports will be verified through URKUND and indications
+ of
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+plagiarism will be investigated by the Disciplinary Board.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Submit your solutions via LISAM, no later than April 18 at 23:30.
 \end_layout
 
 \end_inset
@@ -416,7 +439,7 @@ Let
 \end_inset
 
 , and assume that you have obtained a sample with 
-\begin_inset Formula $s=14$
+\begin_inset Formula $s=5$
 \end_inset
 
  successes in 
@@ -462,8 +485,12 @@ Use simulation (
 \family typewriter
 nDraws = 10000
 \family default
-) to compute the posterior probability 
-\begin_inset Formula $\mathrm{Pr}(\theta<0.4\vert y)$
+) to compute the posterior probability
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\mathrm{Pr}(\theta>0.3\vert y)$
 \end_inset
 
  and compare with the exact value [Hint: 
@@ -506,7 +533,7 @@ Log-normal distribution and the Gini coefficient.
 
 Assume that you have asked 10 randomly selected persons about their monthly
  income (in thousands Swedish Krona) and obtained the following ten observations
-: 14, 25, 45, 25, 30, 33, 19, 50, 34 and 67.
+: 44, 25, 45, 52, 30, 63, 19, 50, 34 and 67.
  A common model for non-negative continuous variables is the log-normal
  distribution.
  The log-normal distribution 
@@ -549,7 +576,7 @@ for
 \end_inset
 
 , where 
-\begin_inset Formula $\mu=3.5$
+\begin_inset Formula $\mu=3.7$
 \end_inset
 
  is assumed to be known but 
@@ -591,7 +618,7 @@ Simulate
 \end_inset
 
  (assuming 
-\begin_inset Formula $\mu=3.5$
+\begin_inset Formula $\mu=3.7$
 \end_inset
 
 ) and compare with the theoretical 
@@ -645,18 +672,18 @@ ion with mean zero and unit variance.
 \end_layout
 
 \begin_layout Enumerate
-Use the posterior draws from b) to compute a 95% equal tail credible interval
+Use the posterior draws from b) to compute a 90% equal tail credible interval
  for 
 \begin_inset Formula $G$
 \end_inset
 
 .
- An 95% equal tail interval 
+ A 90% equal tail interval 
 \begin_inset Formula $(a,b)$
 \end_inset
 
  cuts off 
-\begin_inset Formula $2.5\%$
+\begin_inset Formula $5\%$
 \end_inset
 
  percent of the posterior probability mass to the left of 
@@ -664,7 +691,7 @@ Use the posterior draws from b) to compute a 95% equal tail credible interval
 \end_inset
 
 , and 
-\begin_inset Formula $2.5\%$
+\begin_inset Formula $5\%$
 \end_inset
 
  to the right of 
@@ -681,7 +708,7 @@ Use the posterior draws from b) to compute a 95% equal tail credible interval
 density
 \family default
  function in R with default settings, and use that kernel density estimate
- to compute a 95% Highest Posterior Density interval for 
+ to compute a 90% Highest Posterior Density interval for 
 \begin_inset Formula $G$
 \end_inset
 

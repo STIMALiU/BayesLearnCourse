@@ -25,7 +25,7 @@
 
 \date{} % Date, can be changed to a custom date
 
-\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}
+\titlegraphic{\includegraphics[width=2cm]{LiU_secondary_1_black.png}
 }
 
 \definecolor{blue}{RGB}{38, 122, 181}
@@ -118,16 +118,16 @@
 
 \size largest
 \color orange
-Bayesian Statistics I
+Bayesian 
 \size default
-
+Learning
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \color gray
-Multiparameter models
+Monte Carlo and Gibbs sampling
 \end_layout
 
 \end_inset
@@ -138,8 +138,7 @@ Multiparameter models
 \begin_layout Subtitle
 
 \color orange
-Lecture 7 - Monte Carlo.
- Gibbs sampling.
+Lecture 7 - Monte Carlo and Gibbs sampling
 \end_layout
 
 \begin_layout Author
@@ -151,7 +150,7 @@ status open
 
 \series bold
 \color gray
-Bayesian Statistics I
+Bayesian Learning
 \end_layout
 
 \end_inset
@@ -2153,7 +2152,7 @@ Gibbs sampling
 \end_inset
 
  and 
-\begin_inset Formula $\mu_{1}|\mathbf{I},\sigma_{1}^{2},\mathbf{x}\sim N\left(\mu_{n_{1}},\frac{\sigma_{1}^{2}}{\kappa_{n_{1}}}\right)$
+\begin_inset Formula $\mu_{1}|\mathbf{I},\sigma_{1}^{2},\mathbf{x}\sim N\left(\mu_{n_{1}},\tau_{n_{1}}^{2}\right)$
 \end_inset
 
 
@@ -2180,7 +2179,7 @@ Gibbs sampling
 \end_inset
 
  and 
-\begin_inset Formula $\mu_{2}|\mathbf{I},\sigma_{2}^{2},\mathbf{x}\sim N\left(\mu_{n_{2}},\frac{\sigma_{2}^{2}}{\kappa_{n_{2}}}\right)$
+\begin_inset Formula $\mu_{2}|\mathbf{I},\sigma_{2}^{2},\mathbf{x}\sim N\left(\mu_{n_{2}},\tau_{n_{2}}^{2}\right)$
 \end_inset
 
 
