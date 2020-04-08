@@ -718,8 +718,15 @@ density
 
 \end_deeper
 \begin_layout Enumerate
+
+\emph on
 Bayesian inference for the concentration parameter in the von Mises distribution.
- This exercise is concerned with directional data.
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+This exercise is concerned with directional data.
  The point is to show you that the posterior distribution for somewhat weird
  models can be obtained by plotting it over a grid of values.
  The data points are observed wind directions at a given location on ten
