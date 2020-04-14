@@ -22,10 +22,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
 \date{} % Date, can be changed to a custom date
 
-\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}
+\titlegraphic{\includegraphics[width=2cm]{LiU_secondary_1_black.png}
 }
 
 \definecolor{blue}{RGB}{38, 122, 181}
@@ -1078,6 +1077,20 @@ Output
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Automatic differentiation
+\series default
+\color inherit
+ (autodiff in Python, ForwardDiff in Julia, R?)
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 
 \series bold

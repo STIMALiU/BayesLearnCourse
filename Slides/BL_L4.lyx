@@ -25,7 +25,7 @@
 
 \date{} % Date, can be changed to a custom date
 
-\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}
+\titlegraphic{\includegraphics[width=2cm]{LiU_secondary_1_black.png}
 }
 
 \definecolor{blue}{RGB}{38, 122, 181}
@@ -1636,33 +1636,18 @@ Optimal decision
 \begin_deeper
 \begin_layout Itemize
 Ad hoc decision rules:
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
 \emph on
-Minimax
+ Minimax
 \emph default
 .
- Minimizes the maximum loss.
  
-\end_layout
-
-\begin_layout Itemize
-
 \emph on
 Minimax-regret
 \emph default
  ...
- bla bla bla ...
+ 
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -1738,7 +1723,7 @@ Separation principle
 \end_layout
 
 \begin_layout Enumerate
-First obtain 
+First do inference, 
 \begin_inset Formula $p(\theta\vert y)$
 \end_inset
 
@@ -1746,7 +1731,7 @@ First obtain
 \end_layout
 
 \begin_layout Enumerate
-then form 
+then form utility 
 \begin_inset Formula $U(a,\theta)$
 \end_inset
 
@@ -1754,7 +1739,7 @@ then form
 \end_layout
 
 \begin_layout Enumerate
-choose 
+choose action 
 \begin_inset Formula $a$
 \end_inset
 

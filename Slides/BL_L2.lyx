@@ -25,7 +25,7 @@
 
 \date{} % Date, can be changed to a custom date
 
-\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}
+\titlegraphic{\includegraphics[width=2cm]{LiU_secondary_1_black.png}
 }
 
 \definecolor{blue}{RGB}{38, 122, 181}
