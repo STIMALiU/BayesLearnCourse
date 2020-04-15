@@ -844,7 +844,7 @@ Poisson model
  
 \begin_inset Formula 
 \[
-\log p(\theta|y_{1},...,y_{n})\propto(\alpha+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1)\log\theta-\theta(\beta+n)
+\log p(\theta|y_{1},...,y_{n})\propto(\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1)\log\theta-\theta(\beta+n)
 \]
 
 \end_inset
@@ -856,7 +856,7 @@ Poisson model
 First derivative of log density
 \begin_inset Formula 
 \[
-\frac{\partial\ln p(\theta|\mathbf{y})}{\partial\theta}=\frac{\alpha+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}{\theta}-(\beta+n)
+\frac{\partial\ln p(\theta|\mathbf{y})}{\partial\theta}=\frac{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}{\theta}-(\beta+n)
 \]
 
 \end_inset
@@ -864,7 +864,7 @@ First derivative of log density
 
 \begin_inset Formula 
 \[
-\tilde{\theta}=\frac{\alpha+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}{\beta+n}
+\tilde{\theta}=\frac{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}{\beta+n}
 \]
 
 \end_inset
@@ -880,7 +880,7 @@ Second derivative at mode
  
 \begin_inset Formula 
 \[
-\frac{\partial^{2}\ln p(\theta|\mathbf{y})}{\partial\theta^{2}}|_{\theta=\tilde{\theta}}=-\frac{\alpha+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}{\left(\frac{\alpha+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}{\beta+n}\right)^{2}}=-\frac{(\beta+n)^{2}}{\alpha+\sum\nolimits _{i=\mbox{}1}^{n}y_{i}-1}
+\frac{\partial^{2}\ln p(\theta|\mathbf{y})}{\partial\theta^{2}}|_{\theta=\tilde{\theta}}=-\frac{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}{\left(\frac{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}{\beta+n}\right)^{2}}=-\frac{(\beta+n)^{2}}{\alpha+\sum\nolimits _{i=1}^{n}y_{i}-1}
 \]
 
 \end_inset
