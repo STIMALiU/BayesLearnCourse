@@ -641,7 +641,7 @@ x=\tan[\pi(u-1/2)].
 \end_layout
 
 \begin_layout Itemize
-Use 
+Can also use 
 \series bold
 \color blue
 relations
@@ -2144,7 +2144,7 @@ Gibbs sampling
 \end_inset
 
  
-\begin_inset Formula $\mathbf{I},\mathbf{x}\sim Inv$
+\begin_inset Formula $\mathbf{I},\mu_{1},\mathbf{x}\sim Inv$
 \end_inset
 
 -
@@ -2171,7 +2171,7 @@ Gibbs sampling
 \end_inset
 
  
-\begin_inset Formula $\mathbf{I},\mathbf{x}\sim Inv$
+\begin_inset Formula $\mathbf{I},\mu_{2},\mathbf{x}\sim Inv$
 \end_inset
 
 -
@@ -2371,7 +2371,7 @@ Gibbs sampling
 \end_inset
 
  
-\begin_inset Formula $\pi,\mu,\sigma^{2},\mathbf{x}\sim Multinomial(\theta_{i1},...,\theta_{iK})$
+\begin_inset Formula $\pi,\mu,\sigma^{2},\mathbf{x}\sim Categorical(\theta_{i1},...,\theta_{iK})$
 \end_inset
 
 , 
